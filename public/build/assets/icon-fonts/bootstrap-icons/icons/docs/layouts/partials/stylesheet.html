@@ -1,0 +1,14 @@
+{{- if eq .Layout "home" -}}
+<link href="/assets/font/bootstrap-icons.css" rel="stylesheet">
+{{- end -}}
+
+{{- $sassOptions := dict "targetPath" "assets/css/docs.css" "precision" 6 -}}
+{{- $postcssOptions := dict "use" "autoprefixer" "noMap" true -}}
+
+{{- if eq hugo.Environment "production" -}}
+{{- $sassOptions = merge $sassOptions (dict "outputStyle" "compressed") -}}
+{{- end -}}
+
+{{- $style := resources.Get "scss/docs.scss" | toCSS $sassOptions | postCSS $postcssOptions -}}
+
+<link href="{{ $style.Permalink | relURL }}" rel="stylesheet">
