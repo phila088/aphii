@@ -1,0 +1,132 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('brands', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('registered_state_id')->references('id')->on('states')->cascadeOnUpdate();
+            $table->string('legal_name', 50);
+            $table->string('dba', 50)->nullable();
+            $table->string('abbreviation');
+            $table->string('logo_path')->nullable();
+            $table->string('legal_entity_type', 50)->nullable();
+            $table->boolean('commercial')->nullable();
+            $table->boolean('residential')->nullable();
+            $table->time('office_hours_monday_open')->nullable();
+            $table->time('office_hours_monday_close')->nullable();
+            $table->time('office_hours_tuesday_open')->nullable();
+            $table->time('office_hours_tuesday_close')->nullable();
+            $table->time('office_hours_wednesday_open')->nullable();
+            $table->time('office_hours_wednesday_close')->nullable();
+            $table->time('office_hours_thursday_open')->nullable();
+            $table->time('office_hours_thursday_close')->nullable();
+            $table->time('office_hours_friday_open')->nullable();
+            $table->time('office_hours_friday_close')->nullable();
+            $table->time('office_hours_saturday_open')->nullable();
+            $table->time('office_hours_saturday_close')->nullable();
+            $table->time('office_hours_sunday_open')->nullable();
+            $table->time('office_hours_sunday_close')->nullable();
+            $table->time('service_hours_monday_open')->nullable();
+            $table->time('service_hours_monday_close')->nullable();
+            $table->time('service_hours_tuesday_open')->nullable();
+            $table->time('service_hours_tuesday_close')->nullable();
+            $table->time('service_hours_wednesday_open')->nullable();
+            $table->time('service_hours_wednesday_close')->nullable();
+            $table->time('service_hours_thursday_open')->nullable();
+            $table->time('service_hours_thursday_close')->nullable();
+            $table->time('service_hours_friday_open')->nullable();
+            $table->time('service_hours_friday_close')->nullable();
+            $table->time('service_hours_saturday_open')->nullable();
+            $table->time('service_hours_saturday_close')->nullable();
+            $table->time('service_hours_sunday_open')->nullable();
+            $table->time('service_hours_sunday_close')->nullable();
+            $table->time('after_hours_monday_open')->nullable();
+            $table->time('after_hours_monday_close')->nullable();
+            $table->time('after_hours_tuesday_open')->nullable();
+            $table->time('after_hours_tuesday_close')->nullable();
+            $table->time('after_hours_wednesday_open')->nullable();
+            $table->time('after_hours_wednesday_close')->nullable();
+            $table->time('after_hours_thursday_open')->nullable();
+            $table->time('after_hours_thursday_close')->nullable();
+            $table->time('after_hours_friday_open')->nullable();
+            $table->time('after_hours_friday_close')->nullable();
+            $table->time('after_hours_saturday_open')->nullable();
+            $table->time('after_hours_saturday_close')->nullable();
+            $table->time('after_hours_sunday_open')->nullable();
+            $table->time('after_hours_sunday_close')->nullable();
+            $table->time('holiday_hours_monday_open')->nullable();
+            $table->time('holiday_hours_monday_close')->nullable();
+            $table->time('holiday_hours_tuesday_open')->nullable();
+            $table->time('holiday_hours_tuesday_close')->nullable();
+            $table->time('holiday_hours_wednesday_open')->nullable();
+            $table->time('holiday_hours_wednesday_close')->nullable();
+            $table->time('holiday_hours_thursday_open')->nullable();
+            $table->time('holiday_hours_thursday_close')->nullable();
+            $table->time('holiday_hours_friday_open')->nullable();
+            $table->time('holiday_hours_friday_close')->nullable();
+            $table->time('holiday_hours_saturday_open')->nullable();
+            $table->time('holiday_hours_saturday_close')->nullable();
+            $table->time('holiday_hours_sunday_open')->nullable();
+            $table->time('holiday_hours_sunday_close')->nullable();
+            $table->string('phone_primary', 15)->nullable();
+            $table->string('phone_ap', 15)->nullable();
+            $table->string('phone_ar', 15)->nullable();
+            $table->string('phone_client_relations', 15)->nullable();
+            $table->string('phone_customer_service', 15)->nullable();
+            $table->string('phone_projects', 15)->nullable();
+            $table->string('phone_quoting', 15)->nullable();
+            $table->string('phone_sales', 15)->nullable();
+            $table->string('email_primary', 15)->nullable();
+            $table->string('email_ap', 15)->nullable();
+            $table->string('email_ar', 15)->nullable();
+            $table->string('email_client_relations', 15)->nullable();
+            $table->string('email_customer_service', 15)->nullable();
+            $table->string('email_projects', 15)->nullable();
+            $table->string('email_quoting', 15)->nullable();
+            $table->string('email_sales', 15)->nullable();
+            $table->string('physical_address_pre_direction', 10)->nullable();
+            $table->string('physical_address_building_number', 25)->nullable();
+            $table->string('physical_address_street_name', 50)->nullable();
+            $table->string('physical_address_street_type', 50)->nullable();
+            $table->string('physical_address_post_direction', 10)->nullable();
+            $table->string('physical_address_po_box', 50)->nullable();
+            $table->string('physical_address_city', 50)->nullable();
+            $table->string('physical_address_state', 25)->nullable();
+            $table->string('physical_address_zip', 25)->nullable();
+            $table->string('mailing_address_pre_direction', 10)->nullable();
+            $table->string('mailing_address_building_number', 25)->nullable();
+            $table->string('mailing_address_street_name', 50)->nullable();
+            $table->string('mailing_address_street_type', 50)->nullable();
+            $table->string('mailing_address_post_direction', 10)->nullable();
+            $table->string('mailing_address_po_box', 50)->nullable();
+            $table->string('mailing_address_city', 50)->nullable();
+            $table->string('mailing_address_state', 25)->nullable();
+            $table->string('mailing_address_zip', 25)->nullable();
+            $table->string('remittance_address_pre_direction', 10)->nullable();
+            $table->string('remittance_address_building_number', 25)->nullable();
+            $table->string('remittance_address_street_name', 50)->nullable();
+            $table->string('remittance_address_street_type', 50)->nullable();
+            $table->string('remittance_address_post_direction', 10)->nullable();
+            $table->string('remittance_address_po_box', 50)->nullable();
+            $table->string('remittance_address_city', 50)->nullable();
+            $table->string('remittance_address_state', 25)->nullable();
+            $table->string('remittance_address_zip', 25)->nullable();
+            $table->string('internal_work_order_number_prefix',25);
+            $table->string('fein');
+            $table->boolean('active')->default(true);
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('brands');
+    }
+};

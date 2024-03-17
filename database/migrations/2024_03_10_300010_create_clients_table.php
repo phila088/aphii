@@ -1,0 +1,130 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('clients', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('potential_client_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('payment_term_id')->nullable()->constrained()->cascadeOnUpdate();
+            $table->foreignId('for_brand')->nullable()->references('id')->on('brands')->cascadeOnUpdate();
+            $table->string('legal_name', 50)->nullable();
+            $table->string('dba', 50)->nullable();
+            $table->string('abbreviation', 10)->nullable();
+            $table->string('legal_entity_type', 25)->nullable();
+            $table->string('registered_state', 30)->nullable();
+            $table->boolean('onboarding_started')->default(false);
+            $table->date('onboarding_started_date')->nullable();
+            $table->boolean('onboarding_finished')->default(false);
+            $table->date('onboarding_finished_date')->nullable();
+            $table->boolean('vendor_packet_complete')->default(false);
+            $table->date('vendor_packet_complete_date')->nullable();
+            $table->boolean('certificate_of_insurance_requested')->default(false);
+            $table->boolean('certificate_of_insurance_provided')->default(false);
+            $table->date('certificate_of_insurance_coverage_start_date')->nullable();
+            $table->date('certificate_of_insurance_coverage_end_date')->nullable();
+            $table->boolean('workers_comp_requested')->default(false);
+            $table->boolean('workers_comp_provided')->default(false);
+            $table->date('workers_comp_coverage_start_date')->nullable();
+            $table->date('workers_comp_coverage_end_date')->nullable();
+            $table->boolean('auto_insurance_requested')->default(false);
+            $table->boolean('auto_insurance_provided')->default(false);
+            $table->date('auto_insurance_coverage_start_date')->nullable();
+            $table->date('auto_insurance_coverage_end_date')->nullable();
+            $table->boolean('misc_insurance_requested')->default(false);
+            $table->boolean('misc_insurance_provided')->default(false);
+            $table->date('misc_insurance_coverage_start_date')->nullable();
+            $table->date('misc_insurance_coverage_end_date')->nullable();
+            $table->boolean('accounts_payables_information_verified')->default(false);
+            $table->boolean('accounts_receivables_information_verified')->default(false);
+            $table->date('contract_start_date')->nullable();
+            $table->date('contract_end_date')->nullable();
+            $table->text('training_materials')->nullable();
+            $table->text('ivr_and_onsite_protocol')->nullable();
+            $table->decimal('invoicing_percent_per_invoice', 6, 4)->nullable();
+            $table->decimal('invoicing_amount_per_invoice')->nullable();
+            $table->decimal('invoicing_percent_per_month', 6, 4)->nullable();
+            $table->decimal('invoicing_amount_per_month')->nullable();
+            $table->string('misc_service_charge_1_description', 50)->nullable();
+            $table->decimal('misc_service_charge_1_amount', 6, 4)->nullable();
+            $table->string('misc_service_charge_2_description', 50)->nullable();
+            $table->decimal('misc_service_charge_2_amount', 6, 4)->nullable();
+            $table->string('misc_service_charge_3_description', 50)->nullable();
+            $table->decimal('misc_service_charge_3_amount', 6, 4)->nullable();
+            $table->string('misc_service_charge_4_description', 50)->nullable();
+            $table->decimal('misc_service_charge_4_amount', 6, 4)->nullable();
+            $table->string('misc_service_charge_5_description', 50)->nullable();
+            $table->decimal('misc_service_charge_5_amount', 6, 4)->nullable();
+            $table->json('invoicing_required_document_list')->nullable();
+            $table->text('invoicing_instructions')->nullable();
+            $table->string('customer_service_phone_1', 15)->nullable();
+            $table->string('customer_service_phone_2', 15)->nullable();
+            $table->string('customer_service_phone_3', 15)->nullable();
+            $table->string('customer_service_phone_4', 15)->nullable();
+            $table->string('customer_service_phone_5', 15)->nullable();
+            $table->string('customer_service_email_1', 100)->nullable();
+            $table->string('customer_service_email_2', 100)->nullable();
+            $table->string('customer_service_email_3', 100)->nullable();
+            $table->string('customer_service_email_4', 100)->nullable();
+            $table->string('customer_service_email_5', 100)->nullable();
+            $table->string('customer_service_fax', 15)->nullable();
+            $table->string('invoicing_phone_1', 15)->nullable();
+            $table->string('invoicing_phone_2', 15)->nullable();
+            $table->string('invoicing_phone_3', 15)->nullable();
+            $table->string('invoicing_phone_4', 15)->nullable();
+            $table->string('invoicing_phone_5', 15)->nullable();
+            $table->string('invoicing_email_1', 100)->nullable();
+            $table->string('invoicing_email_2', 100)->nullable();
+            $table->string('invoicing_email_3', 100)->nullable();
+            $table->string('invoicing_email_4', 100)->nullable();
+            $table->string('invoicing_email_5', 100)->nullable();
+            $table->string('invoicing_fax', 15)->nullable();
+            $table->string('ivr_phone_1', 15)->nullable();
+            $table->string('ivr_phone_2', 15)->nullable();
+            $table->string('ivr_phone_3', 15)->nullable();
+            $table->string('ivr_phone_4', 15)->nullable();
+            $table->string('ivr_phone_5', 15)->nullable();
+            $table->string('ivr_email_1', 100)->nullable();
+            $table->string('ivr_email_2', 100)->nullable();
+            $table->string('ivr_email_3', 100)->nullable();
+            $table->string('ivr_email_4', 100)->nullable();
+            $table->string('ivr_email_5', 100)->nullable();
+            $table->string('ivr_fax', 15)->nullable();
+            $table->string('onsite_phone_1', 15)->nullable();
+            $table->string('onsite_phone_2', 15)->nullable();
+            $table->string('onsite_phone_3', 15)->nullable();
+            $table->string('onsite_phone_4', 15)->nullable();
+            $table->string('onsite_phone_5', 15)->nullable();
+            $table->string('onsite_email_1', 100)->nullable();
+            $table->string('onsite_email_2', 100)->nullable();
+            $table->string('onsite_email_3', 100)->nullable();
+            $table->string('onsite_email_4', 100)->nullable();
+            $table->string('onsite_email_5', 100)->nullable();
+            $table->string('onsite_fax', 15)->nullable();
+            $table->string('remittance_phone_1', 15)->nullable();
+            $table->string('remittance_phone_2', 15)->nullable();
+            $table->string('remittance_phone_3', 15)->nullable();
+            $table->string('remittance_phone_4', 15)->nullable();
+            $table->string('remittance_phone_5', 15)->nullable();
+            $table->string('remittance_email_1', 100)->nullable();
+            $table->string('remittance_email_2', 100)->nullable();
+            $table->string('remittance_email_3', 100)->nullable();
+            $table->string('remittance_email_4', 100)->nullable();
+            $table->string('remittance_email_5', 100)->nullable();
+            $table->string('remittance_fax', 15)->nullable();
+            $table->boolean('active')->default(false);
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('clients');
+    }
+};
