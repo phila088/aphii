@@ -12,6 +12,7 @@ class DocumentCategory extends Model
     use SoftDeletes;
 
     public $fillable = [
+        'document_category_id',
         'title'
     ];
 

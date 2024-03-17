@@ -9,5 +9,8 @@ class Certifications extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'user_id',
+        'title'
+    ];
 }

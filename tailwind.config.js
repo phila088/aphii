@@ -8,9 +8,11 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './public/js/preline/dist/*.js'
+        './public/js/preline/dist/*.js',
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
     ],
-    darkMode: 'selector',
+    darkMode: ['selector', '[data-theme-mode="dark"]'],
+    prefix: 'tw-',
     theme: {
         extend: {
             fontFamily: {

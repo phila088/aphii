@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import laravel from 'laravel-vite-plugin';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
+import {viteStaticCopy} from 'vite-plugin-static-copy';
 import * as packages from './package.json';
 import fsExtra from 'fs-extra'; // Import fs-extra as a default import
-import { join } from 'path';
+import {join} from 'path';
 
 export default defineConfig({
     plugins: [
@@ -174,7 +174,7 @@ export default defineConfig({
 
         {
             name: 'blade',
-            handleHotUpdate({ file, server }) {
+            handleHotUpdate({file, server}) {
                 if (file.endsWith('.blade.php')) {
                     server.ws.send({
                         type: 'full-reload',
@@ -188,5 +188,6 @@ export default defineConfig({
         chunkSizeWarningLimit: 1600,
         outDir: 'public/build',
         emptyOutDir: true,
+
     },
 });

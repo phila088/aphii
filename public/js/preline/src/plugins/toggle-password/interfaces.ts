@@ -1,11 +1,11 @@
 export interface ITogglePasswordOptions {
-	target: string | string[] | HTMLInputElement | HTMLInputElement[];
+    target: string | string[] | HTMLInputElement | HTMLInputElement[];
 }
 
 export interface ITogglePassword {
-	options?: ITogglePasswordOptions;
-	
-	show(): void;
-	
-	hide(): void;
+    options?: ITogglePasswordOptions;
+
+    show(): void;
+
+    hide(): void;
 }

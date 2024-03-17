@@ -24,22 +24,22 @@
         }
     });
 
-    let ratingRTL = ()=>{
+    let ratingRTL = () => {
 
-        [document.querySelector("#rater-steps"),document.querySelector("#rater-basic")
-        ,document.querySelector("#custom-messages"),document.querySelector("#rater-reset")].map((ele)=>{
+        [document.querySelector("#rater-steps"), document.querySelector("#rater-basic")
+            , document.querySelector("#custom-messages"), document.querySelector("#rater-reset")].map((ele) => {
             // To remove the child
             ele.firstChild.remove()
 
             // For RTl
             raterJs({
-            starSize: 24,
-            reverse:true, //this enable rtl
-            element: ele,
-            rateCallback: function rateCallback(rating, done) {
-                this.setRating(rating);
-                done();
-            }
+                starSize: 24,
+                reverse: true, //this enable rtl
+                element: ele,
+                rateCallback: function rateCallback(rating, done) {
+                    this.setRating(rating);
+                    done();
+                }
             })
         })
 
@@ -48,7 +48,7 @@
         starRating14 = raterJs({
             starSize: 24,
             rating: 2,
-            reverse:true, //this enable rtl
+            reverse: true, //this enable rtl
             isBusyText: "Rating in progress. Please wait...",
             element: document.querySelector("#stars-busytext"),
             rateCallback: function rateCallback(rating, done) {
@@ -65,7 +65,7 @@
         raterJs({
             starSize: 24,
             rating: 2,
-            reverse:true, //this enable rtl
+            reverse: true, //this enable rtl
             element: document.querySelector("#stars-hover"),
             rateCallback: function rateCallback(rating, done) {
                 this.setRating(rating);
@@ -79,21 +79,21 @@
             }
         })
     }
-    let ratingLTR = ()=>{
+    let ratingLTR = () => {
 
-        [document.querySelector("#rater-steps"),document.querySelector("#rater-basic")
-        ,document.querySelector("#custom-messages"),document.querySelector("#rater-reset")].map((ele)=>{
+        [document.querySelector("#rater-steps"), document.querySelector("#rater-basic")
+            , document.querySelector("#custom-messages"), document.querySelector("#rater-reset")].map((ele) => {
             // To remove the child
             ele.firstChild.remove()
 
             // For RTl
             raterJs({
-            starSize: 24,
-            element: ele,
-            rateCallback: function rateCallback(rating, done) {
-                this.setRating(rating);
-                done();
-            }
+                starSize: 24,
+                element: ele,
+                rateCallback: function rateCallback(rating, done) {
+                    this.setRating(rating);
+                    done();
+                }
             })
         })
 
@@ -130,15 +130,15 @@
         })
     }
 
-    document.getElementById("switcher-rtl").addEventListener("click",ratingRTL)
-    document.getElementById("switcher-ltr").addEventListener("click",ratingLTR)
-    document.getElementById("reset-all").addEventListener("click",ratingLTR)
-    
-    if(localStorage.getItem("darmortl")){
+    document.getElementById("switcher-rtl").addEventListener("click", ratingRTL)
+    document.getElementById("switcher-ltr").addEventListener("click", ratingLTR)
+    document.getElementById("reset-all").addEventListener("click", ratingLTR)
+
+    if (localStorage.getItem("darmortl")) {
         setTimeout(() => {
             ratingRTL()
         }, 100);
-    }    
+    }
 
 
     /* Basic Rater */

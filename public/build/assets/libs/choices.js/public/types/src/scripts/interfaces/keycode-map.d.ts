@@ -9,5 +9,4 @@ export interface KeyCodeMap {
     PAGE_UP_KEY: 33;
     PAGE_DOWN_KEY: 34;
 }
-
 //# sourceMappingURL=keycode-map.d.ts.map

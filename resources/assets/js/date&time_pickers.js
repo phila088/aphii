@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    
+
     /* To choose date */
     flatpickr("#date", {});
 

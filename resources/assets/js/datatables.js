@@ -61,8 +61,7 @@ $(function (e) {
     $('#delete-datatable tbody').on('click', 'tr', function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
-        }
-        else {
+        } else {
             table.$('tr.selected').removeClass('selected');
             $(this).addClass('selected');
         }
@@ -72,14 +71,14 @@ $(function (e) {
     });
     // delete row datatable
 
-    // scroll vertical 
+    // scroll vertical
     $('#scroll-vertical').DataTable({
         scrollY: '265px',
         scrollCollapse: true,
         paging: false,
         scrollX: true,
     });
-    // scroll vertical 
+    // scroll vertical
 
     // hidden columns
     $('#hidden-columns').DataTable({
@@ -98,7 +97,7 @@ $(function (e) {
         scrollX: true
     });
     // hidden columns
-    
+
     // add row datatable
     var t = $('#add-row').DataTable();
     var counter = 1;

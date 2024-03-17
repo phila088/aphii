@@ -82,19 +82,20 @@ let mainContent;
     let html = document.querySelector('html');
     mainContent = document.querySelector('.main-content');
 
-if (document.querySelector("#switcher-canvas")) {
-    localStorageBackup();
-    switcherClick();
-    checkOptions();
-    setTimeout(() => {
-      checkOptions();
-    }, 1000);
-  }
+    if (document.querySelector("#switcher-canvas")) {
+        localStorageBackup();
+        switcherClick();
+        checkOptions();
+        setTimeout(() => {
+            checkOptions();
+        }, 1000);
+    }
 })();
 
 
 function switcherClick() {
-    let ltrBtn, rtlBtn, lightBtn, darkBtn, primaryDefaultColor1Btn, primaryDefaultColor2Btn, primaryDefaultColor3Btn, primaryDefaultColor4Btn, primaryDefaultColor5Btn, ResetAll;
+    let ltrBtn, rtlBtn, lightBtn, darkBtn, primaryDefaultColor1Btn, primaryDefaultColor2Btn, primaryDefaultColor3Btn,
+        primaryDefaultColor4Btn, primaryDefaultColor5Btn, ResetAll;
     let html = document.querySelector('html');
     lightBtn = document.querySelector('#switcher-light-theme');
     darkBtn = document.querySelector('#switcher-dark-theme');
@@ -198,7 +199,7 @@ function rtlFn() {
     checkOptions();
 }
 
-if(localStorage.velvetrtl){
+if (localStorage.velvetrtl) {
     rtlFn()
 }
 
@@ -255,10 +256,12 @@ function checkOptions() {
 
 // chart colors
 let myVarVal, primaryRGB
+
 function updateColors() {
     'use strict'
     primaryRGB = getComputedStyle(document.documentElement).getPropertyValue('--primary-rgb').trim();
 }
+
 updateColors()
 
 function localStorageBackup() {
@@ -286,6 +289,7 @@ function localStorageBackup() {
 
 // for menu target scroll on click
 window.addEventListener("scroll", reveal);
+
 function reveal() {
     var reveals = document.querySelectorAll(".reveal");
 
@@ -303,6 +307,7 @@ function reveal() {
         }
     }
 }
+
 reveal();
 const pageLink = document.querySelectorAll(".side-menu__item");
 pageLink.forEach((elem) => {
@@ -316,39 +321,41 @@ pageLink.forEach((elem) => {
         });
     }
 });
+
 // section menu active
 function onScroll(event) {
     const sections = document.querySelectorAll(".side-menu__item");
     const scrollPos =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop;
-  
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+
     sections.forEach((elem) => {
-      const val = elem.getAttribute("href");
-      let refElement;
-      if (val != "javascript:void(0);" && val !== "#") {
-        refElement = document.querySelector(val);
-      }
-      const scrollTopMinus = scrollPos + 73;
-      if (
-        refElement?.offsetTop <= scrollTopMinus &&
-        refElement?.offsetTop + refElement.offsetHeight > scrollTopMinus
-      ) {
-        if (elem.parentElement.parentElement.classList.contains("child1")) {
-          elem.parentElement.parentElement.parentElement.children[0].classList.add(
-            "active"
-          );
+        const val = elem.getAttribute("href");
+        let refElement;
+        if (val != "javascript:void(0);" && val !== "#") {
+            refElement = document.querySelector(val);
         }
-        elem.classList.add("active");
-        if (elem.closest(".child1")?.previousElementSibling) {
-          elem.closest(".child1").previousElementSibling.classList.add("active");
+        const scrollTopMinus = scrollPos + 73;
+        if (
+            refElement?.offsetTop <= scrollTopMinus &&
+            refElement?.offsetTop + refElement.offsetHeight > scrollTopMinus
+        ) {
+            if (elem.parentElement.parentElement.classList.contains("child1")) {
+                elem.parentElement.parentElement.parentElement.children[0].classList.add(
+                    "active"
+                );
+            }
+            elem.classList.add("active");
+            if (elem.closest(".child1")?.previousElementSibling) {
+                elem.closest(".child1").previousElementSibling.classList.add("active");
+            }
+        } else {
+            elem.classList.remove("active");
         }
-      } else {
-        elem.classList.remove("active");
-      }
     });
 }
+
 window.document.addEventListener("scroll", onScroll);
 // for menu target scroll on click
 
@@ -367,16 +374,16 @@ var swiper = new Swiper(".pagination-dynamic", {
     },
     breakpoints: {
         768: {
-          slidesPerView: 2,
-          spaceBetween: 40,
+            slidesPerView: 2,
+            spaceBetween: 40,
         },
         1024: {
-          slidesPerView: 2,
-          spaceBetween: 50,
+            slidesPerView: 2,
+            spaceBetween: 50,
         },
         1400: {
-          slidesPerView: 4,
-          spaceBetween: 50,
+            slidesPerView: 4,
+            spaceBetween: 50,
         },
-      },
+    },
 });

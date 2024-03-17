@@ -5,11 +5,8 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-
 function rangePlugin(config) {
-    if (config === void 0) {
-        config = {};
-    }
+    if (config === void 0) { config = {}; }
     return function (fp) {
         var dateFormat = "", secondInput, _secondInputFocused, _prevDates;
         var createSecondInput = function () {
@@ -25,7 +22,8 @@ function rangePlugin(config) {
                 if (fp.config.wrap) {
                     secondInput = secondInput.querySelector("[data-input]");
                 }
-            } else {
+            }
+            else {
                 secondInput = fp._input.cloneNode();
                 secondInput.removeAttribute("id");
                 secondInput._flatpickr = undefined;
@@ -62,7 +60,7 @@ function rangePlugin(config) {
                 });
             if (!config.input)
                 fp._input.parentNode &&
-                fp._input.parentNode.insertBefore(secondInput, fp._input.nextSibling);
+                    fp._input.parentNode.insertBefore(secondInput, fp._input.nextSibling);
         };
         var plugin = {
             onParseConfig: function () {
@@ -77,7 +75,8 @@ function rangePlugin(config) {
                 if (fp.config.allowInput) {
                     fp._input.removeAttribute("readonly");
                     secondInput.removeAttribute("readonly");
-                } else {
+                }
+                else {
                     secondInput.setAttribute("readonly", "readonly");
                 }
                 fp._bind(fp._input, "focus", function () {
@@ -121,7 +120,7 @@ function rangePlugin(config) {
             onDestroy: function () {
                 if (!config.input)
                     secondInput.parentNode &&
-                    secondInput.parentNode.removeChild(secondInput);
+                        secondInput.parentNode.removeChild(secondInput);
             },
             onValueUpdate: function (selDates) {
                 var _a, _b, _c;
@@ -138,20 +137,18 @@ function rangePlugin(config) {
                     if (newDates[0].getTime() > newDates[1].getTime()) {
                         if (_secondInputFocused) {
                             newDates[0] = newDates[1];
-                        } else {
+                        }
+                        else {
                             newDates[1] = newDates[0];
                         }
                     }
                     fp.setDate(newDates, false);
                     _prevDates = __spreadArrays(newDates);
                 }
-                _a = fp.selectedDates.map(function (d) {
-                    return fp.formatDate(d, dateFormat);
-                }), _b = _a[0], fp._input.value = _b === void 0 ? "" : _b, _c = _a[1], secondInput.value = _c === void 0 ? "" : _c;
+                _a = fp.selectedDates.map(function (d) { return fp.formatDate(d, dateFormat); }), _b = _a[0], fp._input.value = _b === void 0 ? "" : _b, _c = _a[1], secondInput.value = _c === void 0 ? "" : _c;
             },
         };
         return plugin;
     };
 }
-
 export default rangePlugin;

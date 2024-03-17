@@ -1,4 +1,4 @@
-import { ISpaCollectionItem } from './interfaces';
+import {ISpaCollectionItem} from './interfaces';
 
 import HSCopyMarkup from '../plugins/copy-markup';
 import HSAccordion from '../plugins/accordion';
@@ -19,21 +19,21 @@ import HSTogglePassword from '../plugins/toggle-password';
 import HSTooltip from '../plugins/tooltip';
 
 export const COLLECTIONS: ISpaCollectionItem[] = [
-	{ key: 'copy-markup', fn: HSCopyMarkup },
-	{ key: 'accordion', fn: HSAccordion },
-	{ key: 'carousel', fn: HSCarousel },
-	{ key: 'collapse', fn: HSCollapse },
-	{ key: 'dropdown', fn: HSDropdown },
-	{ key: 'input-number', fn: HSInputNumber },
-	{ key: 'overlay', fn: HSOverlay },
-	{ key: 'pin-input', fn: HSPinInput },
-	{ key: 'remove-element', fn: HSRemoveElement },
-	{ key: 'scrollspy', fn: HSScrollspy },
-	{ key: 'select', fn: HSSelect },
-	{ key: 'stepper', fn: HSStepper },
-	{ key: 'strong-password', fn: HSStrongPassword },
-	{ key: 'tabs', fn: HSTabs },
-	{ key: 'toggle-count', fn: HSToggleCount },
-	{ key: 'toggle-password', fn: HSTogglePassword },
-	{ key: 'tooltip', fn: HSTooltip },
+    {key: 'copy-markup', fn: HSCopyMarkup},
+    {key: 'accordion', fn: HSAccordion},
+    {key: 'carousel', fn: HSCarousel},
+    {key: 'collapse', fn: HSCollapse},
+    {key: 'dropdown', fn: HSDropdown},
+    {key: 'input-number', fn: HSInputNumber},
+    {key: 'overlay', fn: HSOverlay},
+    {key: 'pin-input', fn: HSPinInput},
+    {key: 'remove-element', fn: HSRemoveElement},
+    {key: 'scrollspy', fn: HSScrollspy},
+    {key: 'select', fn: HSSelect},
+    {key: 'stepper', fn: HSStepper},
+    {key: 'strong-password', fn: HSStrongPassword},
+    {key: 'tabs', fn: HSTabs},
+    {key: 'toggle-count', fn: HSToggleCount},
+    {key: 'toggle-password', fn: HSTogglePassword},
+    {key: 'tooltip', fn: HSTooltip},
 ];

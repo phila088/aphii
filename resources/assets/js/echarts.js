@@ -1,4 +1,3 @@
-
 (function () {
     "use strict";
 
@@ -185,7 +184,7 @@
         legend: {
             data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine'],
             textStyle: {
-              color: '#777'
+                color: '#777'
             }
         },
         toolbox: {
@@ -276,7 +275,7 @@
         legend: {
             data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine'],
             textStyle: {
-              color: '#777'
+                color: '#777'
             }
         },
         toolbox: {
@@ -396,7 +395,7 @@
         legend: {
             data: ['Step Start', 'Step Middle', 'Step End'],
             textStyle: {
-              color: '#777'
+                color: '#777'
             }
         },
         grid: {
@@ -658,7 +657,7 @@
         },
         xAxis: {
             type: 'category',
-            splitLine: { show: false },
+            splitLine: {show: false},
             data: ['Total', 'Rent', 'Utilities', 'Transportation', 'Meals', 'Other'],
             axisLine: {
                 lineStyle: {
@@ -751,10 +750,10 @@
         },
         yAxis: {
             type: 'category',
-            axisLine: { show: false },
-            axisLabel: { show: false },
-            axisTick: { show: false },
-            splitLine: { show: false },
+            axisLine: {show: false},
+            axisLabel: {show: false},
+            axisTick: {show: false},
+            splitLine: {show: false},
             data: [
                 'ten',
                 'nine',
@@ -788,15 +787,15 @@
                     formatter: '{b}'
                 },
                 data: [
-                    { value: -0.07, label: labelRight },
-                    { value: -0.09, label: labelRight },
+                    {value: -0.07, label: labelRight},
+                    {value: -0.09, label: labelRight},
                     0.2,
                     0.44,
-                    { value: -0.23, label: labelRight },
+                    {value: -0.23, label: labelRight},
                     0.08,
-                    { value: -0.17, label: labelRight },
+                    {value: -0.17, label: labelRight},
                     0.47,
-                    { value: -0.36, label: labelRight },
+                    {value: -0.36, label: labelRight},
                     0.18
                 ]
             }
@@ -916,7 +915,7 @@
         legend: {
             data: ['Forest', 'Steppe', 'Desert', 'Wetland'],
             textStyle: {
-              color: '#777'
+                color: '#777'
             }
         },
         grid: {
@@ -932,17 +931,17 @@
             left: 'right',
             top: 'center',
             feature: {
-                mark: { show: true },
-                dataView: { show: true, readOnly: false },
-                magicType: { show: true, type: ['line', 'bar', 'stack'] },
-                restore: { show: true },
-                saveAsImage: { show: true }
+                mark: {show: true},
+                dataView: {show: true, readOnly: false},
+                magicType: {show: true, type: ['line', 'bar', 'stack']},
+                restore: {show: true},
+                saveAsImage: {show: true}
             }
         },
         xAxis: [
             {
                 type: 'category',
-                axisTick: { show: false },
+                axisTick: {show: false},
                 data: ['2012', '2013', '2014', '2015', '2016'],
                 splitLine: {
                     lineStyle: {
@@ -1030,8 +1029,9 @@
         },
         legend: {
             textStyle: {
-              color: '#777'
-            }},
+                color: '#777'
+            }
+        },
         grid: {
             left: '0%',
             right: '0%',
@@ -1100,7 +1100,7 @@
         },
         legend: {
             textStyle: {
-              color: '#777'
+                color: '#777'
             }
         },
         grid: {
@@ -1218,7 +1218,7 @@
             orient: 'vertical',
             left: 'left',
             textStyle: {
-              color: '#777'
+                color: '#777'
             }
         },
         series: [
@@ -1227,11 +1227,11 @@
                 type: 'pie',
                 radius: '50%',
                 data: [
-                    { value: 1048, name: 'Search Engine' },
-                    { value: 735, name: 'Direct' },
-                    { value: 580, name: 'Email' },
-                    { value: 484, name: 'Union Ads' },
-                    { value: 300, name: 'Video Ads' }
+                    {value: 1048, name: 'Search Engine'},
+                    {value: 735, name: 'Direct'},
+                    {value: 580, name: 'Email'},
+                    {value: 484, name: 'Union Ads'},
+                    {value: 300, name: 'Video Ads'}
                 ],
                 emphasis: {
                     itemStyle: {
@@ -1265,7 +1265,7 @@
             top: '0%',
             left: 'center',
             textStyle: {
-              color: '#777'
+                color: '#777'
             }
         },
         series: [
@@ -1289,11 +1289,11 @@
                     show: false
                 },
                 data: [
-                    { value: 1048, name: 'Search Engine' },
-                    { value: 735, name: 'Direct' },
-                    { value: 580, name: 'Email' },
-                    { value: 484, name: 'Union Ads' },
-                    { value: 300, name: 'Video Ads' }
+                    {value: 1048, name: 'Search Engine'},
+                    {value: 735, name: 'Direct'},
+                    {value: 580, name: 'Email'},
+                    {value: 484, name: 'Union Ads'},
+                    {value: 300, name: 'Video Ads'}
                 ]
             }
         ],
@@ -1445,7 +1445,7 @@
             top: '3%',
             data: ['1990', '2015'],
             textStyle: {
-              color: '#777'
+                color: '#777'
             }
         },
         grid: {
@@ -1625,17 +1625,17 @@
             left: '0%',
             top: '0%',
             textStyle: {
-              color: '#777'
+                color: '#777'
             }
         },
         radar: {
             indicator: [
-                { name: 'Sales', max: 6500 },
-                { name: 'Administration', max: 16000 },
-                { name: 'Information Technology', max: 30000 },
-                { name: 'Customer Support', max: 38000 },
-                { name: 'Development', max: 52000 },
-                { name: 'Marketing', max: 25000 }
+                {name: 'Sales', max: 6500},
+                {name: 'Administration', max: 16000},
+                {name: 'Information Technology', max: 30000},
+                {name: 'Customer Support', max: 38000},
+                {name: 'Development', max: 52000},
+                {name: 'Marketing', max: 25000}
             ]
         },
         series: [
@@ -1669,6 +1669,7 @@
     });
     var app = {};
     var option;
+
     function getVirtulData(year) {
         year = year || '2017';
         var date = +echarts.number.parseDate(year + '-01-01');
@@ -1683,6 +1684,7 @@
         }
         return data;
     }
+
     option = {
         title: {
             top: 30,
@@ -1707,7 +1709,7 @@
             itemStyle: {
                 borderWidth: 0.5
             },
-            yearLabel: { show: false }
+            yearLabel: {show: false}
         },
         series: {
             type: 'heatmap',
@@ -1788,7 +1790,7 @@
         },
         toolbox: {
             feature: {
-                dataView: { readOnly: false },
+                dataView: {readOnly: false},
                 restore: {},
                 saveAsImage: {}
             }
@@ -1796,7 +1798,7 @@
         legend: {
             data: ['Show', 'Click', 'Visit', 'Inquiry', 'Order'],
             textStyle: {
-              color: '#777'
+                color: '#777'
             }
         },
         series: [
@@ -1834,11 +1836,11 @@
                     }
                 },
                 data: [
-                    { value: 60, name: 'Visit' },
-                    { value: 40, name: 'Inquiry' },
-                    { value: 20, name: 'Order' },
-                    { value: 80, name: 'Click' },
-                    { value: 100, name: 'Show' }
+                    {value: 60, name: 'Visit'},
+                    {value: 40, name: 'Inquiry'},
+                    {value: 20, name: 'Order'},
+                    {value: 80, name: 'Click'},
+                    {value: 100, name: 'Show'}
                 ]
             }
         ],
@@ -1982,7 +1984,7 @@
                 }
             }
         ],
-        color:["#845adf"]
+        color: ["#845adf"]
     };
     if (option && typeof option === 'object') {
         myChart.setOption(option);
@@ -2013,12 +2015,13 @@
         offset: [10, 0],
         fontSize: 16
     };
+
     function makeOption(type, symbol) {
         return {
             legend: {
                 data: ['2015', '2016'],
                 textStyle: {
-                  color: '#777'
+                    color: '#777'
                 }
             },
             tooltip: {
@@ -2036,8 +2039,8 @@
             yAxis: {
                 data: ['reindeer', 'ship', 'plane', 'train', 'car'],
                 inverse: true,
-                axisLine: { show: false },
-                axisTick: { show: false },
+                axisLine: {show: false},
+                axisTick: {show: false},
                 axisLabel: {
                     margin: 30,
                     fontSize: 14
@@ -2050,10 +2053,10 @@
                 }
             },
             xAxis: {
-                splitLine: { show: false },
-                axisLabel: { show: false },
-                axisTick: { show: false },
-                axisLine: { show: false }
+                splitLine: {show: false},
+                axisLabel: {show: false},
+                axisTick: {show: false},
+                axisLine: {show: false}
             },
             animationDurationUpdate: 500,
             series: [
@@ -2135,6 +2138,7 @@
             color: ["#845adf", "#23b7e5"]
         };
     }
+
     const options = [
         makeOption('pictorialBar'),
         makeOption('bar'),

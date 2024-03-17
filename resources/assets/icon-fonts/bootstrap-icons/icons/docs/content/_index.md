@@ -42,7 +42,8 @@ Include the icon fonts stylesheet—in your website `<head>` or via `@import` in
 
 ## Usage
 
-Bootstrap Icons are SVGs, so you can include them into your HTML in a few ways depending on how your project is setup. We recommend using a `width: 1em` (and optionally `height: 1em`) for easy resizing via `font-size`.
+Bootstrap Icons are SVGs, so you can include them into your HTML in a few ways depending on how your project is setup.
+We recommend using a `width: 1em` (and optionally `height: 1em`) for easy resizing via `font-size`.
 
 <div class="row my-4">
   <div class="col-md-4">
@@ -62,7 +63,8 @@ Embed your icons within the HTML of your page (as opposed to an external image f
 ### Sprite
 Use the SVG sprite to insert any icon through the `<use>` element. Use the icon's filename as the fragment identifier (e.g., `toggles` is `#toggles`). SVG sprites allow you to reference an external file similar to an `<img>` element, but with the power of `currentColor` for easy theming.
 
-**Heads up!** There's an issue with Chrome where [`<use>` doesn't work across domains](https://bugs.chromium.org/p/chromium/issues/detail?id=470601).
+**Heads up!** There's an issue with Chrome
+where [`<use>` doesn't work across domains](https://bugs.chromium.org/p/chromium/issues/detail?id=470601).
 {{< /md >}}
   </div>
   <div class="col-md-8">
@@ -113,7 +115,8 @@ Use `font-size` and `color` to change the icon appearance.
 ### CSS
 You can also use the SVG within your CSS (**be sure to escape any characters**, such as `#` to `%23` when specifying hex color values). When no dimensions are specified via `width` and `height` on the `<svg>`, the icon will fill the available space.
 
-The `viewBox` attribute is required if you wish to resize icons with `background-size`. Note that the `xmlns` attribute is required.
+The `viewBox` attribute is required if you wish to resize icons with `background-size`. Note that the `xmlns` attribute
+is required.
 {{< /md >}}
   </div>
   <div class="col-md-8">
@@ -211,11 +214,16 @@ SVGs are awesome to work with, but they do have some known quirks to work around
 {{< md >}}
 Known issues include:
 
-- **SVGs receive focus by default in Internet Explorer and Edge Legacy.** When embedding your SVGs, add `focusable="false"` to the `<svg>` element. [Learn more on Stack Overflow.](https://stackoverflow.com/questions/18646111/disable-onfocus-event-for-svg-element)
+- **SVGs receive focus by default in Internet Explorer and Edge Legacy.** When embedding your SVGs,
+  add `focusable="false"` to the `<svg>`
+  element. [Learn more on Stack Overflow.](https://stackoverflow.com/questions/18646111/disable-onfocus-event-for-svg-element)
 
-- **When using SVGs with `<img>` elements, screen readers may not announce them as images, or skip the image completely.** Include an additional `role="img"` on the `<img>` element to avoid any issues. [See this article for details.](https://simplyaccessible.com/article/7-solutions-svgs/#acc-heading-2)
+- **When using SVGs with `<img>` elements, screen readers may not announce them as images, or skip the image completely.
+  ** Include an additional `role="img"` on the `<img>` element to avoid any
+  issues. [See this article for details.](https://simplyaccessible.com/article/7-solutions-svgs/#acc-heading-2)
 
-- **External SVG sprites may not function correctly in Internet Explorer.** Use the [svg4everybody](https://github.com/jonathantneal/svg4everybody) polyfill as needed.
+- **External SVG sprites may not function correctly in Internet Explorer.** Use
+  the [svg4everybody](https://github.com/jonathantneal/svg4everybody) polyfill as needed.
 
 Found another issue with SVGs we should note? Please open [an issue]({{< param repo >}}/issues) to share details.
 {{< /md >}}

@@ -19,9 +19,35 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'is_admin',
+        'is_client',
+        'is_employee',
+        'is_vendor',
+        'active',
+        'locked',
+        'profile_picture_path',
+        'first_name',
+        'last_name',
         'name',
         'email',
+        'email_verified_at',
         'password',
+        'phone_fax',
+        'phone_mobile',
+        'phone_work',
+        'sex',
+        'date_of_birth',
+        'facebook',
+        'instagram',
+        'tiktok',
+        'twitter',
+        'url',
+        'remember_token',
+        'deleted_at',
+        'user_id',
+        'client_id',
+        'vendor_id',
+        'welcome_valid_until',
     ];
 
     /**
@@ -47,5 +73,55 @@ class User extends Authenticatable
     public function documentCategories(): HasMany
     {
         return $this->hasMany(DocumentCategory::class);
+    }
+
+    public function brand(): HasMany
+    {
+        return $this->hasMany(Brand::class);
+    }
+
+    public function potentialClient(): HasMany
+    {
+        return $this->hasMany(PotentialClient::class);
+    }
+
+    public function paymentTerm(): HasMany
+    {
+        return $this->hasMany(PaymentTerm::class);
+    }
+
+    public function client(): HasMany
+    {
+        return $this->hasMany(Client::class);
+    }
+
+    public function clientNote(): HasMany
+    {
+        return $this->hasMany(ClientNote::class);
+    }
+
+    public function clientRate(): HasMany
+    {
+        return $this->hasMany(ClientRate::class);
+    }
+
+    public function clientPortal(): HasMany
+    {
+        return $this->hasMany(ClientPortal::class);
+    }
+
+    public function clientBillingInstruction(): HasMany
+    {
+        return $this->hasMany(ClientBillingInstruction::class);
+    }
+
+    public function location(): HasMany
+    {
+        return $this->hasMany(Location::class);
+    }
+
+    public function clientCoverageArea(): HasMany
+    {
+        return $this->hasMany(ClientCoverageArea::class);
     }
 }

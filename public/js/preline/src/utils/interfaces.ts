@@ -1,7 +1,9 @@
 export interface IMenuSearchHistory {
-	historyIndex: number;
+    historyIndex: number;
 
-	addHistory(index: number): void;
-	existsInHistory(index: number): boolean;
-	clearHistory(): void;
+    addHistory(index: number): void;
+
+    existsInHistory(index: number): boolean;
+
+    clearHistory(): void;
 }

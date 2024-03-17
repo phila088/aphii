@@ -1,7 +1,7 @@
 export interface IPinInputOptions {
-	availableCharsRE?: RegExp;
+    availableCharsRE?: RegExp;
 }
 
 export interface IPinInput {
-	options?: IPinInputOptions;
+    options?: IPinInputOptions;
 }

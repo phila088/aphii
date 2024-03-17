@@ -175,7 +175,7 @@
     "src": "resources/assets/js/crypto-dashboard.js"
   },
   "resources/assets/js/custom-switcher.js": {
-    "file": "assets/custom-switcher-FqUpOCet.js",
+    "file": "assets/custom-switcher-1uDKHLjG.js",
     "isEntry": true,
     "src": "resources/assets/js/custom-switcher.js"
   },
@@ -190,7 +190,7 @@
     "src": "resources/assets/js/date&time_pickers.js"
   },
   "resources/assets/js/defaultmenu.js": {
-    "file": "assets/defaultmenu-NZhwTdXM.js",
+    "file": "assets/defaultmenu-QSNmKKb5.js",
     "isEntry": true,
     "src": "resources/assets/js/defaultmenu.js"
   },
@@ -440,17 +440,17 @@
     "src": "resources/assets/js/wishlist.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-ysgIov1j.css",
+    "file": "assets/app-WhVhPW-q.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-hyl48Kpq.js",
+    "file": "assets/app-cX5zhv3P.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-z9oeN_ao.css",
+    "file": "assets/app-_1abh_tu.css",
     "isEntry": true,
     "src": "resources/sass/app.scss"
   }

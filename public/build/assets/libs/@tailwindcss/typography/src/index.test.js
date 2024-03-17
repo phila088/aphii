@@ -64,76 +64,76 @@ let defaults = css`
 `
 
 function run(config, plugin = tailwind) {
-    let {currentTestName} = expect.getState()
-    config = {
-        ...{plugins: [typographyPlugin], corePlugins: {preflight: false}},
-        ...config,
-    }
+  let { currentTestName } = expect.getState()
+  config = {
+    ...{ plugins: [typographyPlugin], corePlugins: { preflight: false } },
+    ...config,
+  }
 
-    return postcss(plugin(config)).process(
-        ['@tailwind base;', '@tailwind components;', '@tailwind utilities'].join('\n'),
-        {
-            from: `${path.resolve(__filename)}?test=${currentTestName}`,
-        }
-    )
+  return postcss(plugin(config)).process(
+    ['@tailwind base;', '@tailwind components;', '@tailwind utilities'].join('\n'),
+    {
+      from: `${path.resolve(__filename)}?test=${currentTestName}`,
+    }
+  )
 }
 
 test('specificity is reduced with :where', async () => {
-    let config = {
-        content: [{raw: html`<div class="prose"></div>`}],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: [
-                        {
-                            color: 'var(--tw-prose-body)',
-                            maxWidth: '65ch',
-                            '[class~="lead"]': {
-                                color: 'var(--tw-prose-lead)',
-                            },
-                            strong: {
-                                color: 'var(--tw-prose-bold)',
-                                fontWeight: '600',
-                            },
-                            'ol[type="A"]': {
-                                listStyleType: 'upper-alpha',
-                            },
-                            'blockquote p:first-of-type::before': {
-                                content: 'open-quote',
-                            },
-                            'blockquote p:last-of-type::after': {
-                                content: 'close-quote',
-                            },
-                            'h4 strong': {
-                                fontWeight: '700',
-                            },
-                            'figure > *': {
-                                margin: 0,
-                            },
-                            'ol > li::marker': {
-                                fontWeight: '400',
-                                color: 'var(--tw-prose-counters)',
-                            },
-                            '> ul > li p': {
-                                marginTop: '16px',
-                                marginBottom: '16px',
-                            },
-                            'code::before': {
-                                content: '"&#96;"',
-                            },
-                            'code::after': {
-                                content: '"&#96;"',
-                            },
-                        },
-                    ],
-                },
+  let config = {
+    content: [{ raw: html`<div class="prose"></div>` }],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: [
+            {
+              color: 'var(--tw-prose-body)',
+              maxWidth: '65ch',
+              '[class~="lead"]': {
+                color: 'var(--tw-prose-lead)',
+              },
+              strong: {
+                color: 'var(--tw-prose-bold)',
+                fontWeight: '600',
+              },
+              'ol[type="A"]': {
+                listStyleType: 'upper-alpha',
+              },
+              'blockquote p:first-of-type::before': {
+                content: 'open-quote',
+              },
+              'blockquote p:last-of-type::after': {
+                content: 'close-quote',
+              },
+              'h4 strong': {
+                fontWeight: '700',
+              },
+              'figure > *': {
+                margin: 0,
+              },
+              'ol > li::marker': {
+                fontWeight: '400',
+                color: 'var(--tw-prose-counters)',
+              },
+              '> ul > li p': {
+                marginTop: '16px',
+                marginBottom: '16px',
+              },
+              'code::before': {
+                content: '"&#96;"',
+              },
+              'code::after': {
+                content: '"&#96;"',
+              },
             },
+          ],
         },
-    }
+      },
+    },
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toMatchFormattedCss(
-            css`
+  return run(config).then((result) => {
+    expect(result.css).toMatchFormattedCss(
+      css`
         ${defaults}
 
         .prose {
@@ -182,54 +182,54 @@ test('specificity is reduced with :where', async () => {
           content: '&#96;';
         }
       `
-        )
-    })
+    )
+  })
 })
 
 test('variants', async () => {
-    let config = {
-        content: [{raw: html`<div class="sm:prose hover:prose-lg lg:prose-lg"></div>`}],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: [
-                        {
-                            color: 'red',
-                            p: {
-                                color: 'lime',
-                            },
-                            '> ul > li': {
-                                color: 'purple',
-                            },
-                        },
-                    ],
-                },
-                lg: {
-                    css: {
-                        color: 'green',
-                        p: {
-                            color: 'tomato',
-                        },
-                        '> ul > li': {
-                            color: 'blue',
-                        },
-                    },
-                },
-                xl: {
-                    css: {
-                        color: 'yellow',
-                        '> ul > li': {
-                            color: 'hotpink',
-                        },
-                    },
-                },
+  let config = {
+    content: [{ raw: html`<div class="sm:prose hover:prose-lg lg:prose-lg"></div>` }],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: [
+            {
+              color: 'red',
+              p: {
+                color: 'lime',
+              },
+              '> ul > li': {
+                color: 'purple',
+              },
             },
+          ],
         },
-    }
+        lg: {
+          css: {
+            color: 'green',
+            p: {
+              color: 'tomato',
+            },
+            '> ul > li': {
+              color: 'blue',
+            },
+          },
+        },
+        xl: {
+          css: {
+            color: 'yellow',
+            '> ul > li': {
+              color: 'hotpink',
+            },
+          },
+        },
+      },
+    },
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toMatchFormattedCss(
-            css`
+  return run(config).then((result) => {
+    expect(result.css).toMatchFormattedCss(
+      css`
         ${defaults}
 
         .hover\:prose-lg:hover {
@@ -270,99 +270,99 @@ test('variants', async () => {
           }
         }
       `
-        )
-    })
+    )
+  })
 })
 
 test('modifiers', async () => {
-    let config = {
-        content: [{raw: html`<div class="prose prose-lg"></div>`}],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: [
-                        {
-                            color: 'var(--tw-prose-body)',
-                            maxWidth: '65ch',
-                            '[class~="lead"]': {
-                                color: 'var(--tw-prose-lead)',
-                            },
-                            strong: {
-                                color: 'var(--tw-prose-bold)',
-                                fontWeight: '600',
-                            },
-                            'ol[type="A"]': {
-                                listStyleType: 'upper-alpha',
-                            },
-                            'blockquote p:first-of-type::before': {
-                                content: 'open-quote',
-                            },
-                            'blockquote p:last-of-type::after': {
-                                content: 'close-quote',
-                            },
-                            'h4 strong': {
-                                fontWeight: '700',
-                            },
-                            'figure > *': {
-                                margin: 0,
-                            },
-                            'ol > li::marker': {
-                                fontWeight: '400',
-                                color: 'var(--tw-prose-counters)',
-                            },
-                            'code::before': {
-                                content: '"&#96;"',
-                            },
-                            'code::after': {
-                                content: '"&#96;"',
-                            },
-                        },
-                    ],
-                },
-                lg: {
-                    css: [
-                        {
-                            fontSize: '18px',
-                            lineHeight: '1.75',
-                            p: {
-                                marginTop: '24px',
-                                marginBottom: '24px',
-                            },
-                            '[class~="lead"]': {
-                                fontSize: '22px',
-                            },
-                            blockquote: {
-                                marginTop: '40px',
-                                marginBottom: '40px',
-                            },
-                            '> ul > li': {
-                                paddingLeft: '12px',
-                            },
-                            h1: {
-                                fontSize: '48px',
-                                marginTop: '0',
-                                marginBottom: '40px',
-                            },
-                            h2: {
-                                fontSize: '30px',
-                                marginTop: '56px',
-                                marginBottom: '32px',
-                            },
-                            h3: {
-                                fontSize: '24px',
-                                marginTop: '40px',
-                                marginBottom: '16px',
-                            },
-                        },
-                    ],
-                },
+  let config = {
+    content: [{ raw: html`<div class="prose prose-lg"></div>` }],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: [
+            {
+              color: 'var(--tw-prose-body)',
+              maxWidth: '65ch',
+              '[class~="lead"]': {
+                color: 'var(--tw-prose-lead)',
+              },
+              strong: {
+                color: 'var(--tw-prose-bold)',
+                fontWeight: '600',
+              },
+              'ol[type="A"]': {
+                listStyleType: 'upper-alpha',
+              },
+              'blockquote p:first-of-type::before': {
+                content: 'open-quote',
+              },
+              'blockquote p:last-of-type::after': {
+                content: 'close-quote',
+              },
+              'h4 strong': {
+                fontWeight: '700',
+              },
+              'figure > *': {
+                margin: 0,
+              },
+              'ol > li::marker': {
+                fontWeight: '400',
+                color: 'var(--tw-prose-counters)',
+              },
+              'code::before': {
+                content: '"&#96;"',
+              },
+              'code::after': {
+                content: '"&#96;"',
+              },
             },
+          ],
         },
-    }
+        lg: {
+          css: [
+            {
+              fontSize: '18px',
+              lineHeight: '1.75',
+              p: {
+                marginTop: '24px',
+                marginBottom: '24px',
+              },
+              '[class~="lead"]': {
+                fontSize: '22px',
+              },
+              blockquote: {
+                marginTop: '40px',
+                marginBottom: '40px',
+              },
+              '> ul > li': {
+                paddingLeft: '12px',
+              },
+              h1: {
+                fontSize: '48px',
+                marginTop: '0',
+                marginBottom: '40px',
+              },
+              h2: {
+                fontSize: '30px',
+                marginTop: '56px',
+                marginBottom: '32px',
+              },
+              h3: {
+                fontSize: '24px',
+                marginTop: '40px',
+                marginBottom: '16px',
+              },
+            },
+          ],
+        },
+      },
+    },
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toMatchFormattedCss(
-            css`
+  return run(config).then((result) => {
+    expect(result.css).toMatchFormattedCss(
+      css`
         ${defaults}
 
         .prose {
@@ -441,65 +441,65 @@ test('modifiers', async () => {
           margin-bottom: 16px;
         }
       `
-        )
-    })
+    )
+  })
 })
 
 test('legacy target', async () => {
-    let config = {
-        plugins: [typographyPlugin({target: 'legacy'})],
-        content: [
-            {raw: html`<div class="prose prose-h1:text-center prose-headings:text-ellipsis"></div>`},
-        ],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: [
-                        {
-                            color: 'var(--tw-prose-body)',
-                            maxWidth: '65ch',
-                            '[class~="lead"]': {
-                                color: 'var(--tw-prose-lead)',
-                            },
-                            strong: {
-                                color: 'var(--tw-prose-bold)',
-                                fontWeight: '600',
-                            },
-                            'ol[type="A"]': {
-                                listStyleType: 'upper-alpha',
-                            },
-                            'blockquote p:first-of-type::before': {
-                                content: 'open-quote',
-                            },
-                            'blockquote p:last-of-type::after': {
-                                content: 'close-quote',
-                            },
-                            'h4 strong': {
-                                fontWeight: '700',
-                            },
-                            'figure > *': {
-                                margin: 0,
-                            },
-                            'ol > li::marker': {
-                                fontWeight: '400',
-                                color: 'var(--tw-prose-counters)',
-                            },
-                            'code::before': {
-                                content: '"&#96;"',
-                            },
-                            'code::after': {
-                                content: '"&#96;"',
-                            },
-                        },
-                    ],
-                },
+  let config = {
+    plugins: [typographyPlugin({ target: 'legacy' })],
+    content: [
+      { raw: html`<div class="prose prose-h1:text-center prose-headings:text-ellipsis"></div>` },
+    ],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: [
+            {
+              color: 'var(--tw-prose-body)',
+              maxWidth: '65ch',
+              '[class~="lead"]': {
+                color: 'var(--tw-prose-lead)',
+              },
+              strong: {
+                color: 'var(--tw-prose-bold)',
+                fontWeight: '600',
+              },
+              'ol[type="A"]': {
+                listStyleType: 'upper-alpha',
+              },
+              'blockquote p:first-of-type::before': {
+                content: 'open-quote',
+              },
+              'blockquote p:last-of-type::after': {
+                content: 'close-quote',
+              },
+              'h4 strong': {
+                fontWeight: '700',
+              },
+              'figure > *': {
+                margin: 0,
+              },
+              'ol > li::marker': {
+                fontWeight: '400',
+                color: 'var(--tw-prose-counters)',
+              },
+              'code::before': {
+                content: '"&#96;"',
+              },
+              'code::after': {
+                content: '"&#96;"',
+              },
             },
+          ],
         },
-    }
+      },
+    },
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toMatchFormattedCss(
-            css`
+  return run(config).then((result) => {
+    expect(result.css).toMatchFormattedCss(
+      css`
         ${defaults}
 
         .prose {
@@ -563,63 +563,63 @@ test('legacy target', async () => {
           text-align: center;
         }
       `
-        )
-    })
+    )
+  })
 })
 
 test('custom class name', async () => {
-    let config = {
-        plugins: [typographyPlugin({className: 'markdown'})],
-        content: [{raw: html`<div class="markdown"></div>`}],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: [
-                        {
-                            color: 'var(--tw-prose-body)',
-                            maxWidth: '65ch',
-                            '[class~="lead"]': {
-                                color: 'var(--tw-prose-lead)',
-                            },
-                            strong: {
-                                color: 'var(--tw-prose-bold)',
-                                fontWeight: '600',
-                            },
-                            'ol[type="A"]': {
-                                listStyleType: 'upper-alpha',
-                            },
-                            'blockquote p:first-of-type::before': {
-                                content: 'open-quote',
-                            },
-                            'blockquote p:last-of-type::after': {
-                                content: 'close-quote',
-                            },
-                            'h4 strong': {
-                                fontWeight: '700',
-                            },
-                            'figure > *': {
-                                margin: 0,
-                            },
-                            'ol > li::marker': {
-                                fontWeight: '400',
-                                color: 'var(--tw-prose-counters)',
-                            },
-                            'code::before': {
-                                content: '"&#96;"',
-                            },
-                            'code::after': {
-                                content: '"&#96;"',
-                            },
-                        },
-                    ],
-                },
+  let config = {
+    plugins: [typographyPlugin({ className: 'markdown' })],
+    content: [{ raw: html`<div class="markdown"></div>` }],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: [
+            {
+              color: 'var(--tw-prose-body)',
+              maxWidth: '65ch',
+              '[class~="lead"]': {
+                color: 'var(--tw-prose-lead)',
+              },
+              strong: {
+                color: 'var(--tw-prose-bold)',
+                fontWeight: '600',
+              },
+              'ol[type="A"]': {
+                listStyleType: 'upper-alpha',
+              },
+              'blockquote p:first-of-type::before': {
+                content: 'open-quote',
+              },
+              'blockquote p:last-of-type::after': {
+                content: 'close-quote',
+              },
+              'h4 strong': {
+                fontWeight: '700',
+              },
+              'figure > *': {
+                margin: 0,
+              },
+              'ol > li::marker': {
+                fontWeight: '400',
+                color: 'var(--tw-prose-counters)',
+              },
+              'code::before': {
+                content: '"&#96;"',
+              },
+              'code::after': {
+                content: '"&#96;"',
+              },
             },
+          ],
         },
-    }
+      },
+    },
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toMatchFormattedCss(
-            css`
+  return run(config).then((result) => {
+    expect(result.css).toMatchFormattedCss(
+      css`
         ${defaults}
 
         .markdown {
@@ -671,15 +671,15 @@ test('custom class name', async () => {
           content: '&#96;';
         }
       `
-        )
-    })
+    )
+  })
 })
 
 test('element variants', async () => {
-    let config = {
-        content: [
-            {
-                raw: html`<div
+  let config = {
+    content: [
+      {
+        raw: html`<div
           class="
             prose
             prose-headings:underline
@@ -710,33 +710,33 @@ test('element variants', async () => {
             prose-hr:border-t-2
         "
         ></div>`,
+      },
+    ],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: [
+            {
+              color: 'var(--tw-prose-body)',
+              '[class~="lead"]': {
+                color: 'var(--tw-prose-lead)',
+              },
+              strong: {
+                color: 'var(--tw-prose-bold)',
+                fontWeight: '600',
+              },
+              'h4 strong': {
+                fontWeight: '700',
+              },
             },
-        ],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: [
-                        {
-                            color: 'var(--tw-prose-body)',
-                            '[class~="lead"]': {
-                                color: 'var(--tw-prose-lead)',
-                            },
-                            strong: {
-                                color: 'var(--tw-prose-bold)',
-                                fontWeight: '600',
-                            },
-                            'h4 strong': {
-                                fontWeight: '700',
-                            },
-                        },
-                    ],
-                },
-            },
+          ],
         },
-    }
-    return run(config).then((result) => {
-        expect(result.css).toMatchFormattedCss(
-            css`
+      },
+    },
+  }
+  return run(config).then((result) => {
+    expect(result.css).toMatchFormattedCss(
+      css`
         ${defaults}
 
         .prose {
@@ -864,16 +864,16 @@ test('element variants', async () => {
           font-style: italic;
         }
       `
-        )
-    })
+    )
+  })
 })
 
 test('element variants with custom class name', async () => {
-    let config = {
-        plugins: [typographyPlugin({className: 'markdown'})],
-        content: [
-            {
-                raw: html`<div
+  let config = {
+    plugins: [typographyPlugin({ className: 'markdown' })],
+    content: [
+      {
+        raw: html`<div
           class="
             markdown
             markdown-headings:underline
@@ -904,33 +904,33 @@ test('element variants with custom class name', async () => {
             markdown-hr:border-t-2
         "
         ></div>`,
+      },
+    ],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: [
+            {
+              color: 'var(--tw-prose-body)',
+              '[class~="lead"]': {
+                color: 'var(--tw-prose-lead)',
+              },
+              strong: {
+                color: 'var(--tw-prose-bold)',
+                fontWeight: '600',
+              },
+              'h4 strong': {
+                fontWeight: '700',
+              },
             },
-        ],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: [
-                        {
-                            color: 'var(--tw-prose-body)',
-                            '[class~="lead"]': {
-                                color: 'var(--tw-prose-lead)',
-                            },
-                            strong: {
-                                color: 'var(--tw-prose-bold)',
-                                fontWeight: '600',
-                            },
-                            'h4 strong': {
-                                fontWeight: '700',
-                            },
-                        },
-                    ],
-                },
-            },
+          ],
         },
-    }
-    return run(config).then((result) => {
-        expect(result.css).toMatchFormattedCss(
-            css`
+      },
+    },
+  }
+  return run(config).then((result) => {
+    expect(result.css).toMatchFormattedCss(
+      css`
         ${defaults}
 
         .markdown {
@@ -1064,31 +1064,31 @@ test('element variants with custom class name', async () => {
           font-style: italic;
         }
       `
-        )
-    })
+    )
+  })
 })
 
 test('customizing defaults with multiple values does not result in invalid css', async () => {
-    let config = {
-        plugins: [typographyPlugin()],
-        content: [
-            {
-                raw: html`<div class="prose"></div>`,
-            },
-        ],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: {
-                        textAlign: ['-webkit-match-parent', 'match-parent'],
-                    },
-                },
-            },
+  let config = {
+    plugins: [typographyPlugin()],
+    content: [
+      {
+        raw: html`<div class="prose"></div>`,
+      },
+    ],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: {
+            textAlign: ['-webkit-match-parent', 'match-parent'],
+          },
         },
-    }
-    return run(config).then((result) => {
-        expect(result.css).toMatchFormattedCss(
-            css`
+      },
+    },
+  }
+  return run(config).then((result) => {
+    expect(result.css).toMatchFormattedCss(
+      css`
         ${defaults}
 
         .prose {
@@ -1096,46 +1096,46 @@ test('customizing defaults with multiple values does not result in invalid css',
           text-align: match-parent;
         }
       `
-        )
-    })
+    )
+  })
 })
 
 it('should be possible to use nested syntax (&) when extending the config', () => {
-    let config = {
-        plugins: [typographyPlugin()],
-        content: [
-            {
-                raw: html`<div class="prose"></div>`,
-            },
-        ],
-        theme: {
-            extend: {
-                typography: {
-                    DEFAULT: {
-                        css: {
-                            color: '#000',
-                            a: {
-                                color: '#888',
-                                '&:hover': {
-                                    color: '#ff0000',
-                                },
-                            },
-                        },
-                    },
+  let config = {
+    plugins: [typographyPlugin()],
+    content: [
+      {
+        raw: html`<div class="prose"></div>`,
+      },
+    ],
+    theme: {
+      extend: {
+        typography: {
+          DEFAULT: {
+            css: {
+              color: '#000',
+              a: {
+                color: '#888',
+                '&:hover': {
+                  color: '#ff0000',
                 },
+              },
             },
+          },
         },
-    }
+      },
+    },
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toIncludeCss(css`
+  return run(config).then((result) => {
+    expect(result.css).toIncludeCss(css`
       .prose {
         color: #000;
         max-width: 65ch;
       }
     `)
 
-        expect(result.css).toIncludeCss(css`
+    expect(result.css).toIncludeCss(css`
       .prose :where(a):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
         color: #888;
         text-decoration: underline;
@@ -1143,26 +1143,26 @@ it('should be possible to use nested syntax (&) when extending the config', () =
       }
     `)
 
-        expect(result.css).toIncludeCss(css`
+    expect(result.css).toIncludeCss(css`
       .prose :where(a):not(:where([class~='not-prose'], [class~='not-prose'] *)):hover {
         color: #ff0000;
       }
     `)
-    })
+  })
 })
 
 it('should be possible to specify custom h5 and h6 styles', () => {
-    let config = {
-        plugins: [typographyPlugin()],
-        content: [
-            {
-                raw: html`<div class="prose prose-h5:text-sm prose-h6:text-xl"></div>`,
-            },
-        ],
-    }
+  let config = {
+    plugins: [typographyPlugin()],
+    content: [
+      {
+        raw: html`<div class="prose prose-h5:text-sm prose-h6:text-xl"></div>`,
+      },
+    ],
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toIncludeCss(css`
+  return run(config).then((result) => {
+    expect(result.css).toIncludeCss(css`
       .prose-h5\:text-sm :is(:where(h5):not(:where([class~='not-prose'], [class~='not-prose'] *))) {
         font-size: 0.875rem;
         line-height: 1.25rem;
@@ -1172,66 +1172,66 @@ it('should be possible to specify custom h5 and h6 styles', () => {
         line-height: 1.75rem;
       }
     `)
-    })
+  })
 })
 
 it('should not break with multiple selectors with pseudo elements using variants', () => {
-    let config = {
-        darkMode: 'class',
-        plugins: [typographyPlugin()],
-        content: [
-            {
-                raw: html`<div class="dark:prose"></div>`,
+  let config = {
+    darkMode: 'class',
+    plugins: [typographyPlugin()],
+    content: [
+      {
+        raw: html`<div class="dark:prose"></div>`,
+      },
+    ],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: {
+            'ol li::before, ul li::before': {
+              color: 'red',
             },
-        ],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: {
-                        'ol li::before, ul li::before': {
-                            color: 'red',
-                        },
-                    },
-                },
-            },
+          },
         },
-    }
+      },
+    },
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toIncludeCss(css`
+  return run(config).then((result) => {
+    expect(result.css).toIncludeCss(css`
       .dark
         .dark\:prose
         :where(ol li, ul li):not(:where([class~='not-prose'], [class~='not-prose'] *))::before {
         color: red;
       }
     `)
-    })
+  })
 })
 
 it('lifts all common, trailing pseudo elements when the same across all selectors', () => {
-    let config = {
-        darkMode: 'class',
-        plugins: [typographyPlugin()],
-        content: [
-            {
-                raw: html`<div class="prose dark:prose"></div>`,
+  let config = {
+    darkMode: 'class',
+    plugins: [typographyPlugin()],
+    content: [
+      {
+        raw: html`<div class="prose dark:prose"></div>`,
+      },
+    ],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: {
+            'ol li::marker::before, ul li::marker::before': {
+              color: 'red',
             },
-        ],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: {
-                        'ol li::marker::before, ul li::marker::before': {
-                            color: 'red',
-                        },
-                    },
-                },
-            },
+          },
         },
-    }
+      },
+    },
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toIncludeCss(css`
+  return run(config).then((result) => {
+    expect(result.css).toIncludeCss(css`
       .prose
         :where(ol li, ul li):not(:where([class~='not-prose'], [class~='not-prose']
             *))::marker::before {
@@ -1239,9 +1239,9 @@ it('lifts all common, trailing pseudo elements when the same across all selector
       }
     `)
 
-        // TODO: The output here is a bug in tailwindcss variant selector rewriting
-        // IT should be ::marker::before
-        expect(result.css).toIncludeCss(css`
+    // TODO: The output here is a bug in tailwindcss variant selector rewriting
+    // IT should be ::marker::before
+    expect(result.css).toIncludeCss(css`
       .dark
         .dark\:prose
         :where(ol li, ul li):not(:where([class~='not-prose'], [class~='not-prose']
@@ -1249,33 +1249,33 @@ it('lifts all common, trailing pseudo elements when the same across all selector
         color: red;
       }
     `)
-    })
+  })
 })
 
 it('does not modify selectors with differing pseudo elements', () => {
-    let config = {
-        darkMode: 'class',
-        plugins: [typographyPlugin()],
-        content: [
-            {
-                raw: html`<div class="prose dark:prose"></div>`,
+  let config = {
+    darkMode: 'class',
+    plugins: [typographyPlugin()],
+    content: [
+      {
+        raw: html`<div class="prose dark:prose"></div>`,
+      },
+    ],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: {
+            'ol li::before, ul li::after': {
+              color: 'red',
             },
-        ],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: {
-                        'ol li::before, ul li::after': {
-                            color: 'red',
-                        },
-                    },
-                },
-            },
+          },
         },
-    }
+      },
+    },
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toIncludeCss(css`
+  return run(config).then((result) => {
+    expect(result.css).toIncludeCss(css`
       .prose
         :where(ol li::before, ul li::after):not(:where([class~='not-prose'], [class~='not-prose']
             *)) {
@@ -1283,8 +1283,8 @@ it('does not modify selectors with differing pseudo elements', () => {
       }
     `)
 
-        // TODO: The output here is a bug in tailwindcss variant selector rewriting
-        expect(result.css).toIncludeCss(css`
+    // TODO: The output here is a bug in tailwindcss variant selector rewriting
+    expect(result.css).toIncludeCss(css`
       .dark
         .dark\:prose
         :where(ol li, ul li):not(:where([class~='not-prose'], [class~='not-prose'] *))::before,
@@ -1292,33 +1292,33 @@ it('does not modify selectors with differing pseudo elements', () => {
         color: red;
       }
     `)
-    })
+  })
 })
 
 it('lifts only the common, trailing pseudo elements from selectors', () => {
-    let config = {
-        darkMode: 'class',
-        plugins: [typographyPlugin()],
-        content: [
-            {
-                raw: html`<div class="prose dark:prose"></div>`,
+  let config = {
+    darkMode: 'class',
+    plugins: [typographyPlugin()],
+    content: [
+      {
+        raw: html`<div class="prose dark:prose"></div>`,
+      },
+    ],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: {
+            'ol li::scroll-thumb::before, ul li::scroll-track::before': {
+              color: 'red',
             },
-        ],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: {
-                        'ol li::scroll-thumb::before, ul li::scroll-track::before': {
-                            color: 'red',
-                        },
-                    },
-                },
-            },
+          },
         },
-    }
+      },
+    },
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toIncludeCss(css`
+  return run(config).then((result) => {
+    expect(result.css).toIncludeCss(css`
       .prose
         :where(ol li::scroll-thumb, ul
           li::scroll-track):not(:where([class~='not-prose'], [class~='not-prose'] *))::before {
@@ -1326,8 +1326,8 @@ it('lifts only the common, trailing pseudo elements from selectors', () => {
       }
     `)
 
-        // TODO: The output here is a bug in tailwindcss variant selector rewriting
-        expect(result.css).toIncludeCss(css`
+    // TODO: The output here is a bug in tailwindcss variant selector rewriting
+    expect(result.css).toIncludeCss(css`
       .dark
         .dark\:prose
         :where(ol li, ul li):not(:where([class~='not-prose'], [class~='not-prose']
@@ -1337,33 +1337,33 @@ it('lifts only the common, trailing pseudo elements from selectors', () => {
         color: red;
       }
     `)
-    })
+  })
 })
 
 it('ignores common non-trailing pseudo-elements in selectors', () => {
-    let config = {
-        darkMode: 'class',
-        plugins: [typographyPlugin()],
-        content: [
-            {
-                raw: html`<div class="prose dark:prose"></div>`,
+  let config = {
+    darkMode: 'class',
+    plugins: [typographyPlugin()],
+    content: [
+      {
+        raw: html`<div class="prose dark:prose"></div>`,
+      },
+    ],
+    theme: {
+      typography: {
+        DEFAULT: {
+          css: {
+            'ol li::before::scroll-thumb, ul li::before::scroll-track': {
+              color: 'red',
             },
-        ],
-        theme: {
-            typography: {
-                DEFAULT: {
-                    css: {
-                        'ol li::before::scroll-thumb, ul li::before::scroll-track': {
-                            color: 'red',
-                        },
-                    },
-                },
-            },
+          },
         },
-    }
+      },
+    },
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toIncludeCss(css`
+  return run(config).then((result) => {
+    expect(result.css).toIncludeCss(css`
       .prose
         :where(ol li::before::scroll-thumb, ul
           li::before::scroll-track):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
@@ -1371,8 +1371,8 @@ it('ignores common non-trailing pseudo-elements in selectors', () => {
       }
     `)
 
-        // TODO: The output here is a bug in tailwindcss variant selector rewriting
-        expect(result.css).toIncludeCss(css`
+    // TODO: The output here is a bug in tailwindcss variant selector rewriting
+    expect(result.css).toIncludeCss(css`
       .dark
         .dark\:prose
         :where(ol li::scroll-thumb, ul
@@ -1381,17 +1381,17 @@ it('ignores common non-trailing pseudo-elements in selectors', () => {
         color: red;
       }
     `)
-    })
+  })
 })
 
 test('lead styles are inserted after paragraph styles', async () => {
-    let config = {
-        content: [{raw: html`<div class="prose"></div>`}],
-    }
+  let config = {
+    content: [{ raw: html`<div class="prose"></div>` }],
+  }
 
-    return run(config).then((result) => {
-        expect(result.css).toIncludeCss(
-            css`
+  return run(config).then((result) => {
+    expect(result.css).toIncludeCss(
+      css`
         .prose {
           color: var(--tw-prose-body);
           max-width: 65ch;
@@ -1408,6 +1408,6 @@ test('lead styles are inserted after paragraph styles', async () => {
           margin-bottom: 1.2em;
         }
       `
-        )
-    })
+    )
+  })
 })

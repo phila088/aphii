@@ -1,8 +1,7 @@
-
 (function () {
     "use strict"
 
-    // for nummber of products selected 
+    // for nummber of products selected
     var value = 1,
         minValue = 0,
         maxValue = 30;

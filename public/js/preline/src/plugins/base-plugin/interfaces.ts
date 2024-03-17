@@ -1,5 +1,5 @@
 export interface IBasePlugin<O, E> {
-	el: E;
-	options?: O;
-	events?: {};
+    el: E;
+    options?: O;
+    events?: {};
 }

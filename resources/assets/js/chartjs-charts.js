@@ -3,7 +3,7 @@
 
     /* line chart  */
     Chart.defaults.borderColor = "rgba(142, 156, 173,0.1)",
-     Chart.defaults.color = "#8c9097";
+        Chart.defaults.color = "#8c9097";
     const labels = [
         'January',
         'February',

@@ -4,21 +4,25 @@
     padding: 0.75rem;
     font-size: 0.85rem;
     font-weight: 500;
+
     &:not(.collapsed) {
         color: $default-text-color;
         background-color: $default-background;
         box-shadow: none;
     }
+
     &:focus {
         border-color: $primary-03;
         box-shadow: none;
     }
-    &:after,&:not(.collapsed)::after {
+
+    &:after, &:not(.collapsed)::after {
         background-image: none;
     }
+
     &:after {
         content: "\EA78";
-        font-family: remixicon!important;
+        font-family: remixicon !important;
         font-size: 1rem;
         line-height: 1;
         background-color: $default-background;
@@ -28,139 +32,169 @@
         border-radius: 3.125rem;
         color: $default-text-color;
     }
-}    
+}
+
 .accordion-body {
     padding: 0.75rem 1rem;
     font-size: 0.8125rem;
     color: $text-muted;
 }
+
 .accordion-item {
     color: $default-text-color;
     background-color: $custom-white;
     border: 1px solid $default-border;
 }
+
 .accordions-items-seperate {
     .accordion-item:not(:first-of-type) {
         margin-block-start: 0.5rem;
     }
+
     .accordion-item {
         border-block-start: 1px solid $default-border;
         border-radius: $default-radius;
         overflow: hidden;
     }
 }
+
 .accordion-item:last-of-type {
     border-bottom-right-radius: 0.35rem;
     border-bottom-left-radius: 0.35rem;
 }
+
 .accordion-item:first-of-type {
     border-top-left-radius: 0.35rem;
     border-top-right-radius: 0.35rem;
 }
+
 /* Start:: light colored accordions */
 .accordion {
     &.accordion-primary {
         .accordion-button {
             background-color: $primary-01;
             color: $primary;
-            &:after { 
+
+            &:after {
                 background-color: $primary;
                 color: $white;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
             }
         }
     }
+
     &.accordion-secondary {
         .accordion-button {
-            background-color: rgba(var(--secondary-rgb),0.1);
+            background-color: rgba(var(--secondary-rgb), 0.1);
             color: $secondary;
-            &:after { 
+
+            &:after {
                 background-color: $secondary;
                 color: $white;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
             }
         }
     }
+
     &.accordion-success {
         .accordion-button {
-            background-color: rgba(var(--success-rgb),0.1);
+            background-color: rgba(var(--success-rgb), 0.1);
             color: $success;
-            &:after { 
+
+            &:after {
                 background-color: $success;
                 color: $white;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
             }
         }
     }
+
     &.accordion-danger {
         .accordion-button {
-            background-color: rgba(var(--danger-rgb),0.1);
+            background-color: rgba(var(--danger-rgb), 0.1);
             color: $danger;
-            &:after { 
+
+            &:after {
                 background-color: $danger;
                 color: $white;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
             }
         }
     }
+
     &.accordion-warning {
         .accordion-button {
-            background-color: rgba(var(--warning-rgb),0.1);
+            background-color: rgba(var(--warning-rgb), 0.1);
             color: $warning;
-            &:after { 
+
+            &:after {
                 background-color: $warning;
                 color: $white;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
             }
         }
     }
+
     &.accordion-info {
         .accordion-button {
-            background-color: rgba(var(--info-rgb),0.1);
+            background-color: rgba(var(--info-rgb), 0.1);
             color: $info;
-            &:after { 
+
+            &:after {
                 background-color: $info;
                 color: $white;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
@@ -168,6 +202,7 @@
         }
     }
 }
+
 /* End:: light colored accordions */
 
 /* Start:: solid colored accordions */
@@ -176,104 +211,127 @@
         .accordion-button {
             background-color: $primary;
             color: $white;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $primary;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
             }
         }
     }
+
     &.accordion-solid-secondary {
         .accordion-button {
             background-color: $secondary;
             color: $white;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $secondary;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
             }
         }
     }
+
     &.accordion-solid-success {
         .accordion-button {
             background-color: $success;
             color: $white;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $success;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
             }
         }
     }
+
     &.accordion-solid-danger {
         .accordion-button {
             background-color: $danger;
             color: $white;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $danger;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
             }
         }
     }
+
     &.accordion-solid-warning {
         .accordion-button {
             background-color: $warning;
             color: $white;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $warning;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
             }
         }
     }
+
     &.accordion-solid-info {
         .accordion-button {
             background-color: $info;
             color: $white;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $info;
             }
+
             &.collapsed {
                 background-color: $custom-white;
                 color: $default-text-color;
-                &:after { 
+
+                &:after {
                     background-color: $default-background;
                     color: $default-text-color;
                 }
@@ -281,6 +339,7 @@
         }
     }
 }
+
 /* End:: solid colored accordions */
 
 /* Start:: border colors */
@@ -289,111 +348,135 @@
         .accordion-item {
             border: 1px solid $primary;
         }
+
         .accordion-button {
             background-color: $custom-white;
             color: $primary;
             border-block-end: 0px;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $primary;
                 border: 1px solid $primary;
             }
+
             &:not(.collapsed) {
                 border-block-end: 1px solid $primary;
             }
         }
     }
+
     &.accordion-border-secondary {
         .accordion-item {
             border: 1px solid $secondary;
         }
+
         .accordion-button {
             background-color: $custom-white;
             color: $secondary;
             border-block-end: 0px;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $secondary;
                 border: 1px solid $secondary;
             }
+
             &:not(.collapsed) {
                 border-block-end: 1px solid $secondary;
             }
         }
     }
+
     &.accordion-border-success {
         .accordion-item {
             border: 1px solid $success;
         }
+
         .accordion-button {
             background-color: $custom-white;
             color: $success;
             border-block-end: 0px;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $success;
                 border: 1px solid $success;
             }
+
             &:not(.collapsed) {
                 border-block-end: 1px solid $success;
             }
         }
     }
+
     &.accordion-border-danger {
         .accordion-item {
             border: 1px solid $danger;
         }
+
         .accordion-button {
             background-color: $custom-white;
             color: $danger;
             border-block-end: 0px;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $danger;
                 border: 1px solid $danger;
             }
+
             &:not(.collapsed) {
                 border-block-end: 1px solid $danger;
             }
         }
     }
+
     &.accordion-border-warning {
         .accordion-item {
             border: 1px solid $warning;
         }
+
         .accordion-button {
             background-color: $custom-white;
             color: $warning;
             border-block-end: 0px;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $warning;
                 border: 1px solid $warning;
             }
+
             &:not(.collapsed) {
                 border-block-end: 1px solid $warning;
             }
         }
     }
+
     &.accordion-border-info {
         .accordion-item {
             border: 1px solid $info;
         }
+
         .accordion-button {
             background-color: $custom-white;
             color: $info;
             border-block-end: 0px;
-            &:after { 
+
+            &:after {
                 background-color: $custom-white;
                 color: $info;
                 border: 1px solid $info;
             }
+
             &:not(.collapsed) {
                 border-block-end: 1px solid $info;
             }
         }
     }
 }
+
 /* End:: border colors */
 
 /* Start:: no icon */
@@ -404,6 +487,7 @@
         }
     }
 }
+
 /* Start:: no icon */
 
 /* Start:: left aligned icon */
@@ -411,6 +495,7 @@
     &.accordionicon-left {
         .accordion-button {
             padding-inline-start: 2.5rem;
+
             &:after {
                 position: absolute;
                 inset-inline-start: 0.625rem;
@@ -418,125 +503,149 @@
         }
     }
 }
+
 /* End:: left aligned icon */
 
 /* Start:: custom icons */
 .accordion {
     &.accordion-customicon1 {
         .accordion-button {
-            gap: 0.5rem!important;
+            gap: 0.5rem !important;
+
             &:after {
                 content: "\EA13";
-                font-family: remixicon!important;
+                font-family: remixicon !important;
             }
+
             &:not(.collapsed)::after {
                 content: "\F1AF";
-                font-family: remixicon!important;
+                font-family: remixicon !important;
             }
         }
     }
 }
+
 /* End:: custom icons */
 
 /* Start:: customized accordion */
 .customized-accordion {
-    .accordion-item{
+    .accordion-item {
         &.custom-accordion-primary {
             .accordion-button {
                 background-color: $primary-01;
                 border-inline-start: 0.25rem solid $primary-06;
+
                 &:after {
                     background-color: $primary-06;
                     color: $white;
                 }
             }
+
             .accordion-body {
                 background-color: $primary-01;
                 padding-block-start: 0;
                 border-inline-start: 0.25rem solid $primary-06;
             }
         }
+
         &.custom-accordion-secondary {
             .accordion-button {
-                background-color: rgba(var(--secondary-rgb),0.1);
-                border-inline-start: 0.25rem solid rgba(var(--secondary-rgb),0.6);
+                background-color: rgba(var(--secondary-rgb), 0.1);
+                border-inline-start: 0.25rem solid rgba(var(--secondary-rgb), 0.6);
+
                 &:after {
-                    background-color: rgba(var(--secondary-rgb),0.6);
+                    background-color: rgba(var(--secondary-rgb), 0.6);
                     color: $white;
                 }
             }
+
             .accordion-body {
-                background-color: rgba(var(--secondary-rgb),0.1);
+                background-color: rgba(var(--secondary-rgb), 0.1);
                 padding-block-start: 0;
-                border-inline-start: 0.25rem solid rgba(var(--secondary-rgb),0.6);
+                border-inline-start: 0.25rem solid rgba(var(--secondary-rgb), 0.6);
             }
         }
+
         &.custom-accordion-warning {
             .accordion-button {
-                background-color: rgba(var(--warning-rgb),0.1);
-                border-inline-start: 0.25rem solid rgba(var(--warning-rgb),0.6);
+                background-color: rgba(var(--warning-rgb), 0.1);
+                border-inline-start: 0.25rem solid rgba(var(--warning-rgb), 0.6);
+
                 &:after {
-                    background-color: rgba(var(--warning-rgb),0.6);
+                    background-color: rgba(var(--warning-rgb), 0.6);
                     color: $white;
                 }
             }
+
             .accordion-body {
-                background-color: rgba(var(--warning-rgb),0.1);
+                background-color: rgba(var(--warning-rgb), 0.1);
                 padding-block-start: 0;
-                border-inline-start: 0.25rem solid rgba(var(--warning-rgb),0.6);
+                border-inline-start: 0.25rem solid rgba(var(--warning-rgb), 0.6);
             }
         }
+
         &.custom-accordion-info {
             .accordion-button {
-                background-color: rgba(var(--info-rgb),0.1);
-                border-inline-start: 0.25rem solid rgba(var(--info-rgb),0.6);
+                background-color: rgba(var(--info-rgb), 0.1);
+                border-inline-start: 0.25rem solid rgba(var(--info-rgb), 0.6);
+
                 &:after {
-                    background-color: rgba(var(--info-rgb),0.6);
+                    background-color: rgba(var(--info-rgb), 0.6);
                     color: $white;
                 }
             }
+
             .accordion-body {
-                background-color: rgba(var(--info-rgb),0.1);
+                background-color: rgba(var(--info-rgb), 0.1);
                 padding-block-start: 0;
-                border-inline-start: 0.25rem solid rgba(var(--info-rgb),0.6);
+                border-inline-start: 0.25rem solid rgba(var(--info-rgb), 0.6);
             }
         }
+
         &.custom-accordion-success {
             .accordion-button {
-                background-color: rgba(var(--success-rgb),0.1);
-                border-inline-start: 0.25rem solid rgba(var(--success-rgb),0.6);
+                background-color: rgba(var(--success-rgb), 0.1);
+                border-inline-start: 0.25rem solid rgba(var(--success-rgb), 0.6);
+
                 &:after {
-                    background-color: rgba(var(--success-rgb),0.6);
+                    background-color: rgba(var(--success-rgb), 0.6);
                     color: $white;
                 }
             }
+
             .accordion-body {
-                background-color: rgba(var(--success-rgb),0.1);
+                background-color: rgba(var(--success-rgb), 0.1);
                 padding-block-start: 0;
-                border-inline-start: 0.25rem solid rgba(var(--success-rgb),0.6);
+                border-inline-start: 0.25rem solid rgba(var(--success-rgb), 0.6);
             }
         }
+
         &.custom-accordion-danger {
             .accordion-button {
-                background-color: rgba(var(--danger-rgb),0.1);
-                border-inline-start: 0.25rem solid rgba(var(--danger-rgb),0.6);
+                background-color: rgba(var(--danger-rgb), 0.1);
+                border-inline-start: 0.25rem solid rgba(var(--danger-rgb), 0.6);
+
                 &:after {
-                    background-color: rgba(var(--danger-rgb),0.6);
+                    background-color: rgba(var(--danger-rgb), 0.6);
                     color: $white;
                 }
             }
+
             .accordion-body {
-                background-color: rgba(var(--danger-rgb),0.1);
+                background-color: rgba(var(--danger-rgb), 0.1);
                 padding-block-start: 0;
-                border-inline-start: 0.25rem solid rgba(var(--danger-rgb),0.6);
+                border-inline-start: 0.25rem solid rgba(var(--danger-rgb), 0.6);
             }
         }
     }
 }
-.horizontal-collapse{
+
+.horizontal-collapse {
     min-height: 120px;
-    .card-body{
+
+    .card-body {
         width: 230px;
     }
 }
+
 /* End:: customized accordion */

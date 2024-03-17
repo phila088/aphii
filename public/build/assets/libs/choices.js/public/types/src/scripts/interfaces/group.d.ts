@@ -4,5 +4,4 @@ export interface Group {
     disabled?: boolean;
     value: any;
 }
-
 //# sourceMappingURL=group.d.ts.map

@@ -8,13 +8,13 @@
 
         <!-- PAGE HEADER -->
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
-            <h4 class="fw-medium mb-0">Categories</h4>
+            <h4 class="fw-medium mb-0">{{ __('Categories') }}</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);" class="text-white-50">Admin</a>
+                <li class="breadcrumb-item"><a href="javascript:void(0);" class="text-white-50">{{ __('Admin') }}</a>
                 </li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);" class="text-white-50">Documents</a>
+                <li class="breadcrumb-item"><a href="javascript:void(0);" class="text-white-50">{{ __('Documents') }}</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Categories') }}</li>
             </ol>
         </div>
         <!-- END PAGE HEADER -->
@@ -31,7 +31,7 @@
                                     <h1 class="text-lg">Create a category</h1>
                                 </div>
                                 <div class="py-8">
-                                    <hr class="border-gray-400" />
+                                    <hr class="border-gray-400"/>
                                 </div>
                                 <livewire:admin.document.categories.create />
                             </div>

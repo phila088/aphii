@@ -11,8 +11,7 @@
  */
 
 import Swiper from './core/core.js';
-
-export {default as Swiper, default} from './core/core.js';
+export { default as Swiper, default } from './core/core.js';
 import Virtual from './modules/virtual/virtual.js';
 import Keyboard from './modules/keyboard/keyboard.js';
 import Mousewheel from './modules/mousewheel/mousewheel.js';

@@ -8,6 +8,7 @@
         html.setAttribute("dir", "rtl");
         document.querySelector("#style")?.setAttribute("href", "http://127.0.0.1:8000/build/assets/libs/bootstrap/css/bootstrap.rtl.min.css");
     }
+
     function localStorageBackup() {
 
         // if there is a value stored, update color picker and background color
@@ -38,10 +39,11 @@
             let html = document.querySelector('html');
             html.setAttribute('dir', 'rtl');
             setTimeout(() => {
-                
+
             }, 2000);
         }
     }
+
     localStorageBackup()
 
 })();

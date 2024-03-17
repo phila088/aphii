@@ -3,7 +3,7 @@
 
     /* dropzone */
     let myDropzone = new Dropzone(".dropzone");
-        myDropzone.on("addedfile", file => {
+    myDropzone.on("addedfile", file => {
     });
 
     /* filepond */
@@ -22,7 +22,7 @@
     /* multiple upload */
     const MultipleElement = document.querySelector('.multiple-filepond');
     FilePond.create(MultipleElement,);
-    
+
     /* single upload */
     FilePond.create(
         document.querySelector('.single-fileupload'),

@@ -579,7 +579,7 @@
             name: 'Cash Flow',
             data: [1.45, 5.42, 5.9, -0.42, -12.6, -18.1, -18.2, -14.16, -11.1, -6.09, 0.34, 3.88, 13.07,
                 5.8, 2, 7.37, 8.1, 13.57, 15.75, 17.1, 19.8, -27.03, -54.4, -47.2, -43.3, -18.6, -
-                48.6, -41.1, -39.6, -37.6, -29.4, -21.4, -2.4
+                    48.6, -41.1, -39.6, -37.6, -29.4, -21.4, -2.4
             ]
         }],
         chart: {
@@ -743,6 +743,7 @@
         }
     }
     var colors = ['#8e54e9', '#4876e6', '#f5b849', '#49b6f5', '#e6533c', '#26bf94', '#5b67c7'];
+
     function shuffleArray(array) {
         for (var i = array.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));
@@ -752,6 +753,7 @@
         }
         return array;
     }
+
     var arrayData = [{
         y: 400,
         quarters: [{
@@ -843,6 +845,7 @@
             y: 160
         }]
     }];
+
     function makeData() {
         var dataSet = shuffleArray(arrayData)
         var dataYearSeries = [{
@@ -879,6 +882,7 @@
 
         return dataYearSeries
     }
+
     function updateQuarterChart(sourceChart, destChartIDToUpdate) {
         var series = [];
         var seriesIndex = 0;
@@ -907,6 +911,7 @@
             })
         }
     }
+
     var options = {
         series: [{
             data: makeData()
@@ -1117,8 +1122,7 @@
         if (opts.selectedDataPoints[0].length === 1) {
             if (quarterChartEl.classList.contains("active")) {
                 updateQuarterChart(chart, 'barQuarter')
-            }
-            else {
+            } else {
                 yearChartEl.classList.add("chart-quarter-activated")
                 quarterChartEl.classList.add("active");
                 updateQuarterChart(chart, 'barQuarter')
@@ -1136,7 +1140,7 @@
     chart.addEventListener('updated', function (chart) {
         updateQuarterChart(chart, 'barQuarter')
     })
-    
+
     /* distributed columns chart */
     var options = {
         series: [{

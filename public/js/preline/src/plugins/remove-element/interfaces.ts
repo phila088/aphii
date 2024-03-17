@@ -1,7 +1,7 @@
 export interface IRemoveElementOptions {
-	removeTargetAnimationClass: string;
+    removeTargetAnimationClass: string;
 }
 
 export interface IRemoveElement {
-	options?: IRemoveElementOptions;
+    options?: IRemoveElementOptions;
 }

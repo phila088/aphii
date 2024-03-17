@@ -133,6 +133,25 @@
       <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/_laravel_idea" />
+      <path value="$PROJECT_DIR$/vendor/blade-ui-kit/blade-icons" />
+      <path value="$PROJECT_DIR$/vendor/andreiio/blade-remix-icon" />
+      <path value="$PROJECT_DIR$/vendor/owenvoke/blade-fontawesome" />
+      <path value="$PROJECT_DIR$/vendor/thecodingmachine/safe" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-stats" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-package-tools" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-model-states" />
+      <path value="$PROJECT_DIR$/vendor/mustache/mustache" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-flash" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-welcome-notification" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-searchable" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-database-mail-templates" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-model-status" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-db-snapshots" />
+      <path value="$PROJECT_DIR$/vendor/spatie/url-signer" />
+      <path value="$PROJECT_DIR$/vendor/spatie/db-dumper" />
+      <path value="$PROJECT_DIR$/vendor/spatie/temporary-directory" />
+      <path value="$PROJECT_DIR$/vendor/coderello/laraflash" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">

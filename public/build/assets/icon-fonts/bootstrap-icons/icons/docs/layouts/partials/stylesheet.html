@@ -1,5 +1,5 @@
 {{- if eq .Layout "home" -}}
-<link href="/assets/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="/assets/font/bootstrap-icons.css">
 {{- end -}}
 
 {{- $sassOptions := dict "targetPath" "assets/css/docs.css" "precision" 6 -}}
@@ -11,4 +11,4 @@
 
 {{- $style := resources.Get "scss/docs.scss" | toCSS $sassOptions | postCSS $postcssOptions -}}
 
-<link href="{{ $style.Permalink | relURL }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ $style.Permalink | relURL }}">

@@ -2,8 +2,11 @@
 
 namespace App\View\Components;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 use Illuminate\View\View;
+use Coderello\Laraflash\Facades\Laraflash;
 
 class AppLayout extends Component
 {
@@ -12,6 +15,8 @@ class AppLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.master');
+        $user = Auth::user();
+        return view('layouts.master')
+            ->with('user', $user);
     }
 }

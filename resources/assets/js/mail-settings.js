@@ -12,7 +12,7 @@
                 alert('please select a valid image');
             }
         };
-        if(event.target.files[0]){
+        if (event.target.files[0]) {
             reader.readAsDataURL(event.target.files[0]);
         }
 

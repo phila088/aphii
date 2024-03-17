@@ -718,18 +718,18 @@
         //     }
         // }
         tooltip: {
-    custom: function (opts) {
-        const fromYear = new Date(opts.y1).getFullYear();
-        const toYear = new Date(opts.y2).getFullYear();
+            custom: function (opts) {
+                const fromYear = new Date(opts.y1).getFullYear();
+                const toYear = new Date(opts.y2).getFullYear();
 
-        return (
-            `<div class="custom-tooltip">
+                return (
+                    `<div class="custom-tooltip">
                 <span>From: ${fromYear}</span><br>
                 <span>To: ${toYear}</span>
             </div>`
-        );
-    }
-}
+                );
+            }
+        }
     };
     var chart = new ApexCharts(document.querySelector("#timeline-grouped"), options);
     chart.render();

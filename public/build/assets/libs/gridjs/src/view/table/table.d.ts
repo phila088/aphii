@@ -1,9 +1,8 @@
-import {h} from 'preact';
+import { h } from 'preact';
 import Tabular from '../../tabular';
-import {BaseComponent, BaseProps} from '../base';
+import { BaseComponent, BaseProps } from '../base';
 import Header from '../../header';
-import {Status} from '../../types';
-
+import { Status } from '../../types';
 interface TableProps extends BaseProps {
     data: Tabular;
     status: Status;
@@ -11,9 +10,7 @@ interface TableProps extends BaseProps {
     width: string;
     height: string;
 }
-
 export declare class Table extends BaseComponent<TableProps> {
     render(): h.JSX.Element;
 }
-
 export {};

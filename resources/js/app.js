@@ -1,11 +1,12 @@
 import '../assets/js/custom';
 import './bootstrap'
-import '../../public/js/preline';
-import Alpine from 'alpinejs'
+import { Livewire, Alpine} from '../../vendor/livewire/livewire/dist/livewire.esm'
+import '../../public/js/preline/dist/preline';
+// import Alpine from 'alpinejs'
 import mask from '@alpinejs/mask';
-import jQuery from 'jquery';
+import jQuery from 'jquery'
 
+window.$ = jQuery;
 window.Alpine = Alpine
 Alpine.plugin(mask);
-Alpine.start()
-window.$ = jQuery;
+Livewire.start();

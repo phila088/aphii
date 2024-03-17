@@ -152,7 +152,7 @@
             max: 40
         },
         legend: {
-            show:false,
+            show: false,
             position: 'bottom',
             horizontalAlign: 'right',
             floating: true,
@@ -654,6 +654,7 @@
             type: 'datetime'
         },
     }
+
     function generateDayWiseTimeSeries(baseval, count, yrange) {
         var i = 0;
         var series = [];
@@ -667,6 +668,7 @@
         }
         return series;
     }
+
     var options = {
         series: [{
             data: generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 20, {
@@ -817,14 +819,14 @@
             name: "Session Duration",
             data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
         },
-        {
-            name: "Page Views",
-            data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-        },
-        {
-            name: 'Total Visits',
-            data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
-        }
+            {
+                name: "Page Views",
+                data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+            },
+            {
+                name: 'Total Visits',
+                data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
+            }
         ],
         chart: {
             height: 320,
@@ -924,6 +926,7 @@
     var data = []
     var TICKINTERVAL = 86400000
     let XAXISRANGE = 777600000
+
     function getDayWiseTimeSeries(baseval, count, yrange) {
         var i = 0;
         while (i < count) {
@@ -937,10 +940,12 @@
             i++;
         }
     }
+
     getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, {
         min: 10,
         max: 90
     })
+
     function getNewSeries(baseval, yrange) {
         var newDate = baseval + TICKINTERVAL;
         lastDate = newDate
@@ -956,10 +961,12 @@
             y: Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
         })
     }
+
     function resetData() {
         // Alternatively, you can also reset the data at certain intervals to prevent creating a huge series
         data = data.slice(data.length - 10, data.length);
     }
+
     var options = {
         series: [{
             data: data.slice()
@@ -1057,6 +1064,7 @@
         }
         return series;
     }
+
     var data = generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 185, {
         min: 30,
         max: 90

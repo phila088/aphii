@@ -126,8 +126,30 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/_laravel_idea" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/andreiio/blade-remix-icon" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/blade-ui-kit/blade-icons" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/facade/ignition-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mustache/mustache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/owenvoke/blade-fontawesome" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/db-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-database-mail-templates" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-db-snapshots" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-flash" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-model-states" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-model-status" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-package-tools" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-searchable" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-stats" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-welcome-notification" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/temporary-directory" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/url-signer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/thecodingmachine/safe" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/coderello/laraflash" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="@yaireo/tagify" level="application" />
+    <orderEntry type="library" name="trix" level="application" />
+    <orderEntry type="library" name="@yaireo" level="application" />
   </component>
 </module>

@@ -27,9 +27,9 @@ var NumeralFormatter = function (numeralDecimalMark,
 
 NumeralFormatter.groupStyle = {
     thousand: 'thousand',
-    lakh: 'lakh',
-    wan: 'wan',
-    none: 'none'
+    lakh:     'lakh',
+    wan:      'wan',
+    none:     'none'    
 };
 
 NumeralFormatter.prototype = {
@@ -76,7 +76,7 @@ NumeralFormatter.prototype = {
         } else {
             partSignAndPrefix = partSign;
         }
-
+        
         partInteger = value;
 
         if (value.indexOf(owner.numeralDecimalMark) >= 0) {
@@ -85,29 +85,29 @@ NumeralFormatter.prototype = {
             partDecimal = owner.numeralDecimalMark + parts[1].slice(0, owner.numeralDecimalScale);
         }
 
-        if (partSign === '-') {
+        if(partSign === '-') {
             partInteger = partInteger.slice(1);
         }
 
         if (owner.numeralIntegerScale > 0) {
-            partInteger = partInteger.slice(0, owner.numeralIntegerScale);
+          partInteger = partInteger.slice(0, owner.numeralIntegerScale);
         }
 
         switch (owner.numeralThousandsGroupStyle) {
-            case NumeralFormatter.groupStyle.lakh:
-                partInteger = partInteger.replace(/(\d)(?=(\d\d)+\d$)/g, '$1' + owner.delimiter);
+        case NumeralFormatter.groupStyle.lakh:
+            partInteger = partInteger.replace(/(\d)(?=(\d\d)+\d$)/g, '$1' + owner.delimiter);
 
-                break;
+            break;
 
-            case NumeralFormatter.groupStyle.wan:
-                partInteger = partInteger.replace(/(\d)(?=(\d{4})+$)/g, '$1' + owner.delimiter);
+        case NumeralFormatter.groupStyle.wan:
+            partInteger = partInteger.replace(/(\d)(?=(\d{4})+$)/g, '$1' + owner.delimiter);
 
-                break;
+            break;
 
-            case NumeralFormatter.groupStyle.thousand:
-                partInteger = partInteger.replace(/(\d)(?=(\d{3})+$)/g, '$1' + owner.delimiter);
+        case NumeralFormatter.groupStyle.thousand:
+            partInteger = partInteger.replace(/(\d)(?=(\d{3})+$)/g, '$1' + owner.delimiter);
 
-                break;
+            break;
         }
 
         if (owner.tailPrefix) {
@@ -127,21 +127,21 @@ var DateFormatter = function (datePattern, dateMin, dateMax) {
     owner.blocks = [];
     owner.datePattern = datePattern;
     owner.dateMin = dateMin
-        .split('-')
-        .reverse()
-        .map(function (x) {
-            return parseInt(x, 10);
-        });
+      .split('-')
+      .reverse()
+      .map(function(x) {
+        return parseInt(x, 10);
+      });
     if (owner.dateMin.length === 2) owner.dateMin.unshift(0);
 
     owner.dateMax = dateMax
-        .split('-')
-        .reverse()
-        .map(function (x) {
-            return parseInt(x, 10);
-        });
+      .split('-')
+      .reverse()
+      .map(function(x) {
+        return parseInt(x, 10);
+      });
     if (owner.dateMax.length === 2) owner.dateMax.unshift(0);
-
+    
     owner.initBlocks();
 };
 
@@ -182,27 +182,27 @@ DateFormatter.prototype = {
                     rest = value.slice(length);
 
                 switch (owner.datePattern[index]) {
-                    case 'd':
-                        if (sub === '00') {
-                            sub = '01';
-                        } else if (parseInt(sub0, 10) > 3) {
-                            sub = '0' + sub0;
-                        } else if (parseInt(sub, 10) > 31) {
-                            sub = '31';
-                        }
+                case 'd':
+                    if (sub === '00') {
+                        sub = '01';
+                    } else if (parseInt(sub0, 10) > 3) {
+                        sub = '0' + sub0;
+                    } else if (parseInt(sub, 10) > 31) {
+                        sub = '31';
+                    }
 
-                        break;
+                    break;
 
-                    case 'm':
-                        if (sub === '00') {
-                            sub = '01';
-                        } else if (parseInt(sub0, 10) > 1) {
-                            sub = '0' + sub0;
-                        } else if (parseInt(sub, 10) > 12) {
-                            sub = '12';
-                        }
+                case 'm':
+                    if (sub === '00') {
+                        sub = '01';
+                    } else if (parseInt(sub0, 10) > 1) {
+                        sub = '0' + sub0;
+                    } else if (parseInt(sub, 10) > 12) {
+                        sub = '12';
+                    }
 
-                        break;
+                    break;
                 }
 
                 result += sub;
@@ -235,15 +235,15 @@ DateFormatter.prototype = {
         if (value.length === 8) {
             datePattern.forEach(function (type, index) {
                 switch (type) {
-                    case 'd':
-                        dayIndex = index;
-                        break;
-                    case 'm':
-                        monthIndex = index;
-                        break;
-                    default:
-                        yearIndex = index;
-                        break;
+                case 'd':
+                    dayIndex = index;
+                    break;
+                case 'm':
+                    monthIndex = index;
+                    break;
+                default:
+                    yearIndex = index;
+                    break;
                 }
             });
 
@@ -289,14 +289,14 @@ DateFormatter.prototype = {
 
         var result = date.length === 0 ? value : datePattern.reduce(function (previous, current) {
             switch (current) {
-                case 'd':
-                    return previous + (date[0] === 0 ? '' : owner.addLeadingZero(date[0]));
-                case 'm':
-                    return previous + (date[1] === 0 ? '' : owner.addLeadingZero(date[1]));
-                case 'y':
-                    return previous + (fullYearDone ? owner.addLeadingZeroForYear(date[2], false) : '');
-                case 'Y':
-                    return previous + (fullYearDone ? owner.addLeadingZeroForYear(date[2], true) : '');
+            case 'd':
+                return previous + (date[0] === 0 ? '' : owner.addLeadingZero(date[0]));
+            case 'm':
+                return previous + (date[1] === 0 ? '' : owner.addLeadingZero(date[1]));
+            case 'y':
+                return previous + (fullYearDone ? owner.addLeadingZeroForYear(date[2], false) : '');
+            case 'Y':
+                return previous + (fullYearDone ? owner.addLeadingZeroForYear(date[2], true) : '');
             }
         }, '');
 
@@ -312,22 +312,22 @@ DateFormatter.prototype = {
         if (!date.length || (dateMin.length < 3 && dateMax.length < 3)) return date;
 
         if (
-            datePattern.find(function (x) {
-                return x.toLowerCase() === 'y';
-            }) &&
-            date[2] === 0
+          datePattern.find(function(x) {
+            return x.toLowerCase() === 'y';
+          }) &&
+          date[2] === 0
         ) return date;
 
         if (dateMax.length && (dateMax[2] < date[2] || (
-            dateMax[2] === date[2] && (dateMax[1] < date[1] || (
-                dateMax[1] === date[1] && dateMax[0] < date[0]
-            ))
+          dateMax[2] === date[2] && (dateMax[1] < date[1] || (
+            dateMax[1] === date[1] && dateMax[0] < date[0]
+          ))
         ))) return dateMax;
 
         if (dateMin.length && (dateMin[2] > date[2] || (
-            dateMin[2] === date[2] && (dateMin[1] > date[1] || (
-                dateMin[1] === date[1] && dateMin[0] > date[0]
-            ))
+          dateMin[2] === date[2] && (dateMin[1] > date[1] || (
+            dateMin[1] === date[1] && dateMin[0] > date[0]
+          ))
         ))) return dateMin;
 
         return date;
@@ -429,23 +429,23 @@ TimeFormatter.prototype = {
 
                 switch (owner.timePattern[index]) {
 
-                    case 'h':
-                        if (parseInt(sub0, 10) > timeFormatOptions.maxHourFirstDigit) {
-                            sub = '0' + sub0;
-                        } else if (parseInt(sub, 10) > timeFormatOptions.maxHours) {
-                            sub = timeFormatOptions.maxHours + '';
-                        }
+                case 'h':
+                    if (parseInt(sub0, 10) > timeFormatOptions.maxHourFirstDigit) {
+                        sub = '0' + sub0;
+                    } else if (parseInt(sub, 10) > timeFormatOptions.maxHours) {
+                        sub = timeFormatOptions.maxHours + '';
+                    }
 
-                        break;
+                    break;
 
-                    case 'm':
-                    case 's':
-                        if (parseInt(sub0, 10) > timeFormatOptions.maxMinutesFirstDigit) {
-                            sub = '0' + sub0;
-                        } else if (parseInt(sub, 10) > timeFormatOptions.maxMinutes) {
-                            sub = timeFormatOptions.maxMinutes + '';
-                        }
-                        break;
+                case 'm':
+                case 's':
+                    if (parseInt(sub0, 10) > timeFormatOptions.maxMinutesFirstDigit) {
+                        sub = '0' + sub0;
+                    } else if (parseInt(sub, 10) > timeFormatOptions.maxMinutes) {
+                        sub = timeFormatOptions.maxMinutes + '';
+                    }
+                    break;
                 }
 
                 result += sub;
@@ -467,15 +467,15 @@ TimeFormatter.prototype = {
         if (value.length === 6) {
             timePattern.forEach(function (type, index) {
                 switch (type) {
-                    case 's':
-                        secondIndex = index * 2;
-                        break;
-                    case 'm':
-                        minuteIndex = index * 2;
-                        break;
-                    case 'h':
-                        hourIndex = index * 2;
-                        break;
+                case 's':
+                    secondIndex = index * 2;
+                    break;
+                case 'm':
+                    minuteIndex = index * 2;
+                    break;
+                case 'h':
+                    hourIndex = index * 2;
+                    break;
                 }
             });
 
@@ -493,12 +493,12 @@ TimeFormatter.prototype = {
         if (value.length === 4 && owner.timePattern.indexOf('s') < 0) {
             timePattern.forEach(function (type, index) {
                 switch (type) {
-                    case 'm':
-                        minuteIndex = index * 2;
-                        break;
-                    case 'h':
-                        hourIndex = index * 2;
-                        break;
+                case 'm':
+                    minuteIndex = index * 2;
+                    break;
+                case 'h':
+                    hourIndex = index * 2;
+                    break;
                 }
             });
 
@@ -516,12 +516,12 @@ TimeFormatter.prototype = {
 
         return time.length === 0 ? value : timePattern.reduce(function (previous, current) {
             switch (current) {
-                case 's':
-                    return previous + owner.addLeadingZero(time[2]);
-                case 'm':
-                    return previous + owner.addLeadingZero(time[1]);
-                case 'h':
-                    return previous + owner.addLeadingZero(time[0]);
+            case 's':
+                return previous + owner.addLeadingZero(time[2]);
+            case 'm':
+                return previous + owner.addLeadingZero(time[1]);
+            case 'h':
+                return previous + owner.addLeadingZero(time[0]);
             }
         }, '');
     },
@@ -602,20 +602,20 @@ var PhoneFormatter_1 = PhoneFormatter;
 
 var CreditCardDetector = {
     blocks: {
-        uatp: [4, 5, 6],
-        amex: [4, 6, 5],
-        diners: [4, 6, 4],
-        discover: [4, 4, 4, 4],
-        mastercard: [4, 4, 4, 4],
-        dankort: [4, 4, 4, 4],
-        instapayment: [4, 4, 4, 4],
-        jcb15: [4, 6, 5],
-        jcb: [4, 4, 4, 4],
-        maestro: [4, 4, 4, 4],
-        visa: [4, 4, 4, 4],
-        mir: [4, 4, 4, 4],
-        unionPay: [4, 4, 4, 4],
-        general: [4, 4, 4, 4]
+        uatp:          [4, 5, 6],
+        amex:          [4, 6, 5],
+        diners:        [4, 6, 4],
+        discover:      [4, 4, 4, 4],
+        mastercard:    [4, 4, 4, 4],
+        dankort:       [4, 4, 4, 4],
+        instapayment:  [4, 4, 4, 4],
+        jcb15:         [4, 6, 5],
+        jcb:           [4, 4, 4, 4],
+        maestro:       [4, 4, 4, 4],
+        visa:          [4, 4, 4, 4],
+        mir:           [4, 4, 4, 4],
+        unionPay:      [4, 4, 4, 4],
+        general:       [4, 4, 4, 4]
     },
 
     re: {
@@ -660,11 +660,11 @@ var CreditCardDetector = {
     },
 
     getStrictBlocks: function (block) {
-        var total = block.reduce(function (prev, current) {
-            return prev + current;
-        }, 0);
+      var total = block.reduce(function (prev, current) {
+        return prev + current;
+      }, 0);
 
-        return block.concat(19 - total);
+      return block.concat(19 - total);
     },
 
     getInfo: function (value, strictMode) {
@@ -726,13 +726,13 @@ var Util = {
     },
 
     getNextCursorPosition: function (prevPos, oldValue, newValue, delimiter, delimiters) {
-        // If cursor was at the end of value, just place it back.
-        // Because new value could contain additional chars.
-        if (oldValue.length === prevPos) {
-            return newValue.length;
-        }
+      // If cursor was at the end of value, just place it back.
+      // Because new value could contain additional chars.
+      if (oldValue.length === prevPos) {
+          return newValue.length;
+      }
 
-        return prevPos + this.getPositionOffset(prevPos, oldValue, newValue, delimiter, delimiters);
+      return prevPos + this.getPositionOffset(prevPos, oldValue, newValue, delimiter ,delimiters);
     },
 
     getPositionOffset: function (prevPos, oldValue, newValue, delimiter, delimiters) {
@@ -784,12 +784,12 @@ var Util = {
     getPrefixStrippedValue: function (value, prefix, prefixLength, prevResult, delimiter, delimiters, noImmediatePrefix, tailPrefix, signBeforePrefix) {
         // No prefix
         if (prefixLength === 0) {
-            return value;
+          return value;
         }
 
         // Value is prefix
         if (value === prefix && value !== '') {
-            return '';
+          return '';
         }
 
         if (signBeforePrefix && (value.slice(0, 1) == '-')) {
@@ -900,15 +900,15 @@ var Util = {
     },
 
     // Check if input field is fully selected
-    checkFullSelection: function (value) {
-        try {
-            var selection = window.getSelection() || document.getSelection() || {};
-            return selection.toString().length === value.length;
-        } catch (ex) {
-            // Ignore
-        }
+    checkFullSelection: function(value) {
+      try {
+        var selection = window.getSelection() || document.getSelection() || {};
+        return selection.toString().length === value.length;
+      } catch (ex) {
+        // Ignore
+      }
 
-        return false;
+      return false;
     },
 
     setSelection: function (element, position, doc) {
@@ -918,7 +918,7 @@ var Util = {
 
         // cursor is already in the end
         if (element && element.value.length <= position) {
-            return;
+          return;
         }
 
         if (element.createTextRange) {
@@ -936,7 +936,7 @@ var Util = {
         }
     },
 
-    getActiveElement: function (parent) {
+    getActiveElement: function(parent) {
         var activeElement = parent.activeElement;
         if (activeElement && activeElement.shadowRoot) {
             return this.getActiveElement(activeElement.shadowRoot);
@@ -979,8 +979,7 @@ var DefaultProperties = {
         target.creditCard = !!opts.creditCard;
         target.creditCardStrictMode = !!opts.creditCardStrictMode;
         target.creditCardType = '';
-        target.onCreditCardTypeChanged = opts.onCreditCardTypeChanged || (function () {
-        });
+        target.onCreditCardTypeChanged = opts.onCreditCardTypeChanged || (function () {});
 
         // phone
         target.phone = !!opts.phone;
@@ -1013,7 +1012,7 @@ var DefaultProperties = {
 
         // others
         target.swapHiddenInput = !!opts.swapHiddenInput;
-
+        
         target.numericOnly = target.creditCard || target.date || !!opts.numericOnly;
 
         target.uppercase = !!opts.uppercase;
@@ -1049,8 +1048,7 @@ var DefaultProperties = {
         target.backspace = false;
         target.result = '';
 
-        target.onValueChanged = opts.onValueChanged || (function () {
-        });
+        target.onValueChanged = opts.onValueChanged || (function () {});
 
         return target;
     }
@@ -1072,12 +1070,12 @@ var Cleave = function (element, opts) {
         owner.element = document.querySelector(element);
         hasMultipleElements = document.querySelectorAll(element).length > 1;
     } else {
-        if (typeof element.length !== 'undefined' && element.length > 0) {
-            owner.element = element[0];
-            hasMultipleElements = element.length > 1;
-        } else {
-            owner.element = element;
-        }
+      if (typeof element.length !== 'undefined' && element.length > 0) {
+        owner.element = element[0];
+        hasMultipleElements = element.length > 1;
+      } else {
+        owner.element = element;
+      }
     }
 
     if (!owner.element) {
@@ -1085,12 +1083,12 @@ var Cleave = function (element, opts) {
     }
 
     if (hasMultipleElements) {
-        try {
-            // eslint-disable-next-line
-            console.warn('[cleave.js] Multiple input fields matched, cleave.js will only take the first one.');
-        } catch (e) {
-            // Old IE
-        }
+      try {
+        // eslint-disable-next-line
+        console.warn('[cleave.js] Multiple input fields matched, cleave.js will only take the first one.');
+      } catch (e) {
+        // Old IE
+      }
     }
 
     opts.initValue = owner.element.value;
@@ -1179,7 +1177,7 @@ Cleave.prototype = {
         );
     },
 
-    initTimeFormatter: function () {
+    initTimeFormatter: function() {
         var owner = this, pps = owner.properties;
 
         if (!pps.time) {

@@ -1,30 +1,30 @@
-import {ACTION_TYPES} from '../constants';
-import {State} from '../interfaces/state';
+import { ACTION_TYPES } from '../constants';
+import { State } from '../interfaces/state';
 
 export interface ClearAllAction {
-    type: typeof ACTION_TYPES.CLEAR_ALL;
+  type: typeof ACTION_TYPES.CLEAR_ALL;
 }
 
 export interface ResetToAction {
-    type: typeof ACTION_TYPES.RESET_TO;
-    state: State;
+  type: typeof ACTION_TYPES.RESET_TO;
+  state: State;
 }
 
 export interface SetIsLoadingAction {
-    type: typeof ACTION_TYPES.SET_IS_LOADING;
-    isLoading: boolean;
+  type: typeof ACTION_TYPES.SET_IS_LOADING;
+  isLoading: boolean;
 }
 
 export const clearAll = (): ClearAllAction => ({
-    type: ACTION_TYPES.CLEAR_ALL,
+  type: ACTION_TYPES.CLEAR_ALL,
 });
 
 export const resetTo = (state: State): ResetToAction => ({
-    type: ACTION_TYPES.RESET_TO,
-    state,
+  type: ACTION_TYPES.RESET_TO,
+  state,
 });
 
 export const setIsLoading = (isLoading: boolean): SetIsLoadingAction => ({
-    type: ACTION_TYPES.SET_IS_LOADING,
-    isLoading,
+  type: ACTION_TYPES.SET_IS_LOADING,
+  isLoading,
 });

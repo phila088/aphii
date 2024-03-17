@@ -4,66 +4,66 @@ const WrapperPlugin = require('wrapper-webpack-plugin');
 const packageJson = require('./package.json');
 
 module.exports = {
-  entry: `${__dirname}/src/index.js`,
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    library: 'BoxIconElement',
-    libraryTarget: 'umd',
-    filename: 'boxicons.js',
-  },
-  devtool: 'source-map',
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        options: {
-          babelrc: false,
-          presets: [
-              ['env', { modules: false, targets: { uglify: true } }],
-          ],
-          plugins: [
-            ['babel-plugin-transform-builtin-classes', {
-              globals: ['Array', 'Error', 'HTMLElement'],
-            }],
-          ],
-        },
-      },
-      {
-        test: /\.css$/,
-        use: [
-            { loader: 'to-string-loader' },
-          {
-            loader: 'css-loader',
-            options: {
-              camelCase: true,
+    entry: `${__dirname}/src/index.js`,
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        library: 'BoxIconElement',
+        libraryTarget: 'umd',
+        filename: 'boxicons.js',
+    },
+    devtool: 'source-map',
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                options: {
+                    babelrc: false,
+                    presets: [
+                        ['env', {modules: false, targets: {uglify: true}}],
+                    ],
+                    plugins: [
+                        ['babel-plugin-transform-builtin-classes', {
+                            globals: ['Array', 'Error', 'HTMLElement'],
+                        }],
+                    ],
+                },
             },
-          },
+            {
+                test: /\.css$/,
+                use: [
+                    {loader: 'to-string-loader'},
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            camelCase: true,
+                        },
+                    },
+                ],
+            },
         ],
-      },
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'BUILD.DATA': {
+                VERSION: JSON.stringify(packageJson.version),
+            },
+        }),
+        new WrapperPlugin({
+            test: /boxicons\.js$/,
+            header: getWrapper('header'),
+            footer: getWrapper('footer'),
+        }),
     ],
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      'BUILD.DATA': {
-        VERSION: JSON.stringify(packageJson.version),
-      },
-    }),
-    new WrapperPlugin({
-      test: /boxicons\.js$/,
-      header: getWrapper('header'),
-      footer: getWrapper('footer'),
-    }),
-  ],
 };
 
 function getWrapper(type) {
-  if (getWrapper.header) {
-    return getWrapper[type];
-  }
+    if (getWrapper.header) {
+        return getWrapper[type];
+    }
 
-  const templatePieces = `(function (
-    DEFAULT_CDN_PREFIX,   
+    const templatePieces = `(function (
+    DEFAULT_CDN_PREFIX,
     STRING_WEB_COMPONENTS_REQUESTED,
     WINDOW,
     DOCUMENT,
@@ -88,24 +88,24 @@ function getWrapper(type) {
      * variable, which is used to store module initialization
      * functions until the environment is patched:
      *
-     * -    \`window.AWAITING_WEB_COMPONENTS_POLYFILL\`: an Array 
+     * -    \`window.AWAITING_WEB_COMPONENTS_POLYFILL\`: an Array
      *      with callbacks. To store a new one, use
      *      \`window.AWAITING_WEB_COMPONENTS_POLYFILL.then(callbackHere)\`
      */
     if (!('customElements' in WINDOW)) {
-        
+
         // If in the mist of loading the polyfills, then just add init to when that is done
         if (WINDOW[STRING_WEB_COMPONENTS_REQUESTED]) {
             WINDOW[STRING_WEB_COMPONENTS_REQUESTED].then(init);
             return;
         }
-        
+
         var _WEB_COMPONENTS_REQUESTED = WINDOW[STRING_WEB_COMPONENTS_REQUESTED] = getCallbackQueue();
         _WEB_COMPONENTS_REQUESTED.then(init);
-        
+
         var WEB_COMPONENTS_POLYFILL = WINDOW.WEB_COMPONENTS_POLYFILL || "/" + "/" + DEFAULT_CDN_PREFIX + "/webcomponentsjs/2.0.2/webcomponents-bundle.js";
         var ES6_CORE_POLYFILL = WINDOW.ES6_CORE_POLYFILL || "/" + "/" + DEFAULT_CDN_PREFIX + "/core-js/2.5.3/core.min.js";
-        
+
         if (!("Promise" in WINDOW)) {
             loadScript(ES6_CORE_POLYFILL)
                 .then(function () {
@@ -123,7 +123,7 @@ function getWrapper(type) {
     } else {
         init();
     }
-    
+
     function getCallbackQueue() {
         var callbacks = [];
         callbacks.isDone = false;
@@ -142,11 +142,11 @@ function getWrapper(type) {
         }
         return callbacks;
     }
-    
+
     function loadScript (url) {
         var callbacks = getCallbackQueue();
         var script = DOCUMENT.createElement("script")
-        
+
         script.type = "text/javascript";
 
         if (script.readyState){ // IE
@@ -166,7 +166,7 @@ function getWrapper(type) {
 
         script.src = url;
         DOCUMENT.getElementsByTagName("head")[0].appendChild(script);
-        
+
         script.then = callbacks.then;
         return script;
     }
@@ -181,9 +181,9 @@ ____SPLIT_HERE____
     }
 );`.split('____SPLIT_HERE____');
 
-  getWrapper.header = templatePieces[0];
-  getWrapper.footer = templatePieces[1];
+    getWrapper.header = templatePieces[0];
+    getWrapper.footer = templatePieces[1];
 
-  return getWrapper[type];
+    return getWrapper[type];
 }
 

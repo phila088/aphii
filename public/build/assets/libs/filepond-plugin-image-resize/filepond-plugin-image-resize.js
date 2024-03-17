@@ -6,13 +6,13 @@
 
 /* eslint-disable */
 
-(function (global, factory) {
+(function(global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined'
         ? (module.exports = factory())
         : typeof define === 'function' && define.amd
-            ? define(factory)
-            : ((global = global || self), (global.FilePondPluginImageResize = factory()));
-})(this, function () {
+        ? define(factory)
+        : ((global = global || self), (global.FilePondPluginImageResize = factory()));
+})(this, function() {
     'use strict';
 
     // test if file is of type image
@@ -22,13 +22,13 @@
 
     var getImageSize = function getImageSize(url, cb) {
         var image = new Image();
-        image.onload = function () {
+        image.onload = function() {
             var width = image.naturalWidth;
             var height = image.naturalHeight;
             image = null;
-            cb({width: width, height: height});
+            cb({ width: width, height: height });
         };
-        image.onerror = function () {
+        image.onerror = function() {
             return cb(null);
         };
         image.src = url;
@@ -43,9 +43,9 @@
         var Type = utils.Type;
 
         // subscribe to file load and append required transformations
-        addFilter('DID_LOAD_ITEM', function (item, _ref2) {
+        addFilter('DID_LOAD_ITEM', function(item, _ref2) {
             var query = _ref2.query;
-            return new Promise(function (resolve, reject) {
+            return new Promise(function(resolve, reject) {
                 // get file reference
                 var file = item.file;
 
@@ -68,7 +68,7 @@
 
                 // if should not upscale, we need to determine the size of the file
                 var fileURL = URL.createObjectURL(file);
-                getImageSize(fileURL, function (size) {
+                getImageSize(fileURL, function(size) {
                     URL.revokeObjectURL(fileURL);
 
                     // something went wrong
@@ -148,7 +148,7 @@
     // fire pluginloaded event if running in browser, this allows registering the plugin when using async script tags
     var isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
     if (isBrowser) {
-        document.dispatchEvent(new CustomEvent('FilePond:pluginloaded', {detail: plugin}));
+        document.dispatchEvent(new CustomEvent('FilePond:pluginloaded', { detail: plugin }));
     }
 
     return plugin;

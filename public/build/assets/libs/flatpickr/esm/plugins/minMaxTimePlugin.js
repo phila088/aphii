@@ -1,15 +1,6 @@
-import {
-    calculateSecondsSinceMidnight,
-    compareDates,
-    compareTimes,
-    createDateFormatter,
-    parseSeconds,
-} from "../utils/dates";
-
+import { calculateSecondsSinceMidnight, compareDates, compareTimes, createDateFormatter, parseSeconds, } from "../utils/dates";
 function minMaxTimePlugin(config) {
-    if (config === void 0) {
-        config = {};
-    }
+    if (config === void 0) { config = {}; }
     var state = {
         formatDate: createDateFormatter({}),
         tableDateFormat: config.tableDateFormat || "Y-m-d",
@@ -18,14 +9,12 @@ function minMaxTimePlugin(config) {
             maxTime: undefined,
         },
     };
-
     function findDateTimeLimit(date) {
         if (config.table !== undefined) {
             return config.table[state.formatDate(date, state.tableDateFormat)];
         }
         return config.getTimeLimits && config.getTimeLimits(date);
     }
-
     return function (fp) {
         return {
             onReady: function () {
@@ -55,14 +44,17 @@ function minMaxTimePlugin(config) {
                             var result = parseSeconds(minBound);
                             fp.setDate(new Date(latest.getTime()).setHours(result[0], result[1], result[2]), false);
                         }
-                    } else {
+                    }
+                    else {
                         if (compareDates(latest, fp.config.maxTime, false) > 0) {
                             fp.setDate(new Date(latest.getTime()).setHours(fp.config.maxTime.getHours(), fp.config.maxTime.getMinutes(), fp.config.maxTime.getSeconds(), fp.config.maxTime.getMilliseconds()), false);
-                        } else if (compareDates(latest, fp.config.minTime, false) < 0) {
+                        }
+                        else if (compareDates(latest, fp.config.minTime, false) < 0) {
                             fp.setDate(new Date(latest.getTime()).setHours(fp.config.minTime.getHours(), fp.config.minTime.getMinutes(), fp.config.minTime.getSeconds(), fp.config.minTime.getMilliseconds()), false);
                         }
                     }
-                } else {
+                }
+                else {
                     var newMinMax = state.defaults || {
                         minTime: undefined,
                         maxTime: undefined,
@@ -73,7 +65,8 @@ function minMaxTimePlugin(config) {
                     var _a = fp.config, minTime = _a.minTime, maxTime = _a.maxTime;
                     if (minTime && compareTimes(latest, minTime) < 0) {
                         fp.setDate(new Date(latest.getTime()).setHours(minTime.getHours(), minTime.getMinutes(), minTime.getSeconds(), minTime.getMilliseconds()), false);
-                    } else if (maxTime && compareTimes(latest, maxTime) > 0) {
+                    }
+                    else if (maxTime && compareTimes(latest, maxTime) > 0) {
                         fp.setDate(new Date(latest.getTime()).setHours(maxTime.getHours(), maxTime.getMinutes(), maxTime.getSeconds(), maxTime.getMilliseconds()));
                     }
                 }
@@ -81,5 +74,4 @@ function minMaxTimePlugin(config) {
         };
     };
 }
-
 export default minMaxTimePlugin;

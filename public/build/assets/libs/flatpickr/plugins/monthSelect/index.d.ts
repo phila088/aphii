@@ -1,5 +1,4 @@
-import {Plugin} from "../../types/options";
-
+import { Plugin } from "../../types/options";
 export interface Config {
     shorthand: boolean;
     dateFormat: string;
@@ -7,16 +6,12 @@ export interface Config {
     theme: string;
     _stubbedCurrentMonth?: number;
 }
-
 export interface ElementDate extends Element {
     dateObj: Date;
 }
-
 export declare type MonthElement = HTMLSpanElement & {
     dateObj: Date;
     $i: number;
 };
-
 declare function monthSelectPlugin(pluginConfig?: Partial<Config>): Plugin;
-
 export default monthSelectPlugin;

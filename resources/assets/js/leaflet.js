@@ -71,7 +71,7 @@
         iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
         popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
-    L.marker([51.5, -0.09], { icon: greenIcon }).addTo(customicon);
+    L.marker([51.5, -0.09], {icon: greenIcon}).addTo(customicon);
 
     /* interactive chloropleth map */
     var geomap = L.map('interactive-map').setView([37.8, -96], 4);
@@ -79,6 +79,7 @@
         maxZoom: 18,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(geomap);
+
     // L.geoJson(statesData).addTo(geomap);
     function getColor(d) {
         return d > 1000 ? '#800026' :
@@ -90,6 +91,7 @@
                                 d > 10 ? '#FED976' :
                                     '#FFEDA0';
     }
+
     function style(feature) {
         return {
             fillColor: getColor(feature.properties.density),
@@ -101,6 +103,7 @@
             // fillColor: '#fff'
         };
     }
+
     // L.geoJson(statesData, { style: style }).addTo(geomap);
     function highlightFeature(e) {
         var layer = e.target;
@@ -114,9 +117,11 @@
             layer.bringToFront();
         }
     }
+
     function resetHighlight(e) {
         geojson.resetStyle(e.target);
     }
+
     function zoomToFeature(e) {
         map.fitBounds(e.target.getBounds());
     }

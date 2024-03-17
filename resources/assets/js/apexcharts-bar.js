@@ -290,12 +290,12 @@
                 3.9, 3.5, 3
             ]
         },
-        {
-            name: 'Females',
-            data: [-0.8, -1.05, -1.06, -1.18, -1.4, -2.2, -2.85, -3.7, -3.96, -4.22, -4.3, -4.4,
-            -4.1, -4, -4.1, -3.4, -3.1, -2.8
-            ]
-        }
+            {
+                name: 'Females',
+                data: [-0.8, -1.05, -1.06, -1.18, -1.4, -2.2, -2.85, -3.7, -3.96, -4.22, -4.3, -4.4,
+                    -4.1, -4, -4.1, -3.4, -3.1, -2.8
+                ]
+            }
         ],
         chart: {
             type: 'bar',
@@ -327,8 +327,7 @@
         yaxis: {
             min: -5,
             max: 5,
-            title: {
-            },
+            title: {},
         },
         tooltip: {
             shared: false,
@@ -827,7 +826,7 @@
             colors: ["#fff"],
             width: 0.2
         },
-        labels: Array.apply(null, { length: 39 }).map(function (el, index) {
+        labels: Array.apply(null, {length: 39}).map(function (el, index) {
             return index + 1;
         }),
         xaxis: {

@@ -1,5 +1,4 @@
-import {ACTION_TYPES} from '../constants';
-
+import { ACTION_TYPES } from '../constants';
 export interface AddItemAction {
     type: typeof ACTION_TYPES.ADD_ITEM;
     id: number;
@@ -11,20 +10,17 @@ export interface AddItemAction {
     placeholder: boolean;
     keyCode: number;
 }
-
 export interface RemoveItemAction {
     type: typeof ACTION_TYPES.REMOVE_ITEM;
     id: number;
     choiceId: number;
 }
-
 export interface HighlightItemAction {
     type: typeof ACTION_TYPES.HIGHLIGHT_ITEM;
     id: number;
     highlighted: boolean;
 }
-
-export declare const addItem: ({value, label, id, choiceId, groupId, customProperties, placeholder, keyCode,}: {
+export declare const addItem: ({ value, label, id, choiceId, groupId, customProperties, placeholder, keyCode, }: {
     id: number;
     value: string;
     label: string;

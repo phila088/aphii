@@ -1,17 +1,15 @@
-
 /*------------------------------------------------------------------
 [Master Stylesheet]
 
 Project                            :   Velvet - Laravel Bootstrap 5 Premium Admin & Dashboard Template
 Create Date                        :   24/01/2024
-Author & Copyright Ownership       :   Spruko Technologies Private Limited 
+Author & Copyright Ownership       :   Spruko Technologies Private Limited
 Author URL                         :   https://themeforest.net/user/spruko
 Support	                           :   https://support.spruko.com/
 License Details                    :   https://spruko.com/licenses-details
 ------------------------------------------------------------------*/
 
-
-/* Table Of Content 
+/* Table Of Content
 variables
 switcher
 accordion
@@ -63,7 +61,6 @@ opacity
 typography
 */
 
-
 /* FONT */
 
 /* Montserrat */
@@ -71,7 +68,6 @@ typography
 // @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap");
 // @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
-
 
 @import "variables";
 @import "switcher";
@@ -125,7 +121,6 @@ typography
 @import "pages/file-manager";
 @import "pages/landing";
 @import "pages/mail";
-
 
 /* UTILITIES */
 @import "util/avatars";

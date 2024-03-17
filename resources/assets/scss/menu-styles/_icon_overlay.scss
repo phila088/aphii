@@ -3,12 +3,15 @@
         &:not([data-icon-overlay="open"]) {
             .app-sidebar {
                 width: 5rem;
+
                 .main-sidebar-header {
                     width: 5rem;
+
                     .header-logo {
                         .toggle-logo {
                             display: block;
                         }
+
                         .desktop-dark,
                         .desktop-logo,
                         .toggle-dark {
@@ -16,22 +19,27 @@
                         }
                     }
                 }
+
                 .category-name,
                 .side-menu__label,
                 .side-menu__angle {
                     display: none;
                 }
+
                 .slide.has-sub.open {
                     .slide-menu {
                         display: none !important;
                     }
                 }
+
                 .side-menu__icon {
                     margin-inline-end: 0;
                 }
+
                 .slide__category {
                     padding: 1.2rem 1.65rem;
                     position: relative;
+
                     &:before {
                         content: "";
                         position: absolute;
@@ -46,10 +54,12 @@
                         opacity: 1;
                     }
                 }
+
                 .side-menu__item .badge {
                     display: none;
                 }
             }
+
             .side-menu__item {
                 justify-content: center;
             }
@@ -61,7 +71,7 @@
             margin-inline-start: 5rem;
         }
         .page-header-breadcrumb {
-            padding-block-start: 0.2rem  !important;
+            padding-block-start: 0.2rem !important;
             padding-inline-end: 1.4rem !important;
             padding-block-end: 3rem !important;
             padding-inline-start: 6.3rem !important;
@@ -70,12 +80,15 @@
         &[data-icon-overlay="open"] {
             .app-sidebar {
                 width: 15rem;
+
                 .main-sidebar-header {
                     width: 15rem;
+
                     .header-logo {
                         .desktop-logo {
                             display: block !important;
                         }
+
                         .desktop-dark,
                         .toggle-logo,
                         .toggle-dark {
@@ -83,30 +96,36 @@
                         }
                     }
                 }
+
                 .side-menu__item .badge {
                     display: inline;
                 }
+
                 .side-menu__item {
                     justify-content: flex-start;
                 }
+
                 .side-menu__icon {
                     margin-inline-end: 0.625rem;
                 }
+
                 .slide__category {
                     padding: 0.75rem 1.65rem;
+
                     &:before {
                         display: none;
                     }
                 }
             }
         }
-        
+
         &[data-theme-mode="dark"] {
             .main-sidebar-header {
                 .header-logo {
                     .toggle-dark {
                         display: block;
                     }
+
                     .desktop-dark,
                     .desktop-logo,
                     .toggle-logo {
@@ -114,19 +133,21 @@
                     }
                 }
             }
+
             &[data-icon-overlay="open"] {
                 .main-sidebar-header {
                     .header-logo {
                         .desktop-dark {
                             display: block;
                         }
+
                         .toggle-dark,
                         .desktop-logo,
                         .toggle-logo {
                             display: none;
                         }
                     }
-                }   
+                }
             }
         }
     }
@@ -134,18 +155,19 @@
 
 [data-vertical-style="overlay"] {
     @media (min-width: 992px) {
-      &[data-header-position="rounded"] {
-        .app-header.sticky-pin {
-          margin-inline-start: 16rem;
-          width: calc(100% - 17rem);
-          padding-inline-start: 0;
+        &[data-header-position="rounded"] {
+            .app-header.sticky-pin {
+                margin-inline-start: 16rem;
+                width: calc(100% - 17rem);
+                padding-inline-start: 0;
+            }
+
+            &[data-toggled="icon-overlay-close"] {
+                .app-header.sticky-pin {
+                    margin-inline: 6rem;
+                    width: calc(100% - 7rem);
+                }
+            }
         }
-        &[data-toggled="icon-overlay-close"] {
-        .app-header.sticky-pin {
-            margin-inline: 6rem;
-            width: calc(100% - 7rem);
-          }
-        }
-      }
     }
-  }
+}

@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    
+
     const pickrContainer = document.querySelector('.pickr-container');
     const themeContainer = document.querySelector('.theme-container');
     const pickrContainer1 = document.querySelector('.pickr-container1');

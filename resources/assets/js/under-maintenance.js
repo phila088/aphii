@@ -18,6 +18,7 @@ function countDown() {
         clearInterval(stop)
     }
 }
+
 let stop = setInterval(() => {
     countDown();
 }, 1000);

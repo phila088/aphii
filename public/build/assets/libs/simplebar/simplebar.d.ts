@@ -38,17 +38,13 @@ declare namespace SimpleBar {
 
 declare class SimpleBar {
     static removeObserver(): void;
-
     static instances: Pick<WeakMap<HTMLElement, SimpleBar>, 'get' | 'has'>;
 
     constructor(element: HTMLElement, options?: SimpleBar.Options);
 
     recalculate(): void;
-
     getScrollElement(): HTMLElement;
-
     getContentElement(): HTMLElement;
-
     unMount(): void;
 
     el: HTMLElement;

@@ -1,7 +1,7 @@
 export interface ICollapse {
-	options?: {};
-	
-	show(): void;
-	
-	hide(): void;
+    options?: {};
+
+    show(): void;
+
+    hide(): void;
 }

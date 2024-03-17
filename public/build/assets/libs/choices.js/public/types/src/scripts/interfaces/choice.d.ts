@@ -13,5 +13,4 @@ export interface Choice {
     score?: number;
     choices?: Choice[];
 }
-
 //# sourceMappingURL=choice.d.ts.map

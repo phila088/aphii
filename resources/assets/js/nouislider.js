@@ -160,6 +160,7 @@
         lockedState = !lockedState;
         this.textContent = lockedState ? 'unlock' : 'lock';
     });
+
     function crossUpdate(value, slider) {
 
         // If the sliders aren't interlocked, don't
@@ -179,6 +180,7 @@
         // Set the value
         slider.noUiSlider.set(value);
     }
+
     noUiSlider.create(slider1, {
         start: 60,
 
@@ -204,12 +206,14 @@
     slider2.noUiSlider.on('update', function (values, handle) {
         slider2Value.innerHTML = values[handle];
     });
+
     function setLockedValues() {
         lockedValues = [
             Number(slider1.noUiSlider.get()),
             Number(slider2.noUiSlider.get())
         ];
     }
+
     slider1.noUiSlider.on('change', setLockedValues);
     slider2.noUiSlider.on('change', setLockedValues);
     slider1.noUiSlider.on('slide', function (values, handle) {
@@ -231,11 +235,12 @@
         }
     });
     mergeTooltips(mergingTooltipSlider, 15, ' - ');
+
     /**
- * @param slider HtmlElement with an initialized slider
- * @param threshold Minimum proximity (in percentages) to merge tooltips
- * @param separator String joining tooltips
- */
+     * @param slider HtmlElement with an initialized slider
+     * @param threshold Minimum proximity (in percentages) to merge tooltips
+     * @param separator String joining tooltips
+     */
     function mergeTooltips(slider, threshold, separator) {
         var textIsRtl = getComputedStyle(slider).direction === 'rtl';
         var isRtl = slider.noUiSlider.options.direction === 'rtl';
@@ -386,13 +391,15 @@
             max: 100
         },
         start: [50],
-        pips: { mode: 'count', values: 5 }
+        pips: {mode: 'count', values: 5}
     });
     var pips = pipsSlider.querySelectorAll('.noUi-value');
+
     function clickOnPip() {
         var value = Number(this.getAttribute('data-value'));
         pipsSlider.noUiSlider.set(value);
     }
+
     for (var i = 0; i < pips.length; i++) {
         // For this example. Do this in CSS!
         pips[i].style.cursor = 'pointer';

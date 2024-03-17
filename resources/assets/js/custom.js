@@ -31,10 +31,10 @@
             html.removeAttribute('data-default-header-styles');
             if (!localStorage.getItem("primaryRGB")) {
                 html.setAttribute("style", "");
-              }
+            }
             if (document.querySelector("#switcher-canvas")) {
-            document.querySelector('#switcher-light-theme').checked = true;
-            document.querySelector('#switcher-menu-light').checked = true;
+                document.querySelector('#switcher-light-theme').checked = true;
+                document.querySelector('#switcher-menu-light').checked = true;
             }
             document.querySelector('html').style.removeProperty('--body-bg-rgb', localStorage.bodyBgRGB);
             html.style.removeProperty('--light-rgb');
@@ -42,14 +42,14 @@
             html.style.removeProperty('--input-border');
 
             if (document.querySelector("#switcher-canvas")) {
-            document.querySelector('#switcher-header-gradient').checked = true;
-            document.querySelector('#switcher-menu-light').checked = true;
-            document.querySelector('#switcher-light-theme').checked = true;
-            document.querySelector("#switcher-background4").checked = false;
-            document.querySelector("#switcher-background3").checked = false;
-            document.querySelector("#switcher-background2").checked = false;
-            document.querySelector("#switcher-background1").checked = false;
-            document.querySelector("#switcher-background").checked = false;
+                document.querySelector('#switcher-header-gradient').checked = true;
+                document.querySelector('#switcher-menu-light').checked = true;
+                document.querySelector('#switcher-light-theme').checked = true;
+                document.querySelector("#switcher-background4").checked = false;
+                document.querySelector("#switcher-background3").checked = false;
+                document.querySelector("#switcher-background2").checked = false;
+                document.querySelector("#switcher-background1").checked = false;
+                document.querySelector("#switcher-background").checked = false;
             }
             localStorage.removeItem("velvetdarktheme");
             localStorage.removeItem("velvetMenu");
@@ -68,19 +68,19 @@
             html.removeAttribute('data-default-header-styles');
             if (!localStorage.getItem("primaryRGB")) {
                 html.setAttribute("style", "");
-              }
+            }
             if (document.querySelector("#switcher-canvas")) {
-            document.querySelector('#switcher-dark-theme').checked = true;
-            document.querySelector('#switcher-menu-dark').checked = true;
-            document.querySelector('#switcher-header-gradient').checked = true;
-            document.querySelector('#switcher-menu-dark').checked = true;
-            document.querySelector('#switcher-header-dark').checked = true;
-            document.querySelector('#switcher-dark-theme').checked = true;
-            document.querySelector("#switcher-background4").checked = false
-            document.querySelector("#switcher-background3").checked = false
-            document.querySelector("#switcher-background2").checked = false
-            document.querySelector("#switcher-background1").checked = false
-            document.querySelector("#switcher-background").checked = false
+                document.querySelector('#switcher-dark-theme').checked = true;
+                document.querySelector('#switcher-menu-dark').checked = true;
+                document.querySelector('#switcher-header-gradient').checked = true;
+                document.querySelector('#switcher-menu-dark').checked = true;
+                document.querySelector('#switcher-header-dark').checked = true;
+                document.querySelector('#switcher-dark-theme').checked = true;
+                document.querySelector("#switcher-background4").checked = false
+                document.querySelector("#switcher-background3").checked = false
+                document.querySelector("#switcher-background2").checked = false
+                document.querySelector("#switcher-background1").checked = false
+                document.querySelector("#switcher-background").checked = false
             }
             localStorage.setItem("velvetdarktheme", "true");
             localStorage.setItem("velvetMenu", "dark");
@@ -90,6 +90,7 @@
             localStorage.removeItem("bodyBgRGB");
         }
     }
+
     let layoutSetting = document.querySelector(".layout-setting")
     layoutSetting.addEventListener("click", toggleTheme);
     /* header theme toggle */
@@ -176,10 +177,10 @@
     /* back to top */
 
     var myHeadernotification = document.getElementById('header-notification-scroll');
-    new SimpleBar(myHeadernotification, { autoHide: true });
+    new SimpleBar(myHeadernotification, {autoHide: true});
 
     var myHeaderCart = document.getElementById('header-cart-items-scroll');
-    new SimpleBar(myHeaderCart, { autoHide: true });
+    new SimpleBar(myHeaderCart, {autoHide: true});
     /* header dropdowns scroll */
 
 
@@ -189,15 +190,16 @@
     document.body.addEventListener('click', removeSearchResult);
 })();
 
-function showSearchResult(event){
+function showSearchResult(event) {
     event.preventDefault();
     event.stopPropagation();
     let headerSearch = document.querySelector('#headersearch');
     headerSearch.classList.add('searchdrop');
 }
-function removeSearchResult(event){
+
+function removeSearchResult(event) {
     let headerSearch = document.querySelector('#headersearch');
-    if(event.target.classList.contains('header-search') || event.target.closest('.header-search')){
+    if (event.target.classList.contains('header-search') || event.target.closest('.header-search')) {
         return;
     }
     headerSearch.classList.remove('searchdrop');
@@ -205,7 +207,7 @@ function removeSearchResult(event){
 
 /* full screen */
 var elem = document.documentElement;
-window.openFullscreen = function() {
+window.openFullscreen = function () {
     let open = document.querySelector('.full-screen-open');
     let close = document.querySelector('.full-screen-close');
 
@@ -220,8 +222,7 @@ window.openFullscreen = function() {
         close.classList.add('d-block')
         close.classList.remove('d-none')
         open.classList.add('d-none')
-    }
-    else {
+    } else {
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.webkitExitFullscreen) { /* Safari */

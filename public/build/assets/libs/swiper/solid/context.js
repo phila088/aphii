@@ -1,10 +1,9 @@
-import {createContext, useContext} from 'solid-js';
-
+import { createContext, useContext } from 'solid-js';
 export const SwiperSlideContext = createContext(null);
 export const useSwiperSlide = () => {
-    return useContext(SwiperSlideContext);
+  return useContext(SwiperSlideContext);
 };
 export const SwiperContext = createContext(null);
 export const useSwiper = () => {
-    return useContext(SwiperContext);
+  return useContext(SwiperContext);
 };

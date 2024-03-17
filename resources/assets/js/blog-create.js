@@ -3,16 +3,16 @@
 
     // for blog content
     var toolbarOptions = [
-        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-        [{ 'font': [] }],
+        [{'header': [1, 2, 3, 4, 5, 6, false]}],
+        [{'font': []}],
         ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
         ['blockquote', 'code-block'],
 
-        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{'header': 1}, {'header': 2}],               // custom button values
+        [{'list': 'ordered'}, {'list': 'bullet'}],
 
-        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-        [{ 'align': [] }],
+        [{'color': []}, {'background': []}],          // dropdown with defaults from theme
+        [{'align': []}],
 
         ['image', 'video'],
         ['clean']                                         // remove formatting button
@@ -27,7 +27,7 @@
     // for blog images
     const MultipleElement = document.querySelector('.blog-images');
     FilePond.create(MultipleElement,);
-    
+
     // for publish date picker
     flatpickr("#publish-date", {});
 

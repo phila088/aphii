@@ -1,7 +1,7 @@
 export interface ITooltip {
-	options?: {};
-	
-	show(): void;
-	
-	hide(): void;
+    options?: {};
+
+    show(): void;
+
+    hide(): void;
 }

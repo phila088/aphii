@@ -21,16 +21,16 @@
 
     // for product features
     var toolbarOptions = [
-        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-        [{ 'font': [] }],
+        [{'header': [1, 2, 3, 4, 5, 6, false]}],
+        [{'font': []}],
         ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
         ['blockquote', 'code-block'],
 
-        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{'header': 1}, {'header': 2}],               // custom button values
+        [{'list': 'ordered'}, {'list': 'bullet'}],
 
-        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-        [{ 'align': [] }],
+        [{'color': []}, {'background': []}],          // dropdown with defaults from theme
+        [{'align': []}],
         ['clean']                                         // remove formatting button
     ];
     var quill = new Quill('#product-features', {
@@ -58,9 +58,9 @@
     FilePond.create(MultipleElement1,);
 
     // for documents upload
-    
-     // for image uploads
-     FilePond.registerPlugin(
+
+    // for image uploads
+    FilePond.registerPlugin(
         FilePondPluginImagePreview,
         FilePondPluginImageExifOrientation,
         FilePondPluginFileValidateSize,
