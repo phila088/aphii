@@ -189,6 +189,19 @@ Route::prefix('employee')
     ->middleware(['auth', 'verified'])
     ->name('employee.')
     ->group(function () {
+        Route::prefix('brands')
+            ->name('brands.')
+            ->controller(BrandController::class)
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+
+                Route::get('create', 'create')->name('create');
+
+                Route::get('view/{id}', 'view')->name('view');
+
+                Route::get('edit/{id}', 'edit')->name('edit');
+            });
+
         Route::prefix('clients')
             ->name('clients.')
             ->controller(ClientController::class)

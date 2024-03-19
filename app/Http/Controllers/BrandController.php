@@ -10,12 +10,22 @@ class BrandController extends Controller
 {
     public function index(): View
     {
-        return view('brands.index');
+        return view('employee.brands.index');
     }
 
-    public function view(): View
+    public function create(): View
     {
-        return view('brands.view');
+        return view('employee.brands.create');
+    }
+
+    public function view($id): View
+    {
+        return view('employee.brands.view', ['id' => $id]);
+    }
+
+    public function edit($id): View
+    {
+        return view('employee.brands.edit', ['id' => $id]);
     }
 
     public function store(Request $request)

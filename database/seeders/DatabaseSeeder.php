@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             PaymentMethodSeeder::class,
             ContactDepartmentSeeder::class,
             WorkOrderPrioritySeeder::class,
+            StatusCodeSeeder::class,
         ]);
     }
 }

@@ -1303,7 +1303,23 @@ class CitySeeder14 extends Seeder
             ['id' => '33786', 'state_id' => '1', 'county_id' => '25', 'name' => 'Metlakatla', 'zip' => '99926', 'latitude' => '55.12617', 'longitude' => '-131.48928', 'timezone' => 'America/Metlakatla', 'deleted_at' => null, 'created_at' => now(), 'updated_at' => now()],
             ['id' => '33787', 'state_id' => '1', 'county_id' => '25', 'name' => 'Point Baker', 'zip' => '99927', 'latitude' => '56.33305', 'longitude' => '-133.60044', 'timezone' => 'America/Sitka', 'deleted_at' => null, 'created_at' => now(), 'updated_at' => now()],
             ['id' => '33788', 'state_id' => '1', 'county_id' => '30', 'name' => 'Wrangell', 'zip' => '99929', 'latitude' => '56.36089', 'longitude' => '-132.00635', 'timezone' => 'America/Sitka', 'deleted_at' => null, 'created_at' => now(), 'updated_at' => now()],
-
         ]);
+
+        $cities = DB::table('cities')
+            ->select('id', 'zip')
+            ->whereRaw('CHAR_LENGTH(zip) < 5')
+            ->limit(3000)
+            ->get();
+
+        if (count($cities) > 0) {
+            foreach ($cities as $city) {
+                $zip = str_pad($city->zip, 5, '0', STR_PAD_LEFT);
+                DB::table('cities')
+                    ->where('id', '=', $city->id)
+                    ->update([
+                        'zip' => $zip
+                    ]);
+            }
+        }
     }
 }

@@ -538,10 +538,12 @@ public function store()
     <div class="tw-w-full tw-mx-auto">
         <form wire:submit="store">
             <div class="row">
-
-            </div>
-            <div class="row">
-                <div class="col-md-3 mb-4 md:mb-0">
+                <legend>Convert or Copy</legend>
+                <p class="tw-mb-6">
+                    You may select a client that we are attempting to onboard to prefill some of the fields, or you can
+                    copy a previously created client to make filling the form out faster.
+                </p>
+                <div class="col-md-3">
                     <div class="form-floating has-validation">
                         @if (empty($potentialClients[0]))
                             <select
@@ -604,11 +606,14 @@ public function store()
                         @endif
                     </div>
                 </div>
+                <hr class="tw-border-gray-300 tw-my-6">
             </div>
             <div class="row">
-                <hr class="tw-my-6 border-gray-400">
-            </div>
-            <div class="row">
+                <legend>Basic client data</legend>
+                <p>
+                    The associated brand, the name of the company, etc.
+                </p>
+                <hr class="tw-my-6 tw-border-gray-300">
                 <div class="col-md-2">
                     <div class="form-floating tw-mb-4">
                         @if (empty($brands[0]))

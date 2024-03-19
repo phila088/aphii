@@ -8,9 +8,9 @@
 
         <!-- PAGE HEADER -->
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
-            <h4 class="fw-medium mb-0">{{ __('Create') }}</h4>
+            <h4 class="fw-medium tw-text-xl mb-0">{{ __('Create Brand') }}</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('employee.clients.index') }}" class="tw-text-white-50">{{ __('Clients') }}</a>
+                <li class="breadcrumb-item"><a href="{{ route('employee.brands.index') }}" class="text-white-50">{{ __('Brands') }}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Create') }}</li>
             </ol>
@@ -24,16 +24,17 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="card custom-card">
-                            <div class="card-body p-4">
-                                <div class="card-title">
-                                    <h1 class="text-lg">Create a client</h1>
+                            <div class="card-header tw-flex tw-justify-between tw-items-center">
+                                <h1>Create a brand</h1>
+                                <div class="tw-flex tw-items-center tw-gap-x-1">
+                                    <a href="{{ route('employee.brands.index') }}" class="btn btn-danger btn-sm">
+                                        Cancel
+                                        <i class="bi bi-x-circle"></i>
+                                    </a>
                                 </div>
-                                <div class="py-8">
-                                    <hr class="border-gray-400"/>
-                                </div>
-                                <div class="card-body">
-                                    <livewire:employee.clients.create />
-                                </div>
+                            </div>
+                            <div class="card-body tw-p-4">
+                                <livewire:employee.brands.create />
                             </div>
                         </div>
                     </div>

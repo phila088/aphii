@@ -81,11 +81,11 @@
         },
         table: 'dataTable tw-min-w-full tw-text-sm tw-align-middle tw-whitespace-nowrap tw-divide-y tw-divide-gray-200 dark:tw-divide-gray-700 tw-mb-8',
         thead: {
-            row: 'tw-text-center',
-            cell: 'tw-px-6 tw-py-2 tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase'
+            row: '',
+            cell: 'tw-px-6 tw-py-2 tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-text-center'
         },
         tbody: {
-            row: 'even:tw-bg-gray-50 dark:even:tw-bg-gray-900/50 tw-text-center',
+            row: 'even:tw-bg-gray-50 dark:even:tw-bg-gray-900/50',
             cell: 'tw-px-6 tw-py-2'
         },
         tfoot: {

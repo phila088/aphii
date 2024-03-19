@@ -79,9 +79,6 @@
     @include('layouts.components.sidebar')
 
     <!-- END SIDEBAR -->
-    <div class="page-header-breadcrumb">
-
-    </div>
     <!-- MAIN-CONTENT -->
     @yield('content')
 

@@ -2888,6 +2888,10 @@
     content: "\f3cc";
 }
 
+.bi-floppy::before {
+    content: "\f7d8"
+}
+
 .bi-flower1::before {
     content: "\f3cd";
 }

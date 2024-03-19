@@ -34,7 +34,16 @@ class ClientController extends Controller
 
     public function edit($id): View
     {
-        return view('employee.clients.edit', ['id' => $id]);
+        $client = Client::where('id', '=', $id)
+            ->with([
+                'user',
+                'clientPortal',
+                'clientRate',
+                'paymentTerm'
+            ])
+            ->limit(1)
+            ->firstOrFail();
+        return view('employee.clients.edit', ['client' => $client]);
     }
 
     public function store(Request $request)

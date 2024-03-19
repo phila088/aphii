@@ -5,26 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\ModelStatus\HasStatuses;
 
 class Brand extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasStatuses;
 
     protected $fillable = [
         'user_id',
         'registered_state_id',
         'legal_name',
         'dba',
+        'abbreviation',
         'logo_path',
         'legal_entity_type',
-        'not_for_profit',
-        'company_owned_trucks',
-        'company_technicians',
-        'company_administrative_employees',
-        'company_years_operating',
-        'technicians_use_smart_phones',
-        'technicians_wear_uniforms',
-        'union_contractor',
         'commercial',
         'residential',
         'office_hours_monday_open',
@@ -55,6 +49,20 @@ class Brand extends Model
         'service_hours_saturday_close',
         'service_hours_sunday_open',
         'service_hours_sunday_close',
+        'after_hours_monday_open',
+        'after_hours_monday_close',
+        'after_hours_tuesday_open',
+        'after_hours_tuesday_close',
+        'after_hours_wednesday_open',
+        'after_hours_wednesday_close',
+        'after_hours_thursday_open',
+        'after_hours_thursday_close',
+        'after_hours_friday_open',
+        'after_hours_friday_close',
+        'after_hours_saturday_open',
+        'after_hours_saturday_close',
+        'after_hours_sunday_open',
+        'after_hours_sunday_close',
         'holiday_hours_monday_open',
         'holiday_hours_monday_close',
         'holiday_hours_tuesday_open',
@@ -69,6 +77,22 @@ class Brand extends Model
         'holiday_hours_saturday_close',
         'holiday_hours_sunday_open',
         'holiday_hours_sunday_close',
+        'phone_primary',
+        'phone_ap',
+        'phone_ar',
+        'phone_client_relations',
+        'phone_customer_service',
+        'phone_projects',
+        'phone_quoting',
+        'phone_sales',
+        'email_primary',
+        'email_ap',
+        'email_ar',
+        'email_client_relations',
+        'email_customer_service',
+        'email_projects',
+        'email_quoting',
+        'email_sales',
         'physical_address_pre_direction',
         'physical_address_building_number',
         'physical_address_street_name',
@@ -97,6 +121,7 @@ class Brand extends Model
         'remittance_address_state',
         'remittance_address_zip',
         'internal_work_order_number_prefix',
+        'fein',
     ];
 
     public function user(): BelongsTo

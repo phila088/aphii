@@ -10,9 +10,9 @@
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
             <h4 class="fw-medium mb-0">{{ __('Edit Client') }}</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);" class="text-white-50">{{ __('Crumb 1') }}</a>
+                <li class="breadcrumb-item"><a href="{{ route('employee.clients.index') }}" class="text-white-50">{{ __('Client') }}</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Active Crumb') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit') }}</li>
             </ol>
         </div>
         <!-- END PAGE HEADER -->
