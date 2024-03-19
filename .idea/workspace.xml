@@ -5,47 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8deceba8-5e3e-48a9-8e0e-c3ebc08a3796" name="Changes" comment="Update brand functionality. 90% brand entry complete. Optimized JS for brand">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/StatusCodeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/StatusCode.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/StatusCodePolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2024_03_18_121659_create_status_codes_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/StatusCodeSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/en/selects.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/assets/icon-fonts/bootstrap-icons/icons/icons/floppy.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/icon-fonts/bootstrap-icons/icons/icons/floppy.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/brands/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/brands/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/brands/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/brands/view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Legal Agreement &amp; Copyright Notice.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BrandController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Brand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/City.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/City.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_200000_create_brands_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200000_create_brands_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CitySeeder14.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CitySeeder14.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/assets/app-WhVhPW-q.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/assets/app-cX5zhv3P.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/assets/icon-fonts/bootstrap-icons/icons/bootstrap-icons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/assets/icon-fonts/bootstrap-icons/icons/bootstrap-icons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/assets/icon-fonts/bootstrap-icons/icons/font/bootstrap-icons.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/assets/icon-fonts/bootstrap-icons/icons/font/bootstrap-icons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/dataTables.tailwindcss.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/dataTables.tailwindcss.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/icon-fonts/bootstrap-icons/icons/bootstrap-icons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/icon-fonts/bootstrap-icons/icons/bootstrap-icons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/icon-fonts/bootstrap-icons/icons/font/bootstrap-icons.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/icon-fonts/bootstrap-icons/icons/font/bootstrap-icons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/clients/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/clients/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/clients/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/clients/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/clients/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/clients/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/brands/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/brands/view.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +215,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
@@ -315,7 +279,7 @@
       <workItem from="1710329644665" duration="84892000" />
       <workItem from="1710476982560" duration="2753000" />
       <workItem from="1710481047906" duration="82209000" />
-      <workItem from="1710741419892" duration="41900000" />
+      <workItem from="1710741419892" duration="58587000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -461,7 +425,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710649335599</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Update brand functionality. 90% brand entry complete. Optimized JS for brand">
+      <option name="closed" value="true" />
+      <created>1710807644282</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1710807644283</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -498,7 +470,8 @@
     <MESSAGE value="Improve README.md and refine workspace settings&#10;&#10;Updated the README.md file by adding a project logo, badges, and license information to enhance its visual representation and provide comprehensive details about the project. Cleaned up the .idea workspace settings to promote improved developer collaboration." />
     <MESSAGE value="hmm" />
     <MESSAGE value="Recommit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Recommit" />
+    <MESSAGE value="Update brand functionality. 90% brand entry complete. Optimized JS for brand" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update brand functionality. 90% brand entry complete. Optimized JS for brand" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

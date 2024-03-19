@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BrandController extends Controller
 {
@@ -18,9 +19,14 @@ class BrandController extends Controller
         return view('employee.brands.create');
     }
 
-    public function view($id): View
+    public function view($id)
     {
-        return view('employee.brands.view', ['id' => $id]);
+        try {
+            $brand = Brand::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('employee.brands.index');
+        }
+        return view('employee.brands.view', ['brand' => $brand]);
     }
 
     public function edit($id): View
