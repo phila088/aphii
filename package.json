@@ -88,6 +88,7 @@
         "sweetalert2": "^11.4.19",
         "swiper": "^8.4.4",
         "title-editorjs": "^1.0.2",
+        "toastr": "^2.1.4",
         "wnumb": "^1.2.0"
     }
 }

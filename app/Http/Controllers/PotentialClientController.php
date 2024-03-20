@@ -4,14 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Models\PotentialClient;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PotentialClientController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        $this->authorize('viewAny', PotentialClient::class);
+        return view('employee.potential-clients.index');
+    }
 
-        return PotentialClient::all();
+    public function create(): View
+    {
+        return view('employee.potential-clients.create');
+    }
+
+    public function view($id)
+    {
+        try {
+            $potentialClient = PotentialClient::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            request()->session()->flash('toast', 'Potential client could not be found.');
+            request()->session()->flash('toast_type', 'error');
+
+            return redirect()->route('employee.potential-clients.index');
+        }
+        return view('employee.potential-clients.view', ['potentialClient' => $potentialClient]);
     }
 
     public function store(Request $request)

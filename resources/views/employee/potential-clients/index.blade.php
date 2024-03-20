@@ -8,11 +8,9 @@
 
         <!-- PAGE HEADER -->
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
-            <h4 class="fw-medium tw-text-xl mb-0">{{ __('View') }}</h4>
+            <h4 class="fw-medium tw-text-xl mb-0">{{ __('Potential Clients') }}</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('employee.brands.index') }}" class="text-white-50">{{ __('Brands') }}</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('View') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Potential Clients') }}</li>
             </ol>
         </div>
         <!-- END PAGE HEADER -->
@@ -25,16 +23,16 @@
                     <div class="col-xl-12">
                         <div class="card custom-card">
                             <div class="card-header tw-flex tw-justify-between tw-items-center">
-                                <h1>{{ $brand->legal_name }}</h1>
+                                <h1>View All</h1>
                                 <div class="tw-flex tw-items-center tw-gap-x-1">
-                                    <a href="{{ route('employee.brands.edit', ['id' => $brand->id]) }}" class="btn btn-primary btn-sm">
-                                        Edit
-                                        <i class="bi bi-pencil"></i>
+                                    <a href="{{ route('employee.potential-clients.create') }}" class="btn btn-primary btn-sm">
+                                        Create
+                                        <i class="bi bi-plus-lg"></i>
                                     </a>
                                 </div>
                             </div>
                             <div class="card-body tw-p-4">
-                                @livewire('employee.brands.view', ['brand' => $brand])
+                                <livewire:employee.potential-clients.index />
                             </div>
                         </div>
                     </div>

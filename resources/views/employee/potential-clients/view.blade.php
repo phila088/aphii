@@ -8,11 +8,11 @@
 
         <!-- PAGE HEADER -->
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
-            <h4 class="fw-medium tw-text-xl mb-0">{{ __('Edit Brand') }}</h4>
+            <h4 class="fw-medium mb-0">{{ __('View') }}</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('employee.brands.index') }}" class="text-white-50">{{ __('Brands') }}</a>
+                <li class="breadcrumb-item"><a href="javascript:void(0);" class="text-white-50">{{ __('Potential Clients') }}</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Active Crumb') }}</li>
             </ol>
         </div>
         <!-- END PAGE HEADER -->
@@ -24,17 +24,16 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="card custom-card">
-                            <div class="card-header tw-flex tw-justify-between tw-items-center">
-                                <h1>{{ $brand->legal_name }}</h1>
-                                <div class="tw-flex tw-items-center tw-gap-x-1">
-                                    <a href="{{ route('employee.brands.index') }}" class="btn btn-danger btn-sm">
-                                        Cancel
-                                        <i class="bi bi-x-circle"></i>
-                                    </a>
-                                </div>
-                            </div>
                             <div class="card-body tw-p-4">
-                                @livewire('employee.brands.edit', ['brand' => $brand])
+                                <div class="card-title">
+                                    <h1 class="tw-text-lg">Header</h1>
+                                </div>
+                                <div class="tw-py-8">
+                                    <hr class="tw-border-gray-400"/>
+                                </div>
+                                <div class="card-body">
+                                    @livewire('employee.potential-clients.view', ['potentialClient', $potentialClient])
+                                </div>
                             </div>
                         </div>
                     </div>

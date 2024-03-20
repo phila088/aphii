@@ -35,6 +35,7 @@ return new class extends Migration {
             $table->string('tiktok')->nullable();
             $table->string('twitter')->nullable();
             $table->string('url')->nullable();
+            $table->string('timezone')->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

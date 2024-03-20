@@ -53,9 +53,7 @@ class PotentialClient extends Model
         'required_trades',
         'primary_location_locales',
         'average_do_not_exceed',
-        'on_site_protocol',
-        'company_structure',
-        'on_site_contact',
+        'onsite_protocol',
         'complete',
         'converted_to_client',
     ];

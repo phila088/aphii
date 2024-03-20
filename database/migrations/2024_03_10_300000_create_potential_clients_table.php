@@ -52,9 +52,7 @@ return new class extends Migration {
             $table->string('required_trades', 500)->nullable();
             $table->string('primary_location_locales', 500)->nullable();
             $table->string('average_do_not_exceed', 150)->nullable();
-            $table->string('on_site_protocol', 500)->nullable();
-            $table->string('company_structure', 500)->nullable();
-            $table->string('on_site_contact', 500)->nullable();
+            $table->string('onsite_protocol', 500)->nullable();
             $table->boolean('complete')->default(false);
             $table->boolean('converted_to_client')->default(false);
             $table->softDeletes();

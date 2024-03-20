@@ -29,9 +29,14 @@ class BrandController extends Controller
         return view('employee.brands.view', ['brand' => $brand]);
     }
 
-    public function edit($id): View
+    public function edit($id)
     {
-        return view('employee.brands.edit', ['id' => $id]);
+        try {
+            $brand = Brand::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('employee.brands.index');
+        }
+        return view('employee.brands.edit', ['brand' => $brand]);
     }
 
     public function store(Request $request)

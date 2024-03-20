@@ -43,6 +43,16 @@
         <!-- BOOTSTRAP JS -->
         <script src="{{ asset('build/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
+        <script>
+            function DisableBackButton(){
+                window.history.forward()
+            }
+            DisableBackButton();
+            window.onload = DisableBackButton;
+            window.onpageshow = function(evt) { if (evt.persisted) DisableBackButton() }
+            window.onload = function() {void(0)}
+        </script>
+
         @yield('scripts')
 
         <!-- END SCRIPTS -->

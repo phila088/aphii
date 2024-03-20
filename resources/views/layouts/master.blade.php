@@ -38,20 +38,16 @@
 
     <!-- MAIN JS -->
     <script src="{{asset('build/assets/main.js')}}"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
 
     @yield('styles')
 
 </head>
 
-@if(!empty(session()->get('toast')))
-
-    <body onload="makeToast('{{ session()->get('toast')['type'] }}', '{{ session()->get('toast')['message'] }}')">
-    @php
-
-    @endphp
-@else
-    <body>
-@endif
+<body {{ Session::has('toast') ? 'data-notification data-notification-type="'. Session::get('toast_typ') .'" data-notification-message="'. Session::get('toast') .'"' : '' }}>
 
 <!-- SWITCHER -->
 
@@ -141,7 +137,41 @@
 
 <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
 
+<script src="{{ asset('js/toastr.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (document.body.hasAttribute('data-notification')) {
+            let types = ['success', 'info', 'warning', 'error']
+            let type = '{{ Session::get('toast_type') }}'
+            let message = "{{ Session::get('toast') }}"
+
+            if (!types.includes(type)) {
+                type = 'info'
+            }
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "1000",
+                "hideDuration": "1000",
+                "timeOut": "10000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+
+            toastr[type](message)
+        }
+    });
+
     const searchBox = document.getElementById('typehead');
 
     hotkeys('alt+l,alt+m+p, alt+m+b, alt+a+b, alt+/', function (event, handler){
@@ -165,42 +195,6 @@
             default: alert(event);
         }
     });
-
-    const toastEl = document.getElementById('toast-element');
-    const toastHeaderEl = document.getElementById('toast-header')
-    const toastMessageEl = document.getElementById('toast-body');
-    const options = {
-        animation: true,
-        autohide: true,
-        delay: 10000
-    };
-    document.addEventListener('livewire:init', () => {
-        Livewire.on('toast', (event) => {
-            switch(event['type']) {
-                case 'success':
-                    toastHeaderEl.classList.add('bg-success-subtle');
-                    break;
-                case 'failure':
-                    toastHeaderEl.classList.add('bg-danger-subtle');
-                    break;
-                case 'warning':
-                    toastHeaderEl.classList.add('bg-warning-subtle');
-                    break;
-                default:
-                    toastHeaderEl.classList.add('bg-primary-subtle');
-                    break;
-            }
-            toastMessageEl.innerHTML = event['message'];
-
-            const toast = new bootstrap.Toast(toastEl, options);
-            toast.show();
-            $('html, body').animate({ scrollTop: 0 }, 'fast');
-        });
-    });
-    function makeToast(type, message)
-    {
-        console.log(type, message);
-    }
 </script>
 </body>
 </html>

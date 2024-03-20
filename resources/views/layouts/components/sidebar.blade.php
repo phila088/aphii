@@ -81,10 +81,10 @@
                                 <a href="javascript:void(0);">Brands</a>
                             </li>
                             <li class="slide">
-                                <a href="{{ route('brands.index') }}" class="side-menu__item">View All</a>
+                                <a href="{{ route('employee.brands.index') }}" class="side-menu__item">View All</a>
                             </li>
                             <li class="slide">
-                                <a href="{{ route('brands.index') }}" class="side-menu__item">Create</a>
+                                <a href="{{ route('employee.brands.create') }}" class="side-menu__item">Create</a>
                             </li>
                         </ul>
                     </li>
@@ -107,10 +107,10 @@
                                     <i class="fe fe-chevron-right side-menu__angle"></i></a>
                                 <ul class="slide-menu child2">
                                     <li class="slide">
-                                        <a href="{{ route('admin.documents.categories') }}" class="side-menu__item">View All</a>
+                                        <a href="{{ route('employee.potential-clients.index') }}" class="side-menu__item">View All</a>
                                     </li>
                                     <li class="slide">
-                                        <a href="{{ route('admin.documents.categories') }}" class="side-menu__item">Create</a>
+                                        <a href="{{ route('employee.potential-clients.create') }}" class="side-menu__item">Create</a>
                                     </li>
                                 </ul>
                             </li>

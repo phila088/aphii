@@ -121,7 +121,7 @@ class Brand extends Model
         'remittance_address_state',
         'remittance_address_zip',
         'internal_work_order_number_prefix',
-        'fein',
+        'active',
     ];
 
     public function user(): BelongsTo

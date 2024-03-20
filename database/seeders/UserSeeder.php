@@ -24,7 +24,8 @@ class UserSeeder extends Seeder
                 'last_name' => 'Administrator',
                 'name' => 'System Administrator',
                 'email' => 'admin@thebluskygroup.com',
-                'password' => Hash::make('L9Red$$Lknta832!@12')
+                'password' => Hash::make('L9Red$$Lknta832!@12'),
+                'timezone' => 'America/New_York',
             ],
         ]);
         DB::table('users')->insert([
@@ -38,6 +39,7 @@ class UserSeeder extends Seeder
                 'email' => 'adamp@thebluskygroup.com',
                 'password' => Hash::make('L9Red$$Lknta832!@12'),
                 'profile_picture_path' => 'storage/profile-pictures/8UhGq5a1BcHC1jwDyawGCnYuWgCz1erLA4VS1VVP.jpg',
+                'timezone' => 'America/New_York',
             ],
         ]);
     }

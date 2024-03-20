@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\DocumentCategoriesController;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\PotentialClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -213,6 +214,17 @@ Route::prefix('employee')
                 Route::get('view/{id}', 'view')->name('view');
 
                 Route::get('edit/{id}', 'edit')->name('edit');
+            });
+
+        Route::prefix('potential-clients')
+            ->name('potential-clients.')
+            ->controller(PotentialClientController::class)
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+
+                Route::get('create', 'create')->name('create');
+
+                Route::get('view/{id}', 'view')->name('view');
             });
     });
 

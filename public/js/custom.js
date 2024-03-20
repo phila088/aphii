@@ -1,35 +1,57 @@
-const watchdog = new CKSource.EditorWatchdog();
+(function(){
+    document.addEventListener("DOMContentLoaded", function() {
+        if (document.body.hasAttribute('data-notification')) {
+            let types = ['success', 'info', 'warning', 'error']
+            let type = '{{ Session::get('toast_type') }}'
+            let message = "{{ Session::get('toast') }}"
 
-window.watchdog = watchdog;
+            if (!types.includes(type)) {
+                type = 'info'
+            }
 
-watchdog.setCreator( ( element, config ) => {
-    return CKSource.Editor
-        .create( element, config )
-        .then( editor => {
-            return editor;
-        } );
-} );
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "1000",
+                "hideDuration": "1000",
+                "timeOut": "10000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
 
-watchdog.setDestructor( editor => {
-    return editor.destroy();
-} );
+            toastr[type](message)
+        }
+    });
 
-watchdog.on( 'error', handleSampleError );
+    const searchBox = document.getElementById('typehead');
 
-watchdog
-    .create( document.querySelector( '#editor' ), {
-        // Editor configuration.
-    } )
-    .catch( handleSampleError );
-
-function handleSampleError( error ) {
-    const issueUrl = 'https://github.com/ckeditor/ckeditor5/issues';
-
-    const message = [
-        'Oops, something went wrong!',
-        `Please, report the following error on ${ issueUrl } with the build id "y3r0qxylsb8q-2mlzsm176itn" and the error stack trace:`
-    ].join( '\n' );
-
-    console.error( message );
-    console.error( error );
-}
+    hotkeys('alt+l,alt+m+p, alt+m+b, alt+a+b, alt+/', function (event, handler){
+        switch (handler.key) {
+            case 'alt+/':
+                searchBox.click();
+                searchBox.focus();
+                break;
+            case 'alt+l':
+                document.getElementById('lock-app').click();
+                break;
+            case 'alt+m+p':
+                window.location.href = "/dashboards/personal";
+                break;
+            case 'alt+m+b':
+                window.location.href = "/brands";
+                break;
+            case 'alt+a+b':
+                window.location.href = "/admin/brands";
+                break;
+            default: alert(event);
+        }
+    });
+})();
