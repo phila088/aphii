@@ -12,7 +12,7 @@
         <meta name="keywords" content="laravel dashboard, laravel vite, laravel template, template dashboard, admin template, admin, dashboard admin, laravel admin panel, template admin, admin panel for laravel, laravel admin, alaravel, laravel framework, dashboard, laravel template admin">
 
         <!-- TITLE -->
-		<title> Velvet - Laravel Bootstrap Admin &amp; Dashboard Template </title>
+		<title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- FAVICON -->
         <link rel="icon" href="{{asset('build/assets/images/brand-logos/favicon.ico')}}" type="image/x-icon">

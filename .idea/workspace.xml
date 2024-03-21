@@ -5,42 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8deceba8-5e3e-48a9-8e0e-c3ebc08a3796" name="Changes" comment="Update brand functionality. 90% brand entry complete. Optimized JS for brand">
-      <change afterPath="$PROJECT_DIR$/public/css/toastr.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/brands/create.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/toastr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/custom/hr.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/custom/input.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/custom/select.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/custom/submit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/potential-clients/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/potential-clients/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/potential-clients/view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/aphii.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aphii.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BrandController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PotentialClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PotentialClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerifyEmailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerifyEmailController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/BrandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CallController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/CallController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CertificationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/CertificationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/CityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientBillingInstructionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/ClientBillingInstructionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientCoverageAreaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/ClientCoverageAreaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientNoteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/ClientNoteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientPortalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/ClientPortalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientRateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/ClientRateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/ContactController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactDepartmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/ContactDepartmentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactPositionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/ContactPositionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CountiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/CountiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/DashboardsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DocumentCategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/DocumentCategoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/InvoiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KnowledgeBaseArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/KnowledgeBaseArticleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/LocationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentMethodController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/PaymentMethodController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentTermController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/PaymentTermController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PotentialClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/PotentialClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuoteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/QuoteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StatesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/StatesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StatusCodeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/StatusCodeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VendorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/VendorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/WorkOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderNoteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/WorkOrderNoteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderPriorityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/WorkOrderPriorityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderScheduleAttemptController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/WorkOrderScheduleAttemptController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderVendorClockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/WorkOrderVendorClockController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderVendorClockStatusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/WorkOrderVendorClockStatusController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderVendorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/WorkOrderVendorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderVendorDNEController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/WorkOrderVendorDNEController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorkOrderVendorPaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/employee/WorkOrderVendorPaymentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Brand.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/PotentialClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PotentialClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300000_create_potential_clients_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300000_create_potential_clients_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/jquery.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/jquery.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/brands/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/brands/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/brands/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/brands/view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/brands/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/brands/create.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/custom/submit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/custom/submit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/custom-master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/custom-master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/clients/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/clients/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,6 +239,7 @@
       <path value="$PROJECT_DIR$/vendor/spatie/db-dumper" />
       <path value="$PROJECT_DIR$/vendor/spatie/temporary-directory" />
       <path value="$PROJECT_DIR$/vendor/coderello/laraflash" />
+      <path value="$PROJECT_DIR$/vendor/owen-it/laravel-auditing" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -313,7 +336,7 @@
       <workItem from="1710741419892" duration="79026000" />
       <workItem from="1710887352604" duration="16018000" />
       <workItem from="1710908660604" duration="3889000" />
-      <workItem from="1710912901618" duration="20674000" />
+      <workItem from="1710912901618" duration="26257000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -475,7 +498,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710827056664</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Refactor input forms for brands, create input, select, and submit templates">
+      <option name="closed" value="true" />
+      <created>1710959455752</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1710959455752</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,9 +543,10 @@
     <MESSAGE value="Improve README.md and refine workspace settings&#10;&#10;Updated the README.md file by adding a project logo, badges, and license information to enhance its visual representation and provide comprehensive details about the project. Cleaned up the .idea workspace settings to promote improved developer collaboration." />
     <MESSAGE value="hmm" />
     <MESSAGE value="Recommit" />
-    <MESSAGE value="Update brand functionality. 90% brand entry complete. Optimized JS for brand" />
     <MESSAGE value="Began adding&#10; view brand functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Began adding&#10; view brand functionality" />
+    <MESSAGE value="Update brand functionality. 90% brand entry complete. Optimized JS for brand" />
+    <MESSAGE value="Refactor input forms for brands, create input, select, and submit templates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor input forms for brands, create input, select, and submit templates" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

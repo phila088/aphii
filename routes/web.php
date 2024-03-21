@@ -1,14 +1,12 @@
 <?php
 
-use App\Http\Controllers\BrandController;
 use App\Http\Controllers\Admin\BrandController as AdminBrandController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\employee\BrandController as EmployeeBrandController;
+use App\Http\Controllers\employee\ClientController as EmployeeClientController;
+use App\Http\Controllers\employee\DashboardsController;
+use App\Http\Controllers\employee\DocumentCategoriesController;
+use App\Http\Controllers\employee\PotentialClientController as EmployeePotentialClientController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardsController;
-use App\Http\Controllers\DocumentCategoriesController;
-use Livewire\Volt\Volt;
-use App\Http\Controllers\PotentialClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -192,7 +190,7 @@ Route::prefix('employee')
     ->group(function () {
         Route::prefix('brands')
             ->name('brands.')
-            ->controller(BrandController::class)
+            ->controller(EmployeeBrandController::class)
             ->group(function () {
                 Route::get('/', 'index')->name('index');
 
@@ -205,7 +203,7 @@ Route::prefix('employee')
 
         Route::prefix('clients')
             ->name('clients.')
-            ->controller(ClientController::class)
+            ->controller(EmployeeClientController::class)
             ->group(function () {
                 Route::get('/', 'index')->name('index');
 
@@ -218,7 +216,7 @@ Route::prefix('employee')
 
         Route::prefix('potential-clients')
             ->name('potential-clients.')
-            ->controller(PotentialClientController::class)
+            ->controller(EmployeePotentialClientController::class)
             ->group(function () {
                 Route::get('/', 'index')->name('index');
 

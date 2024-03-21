@@ -3,7 +3,7 @@
         'name' => 'phila088/aphii',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'cbb23ba88ad5a94bc8c52f6f76150c71e41f3700',
+        'reference' => '61b4aaf02102143be0b3fdb4d29faa537c077c8c',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -637,6 +637,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'owen-it/laravel-auditing' => array(
+            'pretty_version' => 'v13.6.5',
+            'version' => '13.6.5.0',
+            'reference' => '27e1b3121a6b34f9635d2dbe84c13ca11ed2bee0',
+            'type' => 'package',
+            'install_path' => __DIR__ . '/../owen-it/laravel-auditing',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'owenvoke/blade-fontawesome' => array(
             'pretty_version' => 'v2.6.0',
             'version' => '2.6.0.0',
@@ -667,7 +676,7 @@
         'phila088/aphii' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'cbb23ba88ad5a94bc8c52f6f76150c71e41f3700',
+            'reference' => '61b4aaf02102143be0b3fdb4d29faa537c077c8c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

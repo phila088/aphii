@@ -14,7 +14,7 @@
           content="php dashboard, php template, admin dashboard bootstrap, bootstrap admin theme, admin, php admin panel, bootstrap admin template, admin dashboard template, admin template bootstrap, php admin dashboard, dashboard template, dashboard template bootstrap, bootstrap admin, admin panel template, dashboard">
 
     <!-- TITLE -->
-    <title> Starterkit - Laravel Bootstrap Admin &amp; Dashboard Template </title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- FAVICON -->
     <link rel="icon" href="{{asset('build/assets/images/brand-logos/favicon.ico')}}" type="image/x-icon">
