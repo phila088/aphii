@@ -7,14 +7,12 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('brand_holidays', function (Blueprint $table) {
+        Schema::create('brand_emails', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('brand_id')->constrained()->cascadeOnUpdate();
-            $table->string('holiday_name');
-            $table->date('date');
-            $table->time('open');
-            $table->time('close');
+            $table->string('title', 50);
+            $table->string('email', 100);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -22,6 +20,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('brand_holidays');
+        Schema::dropIfExists('brand_emails');
     }
 };
