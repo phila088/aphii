@@ -131,11 +131,11 @@ new /**
         $this->date_of_birth = Carbon::create($this->dob_year, $this->dob_month, $this->dob_day)->toDateString();
     }
 
-    public function trueUserType($admin, $client, $employee, $vendor): void
+    public function trueUserType($admin, $client, $Employee, $vendor): void
     {
         $this->is_admin = $admin;
         $this->is_client = $client;
-        $this->is_employee = $employee;
+        $this->is_employee = $Employee;
         $this->is_vendor = $vendor;
     }
 

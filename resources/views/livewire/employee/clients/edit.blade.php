@@ -261,7 +261,7 @@ new class extends Component {
     {
         $this->client = Client::where('id', '=', $this->id)->get();
         if (empty($this->client[0])) {
-            return redirect()->route('employee.clients.index');
+            return redirect()->route('Employee.clients.index');
         }
         $this->setClient();
     }

@@ -10,7 +10,7 @@
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
             <h4 class="fw-medium mb-0">{{ __('Edit Client') }}</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('employee.clients.index') }}" class="text-white-50">{{ __('Client') }}</a>
+                <li class="breadcrumb-item"><a href="{{ route('Employee.clients.index') }}" class="text-white-50">{{ __('Client') }}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Edit') }}</li>
             </ol>
@@ -32,7 +32,7 @@
                                     <hr class="border-gray-400"/>
                                 </div>
                                 <div class="card-body">
-                                    @livewire('employee.clients.edit', ['id' => $id])
+                                    @livewire('Employee.clients.edit', ['id' => $id])
                                 </div>
                             </div>
                         </div>

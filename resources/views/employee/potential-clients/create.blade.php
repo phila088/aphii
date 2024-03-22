@@ -10,7 +10,7 @@
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
             <h4 class="fw-medium tw-text-xl mb-0">{{ __('Create') }}</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('employee.potential-clients.index') }}" class="text-white-50">{{ __('Potential Clients') }}</a>
+                <li class="breadcrumb-item"><a href="{{ route('Employee.potential-clients.index') }}" class="text-white-50">{{ __('Potential Clients') }}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Create') }}</li>
             </ol>
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                             <div class="card-body tw-p-4">
-                                @livewire('employee.potential-clients.create')
+                                @livewire('Employee.potential-clients.create')
                             </div>
                         </div>
                     </div>

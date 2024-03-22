@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\employee\Controller;
+use App\Http\Controllers\Employee\Controller;
 use Illuminate\View\View;
 
 class BrandController extends Controller

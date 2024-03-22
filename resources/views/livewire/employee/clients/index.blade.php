@@ -138,7 +138,7 @@ new class extends Component {
             @foreach ($clients as $client)
                 <tr>
                     <td><a href="#">{{ $client->for_brand }}</a></td>
-                    <td><a href="{{ route('employee.clients.view', $client->id) }}">{{ $client->legal_name }}</a></td>
+                    <td><a href="{{ route('Employee.clients.view', $client->id) }}">{{ $client->legal_name }}</a></td>
                     <td>{{ $client->abbreviation }}</td>
                     @switch($client->status)
                         @case('New Client')

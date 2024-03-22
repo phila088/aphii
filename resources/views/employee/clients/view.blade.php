@@ -10,7 +10,7 @@
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
             <h4 class="fw-medium mb-0">{{ __('View') }}</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('employee.clients.index') }}" class="text-white-50">{{ __('Clients') }}</a>
+                <li class="breadcrumb-item"><a href="{{ route('Employee.clients.index') }}" class="text-white-50">{{ __('Clients') }}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $client->legal_name }}</li>
             </ol>
@@ -31,7 +31,7 @@
                                         <div class="tw-flex tw-items-center tw-gap-x-1">
                                             <div class="tw-inline-block">
                                                 <a
-                                                    href="{{ route('employee.clients.edit', $client->id) }}"
+                                                    href="{{ route('Employee.clients.edit', $client->id) }}"
                                                     class="tw-size-8 tw-inline-flex tw-justify-center tw-items-center tw-gap-x-2 tw-text-sm tw-font-semibold tw-rounded-full tw-border tw-border-transparent tw-text-gray-500 hover:tw-bg-gray-100 disabled:tw-opacity-50 disabled:tw-pointer-events-none dark:tw-text-gray-400 dark:hover:tw-bg-gray-700 dark:focus:tw-outline-none dark:focus:tw-ring-1 dark:focus:tw-ring-gray-600"
                                                     data-bs-toggle="tooltip"
                                                     data-bs-placement="top"
@@ -47,7 +47,7 @@
                                     <hr class="tw-border-gray-400"/>
                                 </div>
                                 <div class="card-body">
-                                    @livewire('employee.clients.view', ['client' => $client])
+                                    @livewire('Employee.clients.view', ['client' => $client])
                                 </div>
                             </div>
                         </div>

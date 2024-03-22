@@ -15,9 +15,10 @@ return new class extends Migration {
             $table->foreignId('contact_position_id')->constrained()->cascadeOnUpdate();
             $table->string('first_name', 25)->nullable();
             $table->string('last_name', 25)->nullable();
-            $table->string('phone_mobile', 15)->nullable();
             $table->string('phone_work', 15)->nullable();
             $table->string('phone_work_extension', 15)->nullable();
+            $table->string('phone_mobile', 15)->nullable();
+            $table->string('email', 15)->nullable();
             $table->string('pre_direction', 10)->nullable();
             $table->string('building_number')->nullable();
             $table->string('street_name', 255)->nullable();

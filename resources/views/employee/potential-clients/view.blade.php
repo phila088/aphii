@@ -32,7 +32,7 @@
                                     <hr class="tw-border-gray-400"/>
                                 </div>
                                 <div class="card-body">
-                                    @livewire('employee.potential-clients.view', ['potentialClient', $potentialClient])
+                                    @livewire('Employee.potential-clients.view', ['potentialClient', $potentialClient])
                                 </div>
                             </div>
                         </div>
