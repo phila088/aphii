@@ -27,311 +27,311 @@
                 @if($user->is_admin || $user->is_employee)
 
                     <!-- Main category -->
-                    <x-custom.slide-category label="Main" />
+                    <x-slide-category label="Main" />
 
                     <!-- Dashboards -->
-                    <x-custom.slide-parent icon="bi bi-speedometer" label="Dashboards">
-                        <x-custom.slide-label label="Dashboards" />
+                    <x-slide-parent icon="bi bi-speedometer" label="Dashboards">
+                        <x-slide-label label="Dashboards" />
 
-                        <x-custom.slide-item route="dashboards.personal" label="Personal" />
+                        <x-slide-item route="dashboards.personal" label="Personal" />
 
-                        <x-custom.slide-item route="dashboards.ap" label="Payables" />
+                        <x-slide-item route="dashboards.ap" label="Payables" />
 
-                        <x-custom.slide-item route="dashboards.ar" label="Receivables" />
+                        <x-slide-item route="dashboards.ar" label="Receivables" />
 
-                        <x-custom.slide-item route="dashboards.quoting" label="Quoting" />
+                        <x-slide-item route="dashboards.quoting" label="Quoting" />
 
-                        <x-custom.slide-item route="dashboards.sales" label="Sales" />
+                        <x-slide-item route="dashboards.sales" label="Sales" />
 
-                        <x-custom.slide-item route="dashboards.sales" label="Work Orders" />
-                    </x-custom.slide-parent>
+                        <x-slide-item route="dashboards.sales" label="Work Orders" />
+                    </x-slide-parent>
 
                     <!-- Accounting -->
-                    <x-custom.slide-parent icon="bi bi-bank" label="Accounting">
-                        <x-custom.slide-label label="Accounting" />
+                    <x-slide-parent icon="bi bi-bank" label="Accounting">
+                        <x-slide-label label="Accounting" />
 
-                        <x-custom.slide-with-child label="Payables">
-                            <x-custom.slide-item route="url:#" label="Awaiting invoice" />
+                        <x-slide-with-child label="Payables">
+                            <x-slide-item route="url:#" label="Awaiting invoice" />
 
-                            <x-custom.slide-item route="url:#" label="Enter payment" />
+                            <x-slide-item route="url:#" label="Enter payment" />
 
-                            <x-custom.slide-item route="url:#" label="On-hold" />
+                            <x-slide-item route="url:#" label="On-hold" />
 
-                            <x-custom.slide-item route="url:#" label="Pending invoices" />
+                            <x-slide-item route="url:#" label="Pending invoices" />
 
-                            <x-custom.slide-item route="url:#" label="Paid" />
+                            <x-slide-item route="url:#" label="Paid" />
 
-                            <x-custom.slide-item route="url:#" label="Reports" />
-                        </x-custom.slide-with-child>
+                            <x-slide-item route="url:#" label="Reports" />
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Receivables">
-                            <x-custom.slide-item route="url:#" label="Awaiting submission" />
+                        <x-slide-with-child label="Receivables">
+                            <x-slide-item route="url:#" label="Awaiting submission" />
 
-                            <x-custom.slide-item route="url:#" label="Create invoice" />
+                            <x-slide-item route="url:#" label="Create invoice" />
 
-                            <x-custom.slide-item route="url:#" label="Enter payment" />
+                            <x-slide-item route="url:#" label="Enter payment" />
 
-                            <x-custom.slide-item route="url:#" label="Pending payment" />
+                            <x-slide-item route="url:#" label="Pending payment" />
 
-                            <x-custom.slide-item route="url:#" label="Paid" />
+                            <x-slide-item route="url:#" label="Paid" />
 
-                            <x-custom.slide-item route="url:#" label="Purgatory" />
+                            <x-slide-item route="url:#" label="Purgatory" />
 
-                            <x-custom.slide-item route="url:#" label="Reports" />
-                        </x-custom.slide-with-child>
+                            <x-slide-item route="url:#" label="Reports" />
+                        </x-slide-with-child>
 
-                    </x-custom.slide-parent>
+                    </x-slide-parent>
 
                     <!-- Brands -->
-                    <x-custom.slide-parent icon="bi bi-building" label="Brands">
-                        <x-custom.slide-label label="Brands" />
+                    <x-slide-parent icon="bi bi-building" label="Brands">
+                        <x-slide-label label="Brands" />
 
-                        <x-custom.slide-item route="employee.brands.index" label="View all" />
+                        <x-slide-item route="employee.brands.index" label="View all" />
 
-                        <x-custom.slide-item route="employee.brands.create" label="Create" />
+                        <x-slide-item route="employee.brands.create" label="Create" />
 
-                        <x-custom.slide-item route="url:#" label="Reports" />
-                    </x-custom.slide-parent>
+                        <x-slide-item route="url:#" label="Reports" />
+                    </x-slide-parent>
 
 
                     <!-- Clients -->
-                    <x-custom.slide-parent icon="bi bi-people" label="Clients">
-                        <x-custom.slide-label label="Clients" />
+                    <x-slide-parent icon="bi bi-people" label="Clients">
+                        <x-slide-label label="Clients" />
 
-                        <x-custom.slide-with-child label="Locations">
+                        <x-slide-with-child label="Locations">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Potential clients">
-                            <x-custom.slide-item route="employee.potential-clients.index" label="View all" />
+                        <x-slide-with-child label="Potential clients">
+                            <x-slide-item route="employee.potential-clients.index" label="View all" />
 
-                            <x-custom.slide-item route="employee.potential-clients.create" label="Create" />
-                        </x-custom.slide-with-child>
+                            <x-slide-item route="employee.potential-clients.create" label="Create" />
+                        </x-slide-with-child>
 
-                        <x-custom.slide-item route="url:#" label="View all" />
+                        <x-slide-item route="url:#" label="View all" />
 
-                        <x-custom.slide-item route="url:#" label="Create" />
+                        <x-slide-item route="url:#" label="Create" />
 
-                        <x-custom.slide-with-child label="Requests">
-                            <x-custom.slide-item route="url:#" label="Insurance" />
+                        <x-slide-with-child label="Requests">
+                            <x-slide-item route="url:#" label="Insurance" />
 
-                            <x-custom.slide-item route="url:#" label="Meeting" />
-                        </x-custom.slide-with-child>
-                    </x-custom.slide-parent>
+                            <x-slide-item route="url:#" label="Meeting" />
+                        </x-slide-with-child>
+                    </x-slide-parent>
 
                     <!-- Quote -->
-                    <x-custom.slide-parent icon="bi bi-pencil" label="Quoting">
-                        <x-custom.slide-label label="Quoting" />
+                    <x-slide-parent icon="bi bi-pencil" label="Quoting">
+                        <x-slide-label label="Quoting" />
 
-                        <x-custom.slide-with-child label="Catalog">
-                            <x-custom.slide-item route="url:#" label="View all" />
+                        <x-slide-with-child label="Catalog">
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
-                        </x-custom.slide-with-child>
+                            <x-slide-item route="url:#" label="Create" />
+                        </x-slide-with-child>
 
-                        <x-custom.slide-item route="url:#" label="Create" />
+                        <x-slide-item route="url:#" label="Create" />
 
-                        <x-custom.slide-item route="url:#" label="Pending" />
+                        <x-slide-item route="url:#" label="Pending" />
 
-                        <x-custom.slide-item route="url:#" label="Revisions" />
-                    </x-custom.slide-parent>
+                        <x-slide-item route="url:#" label="Revisions" />
+                    </x-slide-parent>
 
 
                     <!-- Vendors -->
-                    <x-custom.slide-parent icon="bi bi-hammer" label="Vendors">
-                        <x-custom.slide-label label="Vendors" />
+                    <x-slide-parent icon="bi bi-hammer" label="Vendors">
+                        <x-slide-label label="Vendors" />
 
-                        <x-custom.slide-item route="url:#" label="View all" />
+                        <x-slide-item route="url:#" label="View all" />
 
-                        <x-custom.slide-item route="url:#" label="Create" />
+                        <x-slide-item route="url:#" label="Create" />
 
-                    </x-custom.slide-parent>
+                    </x-slide-parent>
 
                     <!-- Work orders -->
-                    <x-custom.slide-parent icon="bi bi-cone-striped" label="Work orders">
-                        <x-custom.slide-label label="Work orders" />
+                    <x-slide-parent icon="bi bi-cone-striped" label="Work orders">
+                        <x-slide-label label="Work orders" />
 
-                        <x-custom.slide-item route="url:#" label="View all" />
+                        <x-slide-item route="url:#" label="View all" />
 
-                        <x-custom.slide-item route="url:#" label="Create" />
+                        <x-slide-item route="url:#" label="Create" />
 
-                    </x-custom.slide-parent>
+                    </x-slide-parent>
 
-                    <x-custom.slide-category label="Misc" />
+                    <x-slide-category label="Misc" />
 
                     <!-- Documents -->
-                    <x-custom.slide-parent icon="bi bi-file-earmark" label="Documents">
-                        <x-custom.slide-label label="Documents" />
+                    <x-slide-parent icon="bi bi-file-earmark" label="Documents">
+                        <x-slide-label label="Documents" />
 
-                        <x-custom.slide-item route="url:#" label="View all" />
+                        <x-slide-item route="url:#" label="View all" />
 
-                        <x-custom.slide-item route="url:#" label="Upload" />
+                        <x-slide-item route="url:#" label="Upload" />
 
-                    </x-custom.slide-parent>
+                    </x-slide-parent>
 
                     <!-- Web apps category -->
                     <li class="slide__category"><span class="category-name">Web Apps</span></li>
 
                     <!-- CRM -->
-                    <x-custom.slide-parent icon="bi bi-person-rolodex" label="CRM">
-                        <x-custom.slide-label label="CRM" />
+                    <x-slide-parent icon="bi bi-person-rolodex" label="CRM">
+                        <x-slide-label label="CRM" />
 
-                        <x-custom.slide-with-child label="Calls">
+                        <x-slide-with-child label="Calls">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Contacts">
+                        <x-slide-with-child label="Contacts">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                            <x-custom.slide-item route="url:#" label="Import" />
+                            <x-slide-item route="url:#" label="Import" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Loops">
+                        <x-slide-with-child label="Loops">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                    </x-custom.slide-parent>
+                    </x-slide-parent>
 
                     <!-- KB -->
-                    <x-custom.slide-parent icon="bi bi-chat-left-quote" label="Knowledge base">
-                        <x-custom.slide-item route="url:#" label="Articles" />
+                    <x-slide-parent icon="bi bi-chat-left-quote" label="Knowledge base">
+                        <x-slide-item route="url:#" label="Articles" />
 
-                        <x-custom.slide-item route="url:#" label="Courses" />
+                        <x-slide-item route="url:#" label="Courses" />
 
-                        <x-custom.slide-item route="url:#" label="Request an article" />
+                        <x-slide-item route="url:#" label="Request an article" />
 
-                    </x-custom.slide-parent>
+                    </x-slide-parent>
                 @endif
 
                 <!-- Settings category -->
                 <li class="slide__category"><span class="category-name">User</span></li>
 
                 <!-- User settings -->
-                <x-custom.slide-parent icon="bi bi-gear" label="User">
-                    <x-custom.slide-label label="User" />
+                <x-slide-parent icon="bi bi-gear" label="User">
+                    <x-slide-label label="User" />
 
-                    <x-custom.slide-item route="url:#" label="Account" />
+                    <x-slide-item route="url:#" label="Account" />
 
-                    <x-custom.slide-item route="url:#" label="Site" />
+                    <x-slide-item route="url:#" label="Site" />
 
-                </x-custom.slide-parent>
+                </x-slide-parent>
 
                 @if ($user->is_admin)
                     <!-- Admin slide start -->
-                    <x-custom.slide-parent icon="bi bi-shield-lock" label="Admin">
-                        <x-custom.slide-label label="Admin" />
+                    <x-slide-parent icon="bi bi-shield-lock" label="Admin">
+                        <x-slide-label label="Admin" />
 
-                        <x-custom.slide-with-child label="Articles">
+                        <x-slide-with-child label="Articles">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Certifications">
+                        <x-slide-with-child label="Certifications">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Cities">
+                        <x-slide-with-child label="Cities">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Contact departments">
+                        <x-slide-with-child label="Contact departments">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Contact positions">
+                        <x-slide-with-child label="Contact positions">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Counties">
+                        <x-slide-with-child label="Counties">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Document categories">
+                        <x-slide-with-child label="Document categories">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Payment methods">
+                        <x-slide-with-child label="Payment methods">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Payment terms">
+                        <x-slide-with-child label="Payment terms">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="States">
+                        <x-slide-with-child label="States">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Status codes">
+                        <x-slide-with-child label="Status codes">
 
-                            <x-custom.slide-item route="admin.status-codes.index" label="View all" />
+                            <x-slide-item route="admin.status-codes.index" label="View all" />
 
-                            <x-custom.slide-item route="url:#" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                        <x-custom.slide-with-child label="Trash">
+                        <x-slide-with-child label="Trash">
 
-                            <x-custom.slide-item route="url:#" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                        </x-custom.slide-with-child>
+                        </x-slide-with-child>
 
-                    </x-custom.slide-parent>
+                    </x-slide-parent>
                @endif
 
             </ul>

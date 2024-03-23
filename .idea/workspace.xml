@@ -8,16 +8,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8deceba8-5e3e-48a9-8e0e-c3ebc08a3796" name="Changes" comment="Update brand functionality. 90% brand entry complete. Optimized JS for brand">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BrandEmailController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/BrandEmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/BrandEmailPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2024_03_21_234435_create_brand_emails_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="8deceba8-5e3e-48a9-8e0e-c3ebc08a3796" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/components/tab-button-parent.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/tab-button.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/tab-content-parent.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/tab-content.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_21_224259_create_brand_hours_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_21_224259_create_brand_hours_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_21_224351_create_brand_holidays_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_21_224351_create_brand_holidays_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_21_224453_create_brand_addresses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_21_224453_create_brand_addresses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BrandAddressController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/BrandAddressController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BrandEmailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/BrandEmailController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BrandHolidayController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/BrandHolidayController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BrandHoursController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/BrandHoursController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BrandPhoneNumberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/BrandPhoneNumberController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BrandProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/BrandProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Brand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BrandAddress.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BrandAddress.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_200000_create_brands_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200000_create_brands_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_21_222615_create_brand_phone_numbers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_phone_numbers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_21_224259_create_brand_hours_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200020_create_brand_hours_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_21_224351_create_brand_holidays_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200030_create_brand_holidays_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_21_224453_create_brand_addresses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200040_create_brand_addresses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_21_224607_create_brand_profiles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200050_create_brand_profiles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_21_234435_create_brand_emails_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200070_create_brand_emails_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/action-message.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/application-logo.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/custom/cke.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/cke.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/custom/hr.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/hr.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/custom/input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/input.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/custom/select.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/select.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/custom/slide-category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/slide-category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/custom/slide-item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/slide-item.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/custom/slide-label.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/slide-label.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/custom/slide-parent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/slide-parent.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/custom/slide-with-child.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/slide-with-child.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/custom/submit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/submit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/danger-button.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/dropdown-link.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/dropdown-link.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/dropdown.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/flash.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/input-label.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/modal.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/nav-link.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/primary-button.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/responsive-nav-link.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/secondary-button.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/text-input.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/brands/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/brands/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/brands/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/brands/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +257,7 @@
     &quot;RunOnceActivity.laravel-idea.update-module-directories&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/server/htdocs/aphii&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/server/htdocs/aphii/resources/views/components&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -237,13 +276,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\server\htdocs\aphii\resources\views\components" />
       <recent name="C:\server\htdocs\aphii" />
       <recent name="C:\server\htdocs\aphii\resources\assets\icon-fonts\bootstrap-icons\icons\icons" />
       <recent name="C:\server\htdocs\aphii\public\build\assets\icon-fonts\bootstrap-icons\icons\icons" />
       <recent name="C:\server\htdocs\aphii\public\js\ckeditor" />
-      <recent name="C:\server\htdocs\aphii\public\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\server\htdocs\aphii\resources\views\components" />
       <recent name="C:\server\htdocs\aphii\public\build\assets\images\authentication" />
       <recent name="C:\server\htdocs\aphii\app\View\Components" />
       <recent name="C:\server\htdocs\aphii\app\Livewire" />
@@ -294,7 +334,8 @@
       <workItem from="1710908660604" duration="3889000" />
       <workItem from="1710912901618" duration="53272000" />
       <workItem from="1711051578563" duration="8002000" />
-      <workItem from="1711072823399" duration="6807000" />
+      <workItem from="1711072823399" duration="58162000" />
+      <workItem from="1711177947953" duration="24160000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -480,7 +521,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711078985510</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Update brand functionality. 90% brand entry complete. Optimized JS for brand">
+      <option name="closed" value="true" />
+      <created>1711080359977</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1711080359977</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Update brand functionality. 90% brand entry complete. Optimized JS for brand">
+      <option name="closed" value="true" />
+      <created>1711080389815</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1711080389815</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->string('dba', 50)->nullable();
             $table->string('abbreviation', 10)->unique();
             $table->string('internal_work_order_prefix',10)->nullable();
-            $table->integer('internal_work_order_max_length')->default(6);
-            $table->integer('internal_work_order_prefix_increment')->default(10);
+            $table->integer('internal_work_order_max_length')->default(6)->nullable();
+            $table->integer('internal_work_order_postfix_increment')->default(10)->nullable();
             $table->string('logo_path')->nullable();
             $table->string('fein')->nullable();
             $table->string('state_license_number')->nullable();

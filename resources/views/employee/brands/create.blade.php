@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                             <div class="card-body tw-p-4">
-                                <livewire:employee.brands.create />
+                                @livewire('employee.brands.create')
                             </div>
                         </div>
                     </div>
