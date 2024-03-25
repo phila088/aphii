@@ -45,6 +45,7 @@ return array(
     'Spatie\\TemporaryDirectory\\' => array($vendorDir . '/spatie/temporary-directory/src'),
     'Spatie\\Stats\\' => array($vendorDir . '/spatie/laravel-stats/src'),
     'Spatie\\Searchable\\' => array($vendorDir . '/spatie/laravel-searchable/src'),
+    'Spatie\\Permission\\' => array($vendorDir . '/spatie/laravel-permission/src'),
     'Spatie\\ModelStatus\\' => array($vendorDir . '/spatie/laravel-model-status/src'),
     'Spatie\\ModelStates\\' => array($vendorDir . '/spatie/laravel-model-states/src'),
     'Spatie\\MailTemplates\\' => array($vendorDir . '/spatie/laravel-database-mail-templates/src'),

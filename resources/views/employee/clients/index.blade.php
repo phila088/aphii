@@ -26,14 +26,14 @@
                             <div class="card-header tw-flex tw-justify-between tw-items-center">
                                 <h1>Clients</h1>
                                 <div class="tw-flex tw-items-center tw-gap-x-1">
-                                    <a href="{{ route('Employee.clients.create') }}" class="btn btn-primary btn-sm">
+                                    <a href="{{ route('employee.clients.create') }}" class="btn btn-primary btn-sm">
                                         Create
                                         <i class="bi bi-plus-lg"></i>
                                     </a>
                                 </div>
                             </div>
                             <div class="card-body tw-p-4">
-                                @livewire('Employee.clients.index')
+                                @livewire('employee.clients.index')
                             </div>
                         </div>
                     </div>

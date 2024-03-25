@@ -32,6 +32,7 @@
         "spatie/laravel-flash": "^1.10",
         "spatie/laravel-model-states": "^2.7",
         "spatie/laravel-model-status": "^1.15",
+        "spatie/laravel-permission": "^6.4",
         "spatie/laravel-searchable": "^1.11",
         "spatie/laravel-stats": "^2.2",
         "spatie/laravel-welcome-notification": "^2.4",

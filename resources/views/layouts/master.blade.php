@@ -46,6 +46,14 @@
 
     @yield('styles')
 
+    <style>
+        .tab-content,
+        .tab-pane {
+            border: 0 !important;
+            padding: 0 !important;
+        }
+    </style>
+
 </head>
 
 <body {{ Session::has('toast') ? 'data-notification data-notification-type="'. Session::get('toast_typ') .'" data-notification-message="'. Session::get('toast') .'"' : '' }}>

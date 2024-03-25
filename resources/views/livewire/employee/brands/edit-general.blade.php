@@ -99,24 +99,7 @@ new class extends Component {
 
             $this->brand->setStatus($this->status);
 
-            $this->status = '';
-            $this->legal_name = '';
-            $this->dba = '';
-            $this->abbreviation = '';
-            $this->internal_work_order_prefix = '';
-            $this->internal_work_order_max_length = null;
-            $this->internal_work_order_postfix_increment = null;
-            $this->photo = null;
-            $this->logo_path = null;
-            $this->fein = '';
-            $this->state_license_number = '';
-            $this->county_license_number = '';
-            $this->city_license_number = '';
-
-            request()->session()->flash('toast', 'Brand successfully created!');
-            request()->session()->flash('toast_type', 'success');
-
-            return redirect()->route('employee.brands.edit', [$this->brand]);
+            $this->dispatch('brand-updated');
         }
     }
 }; ?>

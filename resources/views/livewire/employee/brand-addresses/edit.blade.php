@@ -4,6 +4,7 @@ use App\Models\BrandAddress;
 use App\Models\States;
 use App\Models\City;
 use Livewire\Volt\Component;
+use Livewire\Attributes\Validate;
 use Illuminate\Database\Eloquent\Collection;
 
 new class extends Component {
@@ -44,8 +45,6 @@ new class extends Component {
 
     public function mount()
     {
-        $this->findPhysicalAddress();
-        $this->findRemittanceAddress();
         $this->directions = (__('selects.cardinal-directions'));
         $this->street_types = (__('selects.street-types'));
         $this->unit_types = (__('selects.unit-types'));
@@ -62,36 +61,38 @@ new class extends Component {
         $this->unit = $this->address->unit;
         $this->po_box = $this->address->po_box;
         $this->city = $this->address->city;
+        $this->state = $this->address->state;
+        $this->zip = $this->address->zip;
     }
 
     public function updateAddress()
     {
+        $validated = $this->validate();
 
+        if ($this->address->update($validated))
+        {
+            $this->dispatch('brand-address-updated');
+
+            $this->title = '';
+            $this->building_number = '';
+            $this->pre_direction = '';
+            $this->street_name = '';
+            $this->street_type = '';
+            $this->post_direction = '';
+            $this->unit = '';
+            $this->unit_type = '';
+            $this->po_box = '';
+            $this->city = '';
+            $this->state = '';
+            $this->zip = '';
+        } else {
+            dump(false);
+        }
     }
 
     public function cancel()
     {
         $this->dispatch('brand-address-edit-canceled');
-    }
-
-    public function findPhysicalAddress(): void
-    {
-        $physicalAddress = BrandAddress::where('title', '=', 'Physical')
-            ->where('brand_id', '=', $this->brand->id)
-            ->get();
-        if (!empty($physicalAddress[0])) {
-            $this->physicalExists = true;
-        }
-    }
-
-    public function findRemittanceAddress(): void
-    {
-        $remittanceAddress = BrandAddress::where('title', '=', 'Remittance')
-            ->where('brand_id', '=', $this->brand->id)
-            ->get();
-        if (!empty($remittanceAddress[0])) {
-            $this->remittanceExists = true;
-        }
     }
 
     public function cityLookupByName(string $name = null)
@@ -194,11 +195,11 @@ new class extends Component {
                             type="text"
                             id="city"
                             class="form-control @error('city') is-invalid @enderror"
-                            list="cities"
+                            list="update-cities"
                             wire:model.live="city"
                             x-on:input="$wire.cityLookupByName($el.value)"
                             x-on:change='
-                                const datalist = document.getElementById("cities")
+                                const datalist = document.getElementById("update-cities")
                                 const stateEl = document.getElementById("state")
                                 const zipEl = document.getElementById("zip")
 
@@ -216,7 +217,7 @@ new class extends Component {
                             '
                         >
                         <label for="city">City</label>
-                        <datalist id="cities">
+                        <datalist id="update-cities">
                             @if (!empty($cities))
                                 @foreach ($cities as $key => $data)
                                     <option data-value="{{ $key }}" value="{{ $data['city'] }}, {{ $data['state'] }} {{ $data['zip'] }}">{{ $data['city'] }}</option>
@@ -242,11 +243,11 @@ new class extends Component {
                             type="text"
                             id="zip"
                             class="form-control @error('zip') is-invalid @enderror"
-                            list="zips"
+                            list="update-zips"
                             wire:model.live="zip"
                             x-on:input="$wire.cityLookupByZip($el.value)"
                             x-on:change='
-                                const datalist = document.getElementById("zips")
+                                const datalist = document.getElementById("update-zips")
                                 const cityEl = document.getElementById("city")
                                 const stateEl = document.getElementById("state")
 
@@ -264,7 +265,7 @@ new class extends Component {
                             '
                         >
                         <label for="zip">Zip</label>
-                        <datalist id="zips">
+                        <datalist id="update-zips">
                             @if (!empty($cities))
                                 @foreach ($cities as $key => $data)
                                     <option data-value="{{ $key }}" value="{{ $data['city'] }}, {{ $data['state'] }} {{ $data['zip'] }}">{{ $data['city'] }}</option>

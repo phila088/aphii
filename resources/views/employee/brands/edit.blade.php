@@ -126,6 +126,39 @@
 
             // get pill id on load
             getPillId();
+            document.addEventListener('livewire:initialized', () => {
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "positionClass": "toast-bottom-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "1000",
+                    "hideDuration": "1000",
+                    "timeOut": "10000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+
+                Livewire.on('brand-updated', () => {
+                    toastr['success']('Brand updated successfully.')
+                })
+                Livewire.on('brand-address-created', () => {
+                    toastr['success']('Address created successfully.')
+                })
+                Livewire.on('brand-address-updated', () => {
+                    toastr['success']('Address updated successfully.')
+                })
+                Livewire.on('brand-address-deleted', () => {
+                    toastr['success']('Address deleted successfully.')
+                })
+            })
         </script>
 
 

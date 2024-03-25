@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\StatusCodeController as AdminStatusCodeController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Employee\BrandController as EmployeeBrandController;
 use App\Http\Controllers\Employee\CallController as EmployeeCallController;
 use App\Http\Controllers\Employee\ClientController as EmployeeClientController;
@@ -32,85 +33,91 @@ Route::get('lockscreen', [DashboardsController::class, 'personal'])
     ->middleware('lockscreen.show')
     ->name('lockscreen');
 
-Route::prefix('dashboards')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboards.')
+Route::middleware(['auth', 'verified', 'online-status'])
     ->group(function () {
-        Route::get('personal', [DashboardsController::class, 'personal'])->name('personal');
-
-        Route::get('ap', [DashboardsController::class, 'ap'])->name('ap');
-
-        Route::get('ar', [DashboardsController::class, 'ar'])->name('ar');
-
-        Route::get('quoting', [DashboardsController::class, 'quoting'])->name('quoting');
-
-        Route::get('sales', [DashboardsController::class, 'sales'])->name('sales');
-
-        Route::get('work-orders', [DashboardsController::class, 'workOrders'])->name('work-orders');
-    });
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-
-Route::prefix('admin')
-    ->middleware(['auth', 'verified'])
-    ->name('admin.')
-    ->group(function () {
-        Route::prefix('status-codes')
-            ->name('status-codes.')
-            ->controller(AdminStatusCodeController::class)
+        Route::prefix('dashboards')
+            ->name('dashboards.')
             ->group(function () {
-                Route::get('/', 'index')->name('index');
-            });
-    });
+                Route::get('personal', [DashboardsController::class, 'personal'])->name('personal');
 
-Route::prefix('employee')
-    ->middleware(['auth', 'verified'])
-    ->name('employee.')
-    ->group(function () {
-        Route::prefix('brands')
-            ->name('brands.')
-            ->controller(EmployeeBrandController::class)
-            ->group(function () {
-                Route::get('/', 'index')->name('index');
+                Route::get('ap', [DashboardsController::class, 'ap'])->name('ap');
 
-                Route::get('create', 'create')->name('create');
+                Route::get('ar', [DashboardsController::class, 'ar'])->name('ar');
 
-                Route::get('view/{id}', 'view')->name('view');
+                Route::get('quoting', [DashboardsController::class, 'quoting'])->name('quoting');
 
-                Route::get('edit/{id}', 'edit')->name('edit');
+                Route::get('sales', [DashboardsController::class, 'sales'])->name('sales');
+
+                Route::get('work-orders', [DashboardsController::class, 'workOrders'])->name('work-orders');
             });
 
-        Route::prefix('calls')
-            ->name('calls.')
-            ->controller(EmployeeCallController::class)
+        Route::view('profile', 'profile')
+            ->name('profile');
+
+        Route::prefix('admin')
+            ->name('admin.')
             ->group(function () {
-                Route::get('/', 'index')->name('index');
+                Route::prefix('status-codes')
+                    ->name('status-codes.')
+                    ->controller(AdminStatusCodeController::class)
+                    ->group(function () {
+                        Route::get('/', 'index')->name('index');
+                    });
+
+                Route::prefix('users')
+                    ->name('users.')
+                    ->controller(AdminUserController::class)
+                    ->group(function () {
+                        Route::get('/', 'index')->name('index');
+                    });
             });
 
-        Route::prefix('clients')
-            ->name('clients.')
-            ->controller(EmployeeClientController::class)
+        Route::prefix('employee')
+            ->name('employee.')
             ->group(function () {
-                Route::get('/', 'index')->name('index');
+                Route::prefix('brands')
+                    ->name('brands.')
+                    ->controller(EmployeeBrandController::class)
+                    ->group(function () {
+                        Route::get('/', 'index')->name('index');
 
-                Route::get('create', 'create')->name('create');
+                        Route::get('create', 'create')->name('create');
 
-                Route::get('view/{id}', 'view')->name('view');
+                        Route::get('view/{id}', 'view')->name('view');
 
-                Route::get('edit/{id}', 'edit')->name('edit');
-            });
+                        Route::get('edit/{id}', 'edit')->name('edit');
+                    });
 
-        Route::prefix('potential-clients')
-            ->name('potential-clients.')
-            ->controller(EmployeePotentialClientController::class)
-            ->group(function () {
-                Route::get('/', 'index')->name('index');
+                Route::prefix('calls')
+                    ->name('calls.')
+                    ->controller(EmployeeCallController::class)
+                    ->group(function () {
+                        Route::get('/', 'index')->name('index');
+                    });
 
-                Route::get('create', 'create')->name('create');
+                Route::prefix('clients')
+                    ->name('clients.')
+                    ->controller(EmployeeClientController::class)
+                    ->group(function () {
+                        Route::get('/', 'index')->name('index');
 
-                Route::get('view/{id}', 'view')->name('view');
+                        Route::get('create', 'create')->name('create');
+
+                        Route::get('view/{id}', 'view')->name('view');
+
+                        Route::get('edit/{id}', 'edit')->name('edit');
+                    });
+
+                Route::prefix('potential-clients')
+                    ->name('potential-clients.')
+                    ->controller(EmployeePotentialClientController::class)
+                    ->group(function () {
+                        Route::get('/', 'index')->name('index');
+
+                        Route::get('create', 'create')->name('create');
+
+                        Route::get('view/{id}', 'view')->name('view');
+                    });
             });
     });
 

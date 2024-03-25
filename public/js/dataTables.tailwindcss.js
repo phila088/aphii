@@ -60,7 +60,7 @@
 
 // Default class modification
     $.extend( true, DataTable.ext.classes, {
-        container: "dt-container dt-tailwindcss",
+        container: "dt-container dt-tailwindcss tw-w-full",
         search: {
             input: "tw-border tw-placeholder-gray-500 tw-ml-2 tw-px-3 tw-py-2 tw-rounded-lg tw-border-gray-200 focus:tw-border-blue-500 focus:tw-ring focus:tw-ring-blue-500 focus:tw-ring-opacity-50 dark:tw-bg-gray-800 dark:tw-border-gray-600 dark:tw-focus:tw-border-blue-500 dark:tw-placeholder-gray-400"
         },
@@ -79,14 +79,14 @@
             enabled: 'tw-text-gray-800 hover:tw-text-gray-900 hover:tw-border-gray-300 hover:tw-shadow-sm focus:tw-ring focus:tw-ring-gray-300 focus:tw-ring-opacity-25 dark:tw-text-gray-300 dark:hover:tw-border-gray-600 dark:hover:tw-text-gray-200 dark:focus:tw-ring-gray-600 dark:focus:tw-ring-opacity-40',
             notEnabled: 'tw-text-gray-300 dark:tw-text-gray-600'
         },
-        table: 'dataTable tw-min-w-full tw-text-sm tw-align-middle tw-whitespace-nowrap tw-divide-y tw-divide-gray-200 dark:tw-divide-gray-700 tw-mb-8',
+        table: 'dataTable tw-min-w-full tw-text-sm tw-align-middle tw-whitespace-nowrap tw-mb-8',
         thead: {
-            row: '',
+            row: 'tw-hidden',
             cell: 'tw-px-6 tw-py-2 tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-text-center'
         },
         tbody: {
-            row: 'even:tw-bg-gray-50 dark:even:tw-bg-gray-900/50',
-            cell: 'tw-px-6 tw-py-2'
+            row: '',
+            cell: 'tw-px-2 tw-py-1'
         },
         tfoot: {
             row: 'even:tw-bg-gray-50 dark:even:tw-bg-gray-900/50',
@@ -102,7 +102,7 @@
         btnClasses.push(disabled ? classes.notEnabled : classes.enabled);
 
         var a = $('<a>', {
-            'href': disabled ? null : '#',
+            'href': disabled ? null : 'javascript:void(0);',
             'class': btnClasses.join(' ')
         })
             .html(content);
@@ -126,7 +126,7 @@
         var row = $( '<div/>', {
             "class": items.full ?
                 'tw-grid tw-grid-cols-1 tw-gap-4 tw-mb-4' :
-                'tw-grid tw-grid-cols-2 tw-gap-4 tw-mb-4'
+                'tw-flex tw-justify-between tw-mb-4'
         } )
             .appendTo( container );
 

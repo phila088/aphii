@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -33,22 +34,19 @@ class User extends Authenticatable
         'email',
         'email_verified_at',
         'password',
-        'phone_fax',
         'phone_mobile',
         'phone_work',
+        'phone_work_extension',
         'sex',
         'date_of_birth',
-        'facebook',
-        'instagram',
-        'tiktok',
-        'twitter',
-        'url',
+        'timezone',
         'remember_token',
         'deleted_at',
         'user_id',
         'client_id',
         'vendor_id',
         'welcome_valid_until',
+        'last_activity',
     ];
 
     /**
@@ -70,6 +68,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function user(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 
     public function documentCategories(): HasMany
     {

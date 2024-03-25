@@ -47,8 +47,6 @@ new class extends Component {
 
     public function mount(): void
     {
-        $this->findPhysicalAddress();
-        $this->findRemittanceAddress();
         $this->directions = (__('selects.cardinal-directions'));
         $this->street_types = (__('selects.street-types'));
         $this->unit_types = (__('selects.unit-types'));
@@ -62,30 +60,20 @@ new class extends Component {
 
         if (auth()->user()->address()->create($validated))
         {
-            request()->session()->flash('toast', 'Brand successfully updated!');
-            request()->session()->flash('toast_type', 'success');
+            $this->dispatch('brand-address-created', data: $this->title);
 
-            $this->dispatch('brand-address-created');
-        }
-    }
-
-    public function findPhysicalAddress(): void
-    {
-        $physicalAddress = BrandAddress::where('title', '=', 'Physical')
-            ->where('brand_id', '=', $this->brand->id)
-            ->get();
-        if (!empty($physicalAddress[0])) {
-            $this->physicalExists = true;
-        }
-    }
-
-    public function findRemittanceAddress(): void
-    {
-        $remittanceAddress = BrandAddress::where('title', '=', 'Remittance')
-            ->where('brand_id', '=', $this->brand->id)
-            ->get();
-        if (!empty($remittanceAddress[0])) {
-            $this->remittanceExists = true;
+            $this->title = '';
+            $this->building_number = '';
+            $this->pre_direction = '';
+            $this->street_name = '';
+            $this->street_type = '';
+            $this->post_direction = '';
+            $this->unit = '';
+            $this->unit_type = '';
+            $this->po_box = '';
+            $this->city = '';
+            $this->state = '';
+            $this->zip = '';
         }
     }
 
@@ -134,26 +122,6 @@ new class extends Component {
 
 <div>
     <form wire:submit="saveAddress" class="need-validation" novalidate autocomplete="off">
-        <div wire:ignore>
-            @if (!$physicalExists)
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    There is no physical address on file. Click
-                    <a href="javascript:void(0);" class="alert-link" id="add-physical" data-bs-dismiss="alert" wire:ignore>
-                        HERE
-                    </a>
-                    to add one!
-                </div>
-            @endif
-            @if ($physicalExists && !$remittanceExists)
-                <div class="alert alert-warning alert-dismissible fade show" role="alert" wire:ignore>
-                    There is no remittance address on file. Click
-                    <a href="javascript:void(0);" class="alert-link" id="add-remittance" data-bs-dismiss="alert">
-                        HERE
-                    </a>
-                    to add one!
-                </div>
-            @endif
-        </div>
 
         <div class="row g-2">
             <p>
@@ -302,55 +270,9 @@ new class extends Component {
 
             <x-hr />
 
-            <x-submit id="address" />
+            <x-submit />
 
             <x-hr />
         </div>
     </form>
-
-    @script
-    <script>
-        const emptyTitles = document.querySelectorAll('input[id^="title"]:not([value=""])')
-        const addPhysicalLink = document.querySelector('#add-physical')
-        const addRemittanceLink = document.querySelector('#add-remittance')
-
-        let physicalExists = $wire.physicalExists
-        let remittanceExists = $wire.remittanceExists
-
-        if (!physicalExists) {
-            addPhysicalLink.addEventListener('click', () => {
-                for (let i = 0; i < emptyTitles.length; i++) {
-                    if (emptyTitles[i].value === '') {
-                        emptyTitles[i].value = 'Physical'
-                        let id = emptyTitles[i].getAttribute('id');
-                        let num = id.split('-');
-                        num = num[1]
-                        document.querySelector('#building-number').focus()
-                        break;
-                    }
-                }
-                @this
-                    .set('title', document.querySelector('#title').value)
-            })
-        }
-
-        if (physicalExists && !remittanceExists) {
-            addRemittanceLink.addEventListener('click', () => {
-                for (let i = 0; i < emptyTitles.length; i++) {
-                    if (emptyTitles[i].value === '') {
-                        emptyTitles[i].value = 'Remittance'
-                        let id = emptyTitles[i].getAttribute('id');
-                        let num = id.split('-');
-                        num = num[1]
-                        document.querySelector('#building-number').focus()
-                        break;
-                    }
-                }
-                @this
-            .set('title', document.querySelector('#title').value)
-            })
-        }
-
-    </script>
-    @endscript
 </div>

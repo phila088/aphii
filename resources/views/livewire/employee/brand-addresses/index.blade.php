@@ -45,6 +45,8 @@ new class extends Component {
     {
         $address->delete();
 
+        $this->dispatch('brand-address-deleted');
+
         $this->getAddresses();
     }
 }; ?>
