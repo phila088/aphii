@@ -8,7 +8,7 @@
 
         <!-- PAGE HEADER -->
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
-            <h4 class="fw-medium tw-text-xl mb-0">{{ __('Edit Brand') }}</h4>
+            <h4 class="fw-medium tw-text-xl mb-0"></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('employee.brands.index') }}" class="text-white-50">{{ __('Brands') }}</a>
                 </li>
@@ -21,70 +21,69 @@
         <div class="main-content app-content">
             <div class="container-fluid">
                 <!-- Start::row-1 -->
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card custom-card">
-                            <div class="card-header tw-flex tw-justify-between tw-items-center">
-                                <h1>{{ $brand->legal_name }}</h1>
-                                <div class="tw-flex tw-items-center tw-gap-x-1">
-                                    <a href="{{ route('employee.brands.index') }}" class="btn btn-danger btn-sm">
-                                        Cancel
-                                        <i class="bi bi-x-circle"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body tw-p-4">
-                                <x-tab-button-parent>
-                                    <x-tab-button id="pills-general-tab" data-bs-toggle="pill-brand-edit" target="pills-general" selected="true" label="General" />
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <div class="tw-flex tw-justify-between tw-items-center">
+                            <x-tab-button-parent>
+                                <x-tab-button id="pills-general-tab" data-bs-toggle="pill-brand-edit" target="pills-general" selected="true" label="General" />
 
-                                    <x-tab-button id="pills-addresses-tab" data-bs-toggle="pill-brand-edit" target="pills-addresses" selected="false" label="Addresses" />
+                                <x-tab-button id="pills-addresses-tab" data-bs-toggle="pill-brand-edit" target="pills-addresses" selected="false" label="Addresses" />
 
-                                    <x-tab-button id="pills-emails-tab" data-bs-toggle="pill-brand-edit" target="pills-emails" selected="false" label="Emails" />
+                                <x-tab-button id="pills-emails-tab" data-bs-toggle="pill-brand-edit" target="pills-emails" selected="false" label="Emails" />
 
-                                    <x-tab-button id="pills-holidays-tab" data-bs-toggle="pill-brand-edit" target="pills-holidays" selected="false" label="Holidays" />
+                                <x-tab-button id="pills-holidays-tab" data-bs-toggle="pill-brand-edit" target="pills-holidays" selected="false" label="Holidays" />
 
-                                    <x-tab-button id="pills-hours-tab" data-bs-toggle="pill-brand-edit" target="pills-hours" selected="false" label="Hours" />
+                                <x-tab-button id="pills-hours-tab" data-bs-toggle="pill-brand-edit" target="pills-hours" selected="false" label="Hours" />
 
-                                    <x-tab-button id="pills-phone-numbers-tab" data-bs-toggle="pill-brand-edit" target="pills-phone-numbers" selected="false" label="Phone numbers" />
+                                <x-tab-button id="pills-phone-numbers-tab" data-bs-toggle="pill-brand-edit" target="pills-phone-numbers" selected="false" label="Phone numbers" />
 
-                                    <x-tab-button id="pills-profile-tab" data-bs-toggle="pill-brand-edit" target="pills-profile" selected="false" label="Profile" />
-                                </x-tab-button-parent>
-
-                                <x-tab-content-parent>
-                                    <x-tab-content active="true" id="pills-general" labelledby="pills-general-tab">
-                                        @livewire('employee.brands.edit-general', ['brand' => $brand])
-                                    </x-tab-content>
-
-                                    <x-tab-content id="pills-addresses" labelledby="pills-addresses-tab">
-                                        @livewire('employee.brand-addresses.create', ['brand' => $brand])
-                                        @livewire('employee.brand-addresses.index', ['brand' => $brand])
-                                    </x-tab-content>
-
-                                    <x-tab-content id="pills-emails" labelledby="pills-emails-tab">
-                                        @livewire('employee.brand-emails.create')
-                                        @livewire('employee.brand-emails.edit')
-                                    </x-tab-content>
-
-                                    <x-tab-content id="pills-holidays" labelledby="pills-holidays-tab">
-                                        ...
-                                    </x-tab-content>
-
-                                    <x-tab-content id="pills-hours" labelledby="pills-hours-tab">
-                                        ...
-                                    </x-tab-content>
-
-                                    <x-tab-content id="pills-phone-numbers" labelledby="pills-phone-numbers-tab">
-                                        ...
-                                    </x-tab-content>
-
-                                    <x-tab-content id="pills-profile" labelledby="pills-phone-profile">
-                                        ...
-                                    </x-tab-content>
-                                </x-tab-content-parent>
+                                <x-tab-button id="pills-profile-tab" data-bs-toggle="pill-brand-edit" target="pills-profile" selected="false" label="Profile" />
+                            </x-tab-button-parent>
+                            <div class="tw-flex tw-items-center tw-gap-x-1">
+                                <a href="{{ route('employee.brands.index') }}" class="btn btn-danger btn-sm">
+                                    Cancel
+                                    <i class="bi bi-x-circle"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h1>{{ $brand->legal_name }}</h1>
+                    </div>
+                </div>
+                <x-tab-content-parent>
+                    <x-tab-content active="true" id="pills-general" labelledby="pills-general-tab">
+                        @livewire('employee.brands.edit-general', ['brand' => $brand])
+                    </x-tab-content>
+
+                    <x-tab-content id="pills-addresses" labelledby="pills-addresses-tab">
+                        @livewire('employee.brand-addresses.create', ['brand' => $brand])
+                        @livewire('employee.brand-addresses.index', ['brand' => $brand])
+                    </x-tab-content>
+
+                    <x-tab-content id="pills-emails" labelledby="pills-emails-tab">
+                        @livewire('employee.brand-emails.create', ['brand' => $brand])
+                        @livewire('employee.brand-emails.list', ['brand' => $brand])
+                    </x-tab-content>
+
+                    <x-tab-content id="pills-holidays" labelledby="pills-holidays-tab">
+                        ...
+                    </x-tab-content>
+
+                    <x-tab-content id="pills-hours" labelledby="pills-hours-tab">
+                        ...
+                    </x-tab-content>
+
+                    <x-tab-content id="pills-phone-numbers" labelledby="pills-phone-numbers-tab">
+                        ...
+                    </x-tab-content>
+
+                    <x-tab-content id="pills-profile" labelledby="pills-phone-profile">
+                        ...
+                    </x-tab-content>
+                </x-tab-content-parent>
                 <!-- End::row-1 -->
             </div>
         </div>
@@ -157,6 +156,12 @@
                 })
                 Livewire.on('brand-address-deleted', () => {
                     toastr['success']('Address deleted successfully.')
+                })
+                Livewire.on('brand-email-created', () => {
+                    toastr['success']('Email created successfully.')
+                })
+                Livewire.on('brand-email-deleted', () => {
+                    toastr['success']('Email deleted successfully.')
                 })
             })
         </script>

@@ -21,7 +21,7 @@ new class extends Component {
     }
 }; ?>
 
-<div>
+<div class="tw-shadow-md tw-rounded-lg tw-p-4">
     <form wire:submit="createRole" class="needs-validation" novalidate autocomplete="off">
         <div class="row g-2">
             <dl>

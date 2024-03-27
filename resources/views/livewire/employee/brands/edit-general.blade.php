@@ -106,192 +106,191 @@ new class extends Component {
 
 <div>
     <form wire:submit="updateBrand" class="need-validation" novalidate autocomplete="off">
-        <h1 class="tw-text-lg">Status</h1>
-
-        <div class="row g-2">
-            <x-select id="status" model="status" label="Status">
-                <option></option>
-                @foreach ($statuses as $status)
-                    <option value="{{ $status->code }}">{{ $status->code }} - {{ $status->title }}</option>
-                @endforeach
-            </x-select>
-        </div>
-
-        <x-hr />
-
-        <x-hr />
-
-        <h1 class="tw-text-lg">Brand name</h1>
-
-        <div class="row g-2">
-            <p>These settings will help identify the brand throughout the site.</p>
-            <dl>
-                <dt>Legal name</dt>
-                <dl>This is the full legal name of the brand to be created.</dl>
-                <dt>DBA</dt>
-                <dl>The name that will be displayed on all forms. If you do not use a DBA, the legal name will be used instead.</dl>
-                <dt>Abbreviation</dt>
-                <dl>This is the name that will be displayed within the system to represent the brand.</dl>
-            </dl>
-        </div>
-
-        <div class="row g-2">
-            <x-input cols="col-lg-3" id="legal-name" model="legal_name" placeholder="Legal name" label="Legal name" class="{{ ($errors->get('legal_name')) ? 'is-invalid' : '' }}" required />
-
-            <x-input cols="col-lg-3" id="dba" model="dba" placeholder="DBA" label="DBA" class="{{ ($errors->get('dba')) ? 'is-invalid' : '' }}" />
-
-            <x-input cols="col-lg-3" id="abbreviation" model="abbreviation" placeholder="Abbreviation" label="Abbreviation" class="{{ ($errors->get('abbreviation')) ? 'is-invalid' : '' }}" required />
-        </div>
-
-        <x-hr />
-
-        <h1 class="tw-text-lg">Internal work order settings</h1>
-
-        <div class="row g-2">
-            <p>You can control the internal work order number that is generated automatically.</p>
-            <dl>
-                <dt>Prefix</dt>
-                <dl>The prefix added before an internal work order number. This can be useful if you are running multiple brands.</dl>
-                <dt>Length</dt>
-                <dl>
-                    This is the total length of work order number. When you enter a work order number, the system will
-                    automatically truncate the last x characters of the work order numbers of the work order number entered,
-                    where x is the number entered below, or 6 by default.
-                </dl>
-                <dt>Postfix increment</dt>
-                <dl>
-                    As a work order is assigned, and reassigned, the system will automatically append a postfix. You can
-                    control the increment of the postfix here.
-                </dl>
-            </dl>
-        </div>
-
-        <div class="row g-2">
-            <x-input cols="col-lg-3" id="internal-work-order-prefix" model="internal_work_order_prefix" placeholder="Prefix" label="Prefix" class="{{ ($errors->get('internal_work_order_prefix')) ? 'is-invalid' : '' }}" />
-
-            <x-input cols="col-lg-3" id="internal-work-order-max-length" model="internal_work_order_max_length" placeholder="Length" label="Length" class="{{ ($errors->get('internal_work_order_max_length')) ? 'is-invalid' : '' }}" x-mask="99" />
-
-            <x-input cols="col-lg-3" id="internal-work-order-postfix-increment" model="internal_work_order_postfix_increment" placeholder="Postfix increment" label="Postfix increment" class="{{ ($errors->get('internal_work_order_postfix_increment')) ? 'is-invalid' : '' }}" x-mask="999" />
-        </div>
-
-        <div class="row g-2" wire:ignore>
-            <p class="tw-font-bold">Example: </p>
-            <p class="tw-font-semibold">Input: </p>
-            <p id="example-work-order-input"></p>
-            <p class="tw-font-semibold">Output: </p>
-            <p id="example-work-order-output"></p>
-        </div>
-
-        <x-hr />
-
-        <!-- Start logo upload -->
-        <div
-            class="row g-2"
-            x-data="{
-                upload: false,
-                photoName: null,
-                photoPreview: null,
-                uploading: false,
-                progress: 0,
-                logo: false
-            }"
-            x-on:livewire-upload-start="uploading = true"
-            x-on:livewire-upload-finish="
-                uploading = false
-            "
-            x-on:livewire-upload-cancel="uploading = false"
-            x-on:livewire-upload-error="uploading = false"
-            x-on:livewire-upload-progress="progress = $event.detail.progress"
-            x-init="
-                logo = ($wire.logo_path !== '') ? true : false
-            "
-        >
-
-            <h1 class="tw-text-lg">Brand logo</h1>
-
-            <!-- Dropzone and input -->
-            <div class="col-md-6 mb-2">
-                <div class="pb-2 tw-flex tw-items-center tw-text-xs tw-text-gray-400 tw-uppercase before:tw-flex-[1_1_0%] before:tw-border-t before:tw-border-gray-200 before:tw-me-6 after:tw-flex-[1_1_0%] after:tw-border-t after:tw-border-gray-200 after:tw-ms-6 dark:tw-text-gray-500 dark:before:tw-border-gray-600 dark:after:tw-border-gray-600">Upload</div>
-                <div id="droparea" class="tw-flex tw-items-center tw-justify-center tw-w-full">
-                    <label for="photo" class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-64 tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 dark:hover:tw-bg-bray-800 dark:tw-bg-gray-700 hover:tw-bg-gray-100 dark:tw-border-gray-600 dark:hover:tw-border-gray-500 dark:hover:tw-bg-gray-600">
-                        <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-pt-5 tw-pb-6">
-                            <svg class="tw-w-8 tw-h-8 tw-mb-4 tw-text-gray-500 dark:tw-text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                            </svg>
-                            <p class="tw-mb-2 tw-text-sm tw-tw-text-gray-500 dark:tw-text-gray-400"><span class="tw-font-semibold">Click to upload</span> or drag and drop</p>
-                            <p class="tw-text-xs tw-text-gray-500 dark:tw-text-gray-400">SVG, PNG, JPG or GIF</p>
-                        </div>
-                        <input
-                            type="file"
-                            id="photo"
-                            class="tw-hidden"
-                            accept="image/*"
-                            wire:model.live="photo"
-                            x-ref="photo"
-                            x-on:change="
-                                photoName = $refs.photo.files[0].name;
-                                const reader = new FileReader();
-                                reader.onload = (e) => {
-                                    photoPreview = e.target.result;
-                                };
-                                reader.readAsDataURL($refs.photo.files[0]);
-
-                                upload = true;
-
-                                logo = false
-                            "
-                        />
-                    </label>
-                </div>
+        <div class="card custom-card">
+            <div class="card-header">
+                <h1>Status</h1>
+            </div>
+            <div class="card-body">
+                <x-select id="status" model="status" label="Status">
+                    <option></option>
+                    @foreach ($statuses as $status)
+                        <option value="{{ $status->code }}">{{ $status->code }} - {{ $status->title }}</option>
+                    @endforeach
+                </x-select>
             </div>
 
-            <!-- Previewer -->
-            <div class="col-md-6 mb-2">
-                <div class="pb-2 tw-flex tw-items-center tw-text-xs tw-text-gray-400 tw-uppercase before:tw-flex-[1_1_0%] before:tw-border-t before:tw-border-gray-200 before:tw-me-6 after:tw-flex-[1_1_0%] after:tw-border-t after:tw-border-gray-200 after:tw-ms-6 dark:tw-text-gray-500 dark:before:tw-border-gray-600 dark:after:tw-border-gray-600">Preview</div>
-                <div class="tw-flex tw-items-center tw-justify-center tw-w-full">
-                    <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-64 tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 dark:hover:tw-bg-bray-800 dark:tw-bg-gray-700 hover:tw-bg-gray-100 dark:tw-border-gray-600 dark:hover:tw-border-gray-500 dark:hover:tw-bg-gray-600">
-                        <div x-show="uploading" class="">
-                            <div class="progress" role="progressbar" aria-label="Upload progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                                <progress class="progress-bar" max="100" x-bind:value="progress"></progress>
+        </div>
+
+        <div class="card custom-card">
+            <div class="card-header">
+                <h1>Brand name</h1>
+            </div>
+            <div class="card-body">
+                <div class="row g-2">
+                    <x-input cols="col-lg-3" id="legal-name" model="legal_name" placeholder="Legal name" label="Legal name" class="{{ ($errors->get('legal_name')) ? 'is-invalid' : '' }}" required />
+
+                    <x-input cols="col-lg-3" id="dba" model="dba" placeholder="DBA" label="DBA" class="{{ ($errors->get('dba')) ? 'is-invalid' : '' }}" />
+
+                    <x-input cols="col-lg-3" id="abbreviation" model="abbreviation" placeholder="Abbreviation" label="Abbreviation" class="{{ ($errors->get('abbreviation')) ? 'is-invalid' : '' }}" required />
+                </div>
+            </div>
+        </div>
+        <div class="card custom-card">
+            <div class="card-header">
+                <h1>Internal work order settings</h1>
+            </div>
+            <div class="card-body">
+                <div class="col-lg-12">
+                    <dl>
+                        <dl>You can control the internal work order number that is generated automatically.</dl>
+                        <dt>Prefix</dt>
+                        <dl>The prefix added before an internal work order number. This can be useful if you are running multiple brands.</dl>
+                        <dt>Length</dt>
+                        <dl>
+                            This is the total length of work order number. When you enter a work order number, the system will
+                            automatically truncate the last x characters of the work order numbers of the work order number entered,
+                            where x is the number entered below, or 6 by default.
+                        </dl>
+                        <dt>Postfix increment</dt>
+                        <dl>
+                            As a work order is assigned, and reassigned, the system will automatically append a postfix. You can
+                            control the increment of the postfix here.
+                        </dl>
+                    </dl>
+                </div>
+                <div class="row g-2">
+                    <x-input cols="col-lg-3" id="internal-work-order-prefix" model="internal_work_order_prefix" placeholder="Prefix" label="Prefix" class="{{ ($errors->get('internal_work_order_prefix')) ? 'is-invalid' : '' }}" />
+
+                    <x-input cols="col-lg-3" id="internal-work-order-max-length" model="internal_work_order_max_length" placeholder="Length" label="Length" class="{{ ($errors->get('internal_work_order_max_length')) ? 'is-invalid' : '' }}" x-mask="99" />
+
+                    <x-input cols="col-lg-3" id="internal-work-order-postfix-increment" model="internal_work_order_postfix_increment" placeholder="Postfix increment" label="Postfix increment" class="{{ ($errors->get('internal_work_order_postfix_increment')) ? 'is-invalid' : '' }}" x-mask="999" />
+                </div>
+                <div class="row g-2" wire:ignore>
+                    <p class="tw-font-bold">Example: </p>
+                    <p class="tw-font-semibold">Input: </p>
+                    <p id="example-work-order-input"></p>
+                    <p class="tw-font-semibold">Output: </p>
+                    <p id="example-work-order-output"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card custom-card">
+            <div class="card-header">
+                <h1>Brand logo</h1>
+            </div>
+            <div class="card-body">
+                <div
+                    class="row g-2"
+                    x-data="{
+                        upload: false,
+                        photoName: null,
+                        photoPreview: null,
+                        uploading: false,
+                        progress: 0,
+                        logo: false
+                    }"
+                    x-on:livewire-upload-start="uploading = true"
+                    x-on:livewire-upload-finish="
+                        uploading = false
+                    "
+                    x-on:livewire-upload-cancel="uploading = false"
+                    x-on:livewire-upload-error="uploading = false"
+                    x-on:livewire-upload-progress="progress = $event.detail.progress"
+                    x-init="
+                        logo = ($wire.logo_path !== '') ? true : false
+                    "
+                >
+                    <!-- Dropzone and input -->
+                    <div class="col-md-6 mb-2">
+                        <div class="pb-2 tw-flex tw-items-center tw-text-xs tw-text-gray-400 tw-uppercase before:tw-flex-[1_1_0%] before:tw-border-t before:tw-border-gray-200 before:tw-me-6 after:tw-flex-[1_1_0%] after:tw-border-t after:tw-border-gray-200 after:tw-ms-6 dark:tw-text-gray-500 dark:before:tw-border-gray-600 dark:after:tw-border-gray-600">Upload</div>
+                        <div id="droparea" class="tw-flex tw-items-center tw-justify-center tw-w-full">
+                            <label for="photo" class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-64 tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 dark:hover:tw-bg-bray-800 dark:tw-bg-gray-700 hover:tw-bg-gray-100 dark:tw-border-gray-600 dark:hover:tw-border-gray-500 dark:hover:tw-bg-gray-600">
+                                <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-pt-5 tw-pb-6">
+                                    <svg class="tw-w-8 tw-h-8 tw-mb-4 tw-text-gray-500 dark:tw-text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                    </svg>
+                                    <p class="tw-mb-2 tw-text-sm tw-tw-text-gray-500 dark:tw-text-gray-400"><span class="tw-font-semibold">Click to upload</span> or drag and drop</p>
+                                    <p class="tw-text-xs tw-text-gray-500 dark:tw-text-gray-400">SVG, PNG, JPG or GIF</p>
+                                </div>
+                                <input
+                                    type="file"
+                                    id="photo"
+                                    class="tw-hidden"
+                                    accept="image/*"
+                                    wire:model.live="photo"
+                                    x-ref="photo"
+                                    x-on:change="
+                                        photoName = $refs.photo.files[0].name;
+                                        const reader = new FileReader();
+                                        reader.onload = (e) => {
+                                            photoPreview = e.target.result;
+                                        };
+                                        reader.readAsDataURL($refs.photo.files[0]);
+
+                                        upload = true;
+
+                                        logo = false
+                                    "
+                                />
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Previewer -->
+                    <div class="col-md-6 mb-2">
+                        <div class="pb-2 tw-flex tw-items-center tw-text-xs tw-text-gray-400 tw-uppercase before:tw-flex-[1_1_0%] before:tw-border-t before:tw-border-gray-200 before:tw-me-6 after:tw-flex-[1_1_0%] after:tw-border-t after:tw-border-gray-200 after:tw-ms-6 dark:tw-text-gray-500 dark:before:tw-border-gray-600 dark:after:tw-border-gray-600">Preview</div>
+                        <div class="tw-flex tw-items-center tw-justify-center tw-w-full">
+                            <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-64 tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 dark:hover:tw-bg-bray-800 dark:tw-bg-gray-700 hover:tw-bg-gray-100 dark:tw-border-gray-600 dark:hover:tw-border-gray-500 dark:hover:tw-bg-gray-600">
+                                <div x-show="uploading" class="">
+                                    <div class="progress" role="progressbar" aria-label="Upload progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                        <progress class="progress-bar" max="100" x-bind:value="progress"></progress>
+                                    </div>
+                                </div>
+                                <span
+                                    x-bind:class="(progress === 0 && !uploading && logo) ? 'tw-inline-block' : 'tw-hidden'"
+                                    class="tw-w-full tw-h-full tw-bg-contain tw-bg-no-repeat tw-bg-center"
+                                    x-bind:style="'background-image: url(\'{{ asset($logo_path) }}\');'"
+                                    id="logo-preview"
+                                >
+                                </span>
+                                <span
+                                    x-bind:class="(progress === 100 && !uploading && !logo) ? 'tw-inline-block' : 'tw-hidden'"
+                                    class="tw-w-full tw-h-full tw-bg-contain tw-bg-no-repeat tw-bg-center"
+                                    x-bind:style="'background-image: url(\'' + photoPreview + '\');'"
+                                    id="logo-preview"
+                                >
+                                </span>
                             </div>
                         </div>
-                        <span
-                            x-bind:class="(progress === 0 && !uploading && logo) ? 'tw-inline-block' : 'tw-hidden'"
-                            class="tw-w-full tw-h-full tw-bg-contain tw-bg-no-repeat tw-bg-center"
-                            x-bind:style="'background-image: url(\'{{ asset($logo_path) }}\');'"
-                            id="logo-preview"
-                        >
-                        </span>
-                        <span
-                            x-bind:class="(progress === 100 && !uploading && !logo) ? 'tw-inline-block' : 'tw-hidden'"
-                            class="tw-w-full tw-h-full tw-bg-contain tw-bg-no-repeat tw-bg-center"
-                            x-bind:style="'background-image: url(\'' + photoPreview + '\');'"
-                            id="logo-preview"
-                        >
-                        </span>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="card custom-card">
+            <div class="card-header">
+                <h1>Licenses</h1>
+            </div>
+            <div class="card-body">
+                <div class="row g-2">
+                    <x-input cols="col-lg-3" id="fein" model="fein" placeholder="FEIN" label="FEIN"/>
 
-        <x-hr />
+                    <x-input cols="col-lg-3" id="state-license-number" model="state_license_number"
+                             placeholder="State license number" label="State license number"/>
 
-        <h1 class="tw-text-lg">Licenses</h1>
+                    <x-input cols="col-lg-3" id="county-license-number" model="county_license_number"
+                             placeholder="County license number" label="County license number"/>
 
-        <div class="row g-2">
-            <x-input cols="col-lg-3" id="fein" model="fein" placeholder="FEIN" label="FEIN" />
-
-            <x-input cols="col-lg-3" id="state-license-number" model="state_license_number" placeholder="State license number" label="State license number" />
-
-            <x-input cols="col-lg-3" id="county-license-number" model="county_license_number" placeholder="County license number" label="County license number" />
-
-            <x-input cols="col-lg-3" id="city-license-number" model="city_license_number" placeholder="City license number" label="City license number" />
+                    <x-input cols="col-lg-3" id="city-license-number" model="city_license_number"
+                             placeholder="City license number" label="City license number"/>
+                </div>
+            </div>
         </div>
-
-        <x-hr />
-
-        <x-submit />
-
+        <div class="card custom-card">
+            <div class="card-body">
+                <x-submit id="brand-edit"/>
+            </div>
+        </div>
     </form>
 
     @script

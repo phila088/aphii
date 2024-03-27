@@ -83,15 +83,17 @@
                     </x-slide-parent>
 
                     <!-- Brands -->
-                    <x-slide-parent icon="bi bi-building" label="Brands">
-                        <x-slide-label label="Brands" />
+                    @canany (['brands.viewany', 'brands.create', 'brands.report'])
+                        <x-slide-parent icon="bi bi-building" label="Brands">
+                            <x-slide-label label="Brands" />
 
-                        <x-slide-item route="employee.brands.index" label="View all" />
+                            <x-slide-item route="employee.brands.index" label="View all" permission="brands.viewany" />
 
-                        <x-slide-item route="employee.brands.create" label="Create" />
+                            <x-slide-item route="employee.brands.create" label="Create" permission="brands.create" />
 
-                        <x-slide-item route="url:#" label="Reports" />
-                    </x-slide-parent>
+                            <x-slide-item route="url:#" label="Reports" permission="brands.report" />
+                        </x-slide-parent>
+                    @endcanany
 
 
                     <!-- Clients -->
@@ -330,6 +332,8 @@
                             <x-slide-item route="url:#" label="View all" />
 
                         </x-slide-with-child>
+
+                        <x-slide-item route="admin.users.index" label="Users" />
 
                     </x-slide-parent>
                @endif

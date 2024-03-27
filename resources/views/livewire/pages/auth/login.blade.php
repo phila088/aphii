@@ -28,7 +28,6 @@ new #[Layout('layouts.custom-master')] class extends Component {
 
 
 <div class="row mx-0 authentication bg-white">
-    <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <div class="col-xxl-6 col-xl-7 col-lg-12">
         <div class="row mx-0 justify-content-center align-items-center h-100">
@@ -36,7 +35,7 @@ new #[Layout('layouts.custom-master')] class extends Component {
                 <div class="p-sm-5 p-0">
                     <p class="h4 fw-semibold mb-2">{{ __('Sign In') }}</p>
                     <p class="mb-3 text-muted op-7 fw-normal">{{ __('Welcome back') }}!</p>
-                    <form wire:submit="login">
+                    <form wire:submit="login" novalidate autocomplete="off">
                         <div class="row mx-0 gy-3 mt-3">
                             <div class="col-xl-12 mt-0 px-0">
                                 <label for="email" class="form-label text-default">{{ __('Email') }}</label>
@@ -44,11 +43,12 @@ new #[Layout('layouts.custom-master')] class extends Component {
                                     name="email"
                                     id="email"
                                     wire:model="form.email"
-                                    type="text"
+                                    type="email"
                                     class="form-control form-control-lg"
                                     placeholder="email"
+                                    autocomplete="new-email"
                                 >
-                                <x-input-error :messages="$errors->get('form.email')" class="mt-2"/>
+                                <x-input-error :messages="$errors->get('form.email')" class="tw-text-red-500 mt-2"/>
                             </div>
                             <div class="col-xl-12 mb-3  px-0">
                                 <label for="password" class="form-label text-default d-block">

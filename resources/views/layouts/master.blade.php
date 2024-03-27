@@ -38,11 +38,11 @@
     @livewireStyles
 
     <!-- MAIN JS -->
-    <script src="{{asset('build/assets/main.js')}}"></script>
+    <script src="{{asset('build/assets/main.js')}}" data-navigate-track></script>
     <script
         src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous" data-navigate-track></script>
 
     @yield('styles')
 
@@ -110,17 +110,6 @@
     <!-- END FOOTER -->
 
 </div>
-<div class="toast-container position-fixed bottom-0 end-0 p-4 tw-z-[9999999]">
-    <x-flash />
-    <div id="toast-element" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div id="toast-header" class="toast-header bg-success-subtle">
-            <img src="{{ asset('build/assets/images/brand-logos/favicon.svg') }}" class="rounded me-2" alt="...">
-            <strong class="me-auto">Bootstrap</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body" id="toast-body"></div>
-    </div>
-</div>
 <!-- END PAGE-->
 
 <!-- SCRIPTS -->
@@ -130,7 +119,7 @@
 @yield('scripts')
 
 <!-- STICKY JS -->
-<script src="{{asset('build/assets/sticky.js')}}"></script>
+<script src="{{asset('build/assets/sticky.js')}}" data-navigate-track></script>
 
 <!-- APP JS -->
 @vite('resources/js/app.js')
@@ -144,12 +133,12 @@
 <!-- END SCRIPTS -->
 @livewireScriptConfig
 
-<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js" data-navigate-track></script>
 
-<script src="{{ asset('js/toastr.js') }}"></script>
+<script src="{{ asset('js/toastr.js') }}" data-navigate-track></script>
 <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("livewire:navigated", function() {
         if (document.body.hasAttribute('data-notification')) {
             let types = ['success', 'info', 'warning', 'error']
             let type = '{{ Session::get('toast_type') }}'
@@ -181,8 +170,6 @@
         }
     });
 
-    const searchBox = document.getElementById('typehead');
-
     hotkeys('alt+l,alt+m+p, alt+m+b, alt+a+b, alt+/', function (event, handler){
         switch (handler.key) {
             case 'alt+/':
@@ -204,6 +191,9 @@
             default: alert(event);
         }
     });
+
+
+
 </script>
 </body>
 </html>

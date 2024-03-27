@@ -9,6 +9,10 @@
     }
 
     window.addEventListener("load", hideLoader);
+
+    document.addEventListener('livewire:navigated', () => {
+        hideLoader();
+    })
     /* page loader */
 
 
@@ -96,7 +100,7 @@
     /* header theme toggle */
 
     /* Choices JS */
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('livewire:navigated', function () {
         var genericExamples = document.querySelectorAll('[data-trigger]');
         for (let i = 0; i < genericExamples.length; ++i) {
             var element = genericExamples[i];

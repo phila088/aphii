@@ -141,9 +141,9 @@ new class extends Component {
     }
 }; ?>
 
-<div class="tw-shadow-md tw-rounded-lg tw-p-6">
+<div class="tw-shadow-md tw-rounded-lg tw-p-4">
     <form wire:submit="createUser" class="needs-validation" novalidate autocomplete="off">
-        <div class="row g-2">
+        <div class="row g-2 tw-shadow-md tw-rounded-lg tw-p-4">
             <div class="col-lg-6">
                 <dl>
                     <dt class="tw-text-lg">Account type</dt>
@@ -320,124 +320,27 @@ new class extends Component {
             </div>
         </div>
 
-        <!-- Start profile picture upload -->
-        <div
-            class="row g-2 tw-my-6"
-            x-data="{
-                upload: false,
-                photoName: null,
-                photoPreview: null,
-                uploading: false,
-                progress: 0
-            }"
-            x-on:livewire-upload-start="uploading = true"
-            x-on:livewire-upload-finish="
-                uploading = false
-            "
-            x-on:livewire-upload-cancel="uploading = false"
-            x-on:livewire-upload-error="uploading = false"
-            x-on:livewire-upload-progress="progress = $event.detail.progress"
-        >
-
-            <dl>
-                <dt class="tw-text-lg">Profile picture</dt>
+        <div class="row g-2 tw-my-6 tw-shadow-md tw-rounded-lg tw-p-4">
+            <div class="col-lg-12">
                 <dl>
-                    Each user will be able to manage their profile picture within their own profile. You may upload a
-                    custom avatar here, or allow the system to assign the user a default profile picture based on the
-                    sex set for the user.
+                    <dt class="tw-text-lg">Basic details</dt>
+                    <dt>First and last name</dt>
+                    <dl>
+                        The first and last name entered here will be used to generate the users display name. If the user has a
+                        nickname or preferred name, enter it here.
+                    </dl>
+                    <dt>Email</dt>
+                    <dl>
+                        The email entered here will be used to log in to the site.
+                    </dl>
+                    <dt>Password</dt>
+                    <dl>
+                        You may assign the user a password here, or the user will be sent a temporary password with their
+                        registration email.
+                    </dl>
                 </dl>
-            </dl>
-
-            <!-- Dropzone and input -->
-            <div class="col-md-6 mb-2">
-                <div
-                    class="pb-2 tw-flex tw-items-center tw-text-xs tw-text-gray-400 tw-uppercase before:tw-flex-[1_1_0%] before:tw-border-t before:tw-border-gray-200 before:tw-me-6 after:tw-flex-[1_1_0%] after:tw-border-t after:tw-border-gray-200 after:tw-ms-6 dark:tw-text-gray-500 dark:before:tw-border-gray-600 dark:after:tw-border-gray-600">
-                    Upload
-                </div>
-                <div id="droparea" class="tw-flex tw-items-center tw-justify-center tw-w-full">
-                    <label for="photo"
-                           class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-64 tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 dark:hover:tw-bg-bray-800 dark:tw-bg-gray-700 hover:tw-bg-gray-100 dark:tw-border-gray-600 dark:hover:tw-border-gray-500 dark:hover:tw-bg-gray-600">
-                        <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-pt-5 tw-pb-6">
-                            <svg class="tw-w-8 tw-h-8 tw-mb-4 tw-text-gray-500 dark:tw-text-gray-400" aria-hidden="true"
-                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                      stroke-width="2"
-                                      d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                            </svg>
-                            <p class="tw-mb-2 tw-text-sm tw-tw-text-gray-500 dark:tw-text-gray-400"><span
-                                    class="tw-font-semibold">Click to upload</span> or drag and drop</p>
-                            <p class="tw-text-xs tw-text-gray-500 dark:tw-text-gray-400">SVG, PNG, JPG or GIF</p>
-                        </div>
-                        <input
-                            type="file"
-                            id="photo"
-                            class="tw-hidden"
-                            accept="image/*"
-                            wire:model.live="photo"
-                            x-ref="photo"
-                            x-on:change="
-                                photoName = $refs.photo.files[0].name;
-                                const reader = new FileReader();
-                                reader.onload = (e) => {
-                                    photoPreview = e.target.result;
-                                };
-                                reader.readAsDataURL($refs.photo.files[0]);
-
-                                upload = true;
-                            "
-                        />
-                    </label>
-                </div>
             </div>
 
-            <!-- Previewer -->
-            <div class="col-md-6 mb-2">
-                <div
-                    class="pb-2 tw-flex tw-items-center tw-text-xs tw-text-gray-400 tw-uppercase before:tw-flex-[1_1_0%] before:tw-border-t before:tw-border-gray-200 before:tw-me-6 after:tw-flex-[1_1_0%] after:tw-border-t after:tw-border-gray-200 after:tw-ms-6 dark:tw-text-gray-500 dark:before:tw-border-gray-600 dark:after:tw-border-gray-600">
-                    Preview
-                </div>
-                <div class="tw-flex tw-items-center tw-justify-center tw-w-full">
-                    <div
-                        class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-64 tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 dark:hover:tw-bg-bray-800 dark:tw-bg-gray-700 hover:tw-bg-gray-100 dark:tw-border-gray-600 dark:hover:tw-border-gray-500 dark:hover:tw-bg-gray-600">
-                        <div x-show="uploading" class="">
-                            <div class="progress" role="progressbar" aria-label="Upload progress" aria-valuenow="0"
-                                 aria-valuemin="0" aria-valuemax="100">
-                                <progress class="progress-bar" max="100" x-bind:value="progress"></progress>
-                            </div>
-                        </div>
-                        <span
-                            x-bind:class="(progress === 100 && !uploading) ? 'tw-inline-block' : 'tw-hidden'"
-                            class="tw-w-full tw-h-full tw-bg-contain tw-bg-no-repeat tw-bg-center"
-                            x-bind:style="'background-image: url(\'' + photoPreview + '\');'"
-                            id="logo-preview"
-                        >
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-2 tw-my-6">
-            <dl>
-                <dt class="tw-text-lg">Basic details</dt>
-                <dt>First and last name</dt>
-                <dl>
-                    The first and last name entered here will be used to generate the users display name. If the user has a
-                    nickname or preferred name, enter it here.
-                </dl>
-                <dt>Email</dt>
-                <dl>
-                    The email entered here will be used to log in to the site.
-                </dl>
-                <dt>Password</dt>
-                <dl>
-                    You may assign the user a password here, or the user will be sent a temporary password with their
-                    registration email.
-                </dl>
-            </dl>
-        </div>
-
-        <div class="row g-2">
             <x-input id="first-name" model="first_name" placeholder="First name" label="First name" />
 
             <x-input id="last-name" model="last_name" placeholder="Last name" label="Last name" />
@@ -449,43 +352,43 @@ new class extends Component {
             <x-input type="password" id="verify-password" model="verify_password" placeholder="Verify password" label="Verify password" />
         </div>
 
-        <div class="row g-2 tw-my-6">
-            <dl>
-                <dt class="tw-text-lg">Phone numbers</dt>
+        <div class="row g-2 tw-my-6 tw-shadow-md tw-rounded-lg tw-p-4">
+            <div class="col-lg-12">
                 <dl>
-                    The phone numbers entered here are only for contact methods for the user to allow other users to contact
-                    each other. These are optionals.
+                    <dt class="tw-text-lg">Phone numbers</dt>
+                    <dl>
+                        The phone numbers entered here are only for contact methods for the user to allow other users to contact
+                        each other. These are optionals.
+                    </dl>
                 </dl>
-            </dl>
-        </div>
+            </div>
 
-        <div class="row g-2">
             <x-input id="phone-mobile" model="phone_mobile" placeholder="Mobile" label="Mobile" />
 
             <x-input id="phone-work" model="phone_work" placeholder="Work" label="Work" />
         </div>
 
-        <div class="row g-2 tw-my-6">
-            <dl>
-                <dt class="tw-text-lg">Additional information</dt>
-                <dt>Sex</dt>
+        <div class="row g-2 tw-my-6 tw-shadow-md tw-rounded-lg tw-p-4">
+            <div class="col-lg-12">
                 <dl>
-                    The sex of the user. This will help determine the default profile picture, as well as how the user is
-                    greeted through the site.
+                    <dt class="tw-text-lg">Additional information</dt>
+                    <dt>Sex</dt>
+                    <dl>
+                        The sex of the user. This will help determine the default profile picture, as well as how the user is
+                        greeted through the site.
+                    </dl>
+                    <dt>Date of birth</dt>
+                    <dl>
+                        Due to the policies of this application, no user under the age of 16 may use this app in any way.
+                    </dl>
+                    <dt>Timezone</dt>
+                    <dl>
+                        This will be used to show the proper time for the user. All dates and times are entered into the system
+                        in UTC, and this will allow them to see times according to their timezones.
+                    </dl>
                 </dl>
-                <dt>Date of birth</dt>
-                <dl>
-                    Due to the policies of this application, no user under the age of 16 may use this app in any way.
-                </dl>
-                <dt>Timezone</dt>
-                <dl>
-                    This will be used to show the proper time for the user. All dates and times are entered into the system
-                    in UTC, and this will allow them to see times according to their timezones.
-                </dl>
-            </dl>
-        </div>
+            </div>
 
-        <div class="row g-2">
             <x-select id="sex" model="sex" label="Sex">
                 <option></option>
                 <option value="female">Female</option>
@@ -505,21 +408,6 @@ new class extends Component {
         <x-submit id="create-user" />
     </form>
 
-    @script
-    <script>
-        const e = document.querySelector("#droparea"), a = document.querySelector("#photo");
 
-        function u(e) {
-            e.preventDefault(), e.stopPropagation()
-        }
-
-        e.addEventListener("drop", (e => {
-            a.files = e.dataTransfer.files, a.dispatchEvent(new Event("change")), e.preventDefault()
-        })), ["dragenter", "dragover", "dragleave"].forEach((t => {
-            e.addEventListener(t, u, !1)
-        }));
-
-    </script>
-    @endscript
 
 </div>

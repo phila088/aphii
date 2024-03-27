@@ -122,6 +122,7 @@ new class extends Component {
                 <option value="edit">Edit</option>
                 <option value="viewany">View Any</option>
                 <option value="viewone">View One</option>
+                <option value="report">Report</option>
             </x-select>
 
             <x-input id="name" model="name" placeholder="Name" label="Name" />

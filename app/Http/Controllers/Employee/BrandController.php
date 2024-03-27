@@ -6,36 +6,51 @@ use App\Models\Brand;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use \Illuminate\Http\RedirectResponse;
 
 class BrandController extends Controller
 {
     public function index(): View
     {
+        $this->authorize('brands.viewany', Brand::class);
+
         return view('employee.brands.index');
     }
 
     public function create(): View
     {
+        $this->authorize('brands.create', Brand::class);
+
         return view('employee.brands.create');
     }
 
-    public function view($id)
+    public function view($id): RedirectResponse|View
     {
         try {
             $brand = Brand::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('Employee.brands.index');
+            $this->authorize('brands.viewany', Brand::class);
+
+            return redirect()->route('employee.brands.index');
         }
+        $this->authorize('brands.viewone', Brand::class);
+
         return view('employee.brands.view', ['brand' => $brand]);
     }
 
     public function edit($id)
     {
+        $this->authorize('brands.edit', Brand::class);
+
         try {
             $brand = Brand::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('Employee.brands.index');
+            $this->authorize('brands.viewany', Brand::class);
+
+            return redirect()->route('employee.brands.index');
         }
+        $this->authorize('brands.edit', Brand::class);
+
         return view('employee.brands.edit', ['brand' => $brand]);
     }
 

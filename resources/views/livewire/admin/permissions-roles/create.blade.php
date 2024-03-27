@@ -118,7 +118,7 @@ new class extends Component {
 };
 
 ?>
-<div>
+<div class="tw-shadow-md tw-rounded-lg tw-p-4">
     <form wire:submit="createRolePermission" class="needs-validation" novalidate autocomplete="off">
         <div class="row g-2">
             <dl>
@@ -155,6 +155,7 @@ new class extends Component {
                 <option value="edit">Edit</option>
                 <option value="viewany">View Any</option>
                 <option value="viewone">View One</option>
+                <option value="report">Report</option>
             </x-select>
 
             <x-select cols="col-lg-3" id="permission" model="permission" label="Permission">

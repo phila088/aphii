@@ -18,6 +18,8 @@ new class extends Component {
         $this->getPermissions();
     }
 
+    #[On('user-created')]
+    #[On('user-updated')]
     #[On('permission-created')]
     public function getPermissions(): void
     {
@@ -61,25 +63,24 @@ new class extends Component {
     }
 }; ?>
 
-<div class="tw-shadow-md tw-rounded-lg tw-p-6">
-    <div class="tw-flex tw-justify-between tw-items-center tw-mb-6">
-        <h1 class="tw-text-lg">All permissions</h1>
+<div class="tw-shadow-md tw-rounded-lg tw-p-4">
+    <div class="tw-flex tw-justify-between tw-items-center tw-mb-2 tw-shadow-md tw-rounded-lg tw-p-4">
+        <div>
+            <h5 class="tw-text-lg">View permissions</h5>
+        </div>
         <div>
             <label for="search" class="sr-only">Search</label>
             <input type="text" id="search" wire:model="search" class="tw-py-3 tw-px-4 tw-block w-full tw-border-gray-200 tw-rounded-lg text-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 disabled:tw-opacity-50 disabled:tw-pointer-events-none dark:tw-bg-slate-900 dark:tw-border-gray-700 dark:tw-text-gray-400 dark:focus:tw-ring-gray-600" placeholder="Search" x-on:input="$wire.searchResults($el.value);">
         </div>
     </div>
-    <div class="tw-divide-y tw-divide-gray-300 dark:tw-divide-gray-600">
+    <div class="tw-divide-y tw-divide-gray-300 dark:tw-divide-gray-700">
         @if (!empty($permissions[0]))
             @foreach ($permissions as $permission)
                 <div class="tw-p-6 tw-flex tw-space-x-2" wire:key="{{ $permission->id }}">
                     <div class="tw-flex-1">
                         <div class="tw-flex tw-justify-between tw-items-center">
                             <div>
-                                <small class="ml-2 text-xs text-gray-600">{{ $permission->created_at->format('j M Y, g:i a') }}</small>
-                                @unless ($permission->created_at->eq($permission->updated_at))
-                                    <small class="text-xs text-gray-600"> &middot; {{ __('edited') }}</small>
-                                @endunless
+                                <p class="mt-0.5 text-sm text-gray-900">{{ $permission->name }}</p>
                             </div>
                             <x-dropdown>
                                 <x-slot name="trigger">
@@ -101,8 +102,6 @@ new class extends Component {
                         </div>
                         @if ($permission->is($editing))
                             <livewire:admin.permissions.edit :permission="$permission" :key="$permission->id" />
-                        @else
-                            <p class="mt-0.5 text-sm text-gray-900">{{ $permission->name }}</p>
                         @endif
                     </div>
                 </div>

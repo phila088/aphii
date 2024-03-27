@@ -16,6 +16,8 @@ new class extends Component {
         $this->getRoles();
     }
 
+    #[On('user-created')]
+    #[On('user-updated')]
     #[On('role-created')]
     public function getRoles(): void
     {
@@ -47,18 +49,21 @@ new class extends Component {
     }
 }; ?>
 
-<div class="tw-shadow-md tw-rounded-lg tw-p-6">
-    <h1 class="tw-text-lg">All roles</h1>
-    <div class="tw-mt-6 tw-bg-white tw-shadow-sm tw-rounded-lg tw-divide-y">
+<div class="tw-shadow-md tw-rounded-lg tw-p-4">
+    <div class="tw-flex tw-justify-between tw-items-center tw-mb-2 tw-shadow-md tw-rounded-lg tw-p-4">
+        <div></div>
+        <div>
+            <label for="search" class="sr-only">Search</label>
+            <input type="text" id="search" wire:model="search" class="tw-py-3 tw-px-4 tw-block w-full tw-border-gray-200 tw-rounded-lg text-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 disabled:tw-opacity-50 disabled:tw-pointer-events-none dark:tw-bg-slate-900 dark:tw-border-gray-700 dark:tw-text-gray-400 dark:focus:tw-ring-gray-600" placeholder="Search" x-on:input="$wire.searchResults($el.value);">
+        </div>
+    </div>
+    <div class="tw-mt-6 tw-shadow-sm tw-rounded-lg tw-divide-y dark:tw-divide-gray-700">
         @foreach ($roles as $role)
             <div class="tw-p-6 tw-flex tw-space-x-2" wire:key="{{ $role->id }}">
                 <div class="tw-flex-1">
                     <div class="tw-flex tw-justify-between tw-items-center">
                         <div>
-                            <small class="ml-2 text-xs text-gray-600">{{ $role->created_at->format('j M Y, g:i a') }}</small>
-                            @unless ($role->created_at->eq($role->updated_at))
-                                <small class="text-xs text-gray-600"> &middot; {{ __('edited') }}</small>
-                            @endunless
+                            <p class="tw-mt-0.5 tw-text-sm tw-text-gray-900 dark:tw-text-gray-300">{{ $role->name }}</p>
                         </div>
                         <x-dropdown>
                             <x-slot name="trigger">
@@ -80,8 +85,6 @@ new class extends Component {
                     </div>
                     @if ($role->is($editing))
                         <livewire:admin.roles.edit :role="$role" :key="$role->id" />
-                    @else
-                        <p class="mt-0.5 text-sm text-gray-900">{{ $role->name }}</p>
                     @endif
                 </div>
             </div>

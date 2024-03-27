@@ -82,11 +82,11 @@ new class extends Component {
     }
 }; ?>
 
-<div class="tw-shadow-md tw-rounded-lg tw-p-6 tw-mb-6">
+<div class="tw-shadow-md tw-rounded-lg tw-p-4">
     <form wire:submit="createPermission" class="needs-validation" novalidate autocomplete="off">
         <div class="row g-2">
             <dl>
-                <dt class="tw-text-lg">Permission</dt>
+                <dt class="tw-text-lg">Create permissions</dt>
                 <dl>
                     Use the below filters to generate the permission name, and save it.
                 </dl>
@@ -115,6 +115,7 @@ new class extends Component {
                 <option value="edit">Edit</option>
                 <option value="viewany">View Any</option>
                 <option value="viewone">View One</option>
+                <option value="report">Report</option>
             </x-select>
 
             <x-input cols="col-lg-3" id="name" model="name" placeholder="Name" label="Name" readonly />

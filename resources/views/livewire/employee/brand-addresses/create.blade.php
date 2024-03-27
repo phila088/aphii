@@ -122,74 +122,72 @@ new class extends Component {
 
 <div>
     <form wire:submit="saveAddress" class="need-validation" novalidate autocomplete="off">
-
-        <div class="row g-2">
-            <p>
-                Each address entered here will be used throughout the application for any number of reasons. These addresses
-                will be used for things such as ensuring your address is correctly displayed on your invoices, ensuring that
-                your clients or vendors have the correct location for sending documents, etc.
-            </p>
-        </div>
-
-
-        <div class="row g-2">
-            <div class="row g-2">
-                <h1 class="tw-text-md">Add an address</h1>
+        <div class="card custom-card">
+            <div class="card-header">
+                <h1>Create an address</h1>
             </div>
+            <div class="card-body">
+                <div class="row g-2">
+                    <p>
+                        Each address entered here will be used throughout the application for any number of reasons. These addresses
+                        will be used for things such as ensuring your address is correctly displayed on your invoices, ensuring that
+                        your clients or vendors have the correct location for sending documents, etc.
+                    </p>
+                </div>
+                <div class="row g-2">
+                    <div class="row g-2">
+                        <x-input id="title" model="title" placeholder="Title" label="Title" />
+                    </div>
 
-            <div class="row g-2">
-                <x-input id="title" model="title" placeholder="Title" label="Title" />
-            </div>
+                    <div class="row g-2">
+                        <x-input id="building-number" model="building_number" placeholder="Building number" label="Building number" class="{{ ($errors->get('building_number')) ? 'is-invalid' : '' }}" />
 
-            <div class="row g-2">
-                <x-input id="building-number" model="building_number" placeholder="Building number" label="Building number" class="{{ ($errors->get('building_number')) ? 'is-invalid' : '' }}" />
+                        <x-select id="pre-direction" model="pre_direction" placeholder="Direction" label="Direction" class="{{ ($errors->get('pre_direction')) ? 'is-invalid' : '' }}">
+                            <option></option>
+                            @foreach ($directions as $k => $v)
+                                <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
+                            @endforeach
+                        </x-select>
 
-                <x-select id="pre-direction" model="pre_direction" placeholder="Direction" label="Direction" class="{{ ($errors->get('pre_direction')) ? 'is-invalid' : '' }}">
-                    <option></option>
-                    @foreach ($directions as $k => $v)
-                        <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
-                    @endforeach
-                </x-select>
+                        <x-input cols="col-lg-4" id="street-name" model="street_name" placeholder="Street name" label="Street name" class="{{ ($errors->get('street_name')) ? 'is-invalid' : '' }}" />
 
-                <x-input cols="col-lg-4" id="street-name" model="street_name" placeholder="Street name" label="Street name" class="{{ ($errors->get('street_name')) ? 'is-invalid' : '' }}" />
+                        <x-select id="street-type" model="street_type" placeholder="Street type" label="Street type" class="{{ ($errors->get('street_type')) ? 'is-invalid' : '' }}">
+                            <option></option>
+                            @foreach ($street_types as $k => $v)
+                                <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
+                            @endforeach
+                        </x-select>
 
-                <x-select id="street-type" model="street_type" placeholder="Street type" label="Street type" class="{{ ($errors->get('street_type')) ? 'is-invalid' : '' }}">
-                    <option></option>
-                    @foreach ($street_types as $k => $v)
-                        <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
-                    @endforeach
-                </x-select>
+                        <x-select id="post-direction" model="post_direction" placeholder="Direction" label="Direction" class="{{ ($errors->get('post_direction')) ? 'is-invalid' : '' }}">
+                            <option></option>
+                            @foreach ($directions as $k => $v)
+                                <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
+                            @endforeach
+                        </x-select>
+                    </div>
+                    <div class="row g-2">
+                        <x-select id="unit-type" model="unit_type" placeholder="Unit type" label="Unit type" class="{{ ($errors->get('unit_type')) ? 'is-invalid' : '' }}">
+                            <option></option>
+                            @foreach ($unit_types as $k => $v)
+                                <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
+                            @endforeach
+                        </x-select>
 
-                <x-select id="post-direction" model="post_direction" placeholder="Direction" label="Direction" class="{{ ($errors->get('post_direction')) ? 'is-invalid' : '' }}">
-                    <option></option>
-                    @foreach ($directions as $k => $v)
-                        <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
-                    @endforeach
-                </x-select>
-            </div>
-            <div class="row g-2">
-                <x-select id="unit-type" model="unit_type" placeholder="Unit type" label="Unit type" class="{{ ($errors->get('unit_type')) ? 'is-invalid' : '' }}">
-                    <option></option>
-                    @foreach ($unit_types as $k => $v)
-                        <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
-                    @endforeach
-                </x-select>
+                        <x-input id="unt" model="unit" placeholder="Unit" label="Unit" class="{{ ($errors->get('unit')) ? 'is-invalid' : '' }}" />
 
-                <x-input id="unt" model="unit" placeholder="Unit" label="Unit" class="{{ ($errors->get('unit')) ? 'is-invalid' : '' }}" />
+                        <x-input id="po-box" model="po_box" placeholder="PO box" label="PO box" class="{{ ($errors->get('po_box')) ? 'is-invalid' : '' }}" />
 
-                <x-input id="po-box" model="po_box" placeholder="PO box" label="PO box" class="{{ ($errors->get('po_box')) ? 'is-invalid' : '' }}" />
-
-                <!-- Address 1 city -->
-                <div class="col-lg-2">
-                    <div class="form-floating mb-2">
-                        <input
-                            type="text"
-                            id="city"
-                            class="form-control @error('city') is-invalid @enderror"
-                            list="cities"
-                            wire:model.live="city"
-                            x-on:input="$wire.cityLookupByName($el.value)"
-                            x-on:change='
+                        <!-- Address 1 city -->
+                        <div class="col-lg-2">
+                            <div class="form-floating mb-2">
+                                <input
+                                    type="text"
+                                    id="city"
+                                    class="form-control @error('city') is-invalid @enderror"
+                                    list="cities"
+                                    wire:model.live="city"
+                                    x-on:input="$wire.cityLookupByName($el.value)"
+                                    x-on:change='
                                 const datalist = document.getElementById("cities")
                                 const stateEl = document.getElementById("state")
                                 const zipEl = document.getElementById("zip")
@@ -206,38 +204,38 @@ new class extends Component {
                                 $wire.state = state
                                 $wire.zip = zip
                             '
-                        >
-                        <label for="city">City</label>
-                        <datalist id="cities">
-                            @if (!empty($cities))
-                                @foreach ($cities as $key => $data)
-                                    <option data-value="{{ $key }}" value="{{ $data['city'] }}, {{ $data['state'] }} {{ $data['zip'] }}">{{ $data['city'] }}</option>
-                                @endforeach
-                            @endif
-                        </datalist>
-                        <x-input-error :messages="$errors->get('city')" class="tw-text-xs tw-text-red-500 mt-2"/>
-                    </div>
-                </div>
+                                >
+                                <label for="city">City</label>
+                                <datalist id="cities">
+                                    @if (!empty($cities))
+                                        @foreach ($cities as $key => $data)
+                                            <option data-value="{{ $key }}" value="{{ $data['city'] }}, {{ $data['state'] }} {{ $data['zip'] }}">{{ $data['city'] }}</option>
+                                        @endforeach
+                                    @endif
+                                </datalist>
+                                <x-input-error :messages="$errors->get('city')" class="tw-text-xs tw-text-red-500 mt-2"/>
+                            </div>
+                        </div>
 
-                <!-- Physical address state -->
-                <x-select id="state" model="state" label="State" class="{{ ($errors->get('state')) ? 'is-invalid' : '' }}">
-                    <option></option>
-                    @foreach ($states as $state)
-                        <option value="{{ $state->code }}">{{ $state->code }} - {{ $state->name }}</option>
-                    @endforeach
-                </x-select>
+                        <!-- Physical address state -->
+                        <x-select id="state" model="state" label="State" class="{{ ($errors->get('state')) ? 'is-invalid' : '' }}">
+                            <option></option>
+                            @foreach ($states as $state)
+                                <option value="{{ $state->code }}">{{ $state->code }} - {{ $state->name }}</option>
+                            @endforeach
+                        </x-select>
 
-                <!-- Physical address zip -->
-                <div class="col-lg-2">
-                    <div class="form-floating mb-2">
-                        <input
-                            type="text"
-                            id="zip"
-                            class="form-control @error('zip') is-invalid @enderror"
-                            list="zips"
-                            wire:model.live="zip"
-                            x-on:input="$wire.cityLookupByZip($el.value)"
-                            x-on:change='
+                        <!-- Physical address zip -->
+                        <div class="col-lg-2">
+                            <div class="form-floating mb-2">
+                                <input
+                                    type="text"
+                                    id="zip"
+                                    class="form-control @error('zip') is-invalid @enderror"
+                                    list="zips"
+                                    wire:model.live="zip"
+                                    x-on:input="$wire.cityLookupByZip($el.value)"
+                                    x-on:change='
                                 const datalist = document.getElementById("zips")
                                 const cityEl = document.getElementById("city")
                                 const stateEl = document.getElementById("state")
@@ -254,25 +252,26 @@ new class extends Component {
                                 $wire.state = state
                                 $wire.zip = zip
                             '
-                        >
-                        <label for="zip">Zip</label>
-                        <datalist id="zips">
-                            @if (!empty($cities))
-                                @foreach ($cities as $key => $data)
-                                    <option data-value="{{ $key }}" value="{{ $data['city'] }}, {{ $data['state'] }} {{ $data['zip'] }}">{{ $data['city'] }}</option>
-                                @endforeach
-                            @endif
-                        </datalist>
-                        <x-input-error :messages="$errors->get('zip')" class="tw-text-xs tw-text-red-500 mt-2"/>
+                                >
+                                <label for="zip">Zip</label>
+                                <datalist id="zips">
+                                    @if (!empty($cities))
+                                        @foreach ($cities as $key => $data)
+                                            <option data-value="{{ $key }}" value="{{ $data['city'] }}, {{ $data['state'] }} {{ $data['zip'] }}">{{ $data['city'] }}</option>
+                                        @endforeach
+                                    @endif
+                                </datalist>
+                                <x-input-error :messages="$errors->get('zip')" class="tw-text-xs tw-text-red-500 mt-2"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <x-hr />
-
-            <x-submit />
-
-            <x-hr />
+        </div>
+        <div class="card custom-card">
+            <div class="card-body">
+                <x-submit id="brand-address-create" />
+            </div>
         </div>
     </form>
 </div>
