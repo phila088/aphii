@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2204eada-7306-4770-9d6d-1b784ac355ed" name="Aphii dev" url="https://dev.aphii.co">
+        <fileTransfer rootFolder="/home/aphii/public_html/dev.aphii.co" accessType="SFTP" host="104.37.190.234" port="22" sshConfigId="92dd9bc6-2be3-48f5-8077-aef3092de3b5" sshConfig="aphii@104.37.190.234:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

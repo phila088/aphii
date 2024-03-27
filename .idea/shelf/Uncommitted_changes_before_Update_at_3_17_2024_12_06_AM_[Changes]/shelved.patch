@@ -1,0 +1,19 @@
+Index: .env
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>APP_NAME=Laravel\r\nAPP_ENV=local\r\nAPP_KEY=base64:fdM/zTh94JSrJdSW8ZECseRySZ/uaRVi1iAI6W7u0PQ=\r\nAPP_DEBUG=true\r\nAPP_URL=http://localhost\r\n\r\nLOG_CHANNEL=stack\r\nLOG_DEPRECATIONS_CHANNEL=null\r\nLOG_LEVEL=debug\r\n\r\nDB_CONNECTION=mysql\r\nDB_HOST=127.0.0.1\r\nDB_PORT=3306\r\nDB_DATABASE=aphii\r\nDB_USERNAME=aphii\r\nDB_PASSWORD=\"hW8-m7s6NjekvYAv\"\r\n\r\nBROADCAST_DRIVER=log\r\nCACHE_DRIVER=file\r\nFILESYSTEM_DISK=local\r\nQUEUE_CONNECTION=sync\r\nSESSION_DRIVER=file\r\nSESSION_LIFETIME=120\r\n\r\nMEMCACHED_HOST=127.0.0.1\r\n\r\nREDIS_HOST=127.0.0.1\r\nREDIS_PASSWORD=null\r\nREDIS_PORT=6379\r\n\r\nMAIL_MAILER=smtp\r\nMAIL_HOST=mailpit\r\nMAIL_PORT=1025\r\nMAIL_USERNAME=null\r\nMAIL_PASSWORD=null\r\nMAIL_ENCRYPTION=null\r\nMAIL_FROM_ADDRESS=\"hello@example.com\"\r\nMAIL_FROM_NAME=\"${APP_NAME}\"\r\n\r\nAWS_ACCESS_KEY_ID=\r\nAWS_SECRET_ACCESS_KEY=\r\nAWS_DEFAULT_REGION=us-east-1\r\nAWS_BUCKET=\r\nAWS_USE_PATH_STYLE_ENDPOINT=false\r\n\r\nPUSHER_APP_ID=\r\nPUSHER_APP_KEY=\r\nPUSHER_APP_SECRET=\r\nPUSHER_HOST=\r\nPUSHER_PORT=443\r\nPUSHER_SCHEME=https\r\nPUSHER_APP_CLUSTER=mt1\r\n\r\nVITE_APP_NAME=\"${APP_NAME}\"\r\nVITE_PUSHER_APP_KEY=\"${PUSHER_APP_KEY}\"\r\nVITE_PUSHER_HOST=\"${PUSHER_HOST}\"\r\nVITE_PUSHER_PORT=\"${PUSHER_PORT}\"\r\nVITE_PUSHER_SCHEME=\"${PUSHER_SCHEME}\"\r\nVITE_PUSHER_APP_CLUSTER=\"${PUSHER_APP_CLUSTER}\"\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.env b/.env
+--- a/.env	(revision e25b735755a5890723eed720f1936b66a2fe811b)
++++ b/.env	(date 1710473901598)
+@@ -13,7 +13,7 @@
+ DB_PORT=3306
+ DB_DATABASE=aphii
+ DB_USERNAME=aphii
+-DB_PASSWORD="hW8-m7s6NjekvYAv"
++DB_PASSWORD="2TJv]mV4G03HNKkE"
+ 
+ BROADCAST_DRIVER=log
+ CACHE_DRIVER=file
