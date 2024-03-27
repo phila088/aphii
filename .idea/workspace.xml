@@ -9,50 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8deceba8-5e3e-48a9-8e0e-c3ebc08a3796" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/AccountLockedMiddleware.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Permission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/BrandController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BrandEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BrandEmail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/assets/app-VY9vDxqb.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/assets/app-zfCYSeXJ.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/no-data.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/no-data.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/not-auth.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/not-auth.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/slide-item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/slide-item.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/submit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/submit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/tab-button-parent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/tab-button-parent.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/tab-button.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/tab-button.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/brands/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/brands/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/brands/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/brands/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/components/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/components/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/components/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/components/scripts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions-roles/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/permissions-roles/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions-roles/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/permissions-roles/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/roles/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/roles/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/roles/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/roles/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/user-roles/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/user-roles/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/users/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/users/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/users/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/users/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brand-addresses/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brand-addresses/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brand-addresses/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brand-addresses/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brand-emails/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brand-emails/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brands/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brands/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brands/edit-general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brands/edit-general.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brands/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brands/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/auth/forgot-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/auth/forgot-password.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/pages/auth/reset-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/pages/auth/reset-password.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,7 +291,7 @@
       <workItem from="1711072823399" duration="58162000" />
       <workItem from="1711177947953" duration="40288000" />
       <workItem from="1711250802858" duration="101231000" />
-      <workItem from="1711469316820" duration="23986000" />
+      <workItem from="1711469316820" duration="24335000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -560,7 +517,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711378270928</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Redesign again...">
+      <option name="closed" value="true" />
+      <created>1711539525401</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1711539525401</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +567,8 @@
     <MESSAGE value="Update brand functionality. 90% brand entry complete. Optimized JS for brand" />
     <MESSAGE value="Redo brand entry and editing, 30% complete." />
     <MESSAGE value="Redo admin user management with roles and permission assignments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Redo admin user management with roles and permission assignments" />
+    <MESSAGE value="Redesign again..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Redesign again..." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
