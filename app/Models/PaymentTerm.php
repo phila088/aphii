@@ -3,31 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class PaymentTerm extends Model
+class PaymentTerm extends Model implements Auditable
 {
-    use SoftDeletes;
+    use SoftDeletes, \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
-        'user_id',
+        'name',
         'code',
-        'title',
-        'amount_cod',
-        'percent_cod',
-        'amount_net',
-        'percent_net',
+        'description',
+        'net_days',
+        'cod_amount',
+        'cod_percent',
+        'net_amount',
+        'net_percent'
     ];
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function potentialClient(): HasMany
-    {
-        return $this->hasMany(PotentialClient::class);
-    }
 }

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnUpdate();
             $table->foreignId('client_id')->nullable()->constrained()->cascadeOnUpdate();
-            $table->foreignId('vendor_id')->nullable()->constrained()->cascadeOnUpdate();
         });
     }
 

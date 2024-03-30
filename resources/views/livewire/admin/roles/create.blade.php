@@ -21,25 +21,20 @@ new class extends Component {
     }
 }; ?>
 
-<div class="tw-shadow-md tw-rounded-lg tw-p-4">
+<div class="col-lg-4">
     <form wire:submit="createRole" class="needs-validation" novalidate autocomplete="off">
-        <div class="row g-2">
-            <dl>
-                <dt class="tw-text-lg">Role</dt>
-                <dt>Name</dt>
-                <dl>
-                    This is the name of the role. Keep it short and simple
-                </dl>
-            </dl>
-
-            <x-input id="name" model="name" placeholder="Name" label="Name" />
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
+                    <h2>Create a role</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <x-input cols="col-lg-12" id="name" model="name" placeholder="Name" label="Name" />
+            </div>
+            <div class="card-footer">
+                <x-submit id="role-create" />
+            </div>
         </div>
-
-        <x-submit id="role-create" />
     </form>
-
-
-    <script>
-
-    </script>
 </div>

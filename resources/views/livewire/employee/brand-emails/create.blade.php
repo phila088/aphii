@@ -23,6 +23,8 @@ new class extends Component {
 
     public function createBrandEmail(): void
     {
+        $this->authorize('brandemails.create');
+
         $validated = $this->validate();
 
         if (auth()->user()->email()->create($validated)) {
@@ -38,18 +40,16 @@ new class extends Component {
     <form wire:submit="createBrandEmail" class="needs-validate" novalidate autocomplete="off">
         <div class="card custom-card">
             <div class="card-header">
-                <h4>Create an email</h4>
+                <h1>Create an email</h1>
             </div>
             <div class="card-body">
-                    <div class="row g-2">
-                        <x-input cols="col-lg-3" id="title" model="title" label="Title" />
+                <div class="row g-2">
+                    <x-input cols="col-lg-3" id="title" model="title" label="Title" />
 
-                        <x-input cols="col-lg-3" type="email" id="email" model="email" label="Email" />
-                    </div>
+                    <x-input cols="col-lg-3" type="email" id="email" model="email" label="Email" />
+                </div>
             </div>
-        </div>
-        <div class="card custom-card">
-            <div class="card-body">
+            <div class="card-footer">
                 <x-submit id="brandEmailCreate" />
             </div>
         </div>

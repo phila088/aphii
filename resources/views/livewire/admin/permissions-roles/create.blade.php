@@ -21,32 +21,94 @@ new class extends Component {
     public string $action = '';
     public string $search = '%';
 
-    #[Validate('required|int')]
-    public ?int $role;
-    #[Validate('required|int')]
-    public ?int $permission;
+    public $values = [];
+    public $actions = [];
+    public bool $no_permissions = false;
 
     public function mount(): void
     {
         $this->getRoles();
         $this->getPermissions();
         $this->models = $this->getModels();
+
+        $this->actions = [
+            '*',
+            'create',
+            'view',
+            'viewAny',
+            'edit',
+            'delete',
+            'destroy',
+            'generateReport'
+        ];
+
+        $this->getRolePermissions();
     }
 
     public function createRolePermission(): void
     {
-        $validated = $this->validate();
+        $this->authorize('rolepermission.create');
 
-        $role = Role::findById($this->role);
+        foreach ($this->values as $kp => $vp) {
+            $role = $kp;
+            $obj = Role::select('id')->where('name', '=', $kp)->limit(1)->get();
+            $roleId = $obj[0]->id;
 
-        $permission = Permission::findById($this->permission);
+            foreach ($vp as $kc => $vc) {
+                $model = $kc;
 
-        $permission->assignRole($role);
+                foreach ($vc as $kgc => $vgc) {
+                    $action = $kgc;
 
-        if ($role->hasPermissionTo($permission)) {
-            $this->permission = null;
+                    $objGc = Permission::select('id')->where('name', '=', strtolower($model) . '.' . $action)->limit(1)->get();
+                    $permId = $objGc[0]->id;
 
-            $this->dispatch('roles-permission-created');
+                    if ($vgc) {
+                        DB::table('role_has_permissions')->insertOrIgnore(['permission_id' => $permId, 'role_id' => $roleId]);
+                    } else {
+                        if (DB::table('role_has_permissions')->where('role_id', $roleId)->where('permission_id', $permId)->exists()) {
+                            DB::table('role_has_permissions')->where('role_id', $roleId)->where('permission_id', $permId)->delete();
+                        }
+                    }
+                }
+            }
+        }
+
+        $this->dispatch('roles-permission-created');
+    }
+
+    #[On('roles-permission-created')]
+    public function getRolePermissions(): void
+    {
+        foreach ($this->roles as $role) {
+            $roleName = $role->name;
+
+            $roleId = $role->id;
+
+            foreach ($this->models as $model) {
+                $modelName = $model;
+
+                $modelAsPermission = strtolower($model);
+
+                foreach ($this->actions as $action) {
+                    $permission = $modelAsPermission . '.' . $action;
+
+                    $obj = Permission::select('id')->where('name', '=', $permission)->limit(1)->get();
+                    if (!empty($obj[0])) {
+                        $permissionId = $obj[0]->id;
+
+                        $rolePermission = DB::table('role_has_permissions')->where('role_id', '=', $roleId)->where('permission_id', '=', $permissionId)->limit(1)->get();
+
+                        if (!empty($rolePermission[0])) {
+                            $this->values[$roleName][$modelName][$action] = true;
+                        } else {
+                            $this->values[$roleName][$modelName][$action] = false;
+                        }
+                    } else {
+                        $this->no_permissions = true;
+                    }
+                }
+            }
         }
     }
 
@@ -102,7 +164,7 @@ new class extends Component {
     private function makePattern($patterns = [])
     {
         $pattern = "";
-        foreach($patterns as $value){
+        foreach ($patterns as $value) {
             $pattern .= (!empty($value) ? $value : '%') . '.';
         }
         return substr($pattern, 0, -1);
@@ -118,53 +180,75 @@ new class extends Component {
 };
 
 ?>
-<div class="tw-shadow-md tw-rounded-lg tw-p-4">
+<div>
     <form wire:submit="createRolePermission" class="needs-validation" novalidate autocomplete="off">
-        <div class="row g-2">
-            <dl>
-                <dt class="tw-text-lg">Manage Role Permissions:</dt>
-
-                <dt>Role</dt>
-                <dd>Select the role to which you are looking to attach specific permissions.</dd>
-
-                <dt>User Type, Model and Action</dt>
-                <dd>Select the user type, model, and the action to filter the permission list, thereby making the permission search more streamlined and faster.</dd>
-
-                <dt>Permission</dt>
-                <dd>Select the permission that you would like to tie to the chosen role.</dd>
-            </dl>
-            <x-select id="role" model="role" label="Role">
-                <option></option>
-                @foreach ($roles as $role)
-                    <option value="{{ $role->id }}">{{ $role->name }}</option>
-                @endforeach
-            </x-select>
-
-            <x-select id="model" model="model" label="Model" x-on:change="$wire.makeSearchString;">
-                <option></option>
-                @foreach ($models as $model)
-                    <option value="{{ strtolower($model) }}">{{ $model }}</option>
-                @endforeach
-            </x-select>
-
-            <x-select id="action" model="action" label="Action" x-on:change="$wire.makeSearchString;">
-                <option></option>
-                <option value="*">*</option>
-                <option value="create">Create</option>
-                <option value="delete">Delete</option>
-                <option value="edit">Edit</option>
-                <option value="viewany">View Any</option>
-                <option value="viewone">View One</option>
-                <option value="report">Report</option>
-            </x-select>
-
-            <x-select cols="col-lg-3" id="permission" model="permission" label="Permission">
-                <option></option>
-                @foreach ($permissions as $permission)
-                    <option value="{{ $permission->id }}">{{ $permission->name }}</option>
-                @endforeach
-            </x-select>
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
+                    <h2>Role permissions</h2>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#permission-status-modal">
+                        <i class="bi bi-question-circle"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                @if($no_permissions)
+                    <x-no-data />
+                @else
+                    @foreach($roles as $role)
+                        @if ($role->name !== 'Super Admin')
+                            <div class="card border-primary-subtle" :key="$role->id">
+                                <div class="card-header">
+                                    <h1>
+                                        {{ $role->name }}
+                                    </h1>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-sm">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" class="col-1"></th>
+                                            @foreach($actions as $action)
+                                                @if($action === '*')
+                                                    <th scope="col" class="text-center col-1" :key="$action">Any</th>
+                                                @else
+                                                    <th scope="col"
+                                                        class="text-center col-1" :key="header-{{ $action }}">{{ ucfirst(preg_replace('/(?<!\ )[A-Z]/', ' $0', $action)) }}</th>
+                                                @endif
+                                            @endforeach
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($models as $model)
+                                            <tr>
+                                                <th scope="row" :key="$model">{{ $model }}</th>
+                                                @foreach($actions as $action)
+                                                    <td class="text-center" :key="body-{{ $action }}">
+                                                        <input type="checkbox"
+                                                               id="values-{{ $role->name }}-{{ $model }}-{{ $action }}"
+                                                               wire:model="values.{{ $role->name }}.{{ $model }}.{{ $action }}"
+                                                               class="form-check-input"
+                                                        />
+                                                        <label
+                                                            for="values-{{ $role->name }}-{{ $model }}-{{ $action }}"
+                                                            class="tw-sr-only">
+                                                            testing-{{ $role->name }}-{{ $model }}-{{ $action }}
+                                                        </label>
+                                                    </td>
+                                                @endforeach
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
+            </div>
+            <div class="card-footer">
+                <x-submit id="role-permission-create"/>
+            </div>
         </div>
-        <x-submit id="role-permission-create" />
     </form>
 </div>

@@ -52,6 +52,10 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword,
         'last_activity',
     ];
 
+    protected $auditExclude = [
+        'last_activity',
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -95,6 +99,11 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword,
     public function email(): HasMany
     {
         return $this->hasMany(BrandEmail::class);
+    }
+
+    public function brandHoliday(): HasMany
+    {
+        return $this->hasMany(BrandHoliday::class);
     }
 
     public function potentialClient(): HasMany

@@ -3,7 +3,7 @@
         'name' => 'phila088/aphii',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '1c1ed5aadecff4b59527fc8d10494538b323a076',
+        'reference' => 'bb4ad4b7bf6af3924845fbef1bed27d64e73042e',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -676,7 +676,7 @@
         'phila088/aphii' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '1c1ed5aadecff4b59527fc8d10494538b323a076',
+            'reference' => 'bb4ad4b7bf6af3924845fbef1bed27d64e73042e',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

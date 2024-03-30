@@ -87,9 +87,9 @@
                         <x-slide-parent icon="bi bi-building" label="Brands">
                             <x-slide-label label="Brands" />
 
-                            <x-slide-item route="employee.brands.index" label="View all" permission="brands.viewany" />
+                            <x-slide-item route="url:#" label="View all" permission="brands.viewany" />
 
-                            <x-slide-item route="employee.brands.create" label="Create" permission="brands.create" />
+                            <x-slide-item route="url:#" label="Create" permission="brands.create" />
 
                             <x-slide-item route="url:#" label="Reports" permission="brands.report" />
                         </x-slide-parent>
@@ -109,9 +109,9 @@
                         </x-slide-with-child>
 
                         <x-slide-with-child label="Potential clients">
-                            <x-slide-item route="employee.potential-clients.index" label="View all" />
+                            <x-slide-item route="url:#" label="View all" />
 
-                            <x-slide-item route="employee.potential-clients.create" label="Create" />
+                            <x-slide-item route="url:#" label="Create" />
                         </x-slide-with-child>
 
                         <x-slide-item route="url:#" label="View all" />
@@ -295,21 +295,9 @@
 
                         </x-slide-with-child>
 
-                        <x-slide-with-child label="Payment methods">
+                        <x-slide-item route="admin.payment-methods.index" label="Payment methods" />
 
-                            <x-slide-item route="url:#" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                        </x-slide-with-child>
-
-                        <x-slide-with-child label="Payment terms">
-
-                            <x-slide-item route="url:#" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                        </x-slide-with-child>
+                        <x-slide-item route="admin.payment-terms.index" label="Payment terms" />
 
                         <x-slide-with-child label="States">
 

@@ -30,21 +30,23 @@ new class extends Component {
     }
 }; ?>
 
-<div>
+<div class="tw-pt-4">
     <form wire:submit="updateRole" class="needs-validation" novalidate autocomplete="off">
-        <div class="row g-2">
-            <dl>
-                <dt class="tw-text-lg">Role</dt>
-                <dt>Name</dt>
-                <dl>
-                    This is the name of the permission. Keep it short and simple
-                </dl>
-            </dl>
-
-
-            <x-input id="name" model="name" placeholder="Name" label="Name" />
+        <div class="card">
+            <div class="card-header">
+                <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
+                    <h2>Edit permission</h2>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#permission-status-modal">
+                        <i class="bi bi-question-circle"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <x-input cols="col-lg-6" id="name" model="name" placeholder="Name" label="Name" />
+            </div>
+            <div class="card-footer">
+                <x-submit-cancel id="role-update" />
+            </div>
         </div>
-
-        <x-submit-cancel id="role-update" />
     </form>
 </div>

@@ -119,10 +119,10 @@ new class extends Component {
     <div class="card custom-card">
         <div class="card-body">
             <div class="tw-flex tw-justify-between tw-items-center">
-                <h1 class="text-md">All users</h1>
+                <h1>All users</h1>
                 <div>
                     <label for="search" class="sr-only">Search</label>
-                    <input type="text" id="search" wire:model="search" class="tw-py-2 tw-px-3 tw-block tw-w-full tw-border-gray-200 tw-rounded-full tw-text-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 disabled:tw-opacity-50 disabled:tw-pointer-events-none dark:tw-bg-slate-900 dark:tw-border-gray-700 dark:tw-text-gray-400 dark:focus:tw-ring-gray-600" placeholder="Search" x-on:input="$wire.searchResults($el.value);">
+                    <input type="text" id="list-users-search" wire:model="search" class="tw-py-2 tw-px-3 tw-block tw-w-full tw-border-gray-200 tw-rounded-full tw-text-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 disabled:tw-opacity-50 disabled:tw-pointer-events-none dark:tw-bg-slate-900 dark:tw-border-gray-700 dark:tw-text-gray-400 dark:focus:tw-ring-gray-600" placeholder="Search" x-on:input="$wire.searchResults($el.value);">
                 </div>
             </div>
         </div>
@@ -130,8 +130,10 @@ new class extends Component {
     <div class="card custom-card">
         <div class="card-body">
             <div class="tw-divide-y dark:tw-divide-gray-700">
-                @if (auth()->user()->can('users.viewany'))
-                    @if (!empty($users[0]))
+                @can('users.viewany')
+                    @empty($users[0])
+                        <x-no-data />
+                    @else
                         @foreach ($users as $user)
                             <div class="row g-2">
                                 <div class="card-body tw-flex tw-align-top">
@@ -145,14 +147,14 @@ new class extends Component {
                                         </p>
                                     @endif
                                     <div class="flex-fill main-profile-info my-auto">
-                                        <h5 class="tw-semibold tw-text-xl mb-1">
+                                        <h2>
                                             {{ $user->name }}
-                                        </h5>
+                                        </h2>
                                         <div>
-                                            <p class="mb-1 text-muted">
+                                            <p class="text-muted">
                                                 {{ $user->email }}
                                             </p>
-                                            <p class="mb-1 text-muted">
+                                            <p class="text-muted">
                                                 @if ($user->is_admin)
                                                     Admin
                                                 @elseif ($user->is_client)
@@ -163,7 +165,7 @@ new class extends Component {
                                                     Vendor
                                                 @endif
                                             </p>
-                                            <p class="">Last seen:
+                                            <p class="text-muted">Last seen:
                                                 @if (!is_null($user->last_activity))
                                                     {{ Carbon::parse($user->last_activity)->timezone($user->timezone)->diffForHumans() }}
                                                 @else
@@ -174,7 +176,7 @@ new class extends Component {
                                     </div>
                                     <div class="main-profile-info ms-auto">
                                         <div>
-                                            @if (auth()->user()->can('users.edit'))
+                                            @can('users.edit')
                                                 <x-dropdown>
                                                     <x-slot name="trigger">
                                                         <button>
@@ -207,7 +209,7 @@ new class extends Component {
                                                         @endif
                                                     </x-slot>
                                                 </x-dropdown>
-                                            @endif
+                                            @endcan
                                         </div>
                                     </div>
                                 </div>
@@ -218,12 +220,10 @@ new class extends Component {
                                 @endif
                             </div>
                         @endforeach
-                    @else
-                        <x-no-data />
-                    @endif
+                    @endempty
                 @else
                     <x-not-auth />
-                @endif
+                @endcan
             </div>
         </div>
     </div>

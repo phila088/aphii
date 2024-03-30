@@ -32,10 +32,8 @@ class DatabaseSeeder extends Seeder
             CitySeeder13::class,
             CitySeeder14::class,
             PaymentTermSeeder::class,
-            PaymentMethodSeeder::class,
-            ContactDepartmentSeeder::class,
-            WorkOrderPrioritySeeder::class,
             StatusCodeSeeder::class,
+            BrandSeeder::class,
         ]);
     }
 }

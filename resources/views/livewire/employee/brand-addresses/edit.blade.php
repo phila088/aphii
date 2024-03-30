@@ -138,14 +138,12 @@ new class extends Component {
     }
 }; ?>
 
-<div>
+<div class="card tw-shadow-md">
     <form wire:submit="updateAddress">
-
-        <div class="row g-2">
-            <div class="row g-2">
-                <h1 class="tw-text-md">Edit address</h1>
-            </div>
-
+        <div class="card-header">
+            Edit address
+        </div>
+        <div class="card-body">
             <div class="row g-2">
                 <x-input id="title" model="title" placeholder="Title" label="Title" />
             </div>
@@ -276,26 +274,9 @@ new class extends Component {
                     </div>
                 </div>
             </div>
-
-            <x-hr />
-
-            <div class="tw-flex tw-justify-between">
-                <div class="tw-flex tw-justify-center tw-items-center">
-
-                </div>
-                <div style="tw-flex tw-justify-start">
-                    <button type="submit" id="save-update" class="btn btn-success tw-mx-0.5">
-                        Save
-                        <i class="fe fe-save"></i>
-                    </button>
-                    <button class="btn btn-danger" wire:click.prevent="cancel">
-                        Reset
-                        <i class="bi bi-arrow-clockwise"></i>
-                    </button>
-                </div>
-            </div>
-
-            <x-hr />
+        </div>
+        <div class="card-footer">
+            <x-submit-cancel />
         </div>
     </form>
 </div>

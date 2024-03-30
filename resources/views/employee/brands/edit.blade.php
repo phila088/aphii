@@ -10,7 +10,8 @@
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
             <h4 class="fw-medium tw-text-xl mb-0"></h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('employee.brands.index') }}" class="text-white-50">{{ __('Brands') }}</a>
+                <li class="breadcrumb-item"><a href="{{ route('employee.brands.index') }}"
+                                               class="text-white-50">{{ __('Brands') }}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Edit') }}</li>
             </ol>
@@ -25,19 +26,28 @@
                     <div class="card-body">
                         <div class="tw-flex tw-justify-between tw-items-center">
                             <x-tab-button-parent>
-                                <x-tab-button id="pills-general-tab" data-bs-toggle="pill-brand-edit" target="pills-general" selected="true" label="General" />
+                                <x-tab-button id="pills-general-tab" data-bs-toggle="pill-brand-edit"
+                                              target="pills-general" selected="true" label="General"/>
+                                <x-tab-button id="pills-addresses-tab" data-bs-toggle="pill-brand-edit"
+                                              target="pills-addresses" selected="false" label="Addresses"/>
 
-                                <x-tab-button id="pills-addresses-tab" data-bs-toggle="pill-brand-edit" target="pills-addresses" selected="false" label="Addresses" />
+                                <x-tab-button id="pills-emails-tab" data-bs-toggle="pill-brand-edit"
+                                              target="pills-emails" selected="false" label="Emails"/>
 
-                                <x-tab-button id="pills-emails-tab" data-bs-toggle="pill-brand-edit" target="pills-emails" selected="false" label="Emails" />
+                                <x-tab-button id="pills-holidays-tab" data-bs-toggle="pill-brand-edit"
+                                              target="pills-holidays" selected="false" label="Holidays"/>
 
-                                <x-tab-button id="pills-holidays-tab" data-bs-toggle="pill-brand-edit" target="pills-holidays" selected="false" label="Holidays" />
+                                <x-tab-button id="pills-hours-tab" data-bs-toggle="pill-brand-edit" target="pills-hours"
+                                              selected="false" label="Hours"/>
 
-                                <x-tab-button id="pills-hours-tab" data-bs-toggle="pill-brand-edit" target="pills-hours" selected="false" label="Hours" />
+                                <x-tab-button id="pills-phone-numbers-tab" data-bs-toggle="pill-brand-edit"
+                                              target="pills-phone-numbers" selected="false" label="Phone numbers"/>
 
-                                <x-tab-button id="pills-phone-numbers-tab" data-bs-toggle="pill-brand-edit" target="pills-phone-numbers" selected="false" label="Phone numbers" />
+                                <x-tab-button id="pills-profile-tab" data-bs-toggle="pill-brand-edit"
+                                              target="pills-profile" selected="false" label="Profile"/>
 
-                                <x-tab-button id="pills-profile-tab" data-bs-toggle="pill-brand-edit" target="pills-profile" selected="false" label="Profile" />
+                                <x-tab-button id="pills-promotions-tab" data-bs-toggle="pill-brand-edit"
+                                              target="pills-promotions" selected="false" label="Promotions"/>
                             </x-tab-button-parent>
                             <div class="tw-flex tw-items-center tw-gap-x-1">
                                 <a href="{{ route('employee.brands.index') }}" class="btn btn-danger btn-sm">
@@ -69,7 +79,8 @@
                     </x-tab-content>
 
                     <x-tab-content id="pills-holidays" labelledby="pills-holidays-tab">
-                        ...
+                        <livewire:employee.brand-holidays.create :brand="$brand"/>
+                        <livewire:employee.brand-holidays.list :brand="$brand" />
                     </x-tab-content>
 
                     <x-tab-content id="pills-hours" labelledby="pills-hours-tab">
@@ -80,7 +91,11 @@
                         ...
                     </x-tab-content>
 
-                    <x-tab-content id="pills-profile" labelledby="pills-phone-profile">
+                    <x-tab-content id="pills-profile" labelledby="pills-profile-tab">
+                        ...
+                    </x-tab-content>
+
+                    <x-tab-content id="pills-promotions" labelledby="pills-promotions-tab">
                         ...
                     </x-tab-content>
                 </x-tab-content-parent>
@@ -99,8 +114,8 @@
 
             pills.forEach(pill => {
                 pill.addEventListener('shown.bs.tab', (event) => {
-                    const { target } = event;
-                    const { id: targetId } = target;
+                    const {target} = event;
+                    const {id: targetId} = target;
 
                     savePillId(targetId);
                 });
@@ -145,6 +160,9 @@
                     "hideMethod": "fadeOut"
                 }
 
+                Livewire.on('unauthorized-action', () => {
+                    toastr['error']('You are not authorized to complete that action.')
+                })
                 Livewire.on('brand-updated', () => {
                     toastr['success']('Brand updated successfully.')
                 })
@@ -163,9 +181,11 @@
                 Livewire.on('brand-email-deleted', () => {
                     toastr['success']('Email deleted successfully.')
                 })
+                Livewire.on('brand-email-updated', () => {
+                    toastr['success']('Email updated successfully')
+                })
             })
         </script>
-
 
     @endsection
 </x-app-layout>

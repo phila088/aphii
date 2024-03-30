@@ -48,18 +48,21 @@
                     </x-tab-content>
 
                     <x-tab-content id="pills-permissions" labelledby="pills-permissions-tab">
-                        @livewire('admin.permissions.create')
-                        @livewire('admin.permissions.list')
+                        <div class="row">
+                            @livewire('admin.permissions.index')
+                            @livewire('admin.permissions.list')
+                        </div>
                     </x-tab-content>
 
                     <x-tab-content id="pills-roles" labelledby="pills-roles-tab">
-                        @livewire('admin.roles.create')
-                        @livewire('admin.roles.list')
+                        <div class="row">
+                            @livewire('admin.roles.create')
+                            @livewire('admin.roles.list')
+                        </div>
                     </x-tab-content>
 
                     <x-tab-content id="pills-roles-permissions" labelledby="pills-roles-permissions-tab">
                         @livewire('admin.permissions-roles.create')
-                        @livewire('admin.permissions-roles.list')
                     </x-tab-content>
 
                     <x-tab-content id="pills-user-roles" labelledby="pills-user-roles-tab">
@@ -150,7 +153,7 @@
                     toastr['success']('Role updated successfully.')
                 })
                 Livewire.on('roles-permission-created', () => {
-                    toastr['success']('Role permission created successfully.')
+                    toastr['success']('Role permissions updated successfully.')
                 })
                 Livewire.on('roles-permission-already-exists', () => {
                     toastr['error']('Role permission already exists.')

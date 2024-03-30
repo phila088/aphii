@@ -14,7 +14,7 @@ class Brand extends Model implements Auditable
     use SoftDeletes, HasStatuses, \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
-        'legal_name',
+        'name',
         'dba',
         'abbreviation',
         'internal_work_order_prefix',
@@ -27,39 +27,4 @@ class Brand extends Model implements Auditable
         'city_license_number',
         'active',
     ];
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function address(): HasMany
-    {
-        return $this->hasMany(BrandAddress::class);
-    }
-
-    public function email(): HasMany
-    {
-        return $this->hasMany(BrandEmail::class);
-    }
-
-    public function holiday(): HasMany
-    {
-        return $this->hasMany(BrandHoliday::class);
-    }
-
-    public function hours(): HasMany
-    {
-        return $this->hasMany(BrandHours::class);
-    }
-
-    public function phoneNumber(): HasMany
-    {
-        return $this->hasMany(BrandPhoneNumber::class);
-    }
-
-    public function profile(): HasMany
-    {
-        return $this->hasMany(BrandProfile::class);
-    }
 }

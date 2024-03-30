@@ -92,7 +92,7 @@ new class extends Component {
                             <div class="tw-flex-1">
                                 <div class="tw-flex tw-justify-between tw-items-center">
                                     <div>
-                                        <p class="tw-text-lg">{{ $address->title }}</p>
+                                        <h1>{{ $address->title }}</h1>
                                     </div>
                                     <x-dropdown>
                                         <x-slot name="trigger">
@@ -113,7 +113,9 @@ new class extends Component {
                                     </x-dropdown>
                                 </div>
                                 @if ($address->is($editing))
-                                    <livewire:employee.brand-addresses.edit :address="$address" :key="$address->id" :brand="$brand"  />
+                                    <div class="tw-mt-6">
+                                        <livewire:employee.brand-addresses.edit :address="$address" :key="$address->id" :brand="$brand"  />
+                                    </div>
                                 @else
                                     @if (!empty($address->building_number))
                                         <address>
@@ -125,6 +127,11 @@ new class extends Component {
                                             {{ $address->street_type }}
                                             @if(!empty($address->post_direction))
                                                 {{ $address->post_direction }}
+                                            @endif
+                                            @if(!empty($address->unit_type))
+                                                <br />
+                                                {{ $address->unit_type }}
+                                                {{ $address->unit }}
                                             @endif
                                             <br />
                                             {{ $address->city }},

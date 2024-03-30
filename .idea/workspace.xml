@@ -8,7 +8,153 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8deceba8-5e3e-48a9-8e0e-c3ebc08a3796" name="Changes" comment="" />
+    <list default="true" id="8deceba8-5e3e-48a9-8e0e-c3ebc08a3796" name="Changes" comment="Redesign again...">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PaymentMethodController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PaymentTermController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientContactController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientLocationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PotentialClientContactsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ClientContact.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ClientLocation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/PotentialClientContacts.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/ClientContactPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/ClientLocationPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/PaymentTermsPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/PotentialClientContactsPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300020_create_clients_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/payment-terms/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aphii.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aphii.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BrandController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CallFollowupsController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CallFollowupswController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/CallController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/CertificationsController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/ContactController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/ContactDepartmentController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/ContactPositionController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/DocumentCategoriesController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/InvoiceController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/KnowledgeBaseArticleController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/LocationController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/PaymentMethodController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/PaymentTermController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/QuoteController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/VendorController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/WorkOrderController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/WorkOrderNoteController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/WorkOrderPriorityController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/WorkOrderScheduleAttemptController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/WorkOrderVendorClockController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/WorkOrderVendorClockStatusController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/WorkOrderVendorController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/WorkOrderVendorDNEController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/WorkOrderVendorPaymentController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Brand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BrandHoliday.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BrandHoliday.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BrandHours.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BrandHours.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Call.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CallFollowups.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CallFollowupsw.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Certifications.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Contact.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ContactDepartment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ContactPosition.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/DocumentCategory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Invoice.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/KnowledgeBaseArticle.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Location.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PaymentTerm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PaymentTerm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Quote.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Vendor.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/WorkOrder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/WorkOrderNote.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/WorkOrderPriority.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/WorkOrderScheduleAttempt.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/WorkOrderVendor.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/WorkOrderVendorClock.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/WorkOrderVendorClockStatus.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/WorkOrderVendorDNE.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/WorkOrderVendorPayment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/audit.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/audit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100000_create_document_categories_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100010_create_certifications_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100020_create_payment_terms_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100030_create_states_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_100000_create_states_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100040_create_counties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_100010_create_counties_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100050_create_contact_positions_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100060_create_payment_methods_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_29_233410_create_payment_methods_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100070_create_contact_departments_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100080_create_work_order_priorities_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100090_create_cities_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_100020_create_cities_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100100_create_dashboards_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_200000_create_brands_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200000_create_brands_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300000_create_potential_clients_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300000_create_potential_clients_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300010_create_clients_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300020_create_client_rates_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300030_create_client_rates_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300040_create_client_billing_instructions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300030_create_client_billing_instructions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300040_create_client_notes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300030_create_client_notes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300050_create_client_coverage_areas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300030_create_client_coverage_areas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300500_create_locations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300010_create_potential_client_contacts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_400000_create_vendors_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300030_create_client_locations_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_500000_create_work_orders_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_500010_create_work_order_vendors_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_500020_create_work_order_vendor_d_n_es_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_500030_create_work_order_vendor_clocks_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_500040_create_work_order_vendor_clock_statuses_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_500050_create_work_order_vendor_payments_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_500060_create_work_order_notes_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_500070_create_work_order_schedule_attempts_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_600000_create_quotes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_100030_create_payment_terms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_700000_create_invoices_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_900000_create_contacts_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_900500_create_calls_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300030_create_client_contacts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_900500_create_knowledge_base_articles_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_11_005346_users_foreign_keys.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_11_005346_users_foreign_keys.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_20_231051_create_call_followups_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/ContactDepartmentSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/ContactPositionSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/PaymentMethodSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/PaymentTermSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/WorkOrderPrioritySeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brands/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/brands/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/payment-methods/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/submit-cancel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/submit-cancel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/brands/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/brands/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/calls/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions-roles/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/permissions-roles/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/roles/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/roles/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/roles/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/roles/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/roles/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/roles/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/users/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/users/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/users/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brand-addresses/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brand-addresses/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brand-addresses/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brand-addresses/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brand-addresses/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brand-addresses/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brand-emails/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brand-emails/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brand-emails/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brand-emails/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brand-emails/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brand-emails/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/brands/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/brands/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/calls/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -201,31 +347,33 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.laravel-idea.update-module-directories": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/server/htdocs/aphii/public/js/chosen",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.laravel-idea.update-module-directories&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/server/htdocs/aphii/.env&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.deploy.options&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\server\htdocs\aphii\public\js\chosen" />
@@ -235,11 +383,11 @@
       <recent name="C:\server\htdocs\aphii\public\build\assets\icon-fonts\bootstrap-icons\icons\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\server\htdocs\aphii" />
       <recent name="C:\server\htdocs\aphii\resources\views\livewire\employee\brand-emails" />
       <recent name="C:\server\htdocs\aphii\resources\views\livewire\employee\brands" />
       <recent name="C:\server\htdocs\aphii\app\Http\Controllers\Admin" />
       <recent name="C:\server\htdocs\aphii\resources\views\components" />
-      <recent name="C:\server\htdocs\aphii\public\build\assets\images\authentication" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -290,6 +438,11 @@
       <workItem from="1711177947953" duration="40288000" />
       <workItem from="1711250802858" duration="101231000" />
       <workItem from="1711469316820" duration="24335000" />
+      <workItem from="1711594539934" duration="23486000" />
+      <workItem from="1711663646439" duration="4247000" />
+      <workItem from="1711672749331" duration="20183000" />
+      <workItem from="1711736117114" duration="19968000" />
+      <workItem from="1711784965895" duration="629000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -523,7 +676,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711539525401</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Redesign again...">
+      <option name="closed" value="true" />
+      <created>1711540192806</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1711540192806</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

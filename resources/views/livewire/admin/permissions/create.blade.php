@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 
 new class extends Component {
     public $models;
+    public $actions;
 
     #[Validate('required|string')]
     public string $name;
@@ -22,10 +23,22 @@ new class extends Component {
     public function mount(): void
     {
         $this->models = $this->getModels();
+
+        $this->actions = [
+            '*',
+            'create',
+            'view',
+            'viewAny',
+            'edit',
+            'delete',
+            'destroy',
+            'generateReport'
+        ];
     }
 
     public function createPermission(): void
     {
+
         $validated = $this->validate();
 
         if (Permission::updateOrCreate($validated)) {
@@ -82,49 +95,41 @@ new class extends Component {
     }
 }; ?>
 
-<div class="tw-shadow-md tw-rounded-lg tw-p-4">
+<div>
     <form wire:submit="createPermission" class="needs-validation" novalidate autocomplete="off">
-        <div class="row g-2">
-            <dl>
-                <dt class="tw-text-lg">Create permissions</dt>
-                <dl>
-                    Use the below filters to generate the permission name, and save it.
-                </dl>
-                <dt>Model</dt>
-                <dl>
-                    The model the permission is for.
-                </dl>
-                <dt>Action</dt>
-                <dl>
-                    Which specific action this permission is for.
-                </dl>
-            </dl>
+        <div class="card custom-card">
+            <div class="card-header">
+                <h1>Create permissions</h1>
+            </div>
+            <div class="card-body">
+                <div class="row g-2">
+                    <x-select id="model" model="model" label="Model" x-on:change="$wire.makePermission;">
+                        <option></option>
+                        @foreach ($models as $model)
+                            <option value="{{ strtolower($model) }}">{{ $model }}</option>
+                        @endforeach
+                    </x-select>
 
-            <x-select id="model" model="model" label="Model" x-on:change="$wire.makePermission;">
-                <option></option>
-                @foreach ($models as $model)
-                    <option value="{{ strtolower($model) }}">{{ $model }}</option>
-                @endforeach
-            </x-select>
+                    <x-select id="action" model="action" label="Action" x-on:change="$wire.makePermission;">
+                        <option></option>
+                        <option value="*">*</option>
+                        <option value="create">Create</option>
+                        <option value="delete">Delete</option>
+                        <option value="edit">Edit</option>
+                        <option value="viewany">View Any</option>
+                        <option value="viewone">View One</option>
+                        <option value="report">Report</option>
+                    </x-select>
 
-            <x-select id="action" model="action" label="Action" x-on:change="$wire.makePermission;">
-                <option></option>
-                <option value="*">*</option>
-                <option value="create">Create</option>
-                <option value="delete">Delete</option>
-                <option value="edit">Edit</option>
-                <option value="viewany">View Any</option>
-                <option value="viewone">View One</option>
-                <option value="report">Report</option>
-            </x-select>
-
-            <x-input cols="col-lg-3" id="name" model="name" placeholder="Name" label="Name" readonly />
+                    <x-input cols="col-lg-3" id="name" model="name" placeholder="Name" label="Name" readonly />
+                </div>
+            </div>
         </div>
 
-        <x-submit id="permission-create" />
+        <div class="card custom-card">
+            <div class="card-body">
+                <x-submit id="permission-create" />
+            </div>
+        </div>
     </form>
-
-    <script>
-
-    </script>
 </div>

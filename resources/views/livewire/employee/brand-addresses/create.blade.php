@@ -267,9 +267,7 @@ new class extends Component {
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card custom-card">
-            <div class="card-body">
+            <div class="card-footer">
                 <x-submit id="brand-address-create" />
             </div>
         </div>

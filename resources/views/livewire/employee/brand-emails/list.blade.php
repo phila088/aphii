@@ -25,6 +25,22 @@ new class extends Component {
             ->get();
     }
 
+    public function edit(BrandEmail $email)
+    {
+        $this->editing = $email;
+
+        $this->getBrandEmails();
+    }
+
+    #[On('brand-email-edit-canceled')]
+    #[On('brand-email-updated')]
+    public function disableEditing(): void
+    {
+        $this->editing = null;
+
+        $this->getBrandEmails();
+    }
+
     public function delete(BrandEmail $email)
     {
         $this->authorize('brandemails.delete');
@@ -105,7 +121,9 @@ new class extends Component {
                                         </x-dropdown>
                                     </div>
                                     @if ($email->is($editing))
-                                        <livewire:employee.brand-emails.edit :email="$email" :key="$email->id" />
+                                        <div class="tw-mt-6">
+                                            <livewire:employee.brand-emails.edit :brandEmail="$email" :key="$email->id" />
+                                        </div>
                                     @else
                                         <address>
                                             <a href="mailto:{{ $email->email }}">{{ $email->email }}</a>

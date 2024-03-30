@@ -1,13 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\PaymentMethodController as AdminPaymentMethodController;
+use App\Http\Controllers\Admin\PaymentTermController as AdminPaymentTermsController;
 use App\Http\Controllers\Admin\StatusCodeController as AdminStatusCodeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Employee\BrandController as EmployeeBrandController;
-use App\Http\Controllers\Employee\CallController as EmployeeCallController;
-use App\Http\Controllers\Employee\ClientController as EmployeeClientController;
 use App\Http\Controllers\Employee\DashboardsController;
-use App\Http\Controllers\Employee\DocumentCategoriesController;
-use App\Http\Controllers\Employee\PotentialClientController as EmployeePotentialClientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,7 +54,22 @@ Route::middleware(['auth', 'verified', 'online-status'])
 
         Route::prefix('admin')
             ->name('admin.')
+            ->middleware(['role:Super Admin|Employee Admin'])
             ->group(function () {
+                Route::prefix('payment-methods')
+                    ->name('payment-methods.')
+                    ->controller(AdminPaymentMethodController::class)
+                    ->group(function () {
+                        Route::get('/', 'index')->name('index');
+                    });
+
+                Route::prefix('payment-terms')
+                    ->name('payment-terms.')
+                    ->controller(AdminPaymentTermsController::class)
+                    ->group(function () {
+                        Route::get('/', 'index')->name('index');
+                    });
+
                 Route::prefix('status-codes')
                     ->name('status-codes.')
                     ->controller(AdminStatusCodeController::class)
@@ -86,37 +99,6 @@ Route::middleware(['auth', 'verified', 'online-status'])
                         Route::get('view/{id}', 'view')->name('view');
 
                         Route::get('edit/{id}', 'edit')->name('edit');
-                    });
-
-                Route::prefix('calls')
-                    ->name('calls.')
-                    ->controller(EmployeeCallController::class)
-                    ->group(function () {
-                        Route::get('/', 'index')->name('index');
-                    });
-
-                Route::prefix('clients')
-                    ->name('clients.')
-                    ->controller(EmployeeClientController::class)
-                    ->group(function () {
-                        Route::get('/', 'index')->name('index');
-
-                        Route::get('create', 'create')->name('create');
-
-                        Route::get('view/{id}', 'view')->name('view');
-
-                        Route::get('edit/{id}', 'edit')->name('edit');
-                    });
-
-                Route::prefix('potential-clients')
-                    ->name('potential-clients.')
-                    ->controller(EmployeePotentialClientController::class)
-                    ->group(function () {
-                        Route::get('/', 'index')->name('index');
-
-                        Route::get('create', 'create')->name('create');
-
-                        Route::get('view/{id}', 'view')->name('view');
                     });
             });
     });
