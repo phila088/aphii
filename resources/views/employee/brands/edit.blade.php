@@ -26,31 +26,38 @@
                     <div class="card-body">
                         <div class="tw-flex tw-justify-between tw-items-center">
                             <x-tab-button-parent>
-                                <x-tab-button id="pills-general-tab" data-bs-toggle="pill-brand-edit"
-                                              target="pills-general" selected="true" label="General"/>
-                                <x-tab-button id="pills-addresses-tab" data-bs-toggle="pill-brand-edit"
-                                              target="pills-addresses" selected="false" label="Addresses"/>
+                                @can ('brands.edit')
+                                    <x-tab-button id="pills-general-tab" data-bs-toggle="pill-brand-edit"
+                                                  target="pills-general" selected="true" label="General"/>
+                                @endcan
 
-                                <x-tab-button id="pills-emails-tab" data-bs-toggle="pill-brand-edit"
-                                              target="pills-emails" selected="false" label="Emails"/>
+                                @canany (['brand-addresses.create', 'brand-addresses.viewAny'])
+                                    <x-tab-button id="pills-addresses-tab" data-bs-toggle="pill-brand-edit"
+                                                  target="pills-addresses" selected="false" label="Addresses"/>
+                                @endcanany
 
-                                <x-tab-button id="pills-holidays-tab" data-bs-toggle="pill-brand-edit"
-                                              target="pills-holidays" selected="false" label="Holidays"/>
+                                @canany (['brand-emails.create', 'brand-emails.viewAny'])
+                                    <x-tab-button id="pills-emails-tab" data-bs-toggle="pill-brand-edit"
+                                                  target="pills-emails" selected="false" label="Emails"/>
+                                @endcanany
 
-                                <x-tab-button id="pills-hours-tab" data-bs-toggle="pill-brand-edit" target="pills-hours"
-                                              selected="false" label="Hours"/>
+                                @canany (['brand-holidays.create', 'brand-holidays.viewAny'])
+                                    <x-tab-button id="pills-holidays-tab" data-bs-toggle="pill-brand-edit"
+                                                  target="pills-holidays" selected="false" label="Holidays"/>
+                                @endcanany
 
-                                <x-tab-button id="pills-phone-numbers-tab" data-bs-toggle="pill-brand-edit"
-                                              target="pills-phone-numbers" selected="false" label="Phone numbers"/>
+                                @canany (['brand-hours.create', 'brand-hours.viewAny'])
+                                    <x-tab-button id="pills-hours-tab" data-bs-toggle="pill-brand-edit" target="pills-hours"
+                                                  selected="false" label="Hours"/>
+                                @endcanany
 
-                                <x-tab-button id="pills-profile-tab" data-bs-toggle="pill-brand-edit"
-                                              target="pills-profile" selected="false" label="Profile"/>
-
-                                <x-tab-button id="pills-promotions-tab" data-bs-toggle="pill-brand-edit"
-                                              target="pills-promotions" selected="false" label="Promotions"/>
+                                @canany (['brand-phone-numbers.create', 'brand-phone-numbers.viewAny'])
+                                    <x-tab-button id="pills-phone-numbers-tab" data-bs-toggle="pill-brand-edit"
+                                                  target="pills-phone-numbers" selected="false" label="Phone numbers"/>
+                                @endcanany
                             </x-tab-button-parent>
                             <div class="tw-flex tw-items-center tw-gap-x-1">
-                                <a href="{{ route('employee.brands.index') }}" class="btn btn-danger btn-sm">
+                                <a href="{{ route('employee.brands.index') }}" class="btn btn-danger btn-sm rounded-pill">
                                     Cancel
                                     <i class="bi bi-x-circle"></i>
                                 </a>
@@ -60,44 +67,50 @@
                 </div>
                 <div class="card custom-card">
                     <div class="card-body">
-                        <h1>{{ $brand->legal_name }}</h1>
+                        <h1>{{ $brand->name }}</h1>
                     </div>
                 </div>
                 <x-tab-content-parent>
-                    <x-tab-content active="true" id="pills-general" labelledby="pills-general-tab">
-                        @livewire('employee.brands.edit-general', ['brand' => $brand])
-                    </x-tab-content>
+                    @can ('brands.edit')
+                        <x-tab-content active="true" id="pills-general" labelledby="pills-general-tab">
+                            @livewire('employee.brands.edit-general', ['brand' => $brand])
+                        </x-tab-content>
+                    @endcan
 
-                    <x-tab-content id="pills-addresses" labelledby="pills-addresses-tab">
-                        @livewire('employee.brand-addresses.create', ['brand' => $brand])
-                        @livewire('employee.brand-addresses.index', ['brand' => $brand])
-                    </x-tab-content>
+                    @canany (['brand-addresses.create', 'brand-addresses,viewAny'])
+                        <x-tab-content id="pills-addresses" labelledby="pills-addresses-tab">
+                            @livewire('employee.brand-addresses.create', ['brand' => $brand])
+                            @livewire('employee.brand-addresses.index', ['brand' => $brand])
+                        </x-tab-content>
+                    @endcanany
 
-                    <x-tab-content id="pills-emails" labelledby="pills-emails-tab">
-                        @livewire('employee.brand-emails.create', ['brand' => $brand])
-                        @livewire('employee.brand-emails.list', ['brand' => $brand])
-                    </x-tab-content>
+                    @canany (['brand-emails.create', 'brand-emails.viewAny'])
+                        <x-tab-content id="pills-emails" labelledby="pills-emails-tab">
+                            @livewire('employee.brand-emails.create', ['brand' => $brand])
+                            @livewire('employee.brand-emails.list', ['brand' => $brand])
+                        </x-tab-content>
+                    @endcanany
 
-                    <x-tab-content id="pills-holidays" labelledby="pills-holidays-tab">
-                        <livewire:employee.brand-holidays.create :brand="$brand"/>
-                        <livewire:employee.brand-holidays.list :brand="$brand" />
-                    </x-tab-content>
+                    @canany (['brand-holidays.create', 'brand-holidays.viewAny'])
+                        <x-tab-content id="pills-holidays" labelledby="pills-holidays-tab">
+                            <livewire:employee.brand-holidays.create :brand="$brand"/>
+                            <livewire:employee.brand-holidays.list :brand="$brand" />
+                        </x-tab-content>
+                    @endcanany
 
-                    <x-tab-content id="pills-hours" labelledby="pills-hours-tab">
-                        ...
-                    </x-tab-content>
+                    @canany (['brand-hours.create', 'brand-hours.viewAny'])
+                        <x-tab-content id="pills-hours" labelledby="pills-hours-tab">
+                            <livewire:employee.brand-hours.create :brand="$brand" />
+                            <livewire:employee.brand-hours.list :brand="$brand" />
+                        </x-tab-content>
+                    @endcanany
 
-                    <x-tab-content id="pills-phone-numbers" labelledby="pills-phone-numbers-tab">
-                        ...
-                    </x-tab-content>
-
-                    <x-tab-content id="pills-profile" labelledby="pills-profile-tab">
-                        ...
-                    </x-tab-content>
-
-                    <x-tab-content id="pills-promotions" labelledby="pills-promotions-tab">
-                        ...
-                    </x-tab-content>
+                    @canany (['brand-phone-numbers.create', 'brand-phone-numbers.viewAny'])
+                        <x-tab-content id="pills-phone-numbers" labelledby="pills-phone-numbers-tab">
+                            <livewire:employee.brand-phone-numbers.create :brand="$brand" />
+                            <livewire:employee.brand-phone-numbers.list :brand="$brand" />
+                        </x-tab-content>
+                    @endcanany
                 </x-tab-content-parent>
                 <!-- End::row-1 -->
             </div>
@@ -182,6 +195,18 @@
                     toastr['success']('Email deleted successfully.')
                 })
                 Livewire.on('brand-email-updated', () => {
+                    toastr['success']('Email updated successfully')
+                })
+                Livewire.on('brand-hours-created', () => {
+                    toastr['success']('Brand hours created successfully')
+                })
+                Livewire.on('brand-phone-number-created', () => {
+                    toastr['success']('Email created successfully.')
+                })
+                Livewire.on('brand-phone-number-deleted', () => {
+                    toastr['success']('Email deleted successfully.')
+                })
+                Livewire.on('brand-phone-number-updated', () => {
                     toastr['success']('Email updated successfully')
                 })
             })

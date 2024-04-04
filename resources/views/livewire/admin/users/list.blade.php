@@ -117,7 +117,7 @@ new class extends Component {
 
 <div>
     <div class="card custom-card">
-        <div class="card-body">
+        <div class="card-header">
             <div class="tw-flex tw-justify-between tw-items-center">
                 <h1>All users</h1>
                 <div>
@@ -126,8 +126,6 @@ new class extends Component {
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card custom-card">
         <div class="card-body">
             <div class="tw-divide-y dark:tw-divide-gray-700">
                 @can('users.viewany')

@@ -38,7 +38,7 @@ new class extends Component {
     }
 }; ?>
 
-<div class="card tw-shadow-lg">
+<div class="card">
     <form wire:submit="updateEmail" novalidate autocomplete="off">
         <div class="card-header">
             Update email

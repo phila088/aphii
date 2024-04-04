@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Employee;
 
-use App\Models\BrandHours;
+use App\Models\BrandHour;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
@@ -12,30 +12,30 @@ class BrandHoursController
 
     public function index()
     {
-        $this->authorize('viewAny', BrandHours::class);
+        $this->authorize('viewAny', BrandHour::class);
 
-        return BrandHours::all();
+        return BrandHour::all();
     }
 
     public function store(Request $request)
     {
-        $this->authorize('create', BrandHours::class);
+        $this->authorize('create', BrandHour::class);
 
         $data = $request->validate([
 
         ]);
 
-        return BrandHours::create($data);
+        return BrandHour::create($data);
     }
 
-    public function show(BrandHours $brandHours)
+    public function show(BrandHour $brandHours)
     {
         $this->authorize('view', $brandHours);
 
         return $brandHours;
     }
 
-    public function update(Request $request, BrandHours $brandHours)
+    public function update(Request $request, BrandHour $brandHours)
     {
         $this->authorize('update', $brandHours);
 
@@ -48,7 +48,7 @@ class BrandHoursController
         return $brandHours;
     }
 
-    public function destroy(BrandHours $brandHours)
+    public function destroy(BrandHour $brandHours)
     {
         $this->authorize('delete', $brandHours);
 

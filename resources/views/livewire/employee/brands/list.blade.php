@@ -23,17 +23,17 @@ new class extends Component {
     {
         $this->search = '';
 
-        $this->brands = Brand::orderBy('legal_name')
+        $this->brands = Brand::orderBy('name')
             ->get();
     }
 
     public function searchResults(string $partial): void
     {
         if (!empty($partial)) {
-            $this->brands = Brand::where('legal_name', 'like', '%' . $partial . '%')
+            $this->brands = Brand::where('name', 'like', '%' . $partial . '%')
                 ->orWhere('dba', 'like', '%' . $partial . '%')
                 ->orWhere('abbreviation', 'like', '%' . $partial . '%')
-                ->orderBy('legal_name')
+                ->orderBy('name')
                 ->get();
         } else {
             $this->getBrands();
@@ -49,6 +49,24 @@ new class extends Component {
         }
     }
 
+    public function delete(Brand $brand): void
+    {
+        $this->authorize('brands.delete');
+
+        $brand->delete();
+
+        $this->getBrands();
+    }
+
+    public function view(Brand $brand): void
+    {
+        if (auth()->user()->can('brands.view')) {
+            redirect()->route('employee.brands.view', [$brand]);
+        } else {
+            $this->dispatch('user-not-authorized');
+        }
+    }
+
     public function getStatus(Brand $brand)
     {
         $brandStatus = $brand->status;
@@ -57,90 +75,79 @@ new class extends Component {
             ->limit(1)
             ->get();
 
-        return $brand->status . ' - ' . $title[0]->title;
+        if (!empty($title[0])) {
+            return $brand->status . ' - ' . $title[0]->title;
+        } else {
+            return null;
+        }
     }
 
 }; ?>
 
 <div>
     <div class="card custom-card">
-        <div class="card-body">
-            <div class="tw-flex tw-justify-between tw-items-center">
-                <h1>All brands</h1>
+        <div class="card-header">
+            <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
+                <h2>All brands</h2>
                 <div>
                     <label for="search" class="sr-only">Search</label>
-                    <input type="text" id="search" wire:model="search" class="tw-py-2 tw-px-3 tw-block tw-w-full tw-border-gray-200 tw-rounded-full tw-text-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 disabled:tw-opacity-50 disabled:tw-pointer-events-none dark:tw-bg-slate-900 dark:tw-border-gray-700 dark:tw-text-gray-400 dark:focus:tw-ring-gray-600" placeholder="Search" x-on:input="$wire.searchResults($el.value);">
+                    <input type="text" id="search" wire:model="search" class="form-control form-control-sm rounded-pill" placeholder="Search" x-on:input="$wire.searchResults($el.value);">
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card custom-card">
         <div class="card-body">
-            <div class="tw-divide-y dark:tw-divide-gray-700">
-                @can('brands.viewany')
-                    @if (!empty($brands[0]))
-                        @foreach ($brands as $brand)
-                            <div class="row g-2 hover:tw-bg-gray-50/[0.7]">
-                                <div class="card-body tw-flex tw-align-top">
-                                    <p class="avatar avatar-xxl avatar-rounded me-3 my-auto">
-                                        <img src="{{ asset($brand->logo_path) }}" alt="">
-                                    </p>
-                                    <div class="flex-fill main-profile-info my-auto">
-                                        <h5 class="fw-bolder">
-                                            <a href="{{ route('employee.brands.view', $brand->id) }}">{{ $brand->legal_name }}</a>
-                                        </h5>
-                                        <div>
-                                            <p class="mb-1 text-muted">
-                                                DBA: {{ $brand->dba }}
-                                            </p>
-                                            <p class="mb-1 text-muted">
-                                                Abbreviation: {{ $brand->abbreviation }}
-                                            </p>
-                                            <p class="mb-1 text-muted">
-                                                Status: {{ $this->getStatus($brand) }}
-                                            </p>
-                                            <p class="mb-1 text-muted">
-                                                Created: {{ $brand->created_at->format('j M Y, g:i a') }}
-                                                @unless ($brand->created_at->eq($brand->updated_at))
-                                                    <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
-                                                @endunless
-                                            </p>
-                                        </div>
+            <ul class="list-group">
+                @empty ($brands[0]))
+                    <x-no-data />
+                @else
+                    @foreach ($brands as $brand)
+                        <li class="list-group-item" >
+                            <div class="d-flex w-100 justify-content-between align-items-center">
+                                <div class="row">
+                                    <div class="col-auto d-flex align-items-center">
+                                        <span class="avatar avatar-xxl avatar-rounded my-auto">
+                                            <img src="{{ asset($brand->logo_path) }}" alt="">
+                                        </span>
                                     </div>
-                                    <div class="main-profile-info ms-auto">
-                                        <div>
-                                            @canany(['brands.edit', 'brands.delete'])
-                                                <x-dropdown>
-                                                    @can('brands.edit')
-                                                        <x-slot name="trigger">
-                                                            <button>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-4 tw-w-4 tw-text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                                </svg>
-                                                            </button>
-                                                        </x-slot>
-                                                    @endcan
-                                                    @can('brands.delete')
-                                                        <x-slot name="content">
-                                                            <x-dropdown-link wire:click="edit({{ $brand->id }})">
-                                                                {{ __('Edit') }}
-                                                            </x-dropdown-link>
-                                                        </x-slot>
-                                                    @endcan
-                                                </x-dropdown>
-                                            @endcanany
-                                        </div>
+                                    <div class="col-auto">
+                                        <table class="table table-borderless table-sm">
+                                            <tbody>
+                                            <tr>
+                                                <th>Name:</th>
+                                                <td>{{ $brand->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Abbreviation:</th>
+                                                <td>{{ $brand->abbreviation }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Status:</th>
+                                                <td>{{ $brand->status }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Created:</th>
+                                                <td>{{ Carbon::parse($brand->created_at)->timezone(auth()->user()->timezone)->format('m-d-Y g:i A') }}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
+                                <div>
+                                    @can ('brands.view')
+                                        <button type="button" class="btn btn-icon btn-sm btn-success-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="view({{ $brand->id }})"><i class="bi bi-binoculars"></i></button>
+                                    @endcan
+                                    @can ('brands.edit')
+                                        <button type="button" class="btn btn-icon btn-sm btn-info-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="edit({{ $brand->id }})"><i class="bi bi-pencil"></i></button>
+                                    @endcan
+                                    @can ('brands.delete')
+                                        <button type="button" class="btn btn-icon btn-sm btn-danger-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="delete({{ $brand->id }})" wire:confirm="Are you sure you want to delete this brand?"><i class="bi bi-trash"></i></button>
+                                    @endcan
+                                </div>
                             </div>
-                        @endforeach
-                    @else
-                        <x-no-data />
-                    @endif
-                @else
-                    <x-not-auth />
-                @endcan
-            </div>
+                        </li>
+                    @endforeach
+                @endempty
+            </ul>
         </div>
     </div>
 </div>

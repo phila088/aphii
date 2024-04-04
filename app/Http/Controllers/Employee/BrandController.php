@@ -12,8 +12,6 @@ class BrandController extends Controller
 {
     public function index(): View
     {
-        $this->authorize('brands.viewany', Brand::class);
-
         return view('employee.brands.index');
     }
 

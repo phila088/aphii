@@ -8,7 +8,7 @@
 
         <!-- PAGE HEADER -->
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
-            <h4 class="fw-medium tw-text-xl mb-0"></h4>
+            <h4 class="fw-medium tw-text-xl mb-0">Brands</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Brands') }}</li>
             </ol>
@@ -22,30 +22,28 @@
                 <div class="card custom-card">
                     <div class="card-body">
                         <x-tab-button-parent>
-                            <x-tab-button id="pills-list-brands-tab" data-bs-toggle="pill-brands-index" target="pills-list-brands" selected="true" label="List brands" />
+                            @can ('brands.viewAny')
+                                <x-tab-button id="pills-list-brands-tab" data-bs-toggle="pill-brands-index" target="pills-list-brands" selected="true" label="List brands" />
+                            @endcan
 
-                            @if(auth()->user()->can('brands.create'))
+                            @can ('brands.create')
                                 <x-tab-button id="pills-create-brand-tab" data-bs-toggle="pill-brands-index" target="pills-create-brand" selected="false" label="Create brand" />
-                            @endif
+                            @endcan
                         </x-tab-button-parent>
                     </div>
                 </div>
                 <x-tab-content-parent>
-                    <x-tab-content active="true" id="pills-list-brands" labelledby="pills-list-brands-tab">
-                        <livewire:employee.brands.list />
-                    </x-tab-content>
+                    @can ('brands.viewAny')
+                        <x-tab-content active="true" id="pills-list-brands" labelledby="pills-list-brands-tab">
+                            <livewire:employee.brands.list />
+                        </x-tab-content>
+                    @endcan
 
-                    <x-tab-content id="pills-create-brand" labelledby="pills-create-brand-tab">
-                        @if(auth()->user()->can('brands.create'))
+                    @can ('brands.create')
+                        <x-tab-content id="pills-create-brand" labelledby="pills-create-brand-tab">
                             <livewire:employee.brands.create />
-                        @else
-                            <div class="card">
-                                <div class="card-body">
-                                    <x-not-auth />
-                                </div>
-                            </div>
-                        @endif
-                    </x-tab-content>
+                        </x-tab-content>
+                    @endcan
                 </x-tab-content-parent>
                 <!-- End::row-1 -->
             </div>

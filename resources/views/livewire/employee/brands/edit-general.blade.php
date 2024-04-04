@@ -16,11 +16,14 @@ new class extends Component {
 
     public $brand;
     public ?Collection $statuses = null;
+    public string $original_reason = '';
 
     #[Validate('required|string|exists:status_codes,code')]
     public ?string $status;
+    #[Validate('nullable|string')]
+    public ?string $status_reason;
     #[Validate('required|string|min:2|max:50')]
-    public ?string $legal_name = '';
+    public ?string $name = '';
     #[Validate('nullable|string|min:2|max:50')]
     public ?string $dba = '';
     #[Validate('required|string|min:1|max:10')]
@@ -46,9 +49,11 @@ new class extends Component {
     public function mount(): void
     {
         $this->getStatuses();
+        $this->getStatus();
 
         $this->status = $this->brand->status;
-        $this->legal_name = $this->brand->legal_name;
+        $this->status_reason = $this->original_reason;
+        $this->name = $this->brand->name;
         $this->dba = $this->brand->dba;
         $this->abbreviation = $this->brand->abbreviation;
         $this->internal_work_order_prefix = $this->brand->internal_work_order_prefix;
@@ -61,12 +66,30 @@ new class extends Component {
         $this->city_license_number = $this->brand->city_license_number;
     }
 
-    public function getStatuses()
+    public function getBrand(): void
+    {
+        $this->brand = $this->brand->refresh();
+        $this->getStatus();
+    }
+
+    public function getStatuses(): void
     {
         $this->statuses = StatusCode::where('for_model', '=', 'Brand')->get();
     }
 
-    public function updateBrand()
+    public function getStatus(): void
+    {
+        $reason = $this->brand->status();
+        if (!is_null($reason->reason)) {
+            $this->original_reason = $reason->reason;
+            $this->status_reason = $reason->reason;
+        } else {
+            $this->original_reason = '';
+            $this->status_reason = '';
+        }
+    }
+
+    public function updateBrand(): void
     {
         $statuses = [];
         foreach($this->statuses as $status) {
@@ -74,7 +97,7 @@ new class extends Component {
         }
         $validated = $this->validate([
             'status' => ['required', Rule::in($statuses)],
-            'legal_name' => ['required', 'string', 'min:2', 'max:50', Rule::unique('brands')->ignore($this->brand->id)],
+            'name' => ['required', 'string', 'min:2', 'max:50', Rule::unique('brands')->ignore($this->brand->id)],
             'dba' => ['nullable', 'string', 'min:2', 'max:50'],
             'abbreviation' => ['required', 'string', 'min:2', 'max:50', Rule::unique('brands')->ignore($this->brand->id)],
             'internal_work_order_prefix' => ['nullable', 'string'],
@@ -97,7 +120,22 @@ new class extends Component {
                 ])->save();
             }
 
-            $this->brand->setStatus($this->status);
+            if (is_null($this->original_reason)) {
+                $this->original_reason = '';
+            }
+
+            if ($this->brand->status !== $this->status || $this->original_reason !== $this->status_reason) {
+                if (empty($this->status_reason)) {
+                    $reason = StatusCode::where('code', '=', $this->status)
+                        ->limit(1)
+                        ->get();
+                    $this->status_reason = $reason[0]->default_reason;
+                }
+
+                $this->brand->setStatus($this->status, $this->status_reason);
+            }
+
+            $this->getBrand();
 
             $this->dispatch('brand-updated');
         }
@@ -111,12 +149,15 @@ new class extends Component {
                 <h1>Status</h1>
             </div>
             <div class="card-body">
-                <x-select id="status" model="status" label="Status">
-                    <option></option>
-                    @foreach ($statuses as $status)
-                        <option value="{{ $status->code }}">{{ $status->code }} - {{ $status->title }}</option>
-                    @endforeach
-                </x-select>
+                <div class="row">
+                    <x-select id="status" model="status" label="Status">
+                        <option></option>
+                        @foreach ($statuses as $status)
+                            <option value="{{ $status->code }}">{{ $status->code }} - {{ $status->title }}</option>
+                        @endforeach
+                    </x-select>
+                    <x-input cols="col-lg-10" id="status-reason" model="status_reason" label="Status reason" />
+                </div>
             </div>
 
         </div>
@@ -127,7 +168,7 @@ new class extends Component {
             </div>
             <div class="card-body">
                 <div class="row g-2">
-                    <x-input cols="col-lg-3" id="legal-name" model="legal_name" placeholder="Legal name" label="Legal name" class="{{ ($errors->get('legal_name')) ? 'is-invalid' : '' }}" required />
+                    <x-input cols="col-lg-3" id="legal-name" model="name" placeholder="Legal name" label="Legal name" class="{{ ($errors->get('name')) ? 'is-invalid' : '' }}" required />
 
                     <x-input cols="col-lg-3" id="dba" model="dba" placeholder="DBA" label="DBA" class="{{ ($errors->get('dba')) ? 'is-invalid' : '' }}" />
 
@@ -165,12 +206,10 @@ new class extends Component {
 
                     <x-input cols="col-lg-3" id="internal-work-order-postfix-increment" model="internal_work_order_postfix_increment" placeholder="Postfix increment" label="Postfix increment" class="{{ ($errors->get('internal_work_order_postfix_increment')) ? 'is-invalid' : '' }}" x-mask="999" />
                 </div>
-                <div class="row g-2" wire:ignore>
+                <div class="row" wire:ignore>
                     <p class="tw-font-bold">Example: </p>
-                    <p class="tw-font-semibold">Input: </p>
-                    <p id="example-work-order-input"></p>
-                    <p class="tw-font-semibold">Output: </p>
-                    <p id="example-work-order-output"></p>
+                    <p><span class="fw-semibold">Input: </span><span id="example-work-order-input"></span></p>
+                    <p><span class="fw-semibold">Output: </span><span id="example-work-order-output"></span></p>
                 </div>
             </div>
         </div>
@@ -273,21 +312,16 @@ new class extends Component {
             </div>
             <div class="card-body">
                 <div class="row g-2">
-                    <x-input cols="col-lg-3" id="fein" model="fein" placeholder="FEIN" label="FEIN"/>
+                    <x-input cols="col-lg-3" id="fein" model="fein" label="FEIN"/>
 
-                    <x-input cols="col-lg-3" id="state-license-number" model="state_license_number"
-                             placeholder="State license number" label="State license number"/>
+                    <x-input cols="col-lg-3" id="state-license-number" model="state_license_number" label="State license number"/>
 
-                    <x-input cols="col-lg-3" id="county-license-number" model="county_license_number"
-                             placeholder="County license number" label="County license number"/>
+                    <x-input cols="col-lg-3" id="county-license-number" model="county_license_number" label="County license number"/>
 
-                    <x-input cols="col-lg-3" id="city-license-number" model="city_license_number"
-                             placeholder="City license number" label="City license number"/>
+                    <x-input cols="col-lg-3" id="city-license-number" model="city_license_number" label="City license number"/>
                 </div>
             </div>
-        </div>
-        <div class="card custom-card">
-            <div class="card-body">
+            <div class="card-footer">
                 <x-submit id="brand-edit"/>
             </div>
         </div>
@@ -312,6 +346,10 @@ new class extends Component {
         iwoExampleInput = document.querySelector("#example-work-order-input"),
         iwoExampleOutput = document.querySelector("#example-work-order-output");
         let iwoText = "123456789";
+        iwoPrefix.value = $wire.internal_work_order_prefix;
+        iwoMaxLength.value = await $wire.internal_work_order_max_length;
+        iwoPostfixIncrement.value = await $wire.internal_work_order_postifx_increment;
+        iwoExampleOutput.innerText = await $wire.internal_work_order_prefix + iwoText.substring(iwoText.length - ("" !== iwoMaxLength.value && 0 !== iwoMaxLength.value ? iwoMaxLength.value : 6), iwoText.length) + "-" + ("" !== iwoPostfixIncrement.value && 0 !== iwoPostfixIncrement.value ? iwoPostfixIncrement.value : 10);
         iwoExampleInput.innerText = iwoText, iwoExampleOutput.innerText = iwoPrefix.value + iwoText.substring(iwoText.length - ("" !== iwoMaxLength.value && 0 !== iwoMaxLength.value ? iwoMaxLength.value : 6), iwoText.length) + "-" + ("" !== iwoPostfixIncrement.value && 0 !== iwoPostfixIncrement.value ? iwoPostfixIncrement.value : 10), [iwoPrefix, iwoMaxLength, iwoPostfixIncrement].forEach((e => {
             e.addEventListener("change", (() => {
                 iwoExampleOutput.innerText = iwoPrefix.value + iwoText.substring(iwoText.length - ("" !== iwoMaxLength.value && 0 !== iwoMaxLength.value ? iwoMaxLength.value : 6), iwoText.length) + "-" + ("" !== iwoPostfixIncrement.value && 0 !== iwoPostfixIncrement.value ? iwoPostfixIncrement.value : 10)

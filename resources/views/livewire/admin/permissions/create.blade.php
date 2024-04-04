@@ -79,7 +79,7 @@ new class extends Component {
         return $models->values();
     }
 
-    public function makePermission()
+    public function makePermission(): void
     {
         $this->name = $this->makePattern([Str::plural($this->model), $this->action]);
         $this->dispatch('filter-changed');

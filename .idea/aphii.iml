@@ -149,6 +149,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-permission" />
       <excludeFolder url="file://$MODULE_DIR$/public/storage/brand-logos" />
       <excludeFolder url="file://$MODULE_DIR$/public/storage/profile-pictures" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kalnoy/nestedset" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

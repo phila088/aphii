@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\DocumentCategoryController as AdminDocumentCategoryController;
 use App\Http\Controllers\Admin\PaymentMethodController as AdminPaymentMethodController;
 use App\Http\Controllers\Admin\PaymentTermController as AdminPaymentTermsController;
 use App\Http\Controllers\Admin\StatusCodeController as AdminStatusCodeController;
+use App\Http\Controllers\Admin\TrashController as AdminTrashController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Employee\BrandController as EmployeeBrandController;
+use App\Http\Controllers\Employee\ClientController as EmployeeClientController;
 use App\Http\Controllers\Employee\DashboardsController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,13 +28,17 @@ Route::get('/', function () {
     } else {
         return redirect('/dashboards/personal');
     }
-});
+})->name('index');
 
 Route::get('lockscreen', [DashboardsController::class, 'personal'])
     ->middleware('lockscreen.show')
     ->name('lockscreen');
 
-Route::middleware(['auth', 'verified', 'online-status'])
+Route::middleware(['auth',
+    'verified',
+    'online-status',
+    'role:Employee|Super Admin'
+])
     ->group(function () {
         Route::prefix('dashboards')
             ->name('dashboards.')
@@ -56,6 +63,13 @@ Route::middleware(['auth', 'verified', 'online-status'])
             ->name('admin.')
             ->middleware(['role:Super Admin|Employee Admin'])
             ->group(function () {
+                Route::prefix('document-categories')
+                    ->name('document-categories.')
+                    ->controller(AdminDocumentCategoryController::class)
+                    ->group(function () {
+                        Route::get('/', 'index')->name('index');
+                    });
+
                 Route::prefix('payment-methods')
                     ->name('payment-methods.')
                     ->controller(AdminPaymentMethodController::class)
@@ -77,6 +91,13 @@ Route::middleware(['auth', 'verified', 'online-status'])
                         Route::get('/', 'index')->name('index');
                     });
 
+                Route::prefix('trash')
+                    ->name('trash.')
+                    ->controller(AdminTrashController::class)
+                    ->group(function () {
+                        Route::get('/', 'index')->name('index');
+                    });
+
                 Route::prefix('users')
                     ->name('users.')
                     ->controller(AdminUserController::class)
@@ -92,13 +113,22 @@ Route::middleware(['auth', 'verified', 'online-status'])
                     ->name('brands.')
                     ->controller(EmployeeBrandController::class)
                     ->group(function () {
-                        Route::get('/', 'index')->name('index');
-
-                        Route::get('create', 'create')->name('create');
+                        Route::get('/', 'index')
+                            ->middleware('permission:brands.view|brands.viewAny|brands.create|brands.edit|brands.delete')
+                            ->name('index');
 
                         Route::get('view/{id}', 'view')->name('view');
 
                         Route::get('edit/{id}', 'edit')->name('edit');
+                    });
+
+                Route::prefix('clients')
+                    ->name('clients.')
+                    ->controller(EmployeeClientController::class)
+                    ->group(function () {
+                        Route::get('/', 'index')
+                            ->middleware('permission:clients.view|clients.viewAny|clients.create|clients.edit|clients.delete')
+                            ->name('index');
                     });
             });
     });

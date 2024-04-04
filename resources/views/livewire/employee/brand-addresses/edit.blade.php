@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 new class extends Component {
     public $brand;
-    public BrandAddress $address;
+    public BrandAddress $brandAddress;
     public $directions = [];
     public $street_types = [];
     public $unit_types = [];
@@ -51,25 +51,25 @@ new class extends Component {
         $this->states = States::get();
         $this->brand_id = $this->brand->id;
 
-        $this->title = $this->address->title;
-        $this->building_number = $this->address->building_number;
-        $this->pre_direction = $this->address->pre_direction;
-        $this->street_name = $this->address->street_name;
-        $this->street_type = $this->address->street_type;
-        $this->post_direction = $this->address->post_direction;
-        $this->unit_type = $this->address->unit_type;
-        $this->unit = $this->address->unit;
-        $this->po_box = $this->address->po_box;
-        $this->city = $this->address->city;
-        $this->state = $this->address->state;
-        $this->zip = $this->address->zip;
+        $this->title = $this->brandAddress->title;
+        $this->building_number = $this->brandAddress->building_number;
+        $this->pre_direction = $this->brandAddress->pre_direction;
+        $this->street_name = $this->brandAddress->street_name;
+        $this->street_type = $this->brandAddress->street_type;
+        $this->post_direction = $this->brandAddress->post_direction;
+        $this->unit_type = $this->brandAddress->unit_type;
+        $this->unit = $this->brandAddress->unit;
+        $this->po_box = $this->brandAddress->po_box;
+        $this->city = $this->brandAddress->city;
+        $this->state = $this->brandAddress->state;
+        $this->zip = $this->brandAddress->zip;
     }
 
     public function updateAddress()
     {
         $validated = $this->validate();
 
-        if ($this->address->update($validated))
+        if ($this->brandAddress->update($validated))
         {
             $this->dispatch('brand-address-updated');
 
@@ -138,57 +138,58 @@ new class extends Component {
     }
 }; ?>
 
-<div class="card tw-shadow-md">
+<div class="card">
     <form wire:submit="updateAddress">
         <div class="card-header">
             Edit address
         </div>
         <div class="card-body">
-            <div class="row g-2">
-                <x-input id="title" model="title" placeholder="Title" label="Title" />
+            <div class="row">
+                <x-input id="title" model="title" label="Title" />
             </div>
 
-            <div class="row g-2">
-                <x-input id="building-number" model="building_number" placeholder="Building number" label="Building number" class="{{ ($errors->get('building_number')) ? 'is-invalid' : '' }}" />
+            <div class="row">
+                <x-input id="building-number" model="building_number" label="Building number" class="{{ ($errors->get('building_number')) ? 'is-invalid' : '' }}" />
 
-                <x-select id="pre-direction" model="pre_direction" placeholder="Direction" label="Direction" class="{{ ($errors->get('pre_direction')) ? 'is-invalid' : '' }}">
+                <x-select id="pre-direction" model="pre_direction" label="Direction" class="{{ ($errors->get('pre_direction')) ? 'is-invalid' : '' }}">
                     <option></option>
                     @foreach ($directions as $k => $v)
                         <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
                     @endforeach
                 </x-select>
 
-                <x-input cols="col-lg-4" id="street-name" model="street_name" placeholder="Street name" label="Street name" class="{{ ($errors->get('street_name')) ? 'is-invalid' : '' }}" />
+                <x-input cols="col-lg-4" id="street-name" model="street_name" label="Street name" class="{{ ($errors->get('street_name')) ? 'is-invalid' : '' }}" />
 
-                <x-select id="street-type" model="street_type" placeholder="Street type" label="Street type" class="{{ ($errors->get('street_type')) ? 'is-invalid' : '' }}">
+                <x-select id="street-type" model="street_type" label="Street type" class="{{ ($errors->get('street_type')) ? 'is-invalid' : '' }}">
                     <option></option>
                     @foreach ($street_types as $k => $v)
                         <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
                     @endforeach
                 </x-select>
 
-                <x-select id="post-direction" model="post_direction" placeholder="Direction" label="Direction" class="{{ ($errors->get('post_direction')) ? 'is-invalid' : '' }}">
+                <x-select id="post-direction" model="post_direction" label="Direction" class="{{ ($errors->get('post_direction')) ? 'is-invalid' : '' }}">
                     <option></option>
                     @foreach ($directions as $k => $v)
                         <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
                     @endforeach
                 </x-select>
             </div>
-            <div class="row g-2">
-                <x-select id="unit-type" model="unit_type" placeholder="Unit type" label="Unit type" class="{{ ($errors->get('unit_type')) ? 'is-invalid' : '' }}">
+            <div class="row">
+                <x-select id="unit-type" model="unit_type" label="Unit type" class="{{ ($errors->get('unit_type')) ? 'is-invalid' : '' }}">
                     <option></option>
                     @foreach ($unit_types as $k => $v)
                         <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
                     @endforeach
                 </x-select>
 
-                <x-input id="unt" model="unit" placeholder="Unit" label="Unit" class="{{ ($errors->get('unit')) ? 'is-invalid' : '' }}" />
+                <x-input id="unt" model="unit" label="Unit" class="{{ ($errors->get('unit')) ? 'is-invalid' : '' }}" />
 
-                <x-input id="po-box" model="po_box" placeholder="PO box" label="PO box" class="{{ ($errors->get('po_box')) ? 'is-invalid' : '' }}" />
+                <x-input id="po-box" model="po_box" label="PO box" class="{{ ($errors->get('po_box')) ? 'is-invalid' : '' }}" />
 
                 <!-- Address 1 city -->
                 <div class="col-lg-2">
-                    <div class="form-floating mb-2">
+                    <div class="form-group mb-2">
+                        <label for="city">City</label>
                         <input
                             type="text"
                             id="city"
@@ -214,7 +215,6 @@ new class extends Component {
                                 $wire.zip = zip
                             '
                         >
-                        <label for="city">City</label>
                         <datalist id="update-cities">
                             @if (!empty($cities))
                                 @foreach ($cities as $key => $data)
@@ -236,7 +236,8 @@ new class extends Component {
 
                 <!-- Physical address zip -->
                 <div class="col-lg-2">
-                    <div class="form-floating mb-2">
+                    <div class="form-group mb-2">
+                        <label for="zip">Zip</label>
                         <input
                             type="text"
                             id="zip"
@@ -262,7 +263,6 @@ new class extends Component {
                                 $wire.zip = zip
                             '
                         >
-                        <label for="zip">Zip</label>
                         <datalist id="update-zips">
                             @if (!empty($cities))
                                 @foreach ($cities as $key => $data)

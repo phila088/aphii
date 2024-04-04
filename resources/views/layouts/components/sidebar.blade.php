@@ -2,7 +2,7 @@
 
     <!-- Logos -->
     <div class="main-sidebar-header">
-        <a href="{{url('index')}}" class="header-logo">
+        <a href="javascript:void(0)" class="header-logo">
             <img src="{{asset('build/assets/images/brand-logos/logo-full-color-dark-trans.svg')}}" alt="logo" class="desktop-logo tw-size-28">
             <img src="{{asset('build/assets/images/brand-logos/logo-icon-color-trans.svg')}}" alt="logo" class="toggle-logo tw-w-50">
             <img src="{{asset('build/assets/images/brand-logos/logo-full-color-light-trans.svg')}}" alt="logo" class="desktop-dark tw-w-36">
@@ -83,47 +83,57 @@
                     </x-slide-parent>
 
                     <!-- Brands -->
-                    @canany (['brands.viewany', 'brands.create', 'brands.report'])
+                    @canany (['brands.viewAny', 'brands.create', 'brands.report'])
                         <x-slide-parent icon="bi bi-building" label="Brands">
                             <x-slide-label label="Brands" />
 
-                            <x-slide-item route="url:#" label="View all" permission="brands.viewany" />
+                            <x-slide-item route="employee.brands.index" label="View all" permission="brands.viewAny" />
 
-                            <x-slide-item route="url:#" label="Create" permission="brands.create" />
-
-                            <x-slide-item route="url:#" label="Reports" permission="brands.report" />
+                            <x-slide-item route="url:javascript:void(0);" label="Reports" permission="brands.report" />
                         </x-slide-parent>
                     @endcanany
 
 
                     <!-- Clients -->
-                    <x-slide-parent icon="bi bi-people" label="Clients">
-                        <x-slide-label label="Clients" />
+                    @canany([
+                        'clientLocations.viewAny', 'clientLocations.view', 'clientLocations.create', 'clientLocations.generateReport',
+                        'potentialClients.viewAny', 'potentialClients.view', 'potentialClients.create', 'potentialClients.generateReport',
+                        'clients.viewAny', 'clients.view', 'clients.create', 'clients.generateReport',
+                    ])
+                        <x-slide-parent icon="bi bi-people" label="Clients">
+                            <x-slide-label label="Clients" />
 
-                        <x-slide-with-child label="Locations">
+                            @canany(['clientLocations.viewAny', 'clientLocations.view', 'clientLocations.create', 'clientLocations.generateReport'])
+                                <x-slide-with-child label="Locations">
+
+                                    <x-slide-item route="url:#" label="View all" />
+
+                                    <x-slide-item route="url:#" label="Create" />
+
+                                </x-slide-with-child>
+                            @endcanany
+
+                            @canany(['potentialclient.viewAny', 'potentialclient.view', 'potentialclient.create', 'potentialclient.generateReport'])
+                                <x-slide-with-child label="Potential clients">
+                                    <x-slide-item route="url:#" label="View all" permission="potentialclient.viewAny, potentialclient.view" />
+
+                                    <x-slide-item route="url:#" label="Create" permission="potentialclient.create" />
+                                </x-slide-with-child>
+                            @endcanany
 
                             <x-slide-item route="url:#" label="View all" />
 
                             <x-slide-item route="url:#" label="Create" />
 
-                        </x-slide-with-child>
+                            <x-slide-with-child label="Requests">
+                                <x-slide-item route="url:#" label="Insurance" />
 
-                        <x-slide-with-child label="Potential clients">
-                            <x-slide-item route="url:#" label="View all" />
+                                <x-slide-item route="url:#" label="Meeting" />
+                            </x-slide-with-child>
 
-                            <x-slide-item route="url:#" label="Create" />
-                        </x-slide-with-child>
-
-                        <x-slide-item route="url:#" label="View all" />
-
-                        <x-slide-item route="url:#" label="Create" />
-
-                        <x-slide-with-child label="Requests">
-                            <x-slide-item route="url:#" label="Insurance" />
-
-                            <x-slide-item route="url:#" label="Meeting" />
-                        </x-slide-with-child>
-                    </x-slide-parent>
+                            <x-slide-item route="url:#" label="Reports" permission="client.generateReport" />
+                        </x-slide-parent>
+                    @endcanany
 
                     <!-- Quote -->
                     <x-slide-parent icon="bi bi-pencil" label="Quoting">
@@ -239,87 +249,15 @@
                     <x-slide-parent icon="bi bi-shield-lock" label="Admin">
                         <x-slide-label label="Admin" />
 
-                        <x-slide-with-child label="Articles">
-
-                            <x-slide-item route="url:#" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                        </x-slide-with-child>
-
-                        <x-slide-with-child label="Certifications">
-
-                            <x-slide-item route="url:#" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                        </x-slide-with-child>
-
-                        <x-slide-with-child label="Cities">
-
-                            <x-slide-item route="url:#" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                        </x-slide-with-child>
-
-                        <x-slide-with-child label="Contact departments">
-
-                            <x-slide-item route="url:#" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                        </x-slide-with-child>
-
-                        <x-slide-with-child label="Contact positions">
-
-                            <x-slide-item route="url:#" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                        </x-slide-with-child>
-
-                        <x-slide-with-child label="Counties">
-
-                            <x-slide-item route="url:#" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                        </x-slide-with-child>
-
-                        <x-slide-with-child label="Document categories">
-
-                            <x-slide-item route="url:#" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                        </x-slide-with-child>
+                        <x-slide-item route="admin.document-categories.index" label="Document categories" />
 
                         <x-slide-item route="admin.payment-methods.index" label="Payment methods" />
 
                         <x-slide-item route="admin.payment-terms.index" label="Payment terms" />
 
-                        <x-slide-with-child label="States">
+                        <x-slide-item route="admin.status-codes.index" label="Status codes" />
 
-                            <x-slide-item route="url:#" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                        </x-slide-with-child>
-
-                        <x-slide-with-child label="Status codes">
-
-                            <x-slide-item route="admin.status-codes.index" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                        </x-slide-with-child>
-
-                        <x-slide-with-child label="Trash">
-
-                            <x-slide-item route="url:#" label="View all" />
-
-                        </x-slide-with-child>
+                        <x-slide-item route="admin.trash.index" label="Trash" />
 
                         <x-slide-item route="admin.users.index" label="Users" />
 

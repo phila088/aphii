@@ -65,10 +65,7 @@ new class extends Component {
         <div class="card-body">
             <div class="tw-flex tw-justify-between tw-items-center">
                 <h1>All roles</h1>
-                <div>
-                    <label for="search" class="sr-only">Search</label>
-                    <input type="text" id="list-users-search" wire:model="search" class="tw-py-2 tw-px-3 tw-block tw-w-full tw-border-gray-200 tw-rounded-full tw-text-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 disabled:tw-opacity-50 disabled:tw-pointer-events-none dark:tw-bg-slate-900 dark:tw-border-gray-700 dark:tw-text-gray-400 dark:focus:tw-ring-gray-600" placeholder="Search" x-on:input="$wire.searchResults($el.value);">
-                </div>
+                <x-model-search id="roles-search" model="searchTerm" />
             </div>
         </div>
     </div>

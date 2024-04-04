@@ -127,59 +127,53 @@ new class extends Component {
                 <h1>Create an address</h1>
             </div>
             <div class="card-body">
-                <div class="row g-2">
-                    <p>
-                        Each address entered here will be used throughout the application for any number of reasons. These addresses
-                        will be used for things such as ensuring your address is correctly displayed on your invoices, ensuring that
-                        your clients or vendors have the correct location for sending documents, etc.
-                    </p>
-                </div>
-                <div class="row g-2">
-                    <div class="row g-2">
-                        <x-input id="title" model="title" placeholder="Title" label="Title" />
+                <div class="row">
+                    <div class="row">
+                        <x-input id="title" model="title" label="Title" />
                     </div>
 
-                    <div class="row g-2">
-                        <x-input id="building-number" model="building_number" placeholder="Building number" label="Building number" class="{{ ($errors->get('building_number')) ? 'is-invalid' : '' }}" />
+                    <div class="row">
+                        <x-input id="building-number" model="building_number" label="Building number" class="{{ ($errors->get('building_number')) ? 'is-invalid' : '' }}" />
 
-                        <x-select id="pre-direction" model="pre_direction" placeholder="Direction" label="Direction" class="{{ ($errors->get('pre_direction')) ? 'is-invalid' : '' }}">
+                        <x-select id="pre-direction" model="pre_direction" label="Direction" class="{{ ($errors->get('pre_direction')) ? 'is-invalid' : '' }}">
                             <option></option>
                             @foreach ($directions as $k => $v)
                                 <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
                             @endforeach
                         </x-select>
 
-                        <x-input cols="col-lg-4" id="street-name" model="street_name" placeholder="Street name" label="Street name" class="{{ ($errors->get('street_name')) ? 'is-invalid' : '' }}" />
+                        <x-input cols="col-lg-4" id="street-name" model="street_name" label="Street name" class="{{ ($errors->get('street_name')) ? 'is-invalid' : '' }}" />
 
-                        <x-select id="street-type" model="street_type" placeholder="Street type" label="Street type" class="{{ ($errors->get('street_type')) ? 'is-invalid' : '' }}">
+                        <x-select id="street-type" model="street_type" label="Street type" class="{{ ($errors->get('street_type')) ? 'is-invalid' : '' }}">
                             <option></option>
                             @foreach ($street_types as $k => $v)
                                 <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
                             @endforeach
                         </x-select>
 
-                        <x-select id="post-direction" model="post_direction" placeholder="Direction" label="Direction" class="{{ ($errors->get('post_direction')) ? 'is-invalid' : '' }}">
+                        <x-select id="post-direction" model="post_direction" label="Direction" class="{{ ($errors->get('post_direction')) ? 'is-invalid' : '' }}">
                             <option></option>
                             @foreach ($directions as $k => $v)
                                 <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
                             @endforeach
                         </x-select>
                     </div>
-                    <div class="row g-2">
-                        <x-select id="unit-type" model="unit_type" placeholder="Unit type" label="Unit type" class="{{ ($errors->get('unit_type')) ? 'is-invalid' : '' }}">
+                    <div class="row">
+                        <x-select id="unit-type" model="unit_type" label="Unit type" class="{{ ($errors->get('unit_type')) ? 'is-invalid' : '' }}">
                             <option></option>
                             @foreach ($unit_types as $k => $v)
                                 <option value="{{ $k }}">{{ $k }} - {{ $v }}</option>
                             @endforeach
                         </x-select>
 
-                        <x-input id="unt" model="unit" placeholder="Unit" label="Unit" class="{{ ($errors->get('unit')) ? 'is-invalid' : '' }}" />
+                        <x-input id="unt" model="unit" label="Unit" class="{{ ($errors->get('unit')) ? 'is-invalid' : '' }}" />
 
-                        <x-input id="po-box" model="po_box" placeholder="PO box" label="PO box" class="{{ ($errors->get('po_box')) ? 'is-invalid' : '' }}" />
+                        <x-input id="po-box" model="po_box" label="PO box" class="{{ ($errors->get('po_box')) ? 'is-invalid' : '' }}" />
 
                         <!-- Address 1 city -->
                         <div class="col-lg-2">
-                            <div class="form-floating mb-2">
+                            <div class="form-group">
+                                <label for="city">City</label>
                                 <input
                                     type="text"
                                     id="city"
@@ -205,7 +199,6 @@ new class extends Component {
                                 $wire.zip = zip
                             '
                                 >
-                                <label for="city">City</label>
                                 <datalist id="cities">
                                     @if (!empty($cities))
                                         @foreach ($cities as $key => $data)
@@ -227,7 +220,8 @@ new class extends Component {
 
                         <!-- Physical address zip -->
                         <div class="col-lg-2">
-                            <div class="form-floating mb-2">
+                            <div class="form-group mb-2">
+                                <label for="zip">Zip</label>
                                 <input
                                     type="text"
                                     id="zip"
@@ -253,7 +247,6 @@ new class extends Component {
                                 $wire.zip = zip
                             '
                                 >
-                                <label for="zip">Zip</label>
                                 <datalist id="zips">
                                     @if (!empty($cities))
                                         @foreach ($cities as $key => $data)

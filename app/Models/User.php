@@ -106,6 +106,16 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword,
         return $this->hasMany(BrandHoliday::class);
     }
 
+    public function brandHour(): HasMany
+    {
+        return $this->hasMany(BrandHour::class);
+    }
+
+    public function brandPhoneNumber(): HasMany
+    {
+        return $this->hasMany(BrandPhoneNumber::class);
+    }
+
     public function potentialClient(): HasMany
     {
         return $this->hasMany(PotentialClient::class);

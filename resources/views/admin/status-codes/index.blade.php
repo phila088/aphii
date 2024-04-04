@@ -1,7 +1,6 @@
 <x-app-layout>
     @section('styles')
 
-        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.tailwindcss.css">
 
     @endsection
 
@@ -9,11 +8,11 @@
 
         <!-- PAGE HEADER -->
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
-            <h4 class="fw-medium tw-text-xl mb-0">{{ __('Title') }}</h4>
+            <h1 class="fw-medium tw-text-xl tw-text-white mb-0">Status codes</h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#" class="text-white-50">{{ __('Breadcrumb 1') }}</a>
+                <li class="breadcrumb-item"><a href="javascript:void(0);" class="text-white-50">{{ __('Admin') }}</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Breadcrumb 2') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Status codes') }}</li>
             </ol>
         </div>
         <!-- END PAGE HEADER -->
@@ -22,33 +21,91 @@
         <div class="main-content app-content">
             <div class="container-fluid">
                 <!-- Start::row-1 -->
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card custom-card">
-                            <div class="card-header tw-flex tw-justify-between tw-items-center">
-                                <h1>Title</h1>
-                                <div class="tw-flex tw-items-center tw-gap-x-1">
-                                    <a href="#" class="btn btn-primary btn-sm">
-                                        Create
-                                        <i class="bi bi-plus-lg"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body tw-p-4">
-                                @livewire('admin.status-codes.index')
-                            </div>
-                        </div>
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <x-tab-button-parent>
+                            <x-tab-button id="pills-list-status-codes-tab" data-bs-toggle="pill-status-codes-index" target="pills-list-status-codes" selected="true" label="List status codes" />
+
+                            <x-tab-button id="pills-create-status-codes-tab" data-bs-toggle="pill-status-codes-index" target="pills-create-status-codes" selected="false" label="Create status codes" />
+                        </x-tab-button-parent>
                     </div>
                 </div>
-                <!-- End::row-1 -->
+                <x-tab-content-parent>
+                    <x-tab-content active="true" id="pills-list-status-codes" labelledby="pills-list-status-codes-tab">
+                        <livewire:admin.status-codes.list />
+                    </x-tab-content>
+
+                    <x-tab-content id="pills-create-status-codes" labelledby="pills-create-status-codes-tab">
+                        ...
+                    </x-tab-content>
+                </x-tab-content-parent>
             </div>
         </div>
-        <!-- END APP CONTENT -->
-
     @endsection
 
     @section('scripts')
+        <script>
+            const pillsTab = document.querySelector('#pills-tab');
+            const pills = pillsTab.querySelectorAll('button[data-bs-toggle="pill"]');
 
+            pills.forEach(pill => {
+                pill.addEventListener('shown.bs.tab', (event) => {
+                    const { target } = event;
+                    const { id: targetId } = target;
 
+                    savePillId(targetId);
+                });
+            });
+
+            const savePillId = (selector) => {
+                localStorage.setItem('StatusCodesIndexActivePillId', selector);
+            };
+
+            const getPillId = () => {
+                const activePillId = localStorage.getItem('StatusCodesIndexActivePillId');
+
+                // if local storage item is null, show default tab
+                if (!activePillId) return;
+
+                // call 'show' function
+                const someTabTriggerEl = document.querySelector(`#${activePillId}`)
+                const tab = new bootstrap.Tab(someTabTriggerEl);
+
+                tab.show();
+            };
+
+            // get pill id on load
+            getPillId();
+            document.addEventListener('livewire:initialized', () => {
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "positionClass": "toast-bottom-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "1000",
+                    "hideDuration": "1000",
+                    "timeOut": "10000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+
+                Livewire.on('unauthorized-action', () => {
+                    toastr['error']('You are not authorized to complete that action.')
+                })
+                Livewire.on('payment-method-created', () => {
+                    toastr['success']('Payment method created successfully.')
+                })
+                Livewire.on('payment-method-not-created', () => {
+                    toastr['error']('There was an error while creating the payment method.')
+                })
+            })
+        </script>
     @endsection
 </x-app-layout>

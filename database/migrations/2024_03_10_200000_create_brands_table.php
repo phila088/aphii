@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('name', 50)->unique();
             $table->string('dba', 50)->nullable();
             $table->string('abbreviation', 10)->unique();

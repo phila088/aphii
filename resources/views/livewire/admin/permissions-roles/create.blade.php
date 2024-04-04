@@ -60,7 +60,7 @@ new class extends Component {
                 foreach ($vc as $kgc => $vgc) {
                     $action = $kgc;
 
-                    $objGc = Permission::select('id')->where('name', '=', strtolower($model) . '.' . $action)->limit(1)->get();
+                    $objGc = Permission::select('id')->where('name', '=', Str::camel($model) . '.' . $action)->limit(1)->get();
                     $permId = $objGc[0]->id;
 
                     if ($vgc) {
@@ -88,7 +88,7 @@ new class extends Component {
             foreach ($this->models as $model) {
                 $modelName = $model;
 
-                $modelAsPermission = strtolower($model);
+                $modelAsPermission = Str::camel($model);
 
                 foreach ($this->actions as $action) {
                     $permission = $modelAsPermission . '.' . $action;
@@ -104,8 +104,6 @@ new class extends Component {
                         } else {
                             $this->values[$roleName][$modelName][$action] = false;
                         }
-                    } else {
-                        $this->no_permissions = true;
                     }
                 }
             }
@@ -149,7 +147,9 @@ new class extends Component {
             });
 
         foreach ($models as $k => $v) {
-            $models[$k] = substr($v, strrpos($v, '\\') + 1);
+            $model = substr($v, strrpos($v, '\\') + 1);
+            $modelName = Str::plural(Str::camel($model));
+            $models[$k] = $modelName;
         }
 
         return $models->values();
@@ -207,7 +207,7 @@ new class extends Component {
                                     <table class="table table-sm">
                                         <thead>
                                         <tr>
-                                            <th scope="col" class="col-1"></th>
+                                            <th scope="col" class="col-2">Model</th>
                                             @foreach($actions as $action)
                                                 @if($action === '*')
                                                     <th scope="col" class="text-center col-1" :key="$action">Any</th>
@@ -221,7 +221,7 @@ new class extends Component {
                                         <tbody>
                                         @foreach($models as $model)
                                             <tr>
-                                                <th scope="row" :key="$model">{{ $model }}</th>
+                                                <th scope="row" :key="$model">{{ Str::headline($model) }}</th>
                                                 @foreach($actions as $action)
                                                     <td class="text-center" :key="body-{{ $action }}">
                                                         <input type="checkbox"

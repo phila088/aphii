@@ -36,7 +36,7 @@
         @else
             <li class="slide"><a href="{{ $res[1] }}" class="side-menu__item">{{ $label }}</a></li>
         @endif
-    @endcan
+    @endif
 @else
     @if (empty($res))
         <li class="slide"><a href="{{ route($route) }}" class="side-menu__item">{{ $label }}</a></li>

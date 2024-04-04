@@ -18,8 +18,11 @@ new class extends Component {
 
     #[Validate('required|string|exists:status_codes,code')]
     public string $status;
+    #[Validate('nullable|string')]
+    public string $status_reason;
+    public string $default_reason;
     #[Validate('required|string|min:2|max:50|unique:brands')]
-    public string $legal_name = '';
+    public string $name = '';
     #[Validate('nullable|string|min:2|max:50')]
     public string $dba = '';
     #[Validate('required|string|min:1|max:10')]
@@ -76,10 +79,17 @@ new class extends Component {
                 ])->save();
             }
 
-            $brand->setStatus($this->status);
+            if (empty($this->status_reason)) {
+                $reason = StatusCode::where('code', '=', $this->status)
+                    ->limit(1)
+                    ->get();
+                $this->status_reason = $reason[0]->default_reason;
+            }
+
+            $brand->setStatus($this->status, $this->status_reason);
 
             $this->status = '';
-            $this->legal_name = '';
+            $this->name = '';
             $this->dba = '';
             $this->abbreviation = '';
             $this->internal_work_order_prefix = '';
@@ -145,12 +155,15 @@ new class extends Component {
                 <h1>Status</h1>
             </div>
             <div class="card-body">
-                <x-select id="status" model="status" label="Status">
-                    <option></option>
-                    @foreach ($statuses as $status)
-                        <option value="{{ $status->code }}">{{ $status->code }} - {{ $status->title }}</option>
-                    @endforeach
-                </x-select>
+                <div class="row">
+                    <x-select id="status" model="status" label="Status">
+                        <option></option>
+                        @foreach ($statuses as $status)
+                            <option value="{{ $status->code }}">{{ $status->code }} - {{ $status->title }}</option>
+                        @endforeach
+                    </x-select>
+                    <x-input cols="col-lg-10" id="status-reason" model="status_reason" label="Status reason" />
+                </div>
             </div>
         </div>
 
@@ -159,14 +172,14 @@ new class extends Component {
                 <h1>Brand name</h1>
             </div>
             <div class="card-body">
-                <div class="row g-2">
-                    <x-input cols="col-lg-3" id="legal-name" model="legal_name" placeholder="Legal name" label="Legal name"
-                             class="{{ ($errors->get('legal_name')) ? 'is-invalid' : '' }}" required/>
+                <div class="row">
+                    <x-input cols="col-lg-3" id="legal-name" model="name" label="Name"
+                             class="{{ ($errors->get('name')) ? 'is-invalid' : '' }}" required/>
 
-                    <x-input cols="col-lg-3" id="dba" model="dba" placeholder="DBA" label="DBA"
+                    <x-input cols="col-lg-3" id="dba" model="dba" label="DBA"
                              class="{{ ($errors->get('dba')) ? 'is-invalid' : '' }}"/>
 
-                    <x-input cols="col-lg-3" id="abbreviation" model="abbreviation" placeholder="Abbreviation"
+                    <x-input id="abbreviation" model="abbreviation"
                              label="Abbreviation" class="{{ ($errors->get('abbreviation')) ? 'is-invalid' : '' }}" required/>
                 </div>
             </div>
@@ -176,7 +189,7 @@ new class extends Component {
                 <h1>Internal work order settings</h1>
             </div>
             <div class="card-body">
-                <div class="col-lg-12">
+                <div class="col-lg-12 mb-3">
                     <dl>
                         <dl>You can control the internal work order number that is generated automatically.</dl>
                         <dt>Prefix</dt>
@@ -197,31 +210,27 @@ new class extends Component {
                         </dl>
                     </dl>
                 </div>
-                <div class="row g-2">
-                    <x-input cols="col-lg-3" id="internal-work-order-prefix" model="internal_work_order_prefix"
-                             placeholder="Prefix" label="Prefix"
+                <div class="row">
+                    <x-input id="internal-work-order-prefix" model="internal_work_order_prefix"
+                             label="Prefix"
                              class="{{ ($errors->get('internal_work_order_prefix')) ? 'is-invalid' : '' }}"/>
 
-                    <x-input cols="col-lg-3" id="internal-work-order-max-length" model="internal_work_order_max_length"
-                             placeholder="Length" label="Length"
+                    <x-input id="internal-work-order-max-length" model="internal_work_order_max_length"
+                             label="Length"
                              class="{{ ($errors->get('internal_work_order_max_length')) ? 'is-invalid' : '' }}" x-mask="99"/>
 
-                    <x-input cols="col-lg-3" id="internal-work-order-postfix-increment"
-                             model="internal_work_order_postfix_increment" placeholder="Postfix increment"
+                    <x-input id="internal-work-order-postfix-increment"
+                             model="internal_work_order_postfix_increment"
                              label="Postfix increment"
                              class="{{ ($errors->get('internal_work_order_postfix_increment')) ? 'is-invalid' : '' }}"
                              x-mask="999"
                              wire:ignore.self
                     />
                 </div>
-                <div class="row g-2">
-                    <div class="row g-2" wire:ignore>
-                        <p class="tw-font-bold">Example: </p>
-                        <p class="tw-font-semibold">Input: </p>
-                        <p id="example-work-order-input"></p>
-                        <p class="tw-font-semibold">Output: </p>
-                        <p id="example-work-order-output"></p>
-                    </div>
+                <div class="row" wire:ignore>
+                    <p class="tw-font-bold">Example: </p>
+                    <p><span class="fw-semibold">Input: </span><span id="example-work-order-input"></span></p>
+                    <p><span class="fw-semibold">Output: </span><span id="example-work-order-output"></span></p>
                 </div>
             </div>
         </div>
@@ -325,16 +334,16 @@ new class extends Component {
             </div>
             <div class="card-body">
                 <div class="row g-2">
-                    <x-input cols="col-lg-3" id="fein" model="fein" placeholder="FEIN" label="FEIN"/>
+                    <x-input cols="col-lg-3" id="fein" model="fein" label="FEIN"/>
 
                     <x-input cols="col-lg-3" id="state-license-number" model="state_license_number"
-                             placeholder="State license number" label="State license number"/>
+                             label="State license number"/>
 
                     <x-input cols="col-lg-3" id="county-license-number" model="county_license_number"
-                             placeholder="County license number" label="County license number"/>
+                             label="County license number"/>
 
                     <x-input cols="col-lg-3" id="city-license-number" model="city_license_number"
-                             placeholder="City license number" label="City license number"/>
+                             label="City license number"/>
                 </div>
             </div>
         </div>

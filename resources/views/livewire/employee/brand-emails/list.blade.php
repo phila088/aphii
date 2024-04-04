@@ -72,71 +72,53 @@ new class extends Component {
 
 <div>
     <div class="card custom-card">
-        <div class="card-body">
-            <div class="tw-flex tw-justify-between tw-items-center">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center w-100">
                 <h1>All emails</h1>
                 <div>
                     <label for="search" class="sr-only">Search</label>
-                    <input type="text" id="search" wire:model="search" class="tw-py-2 tw-px-3 tw-block tw-w-full tw-border-gray-200 tw-rounded-full tw-text-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 disabled:tw-opacity-50 disabled:tw-pointer-events-none dark:tw-bg-slate-900 dark:tw-border-gray-700 dark:tw-text-gray-400 dark:focus:tw-ring-gray-600" placeholder="Search" x-on:input="$wire.searchResults($el.value);">
+                    <input type="text" id="search" wire:model="search" class="form-control form-control-sm rounded-pill" placeholder="Search" x-on:input="$wire.searchResults($el.value);">
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card custom-card">
         <div class="card-body">
-            <div class="tw-divide-y dark:tw-divide-gray-700">
-                @can('brandemails.viewany')
-                    @empty ($brandEmails[0])
-                        <x-no-data />
-                    @else
-                        @foreach ($brandEmails as $email)
-                            <div class="tw-p-6 tw-flex tw-space-x-2">
-                                <div class="tw-flex-1">
-                                    <div class="tw-flex tw-justify-between tw-items-center">
-                                        <div>
-                                            <h1>{{ $email->title }}</h1>
-                                        </div>
-                                        <x-dropdown>
-                                            <x-slot name="trigger">
-                                                <button>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-4 tw-w-4 tw-text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                    </svg>
-                                                </button>
-                                            </x-slot>
-                                            @canany (['brandemails.edit', 'brandemails.delete'])
-                                                <x-slot name="content">
-                                                    @can ('brandemails.edit')
-                                                        <x-dropdown-link wire:click="edit({{ $email->id }})">
-                                                            {{ __('Edit') }}
-                                                        </x-dropdown-link>
-                                                    @endcan
-                                                    @can ('brandemails.delete')
-                                                        <x-dropdown-link wire:click="delete({{ $email->id }})" wire:confirm="Are you sure to delete this address?">
-                                                            {{ __('Delete') }}
-                                                        </x-dropdown-link>
-                                                    @endcan
-                                                </x-slot>
-                                            @endcanany
-                                        </x-dropdown>
-                                    </div>
-                                    @if ($email->is($editing))
-                                        <div class="tw-mt-6">
-                                            <livewire:employee.brand-emails.edit :brandEmail="$email" :key="$email->id" />
-                                        </div>
-                                    @else
-                                        <address>
-                                            <a href="mailto:{{ $email->email }}">{{ $email->email }}</a>
-                                        </address>
-                                    @endif
+            <ul class="list-group">
+                @empty ($brandEmails[0])
+                    <x-no-data />
+                @else
+                    @foreach ($brandEmails as $brandEmail)
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                <div class="col-auto">
+                                    <table class="table table-borderless table-sm">
+                                        <tbody>
+                                        <tr>
+                                            <th>Name: </th>
+                                            <td>{{ $brandEmail->title }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Email: </th>
+                                            <td><a href="mailto:{{ $brandEmail->email }}">{{ $brandEmail->email }}</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div>
+                                    @can ('brand-emails.edit')
+                                        <button type="button" class="btn btn-icon btn-sm btn-info-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="edit({{ $brandEmail->id }})"><i class="bi bi-pencil"></i></button>
+                                    @endcan
+                                    @can ('brand-emails.delete')
+                                        <button type="button" class="btn btn-icon btn-sm btn-danger-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="delete({{ $brandEmail->id }})" wire:confirm="Are you sure you want to delete this brand?"><i class="bi bi-trash"></i></button>
+                                    @endcan
                                 </div>
                             </div>
-                        @endforeach
-                    @endempty
-                @else
-                    <x-not-auth />
-                @endcan
-            </div>
+                            @if ($brandEmail->is($editing))
+                                <livewire:employee.brand-emails.edit :brandEmail="$brandEmail" :key="$brandEmail->id" />
+                            @endif
+                        </li>
+                    @endforeach
+                @endempty
+            </ul>
         </div>
     </div>
 </div>

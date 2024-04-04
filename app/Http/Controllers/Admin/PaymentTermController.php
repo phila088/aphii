@@ -13,7 +13,7 @@ class PaymentTermController
 
     public function index(): View
     {
-        $this->authorize('paymentterm.viewAny', PaymentTerm::class);
+        $this->authorize('paymentTerms.viewAny', PaymentTerm::class);
 
         return view('admin.payment-terms.index');
     }
