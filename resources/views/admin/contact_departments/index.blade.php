@@ -31,7 +31,14 @@
                 </div>
                 <x-tab-content-parent>
                     <x-tab-content active="true" id="pills-list-list-contact-departments" labelledby="pills-list-contact-departments-tab">
-                        ...?
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <livewire:admin.contact-departments.create />
+                            </div>
+                            <div class="col-lg-8">
+                                <livewire:admin.contact-departments.list />
+                            </div>
+                        </div>
                     </x-tab-content>
                 </x-tab-content-parent>
             </div>
@@ -53,11 +60,11 @@
             });
 
             const savePillId = (selector) => {
-                localStorage.setItem('XXXIndexActivePillId', selector);
+                localStorage.setItem('ContactDepartmentIndexActivePillId', selector);
             };
 
             const getPillId = () => {
-                const activePillId = localStorage.getItem('XXXIndexActivePillId');
+                const activePillId = localStorage.getItem('ContactDepartmentIndexActivePillId');
 
                 // if local storage item is null, show default tab
                 if (!activePillId) return;
@@ -93,6 +100,9 @@
 
                 Livewire.on('unauthorized-action', () => {
                     toastr['error']('You are not authorized to complete that action.')
+                })
+                Livewire.on('contact-department-created', () => {
+                    toastr['success']('Contact department created successfully.')
                 })
             })
         </script>

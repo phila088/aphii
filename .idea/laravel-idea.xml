@@ -3,6 +3,7 @@
   <component name="LaravelIdeaMainSettings">
     <option name="codeGeneration">
       <LaravelCodeGeneration>
+        <option name="addPhpDocs" value="true" />
         <option name="generationStringSettings">
           <map>
             <entry key="createEloquentScope:inModuleNamespace" value="Models\Scopes" />

@@ -81,6 +81,11 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword,
         return $this->hasMany(User::class);
     }
 
+    public function contactDepartment(): HasMany
+    {
+        return $this->hasMany(ContactDepartment::class);
+    }
+
     public function documentCategories(): HasMany
     {
         return $this->hasMany(DocumentCategory::class);

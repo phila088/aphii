@@ -9,11 +9,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8deceba8-5e3e-48a9-8e0e-c3ebc08a3796" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/contact_departments/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactDepartmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactDepartmentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ContactDepartment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ContactDepartment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/contact_departments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contact_departments/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +246,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editing.templates",
+    "settings.editor.selected.configurable": "com.laravel_idea.plugin.extension.smartGoTo.e",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
@@ -342,7 +343,7 @@
       <workItem from="1712198435360" duration="22711000" />
       <workItem from="1712271966383" duration="139000" />
       <workItem from="1712272187857" duration="111000" />
-      <workItem from="1712272428186" duration="15300000" />
+      <workItem from="1712272428186" duration="18170000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -608,7 +609,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712302733454</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Add contact departments to admin panel&#10;&#10;Contact departments have been added to the admin panel by creating respective routes and reflected in the side-bar. The ContactDepartmentController has been moved to the Admin folder, an index method has been added, and an index view created to present the data.">
+      <option name="closed" value="true" />
+      <created>1712304609447</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1712304609447</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -628,7 +637,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Updating template files, rebuilding resources with correct images, replacing default registration page, replacing strings with translatable functions, etc." />
     <MESSAGE value="Updates... Lots of them..." />
     <MESSAGE value="Update composer details and cleanup workspace&#10;&#10;This commit updates the name and description in the composer.json file to match the details of the new project. Additionally, several unnecessary entries from the .idea/workspace.xml file have been cleaned up to keep the workspace organized." />
     <MESSAGE value="Update composer and tidy up workspace&#10;&#10;This commit involves amendments to the composer.json file for alignment with the new project's details. It also includes a cleanup of redundant entries from the .idea/workspace.xml file to ensure a more organized workspace." />
@@ -653,7 +661,8 @@
     <MESSAGE value="Redesign again... Removed unused controllers and models, started several items fresh" />
     <MESSAGE value="Restructure tables and files." />
     <MESSAGE value="Add middleware to route, create new models and migration files&#10;&#10;Added middleware for view and edit routes for brands and clients to enhance permission control. Two new models, StatusSeeder and ContactDepartment, with their respective migrations files, were created to handle statuses and contact departments. Also, the generation policy from laravel-idea-personal.xml was removed and the default styles for Ckeditor were updated." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add middleware to route, create new models and migration files&#10;&#10;Added middleware for view and edit routes for brands and clients to enhance permission control. Two new models, StatusSeeder and ContactDepartment, with their respective migrations files, were created to handle statuses and contact departments. Also, the generation policy from laravel-idea-personal.xml was removed and the default styles for Ckeditor were updated." />
+    <MESSAGE value="Add contact departments to admin panel&#10;&#10;Contact departments have been added to the admin panel by creating respective routes and reflected in the side-bar. The ContactDepartmentController has been moved to the Admin folder, an index method has been added, and an index view created to present the data." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add contact departments to admin panel&#10;&#10;Contact departments have been added to the admin panel by creating respective routes and reflected in the side-bar. The ContactDepartmentController has been moved to the Admin folder, an index method has been added, and an index view created to present the data." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

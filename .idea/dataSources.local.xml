@@ -15,5 +15,24 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="remote@localhost" uuid="f2e69846-7937-44fe-a3e8-d5f2b770987c">
+      <database-info product="MySQL" version="8.0.36" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.0.36" exact-driver-version="8.0">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+        <jdbc-catalog-is-schema>true</jdbc-catalog-is-schema>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>aphii_aphii</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" qname="aphii_aphii" />
+        </introspection-scope>
+      </schema-mapping>
+      <ssh-properties>
+        <enabled>true</enabled>
+        <ssh-config-id>92dd9bc6-2be3-48f5-8077-aef3092de3b5</ssh-config-id>
+      </ssh-properties>
+    </data-source>
   </component>
 </project>
