@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\ContactDepartment;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ContactDepartmentController
 {
-    public function index()
+    public function index(): View
     {
-        return ContactDepartment::all();
+        return view('admin.contact_departments.index');
     }
 
     public function store(Request $request)

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ContactDepartmentController as AdminContactDepartmentController;
 use App\Http\Controllers\Admin\DocumentCategoryController as AdminDocumentCategoryController;
 use App\Http\Controllers\Admin\PaymentMethodController as AdminPaymentMethodController;
 use App\Http\Controllers\Admin\PaymentTermController as AdminPaymentTermsController;
@@ -63,6 +64,13 @@ Route::middleware(['auth',
             ->name('admin.')
             ->middleware(['role:Super Admin|Employee Admin'])
             ->group(function () {
+                Route::prefix('contact-departments')
+                    ->name('contact-departments.')
+                    ->controller(AdminContactDepartmentController::class)
+                    ->group(function () {
+                            Route::get('/', 'index')->name('index');
+                        });
+
                 Route::prefix('document-categories')
                     ->name('document-categories.')
                     ->controller(AdminDocumentCategoryController::class)

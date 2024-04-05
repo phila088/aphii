@@ -249,6 +249,8 @@
                     <x-slide-parent icon="bi bi-shield-lock" label="Admin">
                         <x-slide-label label="Admin" />
 
+                        <x-slide-item route="admin.contact-departments.index" label="Contact departments" />
+
                         <x-slide-item route="admin.document-categories.index" label="Document categories" />
 
                         <x-slide-item route="admin.payment-methods.index" label="Payment methods" />

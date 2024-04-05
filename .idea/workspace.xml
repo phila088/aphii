@@ -9,22 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8deceba8-5e3e-48a9-8e0e-c3ebc08a3796" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactDepartmentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/ContactDepartment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_100000_create_contact_departments_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/ModelHasRoleSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/RolesSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/StatusSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/ckeditor/default.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/75372ba7-c678-4eed-98b9-4c74f81bd140.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/75372ba7-c678-4eed-98b9-4c74f81bd140.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/contact_departments/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300010_create_client_billing_instructions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300010_create_client_billing_instructions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/cke.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/cke.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/clients/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/clients/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/clients/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/clients/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactDepartmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactDepartmentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -355,7 +342,7 @@
       <workItem from="1712198435360" duration="22711000" />
       <workItem from="1712271966383" duration="139000" />
       <workItem from="1712272187857" duration="111000" />
-      <workItem from="1712272428186" duration="13572000" />
+      <workItem from="1712272428186" duration="15300000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -613,7 +600,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712232520059</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Add middleware to route, create new models and migration files&#10;&#10;Added middleware for view and edit routes for brands and clients to enhance permission control. Two new models, StatusSeeder and ContactDepartment, with their respective migrations files, were created to handle statuses and contact departments. Also, the generation policy from laravel-idea-personal.xml was removed and the default styles for Ckeditor were updated.">
+      <option name="closed" value="true" />
+      <created>1712302733454</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1712302733454</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +628,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="First Commit" />
     <MESSAGE value="Updating template files, rebuilding resources with correct images, replacing default registration page, replacing strings with translatable functions, etc." />
     <MESSAGE value="Updates... Lots of them..." />
     <MESSAGE value="Update composer details and cleanup workspace&#10;&#10;This commit updates the name and description in the composer.json file to match the details of the new project. Additionally, several unnecessary entries from the .idea/workspace.xml file have been cleaned up to keep the workspace organized." />
@@ -658,7 +652,8 @@
     <MESSAGE value="Redesign again..." />
     <MESSAGE value="Redesign again... Removed unused controllers and models, started several items fresh" />
     <MESSAGE value="Restructure tables and files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Restructure tables and files." />
+    <MESSAGE value="Add middleware to route, create new models and migration files&#10;&#10;Added middleware for view and edit routes for brands and clients to enhance permission control. Two new models, StatusSeeder and ContactDepartment, with their respective migrations files, were created to handle statuses and contact departments. Also, the generation policy from laravel-idea-personal.xml was removed and the default styles for Ckeditor were updated." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add middleware to route, create new models and migration files&#10;&#10;Added middleware for view and edit routes for brands and clients to enhance permission control. Two new models, StatusSeeder and ContactDepartment, with their respective migrations files, were created to handle statuses and contact departments. Also, the generation policy from laravel-idea-personal.xml was removed and the default styles for Ckeditor were updated." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
