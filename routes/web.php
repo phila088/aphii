@@ -117,9 +117,13 @@ Route::middleware(['auth',
                             ->middleware('permission:brands.view|brands.viewAny|brands.create|brands.edit|brands.delete')
                             ->name('index');
 
-                        Route::get('view/{id}', 'view')->name('view');
+                        Route::get('view/{id}', 'view')
+                            ->middleware('permission:brands.view')
+                            ->name('view');
 
-                        Route::get('edit/{id}', 'edit')->name('edit');
+                        Route::get('edit/{id}', 'edit')
+                            ->middleware('permission:brands.edit')
+                            ->name('edit');
                     });
 
                 Route::prefix('clients')
@@ -129,6 +133,14 @@ Route::middleware(['auth',
                         Route::get('/', 'index')
                             ->middleware('permission:clients.view|clients.viewAny|clients.create|clients.edit|clients.delete')
                             ->name('index');
+
+                        Route::get('view/{id}', 'view')
+                            ->middleware('permission:clients.view')
+                            ->name('view');
+
+                        Route::get('edit/{id}', 'edit')
+                            ->middleware('permission:clients.edit')
+                            ->name('edit');
                     });
             });
     });

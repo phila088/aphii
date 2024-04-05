@@ -6,7 +6,6 @@
         <entry key="newModelSimpleOption:addFillable" value="1" />
         <entry key="newModelSimpleOption:softDeletes" value="1" />
         <entry key="postGeneration:controller" value="1" />
-        <entry key="postGeneration:policy" value="1" />
       </map>
     </option>
   </component>

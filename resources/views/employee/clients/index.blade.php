@@ -10,7 +10,7 @@
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
             <h4 class="fw-medium tw-text-xl mb-0">Client</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Brands') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Clients') }}</li>
             </ol>
         </div>
         <!-- END PAGE HEADER -->

@@ -121,7 +121,7 @@
                                 </x-slide-with-child>
                             @endcanany
 
-                            <x-slide-item route="url:#" label="View all" />
+                            <x-slide-item route="employee.clients.index" label="View all" />
 
                             <x-slide-item route="url:#" label="Create" />
 

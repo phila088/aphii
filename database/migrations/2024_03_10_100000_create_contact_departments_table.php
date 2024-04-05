@@ -7,11 +7,10 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('client_billing_instructions', function (Blueprint $table) {
+        Schema::create('contact_departments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
-            $table->foreignId('client_id')->constrained()->cascadeOnUpdate();
-            $table->text('instructions')->nullable();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('name');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -19,6 +18,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('client_billing_instructions');
+        Schema::dropIfExists('contact_departments');
     }
 };

@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
+            RolesSeeder::class,
+            ModelHasRoleSeeder::class,
             StateSeeder::class,
             CountySeeder::class,
             CitySeeder::class,
@@ -34,6 +36,7 @@ class DatabaseSeeder extends Seeder
             PaymentTermSeeder::class,
             StatusCodeSeeder::class,
             BrandSeeder::class,
+            StatusSeeder::class,
         ]);
     }
 }
