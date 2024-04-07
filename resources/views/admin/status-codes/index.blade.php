@@ -36,7 +36,7 @@
                     </x-tab-content>
 
                     <x-tab-content id="pills-create-status-codes" labelledby="pills-create-status-codes-tab">
-                        ...
+                        <livewire:admin.status-codes.create />
                     </x-tab-content>
                 </x-tab-content-parent>
             </div>

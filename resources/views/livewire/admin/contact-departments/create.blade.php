@@ -29,17 +29,23 @@ new class extends Component {
 }; ?>
 
 <div>
-    <form wire:submit="store">
+    <form wire:submit="store" novalidate autocomplete="off">
         <div class="card custom-card">
             <div class="card-header">
                 <h2>Create contact department</h2>
             </div>
-            <div class="card-body">
-                <x-input cols="col-12" id="name" model="name" label="Name" />
-            </div>
-            <div class="card-footer">
-                <x-submit id="contact-department-create" />
-            </div>
+            @can ('contactDepartments.create')
+                <div class="card-body">
+                    <x-input cols="col-12" id="name" model="name" label="Name" />
+                </div>
+                <div class="card-footer">
+                    <x-submit id="contact-department-create" />
+                </div>
+            @else
+                <div class="card-body">
+                    <x-not-auth />
+                </div>
+            @endcan
         </div>
     </form>
 </div>

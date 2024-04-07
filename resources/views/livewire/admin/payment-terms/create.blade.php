@@ -47,6 +47,11 @@ new class extends Component {
             $this->dispatch('unauthorized-action');
         }
     }
+
+    public function codeToUpper(string $code): void
+    {
+        $this->code = strtoupper($code);
+    }
 }; ?>
 
 <div>
@@ -59,9 +64,9 @@ new class extends Component {
                 <div class="row">
                     <x-input cols="col-lg-3" id="name" model="name" label="Name" />
 
-                    <x-input id="code" model="code" label="Code" />
+                    <x-input id="code" model="code" label="Code" x-mask="******" x-on:blur="$wire.codeToUpper($el.value)"/>
 
-                    <x-input type="number" step="1" min="0" id="net-days" model="net_days" label="NET days to pay" />
+                    <x-input type="number" step="1" min="0" id="net-days" model="net_days" live="false" label="NET days to pay" />
                 </div>
             </div>
         </div>
@@ -71,9 +76,9 @@ new class extends Component {
             </div>
             <div class="card-body">
                 <div class="row">
-                    <x-input type="number" step="0.01" min="0" id="cod-amount" model="cod_amount" label="COD amount" />
+                    <x-input type="number" step="0.01" min="0" id="cod-amount" model="cod_amount" live="false" label="COD amount" />
 
-                    <x-input type="number" step="1" min="0" max="100" id="cod-percent" model="cod_percent" label="COD percent" />
+                    <x-input type="number" step="1" min="0" max="100" id="cod-percent" model="cod_percent" live="false" label="COD percent" />
                 </div>
             </div>
         </div>
@@ -83,9 +88,9 @@ new class extends Component {
             </div>
             <div class="card-body">
                 <div class="row">
-                    <x-input type="number" step="0.01" min="0" id="net-amount" model="net_amount" label="NET amount" />
+                    <x-input type="number" step="0.01" min="0" id="net-amount" model="net_amount" live="false" label="NET amount" />
 
-                    <x-input type="number" step="1" min="0" max="100" id="net-percent" model="net_percent" label="NET percent" />
+                    <x-input type="number" step="1" min="0" max="100" id="net-percent" model="net_percent" live="false" label="NET percent" />
                 </div>
             </div>
             <div class="card-footer">

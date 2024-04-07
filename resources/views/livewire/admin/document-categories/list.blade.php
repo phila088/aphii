@@ -77,7 +77,7 @@ new class extends Component {
     {
         $node = DocumentCategory::find($id);
 
-        $node->delete();
+        $node->forceDelete();
 
         $this->dispatch('node-deleted');
     }

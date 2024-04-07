@@ -31,16 +31,7 @@ new class extends Component {
         $this->getPermissions();
         $this->models = $this->getModels();
 
-        $this->actions = [
-            '*',
-            'create',
-            'view',
-            'viewAny',
-            'edit',
-            'delete',
-            'destroy',
-            'generateReport'
-        ];
+        $this->actions = (__('selects.actions'));
 
         $this->getRolePermissions();
     }
@@ -78,6 +69,8 @@ new class extends Component {
     }
 
     #[On('roles-permission-created')]
+    #[On('permission-created')]
+    #[On('role-created')]
     public function getRolePermissions(): void
     {
         foreach ($this->roles as $role) {
@@ -186,7 +179,7 @@ new class extends Component {
             <div class="card-header">
                 <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
                     <h2>Role permissions</h2>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#permission-status-modal">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#role-permissions-modal">
                         <i class="bi bi-question-circle"></i>
                     </button>
                 </div>
@@ -197,23 +190,29 @@ new class extends Component {
                 @else
                     @foreach($roles as $role)
                         @if ($role->name !== 'Super Admin')
-                            <div class="card border-primary-subtle" :key="$role->id">
+                            <div class="card" :key="$role->id">
                                 <div class="card-header">
                                     <h1>
                                         {{ $role->name }}
                                     </h1>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table table-sm">
+                                    <table
+                                        id="admin-role-permissions-create-{{ $role->name }}-table"
+                                        data-classes="text-center table table-bordered table-sm"
+                                        data-mobile-responsive="true"
+                                        data-sticky-header="true"
+                                        data-sticky-header-offset-y="64"
+                                    >
                                         <thead>
                                         <tr>
                                             <th scope="col" class="col-2">Model</th>
                                             @foreach($actions as $action)
                                                 @if($action === '*')
-                                                    <th scope="col" class="text-center col-1" :key="$action">Any</th>
+                                                    <th scope="col" class="col-1" :key="$action">Any</th>
                                                 @else
                                                     <th scope="col"
-                                                        class="text-center col-1" :key="header-{{ $action }}">{{ ucfirst(preg_replace('/(?<!\ )[A-Z]/', ' $0', $action)) }}</th>
+                                                        class="col-1" :key="header-{{ $action }}">{{ ucfirst(preg_replace('/(?<!\ )[A-Z]/', ' $0', $action)) }}</th>
                                                 @endif
                                             @endforeach
                                         </tr>
@@ -223,7 +222,7 @@ new class extends Component {
                                             <tr>
                                                 <th scope="row" :key="$model">{{ Str::headline($model) }}</th>
                                                 @foreach($actions as $action)
-                                                    <td class="text-center" :key="body-{{ $action }}">
+                                                    <td :key="body-{{ $action }}">
                                                         <input type="checkbox"
                                                                id="values-{{ $role->name }}-{{ $model }}-{{ $action }}"
                                                                wire:model="values.{{ $role->name }}.{{ $model }}.{{ $action }}"
@@ -251,4 +250,78 @@ new class extends Component {
             </div>
         </div>
     </form>
+    <div id="role-permissions-modal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title">Additional details help</h1>
+                </div>
+                <div class="modal-body">
+                    <dl>
+                        <dt>Model</dt>
+                        <dd>
+                            Models, or objects stored in the database, represent different areas essentially in the
+                            application. For instance, Brands, is all brands stored.
+                        </dd>
+                        <dt>
+                            Action
+                        </dt>
+                        <dd>
+                            The action is what the user can do with said model. Looking at Brands again, if you check
+                            the Any checkbox, the user will be able to preform all actions on the Brands model.
+                        </dd>
+                        <dt>Any</dt>
+                        <dd>
+                            Any action on the model listed below.
+                        </dd>
+                        <dt>Create</dt>
+                        <dd>
+                            Create any and all records for the model.
+                        </dd>
+                        <dt>
+                            Edit
+                        </dt>
+                        <dd>
+                            Update all parts of the model.
+                        </dd>
+                        <dt>View</dt>
+                        <dd>
+                            View a specific record, and all related parts (so long as they have access to those as well).
+                        </dd>
+                        <dt>View Any</dt>
+                        <dd>
+                            View all records in a model.
+                        </dd>
+                        <dt>
+                            Delete
+                        </dt>
+                        <dd>
+                            All records are "soft deleted", meaning they remain in the database, but are mostly
+                            inaccessible through the application. These records are kept for record keeping purposes.
+                        </dd>
+                        <dt>
+                            Destroy
+                        </dt>
+                        <dd>
+                            This gives the user to remove the record from the database entirely. Keep this permission
+                            reserved for those who must have it.
+                        </dd>
+                        <dt>Purpose</dt>
+                        <dd>
+                            To limit user interactions, and viewability of certain  areas within the application. We do
+                            not want a standard employee user being able to destroy a record.
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ asset('js/bst/bootstrap-table.min.js') }}"></script>
+    <script src="{{ asset('js/bst/extensions/sticky-header/bootstrap-table-sticky-header.min.js') }}"></script>
+    <script src="{{ asset('js/bst/extensions/mobile/bootstrap-table-mobile.min.js') }}"></script>
+    <script>
+        let $table = $('[id^=admin-role-permissions-create-]')
+
+        $table.bootstrapTable({})
+    </script>
 </div>

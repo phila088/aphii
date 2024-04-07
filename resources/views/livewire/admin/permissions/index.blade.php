@@ -20,16 +20,7 @@ new class extends Component {
     {
         $this->models = $this->getModels();
 
-        $this->actions = [
-            '*',
-            'create',
-            'view',
-            'viewAny',
-            'edit',
-            'delete',
-            'destroy',
-            'generateReport'
-        ];
+        $this->actions = (__('selects.actions'));
 
         $this->buildPermissionsArray();
 
@@ -114,20 +105,24 @@ new class extends Component {
             </div>
         </div>
         <div class="card-body">
-            <div class="tw-w-full">
-                <div class="tw-flex tw-justify-between">
-                    <p class="tw-font-bold">Status: </p>
-                    @if($status)
-                        <p class="tw-text-green-500 tw-font-bold">Ok!</p>
-                    @else
-                        <p class="tw-text-red-500 tw-font-bold">Error!</p>
-                    @endif
+            @can ('permissions.edit')
+                <div class="tw-w-full">
+                    <div class="tw-flex tw-justify-between">
+                        <p class="tw-font-bold">Status: </p>
+                        @if($status)
+                            <p class="tw-text-green-500 tw-font-bold">Ok!</p>
+                        @else
+                            <p class="tw-text-red-500 tw-font-bold">Error!</p>
+                        @endif
+                    </div>
+                    <div class="tw-flex tw-justify-between">
+                        <p class="tw-font-bold">Records: </p>
+                        <p class="tw-font-bold">{{ Permission::count() }} / {{ count($permissions) }}</p>
+                    </div>
                 </div>
-                <div class="tw-flex tw-justify-between">
-                    <p class="tw-font-bold">Records: </p>
-                    <p class="tw-font-bold">{{ Permission::count() }} / {{ count($permissions) }}</p>
-                </div>
-            </div>
+            @else
+                <x-not-auth />
+            @endcan
         </div>
         <div class="card-footer tw-flex tw-justify-end">
             <button type="button" wire:click.prevent="fixPermissions" class="btn btn-danger btn-sm" @if(Permission::count() === count($permissions)) disabled @endif>Fix permissions</button>

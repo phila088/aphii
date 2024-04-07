@@ -83,125 +83,67 @@ new class extends Component {
             </div>
         </div>
         <div class="card-body">
-            <div class="tw-mt-4 tw-divide-y tw-divide-gray-200 dark:tw-divide-gray-700">
+            @can ('paymentTerms.viewAny')
                 @if ($paymentTerms->isEmpty())
                     <x-no-data />
                 @else
-                    @foreach ($paymentTerms as $paymentTerm)
-                        <div class="tw-p-4 tw-flex tw-space-x-2 hover:tw-bg-gray-100 dark:hover:tw-bg-gray-800" wire:key="{{ $paymentTerm->id }}">
-                            <div class="tw-flex-1">
-                                <div class="tw-flex tw-justify-between tw-items-center">
-                                    <div>
-                                        <p class="tw-mt-0.5 tw-text-sm">{{ $paymentTerm->code }}</p>
+                    <ul class="list-group">
+                        @foreach ($paymentTerms as $paymentTerm)
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="col-auto">
+                                        <table class="table table-sm table-borderless">
+                                            <tbody>
+                                            <tr>
+                                                <th>Code: </th>
+                                                <td>{{ $paymentTerm->code }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Name: </th>
+                                                <td>{{ $paymentTerm->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>NET days to pay: </th>
+                                                <td>{{ $paymentTerm->net_days }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>COD amount: </th>
+                                                <td>{{ Number::currency($paymentTerm->cod_amount) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>COD percent: </th>
+                                                <td>{{ Number::percentage($paymentTerm->cod_percent) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>NET amount: </th>
+                                                <td>{{ Number::currency($paymentTerm->net_amount) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>NET percent: </th>
+                                                <td>{{ Number::percentage($paymentTerm->net_percent) }}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    @canany (['paymentterm.edit', 'paymentterm.delete'])
-                                        <x-dropdown>
-                                            <x-slot name="trigger">
-                                                <button>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-4 tw-w-4 tw-text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                    </svg>
-                                                </button>
-                                            </x-slot>
-                                            <x-slot name="content">
-                                                @can ('paymentterm.edit')
-                                                    <x-dropdown-link wire:click="edit({{ $paymentTerm->id }})">
-                                                        Edit
-                                                    </x-dropdown-link>
-                                                @endcan
-                                                @can ('paymentterm.delete')
-                                                    <x-dropdown-link wire:click="delete({{ $paymentTerm->id }})" wire:confirm="Are you sure you want to delete this payment term?">
-                                                        Delete
-                                                    </x-dropdown-link>
-                                                @endcan
-                                            </x-slot>
-                                        </x-dropdown>
-                                    @endcanany
+                                    <div>
+                                        @can ('contact-titles.edit')
+                                            <button type="button" class="btn btn-icon btn-sm btn-info-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="edit({{ $paymentTerm->id }})"><i class="bi bi-pencil"></i></button>
+                                        @endcan
+                                        @can ('contact-titles.delete')
+                                            <button type="button" class="btn btn-icon btn-sm btn-danger-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="delete({{ $paymentTerm->id }})" wire:confirm="Are you sure you want to delete this contact title?"><i class="bi bi-trash"></i></button>
+                                        @endcan
+                                    </div>
                                 </div>
-                                <div class="tw-text-xs">
-                                    @if ($paymentTerm->is($editing))
-                                        <livewire:admin.payment-terms.edit :paymentTerm="$paymentTerm" wire:key="$paymentTerm->id" />
-                                    @else
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-6 col-lg-2 tw-font-bold">
-                                                    Name:
-                                                </div>
-                                                <div class="col-6 col-lg-2">
-                                                    {{ $paymentTerm->name }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-6 col-lg-2 tw-font-bold">
-                                                    NET days to pay:
-                                                </div>
-                                                <div class="col-6 col-lg-2">
-                                                    {{ $paymentTerm->net_days }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-6 col-lg-2 tw-font-bold">
-                                                    COD amount:
-                                                </div>
-                                                <div class="col-6 col-lg-2">
-                                                    {{ Number::currency($paymentTerm->cod_amount) }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-6 col-lg-2 tw-font-bold">
-                                                    COD percent:
-                                                </div>
-                                                <div class="col-6 col-lg-2">
-                                                    {{ Number::percentage($paymentTerm->cod_percent) }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-6 col-lg-2 tw-font-bold">
-                                                    NET amount:
-                                                </div>
-                                                <div class="col-6 col-lg-2">
-                                                    {{ Number::currency($paymentTerm->net_amount) }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-6 col-lg-2 tw-font-bold">
-                                                    NET percent:
-                                                </div>
-                                                <div class="col-6 col-lg-2">
-                                                    {{ Number::percentage($paymentTerm->net_percent) }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-6 col-lg-2 tw-font-bold">
-                                                    Created:
-                                                </div>
-                                                <div class="col-6 col-lg-2">
-                                                    {{ Carbon::parse($paymentTerm->created_at)->timezone(auth()->user()->timezone)->format('m.d.Y G:i A') }}
-                                                    @unless ($paymentTerm->created_at->eq($paymentTerm->updated_at))
-                                                        &middot; edited
-                                                    @endunless
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                                @if ($paymentTerm->is($editing))
+                                    <livewire:admin.payment-terms.edit :paymentTerm="$paymentTerm" wire:key="$paymentTerm->id" />
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
                 @endif
-            </div>
+            @else
+                <x-not-auth />
+            @endcan
         </div>
     </div>
 </div>

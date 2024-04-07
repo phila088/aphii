@@ -12,9 +12,9 @@ new class extends Component {
     #[Validate('required|string|min:6|max:6|unique:status_codes,code,NULL,NULL,deleted_at,NULL')]
     public string $code = '';
     #[Validate('required|string|min:2|max:50')]
-    public int $title = 0;
+    public string $title = '';
     #[Validate('required|string|min:2')]
-    public int $default_reason = 0;
+    public string $default_reason = '';
 
     public function mount(): void
     {

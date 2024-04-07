@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('client_coverage_areas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('client_id')->constrained('clients')->cascadeOnDelete()->cascadeOnUpdate();
             $table->enum('type', [
                 'City',
                 'County',

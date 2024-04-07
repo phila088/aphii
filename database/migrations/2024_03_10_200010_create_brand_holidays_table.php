@@ -9,8 +9,8 @@ return new class extends Migration {
     {
         Schema::create('brand_holidays', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
-            $table->foreignId('brand_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('brand_id')->constrained('brands')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('holiday_name');
             $table->date('date');
             $table->time('open');

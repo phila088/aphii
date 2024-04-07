@@ -9,8 +9,8 @@ return new class extends Migration {
     {
         Schema::create('brand_emails', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
-            $table->foreignId('brand_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('brand_id')->constrained('brands')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('title', 50);
             $table->string('email', 100);
             $table->softDeletes();

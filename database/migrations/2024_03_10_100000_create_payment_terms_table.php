@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('payment_terms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name', 50);
             $table->string('code', 6);
             $table->string('description', 250)->default('');

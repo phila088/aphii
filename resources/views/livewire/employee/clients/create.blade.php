@@ -61,6 +61,8 @@ new class extends Component {
 
         if ($client = auth()->user()->client()->create($validated)) {
             $client->setStatus($this->status_code, $this->status_reason);
+
+            redirect()->route('employee.clients.edit', $client->id);
         }
     }
 
@@ -92,7 +94,7 @@ new class extends Component {
 }; ?>
 
 <div>
-    <form wire:submit="store">
+    <form wire:submit="store" novalidate autocomplete="off">
         <div class="card custom-card">
             <div class="card-header">
                 <h2>Status</h2>

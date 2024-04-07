@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ContactDepartmentController as AdminContactDepartmentController;
+use App\Http\Controllers\Admin\ContactTitleController as AdminContactTitleController;
 use App\Http\Controllers\Admin\DocumentCategoryController as AdminDocumentCategoryController;
 use App\Http\Controllers\Admin\PaymentMethodController as AdminPaymentMethodController;
 use App\Http\Controllers\Admin\PaymentTermController as AdminPaymentTermsController;
@@ -38,7 +39,7 @@ Route::get('lockscreen', [DashboardsController::class, 'personal'])
 Route::middleware(['auth',
     'verified',
     'online-status',
-    'role:Employee|Super Admin'
+    'role:Employee|Super Admin|Admin'
 ])
     ->group(function () {
         Route::prefix('dashboards')
@@ -62,17 +63,27 @@ Route::middleware(['auth',
 
         Route::prefix('admin')
             ->name('admin.')
-            ->middleware(['role:Super Admin|Employee Admin'])
+            ->middleware(['role:Super Admin|Admin|Employee Admin'])
             ->group(function () {
                 Route::prefix('contact-departments')
                     ->name('contact-departments.')
                     ->controller(AdminContactDepartmentController::class)
+                    ->middleware('permission:contactDepartments.view|contactDepartments.viewAny|contactDepartments.create|contactDepartments.edit|contactDepartments.delete')
+                    ->group(function () {
+                            Route::get('/', 'index')->name('index');
+                        });
+
+                Route::prefix('contact-titles')
+                    ->name('contact-titles.')
+                    ->middleware('permission:contactTitles.view|contactTitles.viewAny|contactTitles.create|contactTitles.edit|contactTitles.delete')
+                    ->controller(AdminContactTitleController::class)
                     ->group(function () {
                             Route::get('/', 'index')->name('index');
                         });
 
                 Route::prefix('document-categories')
                     ->name('document-categories.')
+                    ->middleware('permission:documentCategories.view|documentCategories.create|documentCategories.edit')
                     ->controller(AdminDocumentCategoryController::class)
                     ->group(function () {
                         Route::get('/', 'index')->name('index');
@@ -116,6 +127,7 @@ Route::middleware(['auth',
 
         Route::prefix('employee')
             ->name('employee.')
+            ->middleware('role:Super Admin|Admin|Management|Employee')
             ->group(function () {
                 Route::prefix('brands')
                     ->name('brands.')

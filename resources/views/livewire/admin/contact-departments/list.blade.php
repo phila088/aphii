@@ -30,7 +30,7 @@ new class extends Component {
 
     public function edit(ContactDepartment $contactDepartment): void
     {
-        $this->editing = $model;
+        $this->editing = $contactDepartment;
 
         $this->getContactDepartments();
     }
@@ -79,30 +79,34 @@ new class extends Component {
             </div>
         </div>
         <div class="card-body">
-            <ul class="list-group">
-                @empty ($contactDepartments[0])
-                    <x-no-data/>
-                @else
-                    @foreach ($contactDepartments as $contactDepartment)
-                        <li class="list-group-item" :key="$contactDepartment->id">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p>{{ $contactDepartment->name }}</p>
-                                <div>
-                                    @can ('contact-departments.view')
-                                        <button type="button" class="btn btn-icon btn-sm btn-success-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="view({{ $contactDepartment->id }})"><i class="bi bi-binoculars"></i></button>
-                                    @endcan
-                                    @can ('contact-departments.edit')
-                                        <button type="button" class="btn btn-icon btn-sm btn-info-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="edit({{ $contactDepartment->id }})"><i class="bi bi-pencil"></i></button>
-                                    @endcan
-                                    @can ('contact-departments.delete')
-                                        <button type="button" class="btn btn-icon btn-sm btn-danger-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="delete({{ $contactDepartment->id }})" wire:confirm="Are you sure you want to delete this contact department?"><i class="bi bi-trash"></i></button>
-                                    @endcan
+            @can ('contactDepartments.viewAny')
+                <ul class="list-group">
+                    @empty ($contactDepartments[0])
+                        <x-no-data/>
+                    @else
+                        @foreach ($contactDepartments as $contactDepartment)
+                            <li class="list-group-item" :key="$contactDepartment->id">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p>{{ $contactDepartment->name }}</p>
+                                    <div>
+                                        @can ('contactDepartments.edit')
+                                            <button type="button" class="btn btn-icon btn-sm btn-info-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="edit({{ $contactDepartment->id }})"><i class="bi bi-pencil"></i></button>
+                                        @endcan
+                                        @can ('contactDepartments.delete')
+                                            <button type="button" class="btn btn-icon btn-sm btn-danger-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="delete({{ $contactDepartment->id }})" wire:confirm="Are you sure you want to delete this contact department?"><i class="bi bi-trash"></i></button>
+                                        @endcan
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    @endforeach
-                @endempty
-            </ul>
+                                @if ($contactDepartment->is($editing))
+                                    <livewire:admin.contact-departments.edit :contactDepartment="$contactDepartment" wire:key="{{ $contactDepartment->id }}" />
+                                @endif
+                            </li>
+                        @endforeach
+                    @endempty
+                </ul>
+            @else
+                <x-not-auth />
+            @endcan
         </div>
     </div>
 </div>

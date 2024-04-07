@@ -11,7 +11,7 @@ new class extends Component {
 
     public ?User $editing = null;
 
-    public string $search;
+    public string $search_term;
 
     public function mount(): void
     {
@@ -21,7 +21,7 @@ new class extends Component {
     #[On('user-created')]
     public function getUsers(): void
     {
-        $this->search = '';
+        $this->search_term = '';
 
         $this->users = User::orderBy('name')
             ->get();
@@ -118,111 +118,93 @@ new class extends Component {
 <div>
     <div class="card custom-card">
         <div class="card-header">
-            <div class="tw-flex tw-justify-between tw-items-center">
-                <h1>All users</h1>
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <h2>All users</h2>
                 <div>
                     <label for="search" class="sr-only">Search</label>
-                    <input type="text" id="list-users-search" wire:model="search" class="tw-py-2 tw-px-3 tw-block tw-w-full tw-border-gray-200 tw-rounded-full tw-text-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 disabled:tw-opacity-50 disabled:tw-pointer-events-none dark:tw-bg-slate-900 dark:tw-border-gray-700 dark:tw-text-gray-400 dark:focus:tw-ring-gray-600" placeholder="Search" x-on:input="$wire.searchResults($el.value);">
+                    <input type="text" id="list-users-search" wire:model="search" class="form-control form-control-sm rounded-pill" placeholder="Search" x-on:input="$wire.searchResults($el.value);">
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <div class="tw-divide-y dark:tw-divide-gray-700">
-                @can('users.viewany')
-                    @empty($users[0])
+            @canany (['users.viewAny', 'user.view'])
+                <ul class="list-group">
+                    @empty ($users[0])
                         <x-no-data />
                     @else
                         @foreach ($users as $user)
-                            <div class="row g-2">
-                                <div class="card-body tw-flex tw-align-top">
-                                    @if (!is_null($user->last_activity) && Carbon::create($user->last_activity)->between(now()->subtract('5 minutes'), now()))
-                                        <p class="avatar avatar-xxl avatar-rounded online me-3 my-auto">
-                                            <img src="{{ asset($user->profile_picture_path) }}" alt="">
-                                        </p>
-                                    @else
-                                        <p class="avatar avatar-xxl avatar-rounded offline me-3 my-auto">
-                                            <img src="{{ asset($user->profile_picture_path) }}" alt="">
-                                        </p>
-                                    @endif
-                                    <div class="flex-fill main-profile-info my-auto">
-                                        <h2>
-                                            {{ $user->name }}
-                                        </h2>
-                                        <div>
-                                            <p class="text-muted">
-                                                {{ $user->email }}
-                                            </p>
-                                            <p class="text-muted">
-                                                @if ($user->is_admin)
-                                                    Admin
-                                                @elseif ($user->is_client)
-                                                    Client
-                                                @elseif ($user->is_employee)
-                                                    Employee
-                                                @elseif ($user->is_vendor)
-                                                    Vendor
-                                                @endif
-                                            </p>
-                                            <p class="text-muted">Last seen:
-                                                @if (!is_null($user->last_activity))
-                                                    {{ Carbon::parse($user->last_activity)->timezone($user->timezone)->diffForHumans() }}
-                                                @else
-                                                    Never
-                                                @endif
-                                            </p>
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="row d-flex justify-content-between align-items-center">
+                                        <div class="col-auto">
+                                            @if (!is_null($user->last_activity) && Carbon::create($user->last_activity)->between(now()->subtract('5 minutes'), now()))
+                                                <p class="avatar avatar-xxl avatar-rounded online my-auto">
+                                                    <img src="{{ asset($user->profile_picture_path) }}" alt="">
+                                                </p>
+                                            @else
+                                                <p class="avatar avatar-xxl avatar-rounded offline my-auto">
+                                                    <img src="{{ asset($user->profile_picture_path) }}" alt="">
+                                                </p>
+                                            @endif
+                                        </div>
+                                        <div class="col-auto">
+                                            <table class="table table-sm table-borderless">
+                                                <tbody>
+                                                <tr>
+                                                    <th>Name: </th>
+                                                    <td>{{ $user->name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Email: </th>
+                                                    <td>{{ $user->email }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>User type: </th>
+                                                    <td>
+                                                        @if ($user->is_admin)
+                                                            Admin
+                                                        @elseif ($user->is_client)
+                                                            Client
+                                                        @elseif ($user->is_employee)
+                                                            Employee
+                                                        @elseif ($user->is_vendor)
+                                                            Vendor
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Last seen: </th>
+                                                    <td>
+                                                        @if (!is_null($user->last_activity))
+                                                            {{ Carbon::parse($user->last_activity)->timezone($user->timezone)->diffForHumans() }}
+                                                        @else
+                                                            Never
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div class="main-profile-info ms-auto">
-                                        <div>
-                                            @can('users.edit')
-                                                <x-dropdown>
-                                                    <x-slot name="trigger">
-                                                        <button>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-4 tw-w-4 tw-text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                                                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                            </svg>
-                                                        </button>
-                                                    </x-slot>
-                                                    <x-slot name="content">
-                                                        <x-dropdown-link wire:click="edit({{ $user->id }})">
-                                                            {{ __('Edit') }}
-                                                        </x-dropdown-link>
-                                                        @if ($user->locked)
-                                                            <x-dropdown-link wire:click="unlock({{ $user->id }})">
-                                                                {{ __('Unlock') }}
-                                                            </x-dropdown-link>
-                                                        @else
-                                                            <x-dropdown-link wire:click="lock({{ $user->id }})">
-                                                                {{ __('Lock') }}
-                                                            </x-dropdown-link>
-                                                        @endif
-                                                        @if ($user->active)
-                                                            <x-dropdown-link wire:click="deactivate({{ $user->id }})">
-                                                                {{ __('Deactivate') }}
-                                                            </x-dropdown-link>
-                                                        @else
-                                                            <x-dropdown-link wire:click="activate({{ $user->id }})">
-                                                                {{ __('Activate') }}
-                                                            </x-dropdown-link>
-                                                        @endif
-                                                    </x-slot>
-                                                </x-dropdown>
-                                            @endcan
-                                        </div>
+                                    <div>
+                                        @can ('users.edit')
+                                            <button type="button" class="btn btn-icon btn-sm btn-info-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="edit({{ $user->id }})"><i class="bi bi-pencil"></i></button>
+                                        @endcan
+                                        @can ('users.delete')
+                                            <button type="button" class="btn btn-icon btn-sm btn-danger-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="delete({{ $user->id }})"><i class="bi bi-trash"></i></button>
+                                        @endcan
                                     </div>
                                 </div>
                                 @if ($user->is($editing))
-                                    <div class="row g-2 mb-4">
-                                        <livewire:admin.users.edit :user="$user" :key="$user->id" />
-                                    </div>
+                                    <livewire:admin.users.edit :user="$user" :key="$user->id" />
                                 @endif
-                            </div>
+                            </li>
                         @endforeach
                     @endempty
-                @else
-                    <x-not-auth />
-                @endcan
-            </div>
+                </ul>
+            @else
+                <x-not-auth />
+            @endcanany
         </div>
     </div>
 </div>

@@ -103,33 +103,7 @@
                         <x-slide-parent icon="bi bi-people" label="Clients">
                             <x-slide-label label="Clients" />
 
-                            @canany(['clientLocations.viewAny', 'clientLocations.view', 'clientLocations.create', 'clientLocations.generateReport'])
-                                <x-slide-with-child label="Locations">
-
-                                    <x-slide-item route="url:#" label="View all" />
-
-                                    <x-slide-item route="url:#" label="Create" />
-
-                                </x-slide-with-child>
-                            @endcanany
-
-                            @canany(['potentialclient.viewAny', 'potentialclient.view', 'potentialclient.create', 'potentialclient.generateReport'])
-                                <x-slide-with-child label="Potential clients">
-                                    <x-slide-item route="url:#" label="View all" permission="potentialclient.viewAny, potentialclient.view" />
-
-                                    <x-slide-item route="url:#" label="Create" permission="potentialclient.create" />
-                                </x-slide-with-child>
-                            @endcanany
-
                             <x-slide-item route="employee.clients.index" label="View all" />
-
-                            <x-slide-item route="url:#" label="Create" />
-
-                            <x-slide-with-child label="Requests">
-                                <x-slide-item route="url:#" label="Insurance" />
-
-                                <x-slide-item route="url:#" label="Meeting" />
-                            </x-slide-with-child>
 
                             <x-slide-item route="url:#" label="Reports" permission="client.generateReport" />
                         </x-slide-parent>
@@ -250,6 +224,8 @@
                         <x-slide-label label="Admin" />
 
                         <x-slide-item route="admin.contact-departments.index" label="Contact departments" />
+
+                        <x-slide-item route="admin.contact-titles.index" label="Contact titles" />
 
                         <x-slide-item route="admin.document-categories.index" label="Document categories" />
 

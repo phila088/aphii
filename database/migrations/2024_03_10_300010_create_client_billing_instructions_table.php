@@ -9,8 +9,8 @@ return new class extends Migration {
     {
         Schema::create('client_billing_instructions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
-            $table->foreignId('client_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('client_id')->constrained('clients')->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('instructions')->nullable();
             $table->softDeletes();
             $table->timestamps();

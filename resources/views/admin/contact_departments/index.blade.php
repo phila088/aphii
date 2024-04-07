@@ -91,7 +91,7 @@
                     "showDuration": "1000",
                     "hideDuration": "1000",
                     "timeOut": "10000",
-                    "extendedTimeOut": "1000",
+                    "extendedTimeOut": "500",
                     "showEasing": "swing",
                     "hideEasing": "linear",
                     "showMethod": "fadeIn",
@@ -103,6 +103,9 @@
                 })
                 Livewire.on('contact-department-created', () => {
                     toastr['success']('Contact department created successfully.')
+                })
+                Livewire.on('contact-department-updated', () => {
+                    toastr['success']('Contact department updated successfully.')
                 })
             })
         </script>

@@ -62,14 +62,12 @@ new class extends Component {
 
 <div class="col-lg-8">
     <div class="card custom-card">
-        <div class="card-body">
+        <div class="card-header">
             <div class="tw-flex tw-justify-between tw-items-center">
                 <h1>All roles</h1>
                 <x-model-search id="roles-search" model="searchTerm" />
             </div>
         </div>
-    </div>
-    <div class="card custom-card">
         <div class="card-body">
             <div class="tw-divide-y dark:tw-divide-gray-700">
                 @empty($roles[0])

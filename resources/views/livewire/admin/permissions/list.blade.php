@@ -65,50 +65,28 @@ new class extends Component {
 
 <div class="col-lg-8">
     <div class="card custom-card">
-        <div class="card-body">
-            <div class="tw-flex tw-justify-between tw-items-center">
+        <div class="card-header">
+            <div class="tw-flex tw-justify-between tw-items-center w-100">
                 <h1>All permissions</h1>
                 <x-model-search id="permissions-search" model="searchTerm" />
             </div>
         </div>
-    </div>
-    <div class="card custom-card">
         <div class="card-body">
-            <div class="tw-divide-y dark:tw-divide-gray-700">
-                @empty($permissions[0])
-                    <x-no-data />
-                @else
-                    @foreach ($permissions as $permission)
-                        <div class="tw-p-2 tw-flex tw-space-x-2" wire:key="{{ $permission->id }}">
-                            <div class="tw-flex-1">
-                                <div class="tw-flex tw-justify-between tw-items-center">
-                                    <div>
-                                        <p>{{ $permission->name }}</p>
-                                    </div>
-                                    <x-dropdown>
-                                        <x-slot name="trigger">
-                                            <button>
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-4 tw-w-4 tw-text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                </svg>
-                                            </button>
-                                        </x-slot>
-                                        <x-slot name="content">
-
-                                            <x-dropdown-link wire:click="delete({{ $permission->id }})" wire:confirm="Are you sure to delete this permission?">
-                                                {{ __('Delete') }}
-                                            </x-dropdown-link>
-                                        </x-slot>
-                                    </x-dropdown>
-                                </div>
-                                @if ($permission->is($editing))
-                                    <livewire:admin.permissions.edit :permission="$permission" :key="$permission->id" />
-                                @endif
-                            </div>
-                        </div>
-                    @endforeach
-                @endempty
-            </div>
+            @can ('permissions.viewAny')
+                <ul class="list-group">
+                    @empty($permissions[0])
+                        <x-no-data />
+                    @else
+                        @foreach ($permissions as $permission)
+                            <li class="list-group-item">
+                                {{ $permission->name }}
+                            </li>
+                        @endforeach
+                    @endempty
+                </ul>
+            @else
+                <x-not-auth />
+            @endcan
         </div>
     </div>
 </div>

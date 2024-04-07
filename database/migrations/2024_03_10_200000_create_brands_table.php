@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name', 50)->unique();
             $table->string('dba', 50)->nullable();
             $table->string('abbreviation', 10)->unique();
@@ -21,7 +21,6 @@ return new class extends Migration {
             $table->string('state_license_number')->nullable();
             $table->string('county_license_number')->nullable();
             $table->string('city_license_number')->nullable();
-            $table->boolean('active')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -9,12 +9,289 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8deceba8-5e3e-48a9-8e0e-c3ebc08a3796" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ContactTitleController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ContactTitle.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ModelHasRoles.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/RolePermissions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/ContactTitlePolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_100000_create_contact_titles_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/ClientSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/PaymentMethodSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/bootstrap-table-locale-all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/bootstrap-table-locale-all.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/bootstrap-table-vue.esm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/bootstrap-table-vue.esm.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/bootstrap-table-vue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/bootstrap-table-vue.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/bootstrap-table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/bootstrap-table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/bootstrap-table.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/bootstrap-table.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/addrbar/bootstrap-table-addrbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/addrbar/bootstrap-table-addrbar.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/auto-refresh/bootstrap-table-auto-refresh.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/auto-refresh/bootstrap-table-auto-refresh.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/cookie/bootstrap-table-cookie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/cookie/bootstrap-table-cookie.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/copy-rows/bootstrap-table-copy-rows.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/copy-rows/bootstrap-table-copy-rows.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/custom-view/bootstrap-table-custom-view.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/custom-view/bootstrap-table-custom-view.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/defer-url/bootstrap-table-defer-url.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/defer-url/bootstrap-table-defer-url.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/editable/bootstrap-table-editable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/editable/bootstrap-table-editable.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/export/bootstrap-table-export.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/export/bootstrap-table-export.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/filter-control/bootstrap-table-filter-control.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/filter-control/bootstrap-table-filter-control.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/filter-control/bootstrap-table-filter-control.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/filter-control/bootstrap-table-filter-control.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/filter-control/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/filter-control/utils.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/fixed-columns/bootstrap-table-fixed-columns.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/fixed-columns/bootstrap-table-fixed-columns.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/fixed-columns/bootstrap-table-fixed-columns.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/fixed-columns/bootstrap-table-fixed-columns.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/group-by-v2/bootstrap-table-group-by.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/group-by-v2/bootstrap-table-group-by.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/group-by-v2/bootstrap-table-group-by.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/group-by-v2/bootstrap-table-group-by.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/i18n-enhance/bootstrap-table-i18n-enhance.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/i18n-enhance/bootstrap-table-i18n-enhance.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/key-events/bootstrap-table-key-events.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/key-events/bootstrap-table-key-events.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/mobile/bootstrap-table-mobile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/mobile/bootstrap-table-mobile.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/multiple-sort/bootstrap-table-multiple-sort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/multiple-sort/bootstrap-table-multiple-sort.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/page-jump-to/bootstrap-table-page-jump-to.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/page-jump-to/bootstrap-table-page-jump-to.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/page-jump-to/bootstrap-table-page-jump-to.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/page-jump-to/bootstrap-table-page-jump-to.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/pipeline/bootstrap-table-pipeline.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/pipeline/bootstrap-table-pipeline.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/print/bootstrap-table-print.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/print/bootstrap-table-print.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/reorder-columns/bootstrap-table-reorder-columns.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/reorder-columns/bootstrap-table-reorder-columns.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/reorder-rows/bootstrap-table-reorder-rows.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/reorder-rows/bootstrap-table-reorder-rows.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/reorder-rows/bootstrap-table-reorder-rows.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/reorder-rows/bootstrap-table-reorder-rows.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/resizable/bootstrap-table-resizable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/resizable/bootstrap-table-resizable.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/sticky-header/bootstrap-table-sticky-header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/sticky-header/bootstrap-table-sticky-header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/sticky-header/bootstrap-table-sticky-header.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/sticky-header/bootstrap-table-sticky-header.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/toolbar/bootstrap-table-toolbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/toolbar/bootstrap-table-toolbar.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/treegrid/bootstrap-table-treegrid.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/extensions/treegrid/bootstrap-table-treegrid.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-af-ZA.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-af-ZA.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ar-SA.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ar-SA.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-bg-BG.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-bg-BG.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ca-ES.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ca-ES.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-cs-CZ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-cs-CZ.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-da-DK.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-da-DK.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-de-DE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-de-DE.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-el-GR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-el-GR.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-en-US.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-en-US.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-AR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-AR.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-CL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-CL.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-CR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-CR.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-ES.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-ES.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-MX.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-MX.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-NI.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-NI.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-SP.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-es-SP.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-et-EE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-et-EE.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-eu-EU.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-eu-EU.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fa-IR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fa-IR.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fi-FI.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fi-FI.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fr-BE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fr-BE.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fr-CH.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fr-CH.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fr-FR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fr-FR.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fr-LU.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-fr-LU.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-he-IL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-he-IL.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-hi-IN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-hi-IN.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-hr-HR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-hr-HR.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-hu-HU.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-hu-HU.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-id-ID.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-id-ID.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-it-IT.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-it-IT.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ja-JP.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ja-JP.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ka-GE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ka-GE.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ko-KR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ko-KR.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-lb-LU.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-lb-LU.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ms-MY.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ms-MY.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-nb-NO.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-nb-NO.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-nl-BE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-nl-BE.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-nl-NL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-nl-NL.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-pl-PL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-pl-PL.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-pt-BR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-pt-BR.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-pt-PT.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-pt-PT.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ro-RO.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ro-RO.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ru-RU.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ru-RU.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-sk-SK.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-sk-SK.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-sr-Cyrl-RS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-sr-Cyrl-RS.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-sr-Latn-RS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-sr-Latn-RS.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-sv-SE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-sv-SE.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-th-TH.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-th-TH.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-tr-TR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-tr-TR.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-uk-UA.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-uk-UA.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ur-PK.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-ur-PK.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-uz-Latn-UZ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-uz-Latn-UZ.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-vi-VN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-vi-VN.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-zh-CN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-zh-CN.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-zh-TW.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/locale/bootstrap-table-zh-TW.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bootstrap-table/bootstrap-table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bootstrap-table/bootstrap-table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bootstrap-table/bootstrap-table.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bootstrap-table/bootstrap-table.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bootstrap-table/fonts/bootstrap-table.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bootstrap-table/fonts/bootstrap-table.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bootstrap-table/fonts/bootstrap-table.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bootstrap-table/fonts/bootstrap-table.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bulma/bootstrap-table-bulma.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bulma/bootstrap-table-bulma.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bulma/bootstrap-table-bulma.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/bulma/bootstrap-table-bulma.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/foundation/bootstrap-table-foundation.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/foundation/bootstrap-table-foundation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/foundation/bootstrap-table-foundation.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/foundation/bootstrap-table-foundation.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/materialize/bootstrap-table-materialize.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/materialize/bootstrap-table-materialize.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/materialize/bootstrap-table-materialize.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/materialize/bootstrap-table-materialize.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/semantic/bootstrap-table-semantic.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/semantic/bootstrap-table-semantic.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/semantic/bootstrap-table-semantic.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bst/themes/semantic/bootstrap-table-semantic.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/contact-titles/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/admin/contact-titles/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/admin/contact-titles/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea-personal.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ContactDepartment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ContactDepartment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100000_create_contact_departments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_100000_create_contact_departments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_100000_create_payment_terms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_100000_create_payment_terms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_200000_create_brands_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200000_create_brands_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_addresses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_addresses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_emails_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_emails_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_holidays_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_holidays_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_hours_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_hours_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_phone_numbers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_phone_numbers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_profiles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_200010_create_brand_profiles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300000_create_clients_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300000_create_clients_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300010_create_client_billing_instructions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300010_create_client_billing_instructions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300010_create_client_contacts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300010_create_client_contacts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_10_300010_create_client_coverage_areas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_300010_create_client_coverage_areas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2024_03_11_005346_users_foreign_keys.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2024_03_10_999999_users_foreign_keys.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/RolesSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RolesSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/StatusCodeSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/StatusCodeSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/StatusSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/StatusSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/en/selects.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/en/selects.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/assets/app-Vzb0KkT4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/assets/app-pfGhxTmW.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/contact_departments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contact_departments/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/payment-methods/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/payment-methods/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/status-codes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/status-codes/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/clients/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/clients/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/components/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/contact-departments/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/contact-departments/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/contact-departments/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/contact-departments/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/document-categories/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/document-categories/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/payment-methods/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/payment-methods/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/payment-methods/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/payment-methods/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/payment-methods/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/payment-methods/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/payment-terms/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/payment-terms/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/payment-terms/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/payment-terms/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/payment-terms/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/payment-terms/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions-roles/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/permissions-roles/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions-roles/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/contact-titles/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions-roles/list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/edit.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/permissions/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/roles/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/roles/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/status-codes/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/status-codes/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/status-codes/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/status-codes/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/status-codes/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/status-codes/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/user-roles/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/user-roles/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/user-roles/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/user-roles/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/users/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/users/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/clients/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/clients/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/employee/clients/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/employee/clients/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,21 +331,21 @@
     <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "phila088"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;phila088&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="547d5bfc-dddf-43bb-8a53-f12902a34b47" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/phila088/aphii.git",
-    "accountId": "547d5bfc-dddf-43bb-8a53-f12902a34b47"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/phila088/aphii.git&quot;,
+    &quot;accountId&quot;: &quot;547d5bfc-dddf-43bb-8a53-f12902a34b47&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -236,7 +513,7 @@
     "RunOnceActivity.laravel-idea.update-module-directories": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/server/htdocs/aphii/.env",
+    "last_opened_file_path": "C:/server/htdocs/aphii/public/js",
     "list.type.of.created.stylesheet": "PostCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
@@ -246,7 +523,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "com.laravel_idea.plugin.extension.smartGoTo.e",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2023.3.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
@@ -258,11 +535,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\server\htdocs\aphii\public\js" />
       <recent name="C:\server\htdocs\aphii\public\js\chosen" />
       <recent name="C:\server\htdocs\aphii\resources\views\components" />
       <recent name="C:\server\htdocs\aphii" />
       <recent name="C:\server\htdocs\aphii\resources\assets\icon-fonts\bootstrap-icons\icons\icons" />
-      <recent name="C:\server\htdocs\aphii\public\build\assets\icon-fonts\bootstrap-icons\icons\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\server\htdocs\aphii" />
@@ -343,7 +620,15 @@
       <workItem from="1712198435360" duration="22711000" />
       <workItem from="1712271966383" duration="139000" />
       <workItem from="1712272187857" duration="111000" />
-      <workItem from="1712272428186" duration="18170000" />
+      <workItem from="1712272428186" duration="20099000" />
+      <workItem from="1712317042922" duration="186000" />
+      <workItem from="1712317236114" duration="12811000" />
+      <workItem from="1712367875524" duration="22998000" />
+      <workItem from="1712447855007" duration="23023000" />
+      <workItem from="1712509567588" duration="900000" />
+      <workItem from="1712510480957" duration="964000" />
+      <workItem from="1712511484435" duration="103000" />
+      <workItem from="1712511597074" duration="64000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -617,7 +902,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712304609447</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Update ContactDepartment model and related views&#10;&#10;Updated the ContactDepartment model to allow 'name' to be fillable and added a relationship with the User model. Updated the index view under contact departments to include new layouts and functionality. Also updated several settings and configurations files including dataSources.xml and dataSources.local.xml.">
+      <option name="closed" value="true" />
+      <created>1712307397263</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1712307397263</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +930,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Updates... Lots of them..." />
     <MESSAGE value="Update composer details and cleanup workspace&#10;&#10;This commit updates the name and description in the composer.json file to match the details of the new project. Additionally, several unnecessary entries from the .idea/workspace.xml file have been cleaned up to keep the workspace organized." />
     <MESSAGE value="Update composer and tidy up workspace&#10;&#10;This commit involves amendments to the composer.json file for alignment with the new project's details. It also includes a cleanup of redundant entries from the .idea/workspace.xml file to ensure a more organized workspace." />
     <MESSAGE value="Add Quote, Invoice, and WorkOrder models, controllers, and policies&#10;&#10;This commit introduces new Quote, Invoice and WorkOrder models each with their corresponding policy and controller. The models have been set to use SoftDeletes. Policies for each model define permissions for view, create, update and delete operations. Controllers for each model handle CRUD operations and the communication to these models." />
@@ -662,7 +954,8 @@
     <MESSAGE value="Restructure tables and files." />
     <MESSAGE value="Add middleware to route, create new models and migration files&#10;&#10;Added middleware for view and edit routes for brands and clients to enhance permission control. Two new models, StatusSeeder and ContactDepartment, with their respective migrations files, were created to handle statuses and contact departments. Also, the generation policy from laravel-idea-personal.xml was removed and the default styles for Ckeditor were updated." />
     <MESSAGE value="Add contact departments to admin panel&#10;&#10;Contact departments have been added to the admin panel by creating respective routes and reflected in the side-bar. The ContactDepartmentController has been moved to the Admin folder, an index method has been added, and an index view created to present the data." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add contact departments to admin panel&#10;&#10;Contact departments have been added to the admin panel by creating respective routes and reflected in the side-bar. The ContactDepartmentController has been moved to the Admin folder, an index method has been added, and an index view created to present the data." />
+    <MESSAGE value="Update ContactDepartment model and related views&#10;&#10;Updated the ContactDepartment model to allow 'name' to be fillable and added a relationship with the User model. Updated the index view under contact departments to include new layouts and functionality. Also updated several settings and configurations files including dataSources.xml and dataSources.local.xml." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update ContactDepartment model and related views&#10;&#10;Updated the ContactDepartment model to allow 'name' to be fillable and added a relationship with the User model. Updated the index view under contact departments to include new layouts and functionality. Also updated several settings and configurations files including dataSources.xml and dataSources.local.xml." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

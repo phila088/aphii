@@ -47,51 +47,56 @@ new class extends Component {
     {
         $email = preg_match('/<(.*)>/i', $this->user, $matches);
 
-        $user = User::where('email', '=', $matches[1])
-            ->get();
+        if (!empty($matches[1])) {
+            $user = User::where('email', '=', $matches[1])
+                ->get();
 
-        $role = Role::where('name', '=', $this->role)
-            ->get();
+            $role = Role::where('name', '=', $this->role)
+                ->get();
 
-        $user[0]->syncRoles($role[0]);
+            $user[0]->syncRoles($role[0]);
 
-        $this->dispatch('user-role-created');
+            $this->dispatch('user-role-created');
 
-        $this->user = '';
-        $this->role = '';
+            $this->user = '';
+            $this->role = '';
+        } else {
+            $this->dispatch('error');
+        }
     }
 }; ?>
 
-<div class="tw-shadow-md tw-rounded-lg tw-p-4">
+<div">
     <form wire:submit="createUserRole" class="needs-validation" novalidate autocomplete="off">
-        <div class="row g-2">
-            <div class="col-lg-3">
-                <div class="form-floating">
-                    <input id="user" wire:model.live="user" placeholder="User" class="form-control" list="users-list" x-on:input="$wire.updateUsers($el.value)" />
-                    <label for="user">User</label>
-                </div>
-                <datalist id="users-list">
-                    <option></option>
-                    @foreach ($users as $user)
-                        <option value="{{ $user->name }} <{{ $user->email }}>">{{ $user->name }} <{{ $user->email }}></option>
-                    @endforeach
-                </datalist>
+        <div class="card custom-card">
+            <div class="card-header">
+                <h2>Assign a user a role</h2>
             </div>
-
-            <div class="col-lg-2">
-                <div class="form-floating">
-                    <select id="role" wire:model="role" class="form-select">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="form-group">
+                            <label for="user">User</label>
+                            <input id="user" wire:model.live="user" class="form-control" list="users-list" x-on:input="$wire.updateUsers($el.value)" />
+                            <datalist id="users-list">
+                                <option></option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->name }} <{{ $user->email }}>">{{ $user->name }} <{{ $user->email }}></option>
+                                @endforeach
+                            </datalist>
+                        </div>
+                    </div>
+                    <x-select cols="col-5" id="role" model="role" label="role">
                         <option></option>
                         @foreach ($roles as $role)
                             <option vlaue="{{ $role->name }}">{{ $role->name }}</option>
                         @endforeach
-                    </select>
-                    <label for="role">Role</label>
+                    </x-select>
                 </div>
             </div>
-
+            <div class="card-footer">
+                <x-submit id="user-role-create" />
+            </div>
         </div>
-
-        <x-submit id="user-role-create" />
     </form>
 </div>

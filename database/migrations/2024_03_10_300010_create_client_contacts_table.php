@@ -9,8 +9,8 @@ return new class extends Migration {
     {
         Schema::create('client_contacts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained()->cascadeOnUpdate();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate();
+            $table->foreignId('client_id')->constrained('clients')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('department')->nullable();

@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             StatusCodeSeeder::class,
             BrandSeeder::class,
             StatusSeeder::class,
+            ClientSeeder::class,
         ]);
     }
 }

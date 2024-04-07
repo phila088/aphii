@@ -267,4 +267,14 @@ return [
         'RM' => 'Room',
         'DEPT' => 'Department'
     ],
+    'actions' => [
+        '*',
+        'create',
+        'edit',
+        'view',
+        'viewAny',
+        'delete',
+        'destroy',
+        'generateReport'
+    ],
 ];

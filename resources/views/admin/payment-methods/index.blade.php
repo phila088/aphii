@@ -24,19 +24,20 @@
                 <div class="card custom-card">
                     <div class="card-body">
                         <x-tab-button-parent>
-                            <x-tab-button id="pills-list-payment-methods-tab" data-bs-toggle="pill-payment-methods-index" target="pills-list-payment-methods" selected="true" label="List payment methods" />
-
-                            <x-tab-button id="pills-create-payment-methods-tab" data-bs-toggle="pill-payment-methods-index" target="pills-create-payment-methods" selected="false" label="Create payment methods" />
+                            <x-tab-button id="pills-list-payment-methods-tab" data-bs-toggle="pill-payment-methods-index" target="pills-list-payment-methods" selected="true" label="Payment methods" />
                         </x-tab-button-parent>
                     </div>
                 </div>
                 <x-tab-content-parent>
                     <x-tab-content active="true" id="pills-list-payment-methods" labelledby="pills-list-payment-methods-tab">
-                        <livewire:admin.payment-methods.list />
-                    </x-tab-content>
-
-                    <x-tab-content id="pills-create-payment-methods" labelledby="pills-create-payment-methods-tab">
-                        <livewire:admin.payment-methods.create />
+                        <div class="row">
+                            <div class="col-4">
+                                <livewire:admin.payment-methods.create />
+                            </div>
+                            <div class="col-8">
+                                <livewire:admin.payment-methods.list />
+                            </div>
+                        </div>
                     </x-tab-content>
                 </x-tab-content-parent>
             </div>

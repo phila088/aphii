@@ -1,6 +1,8 @@
 <x-app-layout>
     @section('styles')
 
+        <link rel="stylesheet" href="{{ asset('js/bst/bootstrap-table.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('js/bst/extensions/sticky-header/bootstrap-table-sticky-header.min.css') }}">
 
     @endsection
 

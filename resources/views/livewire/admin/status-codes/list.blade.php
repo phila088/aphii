@@ -82,72 +82,55 @@ new class extends Component {
             </div>
         </div>
         <div class="card-body">
-            <div class="tw-mt-4 tw-divide-y tw-divide-gray-200 dark:tw-divide-gray-700">
+            @can ('statusCodes.viewAny')
                 @if ($statusCodes->isEmpty())
                     <x-no-data />
                 @else
-                    @foreach ($statusCodes as $statusCode)
-                        <div class="tw-p-4 tw-flex tw-space-x-2 hover:tw-bg-gray-100 dark:hover:tw-bg-gray-800" wire:key="{{ $statusCode->id }}">
-                            <div class="tw-flex-1">
-                                <div class="tw-flex tw-justify-between tw-items-center">
-                                    <div>
-                                        <p class="tw-mt-0.5 tw-text-sm">{{ $statusCode->code }} - {{ $statusCode->title }}</p>
+                    <ul class="list-group">
+                        @foreach ($statusCodes as $statusCode)
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="col-auto">
+                                        <table class="table table-sm table-borderless">
+                                            <tbody>
+                                            <tr>
+                                                <th>Model: </th>
+                                                <td>{{ $statusCode->for_model }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Code: </th>
+                                                <td>{{ $statusCode->code }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Title: </th>
+                                                <td>{{ $statusCode->title }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Default reason: </th>
+                                                <td>{{ $statusCode->default_reason }}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    @canany (['statuscode.edit', 'statuscode.delete'])
-                                        <x-dropdown>
-                                            <x-slot name="trigger">
-                                                <button>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-4 tw-w-4 tw-text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                    </svg>
-                                                </button>
-                                            </x-slot>
-                                            <x-slot name="content">
-                                                @can ('statuscode.edit')
-                                                    <x-dropdown-link wire:click="edit({{ $statusCode->id }})">
-                                                        Edit
-                                                    </x-dropdown-link>
-                                                @endcan
-                                                @can ('statuscode.delete')
-                                                    <x-dropdown-link wire:click="delete({{ $statusCode->id }})" wire:confirm="Are you sure you want to delete this status code?">
-                                                        Delete
-                                                    </x-dropdown-link>
-                                                @endcan
-                                            </x-slot>
-                                        </x-dropdown>
-                                    @endcanany
+                                    <div>
+                                        @can ('contact-titles.edit')
+                                            <button type="button" class="btn btn-icon btn-sm btn-info-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="edit({{ $statusCode->id }})"><i class="bi bi-pencil"></i></button>
+                                        @endcan
+                                        @can ('contact-titles.delete')
+                                            <button type="button" class="btn btn-icon btn-sm btn-danger-light rounded-pill btn-wave waves-effect waves-light" wire:click.prevent="delete({{ $statusCode->id }})" wire:confirm="Are you sure you want to delete this contact title?"><i class="bi bi-trash"></i></button>
+                                        @endcan
+                                    </div>
                                 </div>
-                                <div class="tw-text-xs">
-                                    @if ($statusCode->is($editing))
-                                        <livewire:admin.status-codes.edit :statusCode="$statusCode" wire:key="$statusCode->id" />
-                                    @else
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-6 col-lg-2 tw-font-bold">
-                                                    Default reason:
-                                                </div>
-                                                <div class="col-6 col-lg-2">
-                                                    {{ $statusCode->default_reason }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-6 col-lg-2 tw-font-bold">
-                                                    Created:
-                                                </div>
-                                                <div class="col-6 col-lg-2">
-                                                    {{ Carbon::parse($statusCode->created_at)->timezone(auth()->user()->timezone)->format('m.d.Y G:i A') }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                                @if ($statusCode->is($editing))
+                                    <livewire:admin.status-codes.edit :statusCode="$statusCode" wire:key="{{ $statusCode->id }}" />
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
                 @endif
-            </div>
+            @else
+                <x-not-auth />
+            @endcan
         </div>
     </div>
 </div>

@@ -1,12 +1,11 @@
 <x-app-layout>
     @section('styles')
 
+        <link rel="stylesheet" href="{{ asset('js/bst/bootstrap-table.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('js/bst/extensions/sticky-header/bootstrap-table-sticky-header.min.css') }}">
 
     @endsection
-
     @section('content')
-
-        <!-- PAGE HEADER -->
         <div class="page-header-breadcrumb d-md-flex d-block align-items-center justify-content-between ">
             <h4 class="fw-medium tw-text-xl mb-0"></h4>
             <ol class="breadcrumb">
@@ -15,12 +14,8 @@
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Users') }}</li>
             </ol>
         </div>
-        <!-- END PAGE HEADER -->
-
-        <!-- APP CONTENT -->
         <div class="main-content app-content">
             <div class="container-fluid">
-                <!-- Start::row-1 -->
                 <div class="card custom-card">
                     <div class="card-body">
                         <x-tab-button-parent>
@@ -40,45 +35,46 @@
                 </div>
                 <x-tab-content-parent>
                     <x-tab-content active="true" id="pills-list-users" labelledby="pills-list-users-tab">
-                            @livewire('admin.users.list')
+                        <livewire:admin.users.list />
                     </x-tab-content>
 
                     <x-tab-content id="pills-create-users" labelledby="pills-create-users-tab">
-                        @livewire('admin.users.create')
+                        <livewire:admin.users.create />
                     </x-tab-content>
 
                     <x-tab-content id="pills-permissions" labelledby="pills-permissions-tab">
                         <div class="row">
-                            @livewire('admin.permissions.index')
-                            @livewire('admin.permissions.list')
+                            <livewire:admin.permissions.index />
+                            <livewire:admin.permissions.list />
                         </div>
                     </x-tab-content>
 
                     <x-tab-content id="pills-roles" labelledby="pills-roles-tab">
                         <div class="row">
-                            @livewire('admin.roles.create')
-                            @livewire('admin.roles.list')
+                            <livewire:admin.roles.create />
+                            <livewire:admin.roles.list />
                         </div>
                     </x-tab-content>
 
                     <x-tab-content id="pills-roles-permissions" labelledby="pills-roles-permissions-tab">
-                        @livewire('admin.permissions-roles.create')
+                        <livewire:admin.permissions-roles.create />
                     </x-tab-content>
 
                     <x-tab-content id="pills-user-roles" labelledby="pills-user-roles-tab">
-                        @livewire('admin.user-roles.create')
-                        @livewire('admin.user-roles.list')
+                        <div class="row">
+                            <div class="col-5">
+                                <livewire:admin.user-roles.create />
+                            </div>
+                            <div class="col-7">
+                                <livewire:admin.user-roles.list />
+                            </div>
+                        </div>
                     </x-tab-content>
                 </x-tab-content-parent>
-                <!-- End::row-1 -->
             </div>
         </div>
-        <!-- END APP CONTENT -->
-
     @endsection
-
     @section('scripts')
-
         <script>
             const pillsTab = document.querySelector('#pills-tab');
             const pills = pillsTab.querySelectorAll('button[data-bs-toggle="pill"]');
@@ -131,6 +127,9 @@
                     "hideMethod": "fadeOut"
                 }
 
+                Livewire.on('error', () => {
+                    toastr['error']('There was an unknown error. Please try again.')
+                })
                 Livewire.on('user-created', () => {
                     toastr['success']('User created successfully.')
                 })
@@ -163,7 +162,5 @@
                 })
             })
         </script>
-
-
     @endsection
 </x-app-layout>

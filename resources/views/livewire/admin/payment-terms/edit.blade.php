@@ -64,9 +64,9 @@ new class extends Component {
 
 <div>
     <form wire:submit="updatePaymentTerm" novalidate autocomplete="off">
-        <div class="card custom-card">
+        <div class="card">
             <div class="card-header">
-                <h2>Create a payment term</h2>
+                <h2>Edit a payment term</h2>
             </div>
             <div class="card-body">
                 <div class="row">

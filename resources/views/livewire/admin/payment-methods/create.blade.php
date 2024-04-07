@@ -38,7 +38,7 @@ new class extends Component {
                 <h2>Create a payment term</h2>
             </div>
             <div class="card-body">
-                <x-input cols="col-lg-3" id="name" model="name" label="Name" />
+                <x-input cols="col-lg-12" id="name" model="name" label="Name" />
             </div>
             <div class="card-footer">
                 <x-submit id="payment-method-create" />

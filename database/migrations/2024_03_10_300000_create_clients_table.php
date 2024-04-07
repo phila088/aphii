@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name', 50)->nullable();
             $table->string('dba', 50)->nullable();
             $table->string('abbreviation', 10)->nullable();
@@ -20,7 +20,6 @@ return new class extends Migration {
             $table->date('contract_start_date')->nullable();
             $table->date('contract_end_date')->nullable();
             $table->foreignId('payment_term_id')->nullable()->constrained()->cascadeOnUpdate();
-            $table->boolean('active')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });
